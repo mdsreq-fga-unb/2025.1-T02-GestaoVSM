@@ -1,0 +1,4 @@
+site_name: Gestão VSM
+nav:
+  - Home: index.md
+  - Visão de Produto e Projeto: visao_prod_proj.md
