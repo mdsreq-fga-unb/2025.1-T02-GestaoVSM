@@ -14,7 +14,7 @@ O cálculo do faturamento diário envolve diversos fatores, como serviços reali
 Diante desse cenário, este projeto propõe o desenvolvimento de uma solução digital para automatizar cálculos financeiros, organizar registros de vendas e serviços e aprimorar o controle sobre insumos, proporcionando uma gestão mais eficiente e auxiliando na tomada de decisões estratégicas.
 A seguir, o Diagrama de Ishikawa ilustra os principais fatores que contribuem para a dificuldade na gestão financeira e no fechamento de caixa da barbearia:
 
-![Diagrama de Ishikawa]()
+![Diagrama de Ishikawa (Espinha de Peixe)]()
 
 A Barbearia VSM enfrenta desafios operacionais significativos, especialmente no controle financeiro e na organização dos atendimentos. O fechamento de caixa é realizado manualmente ao final de cada semana, o que gera desorganização e dificulta a consulta dos registros diários de cada barbeiro, impactando a eficiência da gestão, além de demandar tempo e esforço, expondo a possíveis erros.
 Esses desafios evidenciam a necessidade de uma solução digital que otimize a administração financeira e a organização interna da barbearia.
