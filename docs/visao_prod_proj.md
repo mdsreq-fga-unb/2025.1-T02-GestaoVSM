@@ -159,16 +159,17 @@ Conforme detalhado na tabela a seguir, são apresentados os papéis e responsabi
 
 ### Comunicação
 
-Nesse tópico iremos apresentar as ferramentas e métodos a serem usados pela nossa equipe durante todo o desenvolvimento do projeto. Além de como será feita a comunicação entre os membros da nossa equipe.
-*Ferramentas de Comunicação*
-- *Google Meet*: Ferramenta responsável pela interação com o cliente, a fim de obter uma comunicação efetiva e didática, com transmissão de tela.
-- *Discord*: Ferramenta de comunicação entre membros, a fim de desenvolver o projeto em conjunto, envio de links e documentos importantes.
-- *Whatsapp*: Comunicação diária entre os membros do grupo, interação com o cliente a fim de marcar/confirmar reuniões.
+Nesse tópico iremos apresentar as ferramentas e métodos a serem usados pela nossa equipe durante todo o desenvolvimento do projeto. Além de como será feita a comunicação entre os membros da nossa equipe.  
+
+*Ferramentas de Comunicação*  
+- *Google Meet*: Ferramenta responsável pela interação com o cliente, a fim de obter uma comunicação efetiva e didática, com transmissão de tela.  
+- *Discord*: Ferramenta de comunicação entre membros, a fim de desenvolver o projeto em conjunto, envio de links e documentos importantes.  
+- *Whatsapp*: Comunicação diária entre os membros do grupo, interação com o cliente a fim de marcar/confirmar reuniões.  
 - *Microsoft Teams*: Gravação de apresentações de final de unidade.
 
-*Métodos e Frequência de Reuniões*
-- *Reuniões com o cliente*: Realizadas quinzenalmente, via Google Meet, com o objetivo de apresentar entregas parciais, validar funcionalidades, revisar protótipos e coletar feedback, valorizando a participação ativa do cliente e prevê validações frequentes durante o desenvolvimento.
-- *Reuniões internas da equipe*: Ocorrerão semanalmente, utilizando o Discord, para o planejamento, acompanhamento das tarefas em andamento, discussão de dificuldades e organização das próximas entregas.
+*Métodos e Frequência de Reuniões*  
+- *Reuniões com o cliente*: Realizadas quinzenalmente, via Google Meet, com o objetivo de apresentar entregas parciais, validar funcionalidades, revisar protótipos e coletar feedback, valorizando a participação ativa do cliente e prevê validações frequentes durante o desenvolvimento.  
+- *Reuniões internas da equipe*: Ocorrerão semanalmente, utilizando o Discord, para o planejamento, acompanhamento das tarefas em andamento, discussão de dificuldades e organização das próximas entregas.  
 - *Comunicação Assíncrona Diária*: Realizada via Whatsapp, garantirá agilidade na tomada de decisões, reforçando a colaboração e o fluxo contínuo de informações.
 
 ### Processo de Validação
