@@ -13,12 +13,12 @@ A VSM Barbearia é um estabelecimento tradicional em Rio Branco, no Acre, com se
 
 |Nome|Função|
 |----|------|
-|[Caio Lucas Messias Sabino](https://github.com/caiomsabino)| |
-|[Caio Melo Borges](https://github.com/CaioMelo25)| |
-|[Felipe de Aquino Campelo](https://github.com/felipeacampelo)| |
-|[Felipe Henrique Oliveira Sousa](https://github.com/fhenrique77)| |
-|[Vinícius Fernandes Rufino](https://github.com/RufinoVfR)| Gerente de Projeto [Líder] |
-|[Weverton Rodrigues da Costa Silva](https://github.com/vevetin)| Dev Back End | 
+|[Caio Lucas Messias Sabino](https://github.com/caiomsabino)| Desenvolvedor Backend |
+|[Caio Melo Borges](https://github.com/CaioMelo25)| Desenvolvedor Backend, Modelador de Dados |
+|[Felipe de Aquino Campelo](https://github.com/felipeacampelo)| Desenvolvedor Backend |
+|[Felipe Henrique Oliveira Sousa](https://github.com/fhenrique77)| Desenvolvedor Frontend |
+|[Vinícius Fernandes Rufino](https://github.com/RufinoVfR)| Gerente de Projeto (Líder) |
+|[Weverton Rodrigues da Costa Silva](https://github.com/vevetin)| Desenvolvedor Frontend | 
 
 ## Histórico de Revisão
 
