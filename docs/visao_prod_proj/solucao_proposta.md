@@ -1,8 +1,14 @@
 ## 2.1 Objetivos do Produto
 
-O objetivo é desenvolver uma solução digital, acessível por meio de plataformas web e mobile, voltada à otimização da gestão interna da Barbearia VSM, com foco no fechamento de caixa e na organização financeira.
-A proposta busca aumentar a eficiência administrativa do estabelecimento, por meio da redução de erros manuais, da facilitação do controle financeiro e do aprimoramento da gestão de atendimentos e vendas.
-Além disso, pretende-se promover maior transparência nas atividades internas e oferecer suporte à tomada de decisões por meio de dados estruturados e organizados.
+O principal objetivo do produto é **otimizar e profissionalizar a gestão operacional e financeira da Barbearia VSM**, resolvendo desafios críticos que impactam sua eficiência administrativa e atendimento ao cliente.
+
+O sistema busca **eliminar processos manuais propensos a erros**, especialmente no **fechamento de caixa**, substituindo cálculos semanais demorados por uma consolidação automática de receitas, despesas e comissões. Isso garantirá precisão financeira e economia de tempo, permitindo que a equipe foque no atendimento.
+
+Além disso, o produto visa **organizar e centralizar todas as operações da barbearia**, desde o registro de serviços e produtos até a gestão dos barbeiros — incluindo suas especialidades, horários e comissionamento. Com informações estruturadas e acessíveis, o administrador terá maior controle e transparência para tomar decisões estratégicas.
+
+Outro pilar essencial é a **automatização de agendamentos**, integrando um chatbot no WhatsApp para que os clientes marquem horários diretamente, sem mediação da equipe. Os compromissos serão sincronizados automaticamente com calendários individuais dos barbeiros e um painel gerencial, evitando sobreposições e otimizando a distribuição de demanda.
+
+O sistema consolidará todos os dados financeiros e operacionais, proporcionando relatórios precisos para uma gestão mais eficiente. O resultado será processos mais ágeis, menos erros operacionais e um atendimento de maior qualidade na Barbearia VSM.
 
 ## 2.2 Características da Solução
 
