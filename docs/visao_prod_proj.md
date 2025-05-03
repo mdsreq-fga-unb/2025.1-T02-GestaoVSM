@@ -30,7 +30,7 @@ Barbeiros/Funcionários (20-45 anos): Profissionais que realizam os atendimentos
 
 ### Objetivos do Produto
 
-O objetivo é desenvolver uma solução digital, acessível por meio de plataformas web e mobile, voltada à otimização da gestão interna da Barbearia VSM, com foco no fechamento de caixa e na organização financeira.
+O objetivo é desenvolver um aplicatívo/site, acessível por meio de plataformas web e mobile, voltada à otimização da gestão interna da Barbearia VSM, com foco no fechamento de caixa e na organização financeira.
 A proposta busca aumentar a eficiência administrativa do estabelecimento, por meio da redução de erros manuais, da facilitação do controle financeiro e do aprimoramento da gestão de atendimentos e vendas.
 Além disso, pretende-se promover maior transparência nas atividades internas e oferecer suporte à tomada de decisões por meio de dados estruturados e organizados.
 
