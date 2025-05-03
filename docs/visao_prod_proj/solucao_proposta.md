@@ -16,6 +16,14 @@ A solução proposta contará com as seguintes funcionalidades para otimizar a g
 
 - Gestão de vendas e serviços: Todos os registros de vendas e serviços serão armazenados e vinculados diretamente a cada funcionário, substituindo as anotações manuais e proporcionando um controle mais eficiente e acessível das transações.
 
+- Registro de produtos: Funcionalidade para manter o registro de produtos comercializados (shampoos, óleos, pomadas, etc.), com campos para nome, descrição e valor, facilitando a gestão de inventário.
+
+- Registro de barbeiros: Gestão dos profissionais da barbearia, com informações como nome, especialidades, horário de trabalho e comissionamento, proporcionando maior controle sobre os colaboradores.
+
+- Registro de serviços: Administração dos serviços oferecidos (ex: corte masculino, corte degradê, barba completa, etc.), incluindo valor, duração estimada e profissional habilitado.
+
+- Automação de agendamentos via WhatsApp: Integração com um chatbot no WhatsApp permitirá que os próprios clientes realizem seus agendamentos diretamente pelo aplicativo de mensagens, sem necessidade de intervenção do barbeiro. O sistema reconhecerá o pedido e adicionará automaticamente o agendamento ao calendário do profissional correspondente, otimizando o fluxo de marcação de horários.
+
 Essas funcionalidades garantirão maior organização, transparência e eficiência operacional, reduzindo erros e facilitando a administração da barbearia.
 
 ## 2.3 Tecnologias a Serem Utilizadas
