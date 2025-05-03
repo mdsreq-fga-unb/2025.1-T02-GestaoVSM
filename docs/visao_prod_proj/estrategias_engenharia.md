@@ -9,10 +9,17 @@ O ciclo de vida selecionado é o **Iterativo e Incremental**, pois permite o des
 Esse modelo favorece o alinhamento entre a solução desenvolvida e as expectativas do usuário final, ao mesmo tempo em que reduz o risco de retrabalho por falhas de entendimento.
 
 *Processo de Engenharia de Software*  
-O processo de engenharia de software adotado será dividido em duas fases complementares,  numa combinação entre o **RAD** e o **OpenUP**.
-O RAD será aplicado na fase inicial do projeto, com foco em prototipação rápida de interfaces e fluxos principais, além da validação visual direta com o cliente. Essa abordagem será essencial para refinar os requisitos já conhecidos, testar alternativas de interação e facilitar o entendimento mútuo entre equipe e cliente por meio de representações visuais informais. A alta disponibilidade do cliente será aproveitada para obter feedback frequente e antecipar decisões críticas do projeto.
-Após a validação dos principais fluxos, o projeto avançará com o OpenUP, um processo leve, interativo e disciplinado, que oferece papéis bem definidos, ênfase em engenharia de requisitos e suporte ao desenvolvimento incremental orientado a histórias de usuário.
-Essa fase permitirá manter a rastreabilidade das decisões, garantir a qualidade progressiva do produto e organizar as entregas de forma estruturada, sem comprometer a adaptabilidade necessária para responder a mudanças pontuais durante a execução.
+O processo será conduzido por uma abordagem híbrida entre RAD e OpenUP, reorganizada em quatro fases sequenciais para melhor atender às necessidades do projeto.
+
+Na **Fase de Início (OpenUP)**, serão estabelecidos os fundamentos do projeto, com a definição do escopo inicial, identificação de stakeholders e riscos principais, e a elaboração da visão do produto. Esta etapa preparará o terreno para o trabalho de prototipação, garantindo que todos os participantes compartilhem uma compreensão comum dos objetivos antes da fase seguinte.
+
+A **Fase de User Design (RAD)** concentrar-se-á na prototipação rápida de interfaces e fluxos críticos, com validação visual direta junto ao cliente. Através de iterações ágeis e sessões frequentes de feedback, os requisitos serão refinados continuamente, antecipando decisões de design e assegurando que a solução atenda às expectativas de usabilidade antes do desenvolvimento em si.
+
+Com os fluxos principais validados, o projeto avançará para a **Fase de Construção (OpenUP)**, onde o desenvolvimento ocorrerá de forma incremental, orientado por histórias de usuário priorizadas. Esta fase manterá ciclos curtos de entrega (2 semanas), com ênfase na qualidade do código e rastreabilidade dos requisitos, enquanto incorpora mudanças pontuais quando necessário. Testes automatizados e integração contínua assegurarão a estabilidade do produto durante sua evolução.
+
+Por fim, a **Fase de Transição (OpenUP)** preparará a implantação final, com treinamento dos usuários, ajustes baseados em feedbacks operacionais e consolidação da documentação. O encerramento do projeto incluirá uma revisão das lições aprendidas, garantindo que insights valiosos sejam capturados para iniciativas futuras.
+
+Esta estrutura combinada preserva a agilidade do RAD na fase crítica de definição da experiência do usuário, enquanto aproveita a disciplina e organização do OpenUP para garantir um desenvolvimento controlado e adaptável. O resultado será um processo que equilibra velocidade com qualidade, mantendo o foco na entrega de valor contínuo ao cliente.
 
 ## 3.2 Quadro Comparativo
 
