@@ -15,3 +15,4 @@ Esse tópico define as principais etapas e prazos do projeto, garantindo a entre
 | Data | Versão | Descrição | Autor |
 |---|---|---|---|
 | 20/04/2025 | 1.3 | Inserção do Tópico 4  | [Caio Sabino](https://github.com/caiomsabino) |
+| 03/05/2025 | 2.0 | Refatoração do Documento | [Vinícius Rufino](https://github.com/RufinoVfR) e [Weverton Rodrigues](https://github.com/vevetin)|

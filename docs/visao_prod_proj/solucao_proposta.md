@@ -83,6 +83,7 @@ Dessa forma, a solução não apenas otimizará a operação diária da barbeari
 
 | Data | Versão | Descrição | Autor |
 |---|---|---|----|
-| 02/04/2025 | 0.1 | Produção inicial do Tópico 2 | [Vinícius Rufino](https://github.com/RufinoVfR), [Weverton Rodrigues](https://github.com/vevetin) |
-| 03/04/2025 | 0.2 | Revisão e correção de erros | [Vinícius Rufino](https://github.com/RufinoVfR) |
-| 11/04/2025 | 0.3 | Correções após feedback do professor | [Weverton Rodrigues](https://github.com/vevetin) |
+| 02/04/2025 | 1.1 | Produção inicial do Tópico 2 | [Vinícius Rufino](https://github.com/RufinoVfR), [Weverton Rodrigues](https://github.com/vevetin) |
+| 03/04/2025 | 1.2 | Revisão e correção de erros | [Vinícius Rufino](https://github.com/RufinoVfR) |
+| 11/04/2025 | 1.3 | Correções após feedback do professor | [Weverton Rodrigues](https://github.com/vevetin) |
+| 03/05/2025 | 2.0 | Refatoração do Documento | [Vinícius Rufino](https://github.com/RufinoVfR) e [Weverton Rodrigues](https://github.com/vevetin)|

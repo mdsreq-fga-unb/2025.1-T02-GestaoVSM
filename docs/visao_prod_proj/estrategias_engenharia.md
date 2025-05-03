@@ -21,7 +21,7 @@ A seguir, apresenta-se um quadro comparativo entre dois processos de desenvolvim
 |Características|RAD|RAD + OpenUP|
 |---------------|---|------------|
 |Abordagem Geral|Ênfase na prototipação rápida e iterativa. Foco principal no Design Centrado no Usuário.|Mantém a prototipação rápida do RAD, com desenvolvimento incremental e estrutura leve do OpenUP.|
-|Estrutura de Processos|Planejamento formal seguido de ciclos rápidos; requisitos de alto nível; protótipos iterativos.|Mesmo fluxo do RAD, porém com entregas incrementais que validam o valor entregue ao usuário a cada iteração.|
+|Estrutura de Processos|Planejamento formal seguido de ciclos rápidos; requisitos de alto nível; protótipos iterativos.|Validação visual, por meio de prototipações (RAD), com desenvolvimento estruturado, por meio de fases de construção, elaboração e transição (OpenUP).|
 |Colaboração com o Cliente|Participação ativa do cliente durante todo o processo; feedback contínuo e ajustes rápidos.|Contato contínuo com o cliente, validação de protótipos e incremento de valor em cada entrega.|
 |Flexibilidade de Requisitos|Requisitos são tratados como variáveis; mudanças são facilmente incorporadas.|Flexibilidade mantida, mas com gestão de mudanças dentro de ciclos iterativos e rastreamento mais estruturado.|
 |Ciclo de Vida do Projeto|Rápido e voltado à entrega funcional em pouco tempo.|Estruturado com micro-incrementos: ciclos curtos (iterações) e visão de longo prazo (ciclo de projeto).|
@@ -43,3 +43,4 @@ Portanto, a combinação de RAD e OpenUP permite iniciar o desenvolvimento com r
 | 20/04/2025 | 1.1 | Atualização no Tópico 3.2 e 3.3 | [Vinícius Rufino](https://github.com/RufinoVfR) |
 | 20/04/2025 | 1.2 | Atualização do Tópico 3.1| [Weverton Rodrigues](https://github.com/vevetin) |
 | 21/04/2025 | 1.4 | Refatoração dos Tópicos 3.2 e 3.3 | [Vinícius Rufino](https://github.com/RufinoVfR) |
+| 03/05/2025 | 2.0 | Refatoração do Documento | [Vinícius Rufino](https://github.com/RufinoVfR) e [Weverton Rodrigues](https://github.com/vevetin)|
