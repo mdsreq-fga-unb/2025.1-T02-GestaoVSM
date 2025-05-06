@@ -28,7 +28,15 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
 nav:
-  - Home: index.md
-  - Visão de Produto e Projeto: visao_prod_proj.md
+  - Início: index.md
+  - Visão do Produto e Projeto: 
+    - 1. Cenário Atual do Cliente e do Negócio: visao_prod_proj/cenario_atual.md
+    - 2. Solução Proposta: visao_prod_proj/solucao_proposta.md
+    - 3. Estratégias de Engenharia de Software: visao_prod_proj/estrategias_engenharia.md
+    - 4. Cronograma e Entregas: visao_prod_proj/cronograma_entregas.md
+    - 5. Interação entre Equipe e Cliente: visao_prod_proj/interacao_equipe_cliente.md
+    - 6. Lições Aprendidas: visao_prod_proj/licoes_aprendidas.md
+    - 7. Bibliografia e Referências Bibliográficas: visao_prod_proj/referencias_bibliograficas.md
+
   - Apresentações e Entregas: 
     - apresentacoes_entregas/apresentacao_1.md
