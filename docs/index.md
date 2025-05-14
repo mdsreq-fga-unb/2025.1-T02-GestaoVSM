@@ -1,6 +1,6 @@
 ## Sobre o Projeto
 
-Este projeto integra a disciplina de Engenharia de Requisitos, ministrada pelo professor Dr. George Marsicano Corrêa, no curso de Engenharia de Software da Universidade de Brasília. Tem o objetivo de desenvolver uma solução de software para um cliente real, aplicando técnicas e ferramentas da Engenharia de Requisitos. O foco abrange: *elicitação, análise, especificação e validação de requisitos*. Além disso, o projeto visa entregar um produto final funcional que atenda efetivamente às necessidades do cliente.
+Este projeto integra a disciplina de Engenharia de Requisitos, ministrada pelo professor Dr. George Marsicano Corrêa, no curso de Engenharia de Software da Universidade de Brasília. Tem o objetivo de desenvolver uma solução de software para um cliente real, aplicando técnicas e ferramentas da Engenharia de Requisitos. Além disso, o projeto visa entregar um produto final funcional que atenda efetivamente às necessidades do cliente.
 
 ## Barbearia VSM
 
