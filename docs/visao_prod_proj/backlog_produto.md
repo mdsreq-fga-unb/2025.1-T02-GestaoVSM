@@ -71,9 +71,10 @@ Com base na priorização realizada, foi possível identificar o conjunto de fun
 |US10|Editar serviço|Organizar e centralizar operações da barbearia|4|1|X|
 |US13|Editar perfil de funcionário|Organizar e centralizar operações da barbearia|4|1|X|
 |US15|Acessar o relatório de faturamento de cada funcionário|Organizar e centralizar operações da barbearia|4|1|X|
+|US16|Visualizar serviços agendados no calendário de funcionário|Automatização de agendamentos|6|2|X|
+|US17|Visualizar agendamentos no calendário do administrador|Automatização de agendamentos|6|2|X|
 |US18|Realizar agendamentos via WhatsApp|Automatização de agendamentos|6|2|X|
 |US19|Adicionar serviço ao calendário do barbeiro|Automatização de agendamentos|8|1|X|
-|US20|Visualizar agendamentos no calendário por funcionário|Automatização de agendamentos|6|2|X|
 |US03|Visualizar o faturamento dado um intervalo de data|Eliminar processos manuais propensos a erros|2|3||
 |US04|Registrar gasto operacional da barbearia|Eliminar processos manuais propensos a erros|1|4||
 |US06|Cadastrar produto|Organizar e centralizar operações da barbearia|3|6||
@@ -82,8 +83,7 @@ Com base na priorização realizada, foi possível identificar o conjunto de fun
 |US11|Remover serviço|Organizar e centralizar operações da barbearia|3|6||
 |US12|Cadastrar perfil de funcionário|Organizar e centralizar operações da barbearia|3|6||
 |US14|Remover perfil de funcionário|Organizar e centralizar operações da barbearia|3|6||
-|US16|Visualizar serviços agendados no calendário de funcionário|Automatização de agendamentos|3|4||
-|US17|Visualizar agendamentos no calendário do administrador|Automatização de agendamentos|2|5||
+|US20|Visualizar agendamentos no calendário por funcionário|Automatização de agendamentos|3|5||
 
 ## Histórico de Versão
 
