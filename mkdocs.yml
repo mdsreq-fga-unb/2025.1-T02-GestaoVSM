@@ -33,10 +33,14 @@ nav:
     - 1. Cenário Atual do Cliente e do Negócio: visao_prod_proj/cenario_atual.md
     - 2. Solução Proposta: visao_prod_proj/solucao_proposta.md
     - 3. Estratégias de Engenharia de Software: visao_prod_proj/estrategias_engenharia.md
-    - 4. Cronograma e Entregas: visao_prod_proj/cronograma_entregas.md
-    - 5. Interação entre Equipe e Cliente: visao_prod_proj/interacao_equipe_cliente.md
-    - 6. Lições Aprendidas: visao_prod_proj/licoes_aprendidas.md
-    - 7. Bibliografia e Referências Bibliográficas: visao_prod_proj/referencias_bibliograficas.md
+    - 4. Engenharia de Requisitos: visao_prod_proj/engenharia_requisitos.md
+    - 5. Cronograma e Entregas: visao_prod_proj/cronograma_entregas.md
+    - 6. Interação entre Equipe e Cliente: visao_prod_proj/interacao_equipe_cliente.md
+    - 7. Requisitos de Software: visao_prod_proj/requisitos_software.md
+    - 8. DoR e DoD: visao_prod_proj/dor_dod.md
+    - 9. Backlog do Produto: visao_prod_proj/backlog_produto.md
+    - 10. Lições Aprendidas: visao_prod_proj/licoes_aprendidas.md
+    - 11. Bibliografia e Referências Bibliográficas: visao_prod_proj/referencias_bibliograficas.md
 
   - Apresentações e Entregas: 
     - apresentacoes_entregas/apresentacao_1.md

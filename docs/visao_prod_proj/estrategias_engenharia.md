@@ -11,7 +11,7 @@ Esse modelo favorece o alinhamento entre a solução desenvolvida e as expectati
 *Processo de Engenharia de Software*  
 O processo será conduzido por uma abordagem híbrida entre RAD e OpenUP, reorganizada em quatro fases sequenciais para melhor atender às necessidades do projeto.
 
-Na **Fase de Início (OpenUP)**, serão estabelecidos os fundamentos do projeto, com a definição do escopo inicial, identificação de stakeholders e riscos principais, e a elaboração da visão do produto. Esta etapa preparará o terreno para o trabalho de prototipação, garantindo que todos os participantes compartilhem uma compreensão comum dos objetivos antes da fase seguinte.
+Na **Fase de Concepção (OpenUP)**, serão estabelecidos os fundamentos do projeto, com a definição do escopo inicial, identificação de stakeholders e riscos principais, e a elaboração da visão do produto. Esta etapa preparará o terreno para o trabalho de prototipação, garantindo que todos os participantes compartilhem uma compreensão comum dos objetivos antes da fase seguinte.
 
 A **Fase de User Design (RAD)** concentrar-se-á na prototipação rápida de interfaces e fluxos críticos, com validação visual direta junto ao cliente. Através de iterações ágeis e sessões frequentes de feedback, os requisitos serão refinados continuamente, antecipando decisões de design e assegurando que a solução atenda às expectativas de usabilidade antes do desenvolvimento em si.
 
