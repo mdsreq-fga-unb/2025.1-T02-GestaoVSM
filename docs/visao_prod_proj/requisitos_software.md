@@ -36,7 +36,7 @@ Os requisitos funcionais descrevem as funcionalidades específicas que o sistema
 
 **RF15** - Acessar o relatório de faturamento de cada funcionário: Permitir o acesso a um relatório de faturamento por funcionário, contendo a soma dos serviços realizados, produtos vendidos e comissões devidas em um determinado período.
 
-### Objetivo específico 4: Objetivo: Automatização de agendamentos
+### Objetivo específico 3: Objetivo: Automatização de agendamentos
 
 **RF16** - Visualizar serviços agendados no calendário de funcionário: Permitir que os funcionários visualizem seus agendamentos diários em um calendário pessoal, com horário, nome do cliente e serviço agendado.
 
