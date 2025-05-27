@@ -24,5 +24,5 @@ Trata-se de um conjunto de critérios objetivos que estabelece quando uma funcio
 
 |Data|Versão|Descrição|Autor|
 |---|---|---|---|
-|---|1.0|---|---|
+|22/05/2025|1.0|Criação do documento|[Weverton Rodrigues](https://github.com/vevetin)|
 |26/05/2025|1.1|Refatoração do DoR e DoD|[Vinícius Rufino](https://github.com/RufinoVfR)|

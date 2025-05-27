@@ -13,6 +13,8 @@ O processo será conduzido por uma abordagem híbrida entre RAD e OpenUP, reorga
 
 Na **Fase de Concepção (OpenUP)**, serão estabelecidos os fundamentos do projeto, com a definição do escopo inicial, identificação de stakeholders e riscos principais, e a elaboração da visão do produto. Esta etapa preparará o terreno para o trabalho de prototipação, garantindo que todos os participantes compartilhem uma compreensão comum dos objetivos antes da fase seguinte.
 
+Em seguida, a **Fase de Elaboração (OpenUP)** terá como foco o refinamento e detalhamento dos requisitos identificados, a estruturação inicial do backlog e a definição clara dos critérios de aceitação. Essa fase permite que o projeto avance com uma base sólida de entendimento funcional, reduzindo ambiguidades e preparando as histórias de usuário para a prototipação.
+
 A **Fase de User Design (RAD)** concentrar-se-á na prototipação rápida de interfaces e fluxos críticos, com validação visual direta junto ao cliente. Através de iterações ágeis e sessões frequentes de feedback, os requisitos serão refinados continuamente, antecipando decisões de design e assegurando que a solução atenda às expectativas de usabilidade antes do desenvolvimento em si.
 
 Com os fluxos principais validados, o projeto avançará para a **Fase de Construção (OpenUP)**, onde o desenvolvimento ocorrerá de forma incremental, orientado por histórias de usuário priorizadas. Esta fase manterá ciclos curtos de entrega (2 semanas), com ênfase na qualidade do código e rastreabilidade dos requisitos, enquanto incorpora mudanças pontuais quando necessário. Testes automatizados e integração contínua assegurarão a estabilidade do produto durante sua evolução.
@@ -39,9 +41,15 @@ A seguir, apresenta-se um quadro comparativo entre dois processos de desenvolvim
 ## 3.3 Justificativa
 
 A escolha pela combinação entre os processos RAD e OpenUP foi feita de forma estratégica, considerando as características do cliente e a natureza do projeto. Cada processo será utilizado em fases específicas, de acordo com seus pontos fortes e a necessidade de equilíbrio entre agilidade, estrutura e colaboração contínua.
-Iniciamos com a fase de Concepção do OpenUP, voltada para a definição da visão do sistema, delimitação do escopo e entendimento do contexto da barbearia. Em seguida, adotamos a fase de Design do Usuário do RAD, priorizando a prototipação rápida e interativa com o cliente. Essa abordagem permite validar visualmente os fluxos principais e ajustar os requisitos de forma colaborativa e eficaz, especialmente considerando o baixo grau de familiaridade técnica do cliente.
+
+Iniciamos com a fase de Concepção do OpenUP, voltada para a definição da visão do sistema, delimitação do escopo e entendimento do contexto da barbearia. Na sequência, a fase de Elaboração (OpenUP) permitirá o detalhamento dos requisitos por meio de histórias de usuário e a definição dos critérios de aceitação, preparando o terreno para a fase de prototipação com maior clareza e foco.
+
+A seguir, será adotada a fase de Design do Usuário do RAD, priorizando a prototipação rápida e interativa com o cliente. Essa abordagem permite validar visualmente os fluxos principais e ajustar os requisitos de forma colaborativa e eficaz, especialmente considerando o baixo grau de familiaridade técnica do cliente.
+
 Com os fluxos validados, o projeto segue para as fases de Construção e Transição do OpenUP, nas quais o desenvolvimento será conduzido de forma incremental, com entregas funcionais, testes automatizados e documentação enxuta. A escolha do OpenUP neste ponto parte da necessidade de organizar o desenvolvimento técnico com qualidade, rastreabilidade e flexibilidade suficiente para incorporar ajustes pontuais.
+
 Optamos por manter um processo iterativo mesmo após a validação dos requisitos, justamente para aproveitar ao máximo a disponibilidade do cliente ao longo de todo o projeto. Essa colaboração contínua poderá trazer melhorias incrementais durante a execução, sem comprometer o planejamento e a consistência do produto final.
+
 Assim, a junção entre RAD e OpenUP permite iniciar com velocidade e envolvimento direto do cliente, garantindo clareza nos requisitos, e avançar com uma abordagem estruturada, que favorece entregas de valor contínuas, com controle de qualidade e adaptabilidade.
 
 ## Histórico de Versão
@@ -52,3 +60,4 @@ Assim, a junção entre RAD e OpenUP permite iniciar com velocidade e envolvimen
 | 20/04/2025 | 1.2 | Atualização do Tópico 3.1| [Weverton Rodrigues](https://github.com/vevetin) |
 | 21/04/2025 | 1.4 | Refatoração dos Tópicos 3.2 e 3.3 | [Vinícius Rufino](https://github.com/RufinoVfR) |
 | 03/05/2025 | 2.0 | Refatoração do Documento | [Vinícius Rufino](https://github.com/RufinoVfR) e [Weverton Rodrigues](https://github.com/vevetin)|
+| 24/05/2025| 2.1 | Atualização dos Tópicos 3.1 e 3.3 | [Weverton Rodrigues](https://github.com/vevetin) |

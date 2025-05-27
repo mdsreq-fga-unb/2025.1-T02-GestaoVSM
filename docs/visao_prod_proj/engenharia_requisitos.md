@@ -77,5 +77,5 @@ Aqui, as atividades da ER, suas práticas e técnicas devem ser mapeadas, a part
 
 |Data|Versão|Descrição|Autor|
 |---|---|---|---|
-|---|1.0|---|---|
-|---|1.1|Finalização do Documento|[Vinícius Rufino](https://github.com/RufinoVfR)|
+|23/05/2025|1.0|Criação do documento|[Caio Melo](https://github.com/CaioMelo25)|
+|26/05/2025|1.1|Finalização do Documento|[Vinícius Rufino](https://github.com/RufinoVfR)|
