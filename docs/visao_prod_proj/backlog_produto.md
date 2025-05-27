@@ -8,7 +8,6 @@ O backlog geral reúne todas as funcionalidades previstas para o sistema na form
 |--|---------|
 |TE01|Eliminar processos manuais propensos a erros|
 |TE02|Organizar e centralizar operações da barbearia|
-|TE03|Automatização de agendamentos|
 
 ### Épicos (E)
 
@@ -20,7 +19,6 @@ O backlog geral reúne todas as funcionalidades previstas para o sistema na form
 | [**T01**](#temas-específicos-tm) | **E04** | Gestão de Serviços                                | Gerenciar os serviços da barbearia com dados como duração, preço e barbeiros habilitados, com controle de alterações e arquivamento.                  |
 | [**T02**](#temas-específicos-tm) | **E05** | Gestão de Equipe e Perfis de Funcionários         | Implementar um sistema de controle de equipe com cadastro, edição e inativação de funcionários sem perder o histórico de atendimentos e comissões.    |
 | [**T02**](#temas-específicos-tm) | **E06** | Gestão de Agendamentos e Calendário               | Fornecer visão clara da agenda da barbearia para administradores e funcionários, com filtros e inclusão manual de atendimentos.                        |
-| [**T03**](#temas-específicos-tm) | **E07** | Agendamento Automatizado via WhatsApp             | Automatizar agendamentos por meio de um chatbot integrado ao WhatsApp, oferecendo praticidade para os clientes e integração com o calendário.         |
 
 ### Histórias de Usuário (US)
 
@@ -43,7 +41,7 @@ O backlog geral reúne todas as funcionalidades previstas para o sistema na form
 | **US15** | Como administrador, eu quero acessar relatórios de faturamento por funcionário com detalhes de serviços, vendas e comissões para que eu possa acompanhar o desempenho individual da equipe e calcular corretamente os repasses. | [**T02**](#temas-específicos-tm) | [**E05**](#épicos-e) |
 | **US16** | Como funcionário, eu quero visualizar meus agendamentos diários em um calendário pessoal com horário, cliente e serviço para que eu possa me organizar melhor durante o dia de trabalho. | [**T02**](#temas-específicos-tm) | [**E06**](#épicos-e) |
 | **US17** | Como administrador, eu quero visualizar em um único calendário os agendamentos de todos os funcionários, com filtros por data, serviço ou barbeiro para que eu possa ter uma visão completa da agenda da barbearia e otimizar o atendimento. | [**T02**](#temas-específicos-tm) | [**E06**](#épicos-e) |
-| **US18** | Como cliente, eu quero realizar agendamentos pelo WhatsApp com um chatbot que entenda o serviço desejado e horários disponíveis para que eu possa marcar horários de forma rápida e prática, sem precisar baixar um aplicativo. | [**T03**](#temas-específicos-tm) | [**E07**](#épicos-e) |
+| **US18** | Como cliente, eu quero realizar agendamentos pelo WhatsApp com um chatbot que entenda o serviço desejado e horários disponíveis para que eu possa marcar horários de forma rápida e prática, sem precisar baixar um aplicativo. | [**T02**](#temas-específicos-tm) | [**E06**](#épicos-e) |
 | **US19** | Como administrador ou barbeiro, eu quero adicionar serviços ao calendário do barbeiro responsável para que eu possa organizar os atendimentos de acordo com a disponibilidade do profissional. | [**T02**](#temas-específicos-tm) | [**E06**](#épicos-e) |
 | **US20** | Como administrador ou barbeiro, eu quero visualizar os agendamentos filtrados por funcionário com detalhes do serviço, data, cliente e duração para que eu possa planejar melhor os atendimentos e acompanhar a rotina de trabalho. | [**T02**](#temas-específicos-tm) | [**E06**](#épicos-e) |
 
