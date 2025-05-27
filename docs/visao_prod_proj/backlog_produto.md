@@ -97,6 +97,5 @@ Com base na priorização realizada, foi possível identificar o conjunto de fun
 
 |Data|Versão|Descrição|Autor|
 |---|---|---|---|
-|---|1.0|---|---|
-|26/05/2025|1.1|Correção do Backlog|(Vinícius Rufino)[https://github.com/RufinoVfR]|
-|26/05/2025|1.2|Correção do Backlog|(Vinícius Rufino)[https://github.com/RufinoVfR]|
+| 23/05/2025| 1.0 | Criação do documento | [Weverton Rodrigues](https://github.com/vevetin) |
+|26/05/2025|1.1|Correção do Backlog|[Vinícius Rufino](https://github.com/RufinoVfR)|

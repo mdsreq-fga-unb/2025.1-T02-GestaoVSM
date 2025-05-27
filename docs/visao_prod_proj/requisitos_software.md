@@ -101,3 +101,4 @@ Os requisitos funcionais descrevem as funcionalidades específicas que o sistema
 
 |Data|Versão|Descrição|Autor|
 |---|---|---|---|
+| 20/05/2025| 1.0 | Criação do documento | [Weverton Rodrigues](https://github.com/vevetin) |

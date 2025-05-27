@@ -9,6 +9,8 @@
 
 - **Observação / Imersão (Etnografia):** Acompanhar o dia a dia da barbearia para entender na prática os processos de atendimento, vendas e gestão e captar necessidades não ditas. Observar as interações reais e o uso de ferramentas atuais para identificar requisitos contextuais e de usabilidade para o sistema.
 
+### Elaboração (OpenUP)
+
 **Análise e Consenso**  
 
 - **Priorização a partir de uma Análise de Custo / Benefício:** A priorização dos requisitos foi feita a partir de uma análise dos seguintes critérios: Benefício (B), Urgência (U), Esforço (E), Risco (R) e Dependência (D). O cálculo foi feito a partir da seguinte fórmula: (B x 2 + U) - (E + R + D).
@@ -59,7 +61,7 @@ Aqui, as atividades da ER, suas práticas e técnicas devem ser mapeadas, a part
 | Fases do Processo         | Atividades ER               | Prática                                    | Técnica                                                                 | Resultado Esperado                                                                                      |
 |--------------------------|-----------------------------|--------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
 | **Concepção (OpenUP)**   | *Elicitação e Descoberta*   | Levantamento de requisitos                 | Entrevista, Análise de Tarefas, Observação                             | Levantar necessidades e dores do cliente com base em processos reais da barbearia                       |
-|                          | *Análise e Consenso*        | Priorização e mitigação de riscos          | Análise Custo/Benefício, Análise de Risco                              | Requisitos priorizados com base em impacto, esforço e riscos                                            |
+| **Elaboração (OpenUP)**                   | *Análise e Consenso*        | Priorização e mitigação de riscos          | Análise Custo/Benefício, Análise de Risco                              | Requisitos priorizados com base em impacto, esforço e riscos                                            |
 |                          | Declaração                  | Organização inicial dos requisitos         | Framework de User Story (Temas, Épicos, US)                            | Backlog estruturado e alinhado aos objetivos do negócio                                                 |
 | **User Design (RAD)**    | Verificação e Validação     | Validação do que será desenvolvido         | Critérios de Aceitação, INVEST, Feedback, [DoD](https://en.wikipedia.org/wiki/Definition_of_done)         | Requisitos validados com usuários e preparados com clareza para desenvolvimento                         |
 |                          | Declaração                  | Atualização e detalhamento de novos requisitos | Framework de User Story (para novos requisitos)                     | User Stories coerentes com os protótipos e necessidades emergentes                                      |

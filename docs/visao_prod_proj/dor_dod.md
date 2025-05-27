@@ -6,7 +6,7 @@ Conjunto de critérios que assegura que uma funcionalidade ou requisito identifi
 - O requisito foi prototipado?
 - Os Critérios de Aceitação foram definidos?
 - A interface está em conformidade com o Design?
-- Interface atende as normas e diretrizes de Iteração Humano-Computador?
+- Interface atende as normas e diretrizes de Interação Humano-Computador?
 - Foram feitos e automatizados os Testes de Software?
 - O requisito possui documentação prévia?
 
