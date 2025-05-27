@@ -939,6 +939,10 @@
 <td>TE02</td>
 <td>Organizar e centralizar operações da barbearia</td>
 </tr>
+<tr>
+<td>TE03</td>
+<td>Automatização de agendamentos</td>
+</tr>
 </tbody>
 </table>
 <h3 id="epicos-e">Épicos (E)</h3>
@@ -965,13 +969,13 @@
 <td>Desenvolver funcionalidades para visualização de relatórios com filtros variados, permitindo entender o desempenho por funcionário ou serviço.</td>
 </tr>
 <tr>
-<td><a href="#temas-específicos-tm"><strong>T01</strong></a></td>
+<td><a href="#temas-específicos-tm"><strong>T02</strong></a></td>
 <td><strong>E03</strong></td>
 <td>Gestão de Produtos</td>
 <td>Permitir o gerenciamento completo do catálogo de produtos da barbearia, desde o cadastro até edição e inativação.</td>
 </tr>
 <tr>
-<td><a href="#temas-específicos-tm"><strong>T01</strong></a></td>
+<td><a href="#temas-específicos-tm"><strong>T02</strong></a></td>
 <td><strong>E04</strong></td>
 <td>Gestão de Serviços</td>
 <td>Gerenciar os serviços da barbearia com dados como duração, preço e barbeiros habilitados, com controle de alterações e arquivamento.</td>
@@ -983,10 +987,16 @@
 <td>Implementar um sistema de controle de equipe com cadastro, edição e inativação de funcionários sem perder o histórico de atendimentos e comissões.</td>
 </tr>
 <tr>
-<td><a href="#temas-específicos-tm"><strong>T02</strong></a></td>
+<td><a href="#temas-específicos-tm"><strong>T03</strong></a></td>
 <td><strong>E06</strong></td>
 <td>Gestão de Agendamentos e Calendário</td>
 <td>Fornecer visão clara da agenda da barbearia para administradores e funcionários, com filtros e inclusão manual de atendimentos.</td>
+</tr>
+<tr>
+<td><a href="#temas-específicos-tm"><strong>T03</strong></a></td>
+<td><strong>E07</strong></td>
+<td>Agendamento Automatizado via WhatsApp</td>
+<td>Automatizar agendamentos por meio de um chatbot integrado ao WhatsApp, oferecendo praticidade para os clientes e integração com o calendário.</td>
 </tr>
 </tbody>
 </table>
@@ -1034,37 +1044,37 @@
 <tr>
 <td><strong>US06</strong></td>
 <td>Como administrador, eu quero cadastrar novos produtos com nome, descrição, preço e status de disponibilidade para que eles fiquem disponíveis para venda e gestão no sistema.</td>
-<td><a href="#temas-específicos-tm"><strong>T01</strong></a></td>
+<td><a href="#temas-específicos-tm"><strong>T02</strong></a></td>
 <td><a href="#épicos-e"><strong>E03</strong></a></td>
 </tr>
 <tr>
 <td><strong>US07</strong></td>
 <td>Como administrador, eu quero editar as informações de produtos cadastrados, como nome, valor e descrição para que eu possa manter os dados atualizados conforme mudanças no estoque ou estratégia de vendas.</td>
-<td><a href="#temas-específicos-tm"><strong>T01</strong></a></td>
+<td><a href="#temas-específicos-tm"><strong>T02</strong></a></td>
 <td><a href="#épicos-e"><strong>E03</strong></a></td>
 </tr>
 <tr>
 <td><strong>US08</strong></td>
 <td>Como administrador, eu quero remover produtos do sistema com a opção de inativá-los para que eu possa manter o histórico de vendas sem exibir itens indisponíveis para venda.</td>
-<td><a href="#temas-específicos-tm"><strong>T01</strong></a></td>
+<td><a href="#temas-específicos-tm"><strong>T02</strong></a></td>
 <td><a href="#épicos-e"><strong>E03</strong></a></td>
 </tr>
 <tr>
 <td><strong>US09</strong></td>
 <td>Como administrador, eu quero cadastrar novos serviços com nome, preço, duração estimada e profissionais habilitados para que eu possa oferecer e gerenciar os serviços disponíveis na barbearia.</td>
-<td><a href="#temas-específicos-tm"><strong>T01</strong></a></td>
+<td><a href="#temas-específicos-tm"><strong>T02</strong></a></td>
 <td><a href="#épicos-e"><strong>E04</strong></a></td>
 </tr>
 <tr>
 <td><strong>US10</strong></td>
 <td>Como administrador, eu quero editar os dados dos serviços cadastrados, como preço, duração e barbeiros associados para que eu possa manter as informações sempre atualizadas e condizentes com a realidade da barbearia.</td>
-<td><a href="#temas-específicos-tm"><strong>T01</strong></a></td>
+<td><a href="#temas-específicos-tm"><strong>T02</strong></a></td>
 <td><a href="#épicos-e"><strong>E04</strong></a></td>
 </tr>
 <tr>
 <td><strong>US11</strong></td>
 <td>Como administrador, eu quero remover serviços do sistema com a opção de arquivá-los para que eu possa manter o histórico de atendimentos e relatórios mesmo após descontinuar um serviço.</td>
-<td><a href="#temas-específicos-tm"><strong>T01</strong></a></td>
+<td><a href="#temas-específicos-tm"><strong>T02</strong></a></td>
 <td><a href="#épicos-e"><strong>E04</strong></a></td>
 </tr>
 <tr>
@@ -1094,31 +1104,31 @@
 <tr>
 <td><strong>US16</strong></td>
 <td>Como funcionário, eu quero visualizar meus agendamentos diários em um calendário pessoal com horário, cliente e serviço para que eu possa me organizar melhor durante o dia de trabalho.</td>
-<td><a href="#temas-específicos-tm"><strong>T02</strong></a></td>
+<td><a href="#temas-específicos-tm"><strong>T03</strong></a></td>
 <td><a href="#épicos-e"><strong>E06</strong></a></td>
 </tr>
 <tr>
 <td><strong>US17</strong></td>
 <td>Como administrador, eu quero visualizar em um único calendário os agendamentos de todos os funcionários, com filtros por data, serviço ou barbeiro para que eu possa ter uma visão completa da agenda da barbearia e otimizar o atendimento.</td>
-<td><a href="#temas-específicos-tm"><strong>T02</strong></a></td>
+<td><a href="#temas-específicos-tm"><strong>T03</strong></a></td>
 <td><a href="#épicos-e"><strong>E06</strong></a></td>
 </tr>
 <tr>
 <td><strong>US18</strong></td>
 <td>Como cliente, eu quero realizar agendamentos pelo WhatsApp com um chatbot que entenda o serviço desejado e horários disponíveis para que eu possa marcar horários de forma rápida e prática, sem precisar baixar um aplicativo.</td>
-<td><a href="#temas-específicos-tm"><strong>T02</strong></a></td>
-<td><a href="#épicos-e"><strong>E06</strong></a></td>
+<td><a href="#temas-específicos-tm"><strong>T03</strong></a></td>
+<td><a href="#épicos-e"><strong>E07</strong></a></td>
 </tr>
 <tr>
 <td><strong>US19</strong></td>
 <td>Como administrador ou barbeiro, eu quero adicionar serviços ao calendário do barbeiro responsável para que eu possa organizar os atendimentos de acordo com a disponibilidade do profissional.</td>
-<td><a href="#temas-específicos-tm"><strong>T02</strong></a></td>
+<td><a href="#temas-específicos-tm"><strong>T03</strong></a></td>
 <td><a href="#épicos-e"><strong>E06</strong></a></td>
 </tr>
 <tr>
 <td><strong>US20</strong></td>
 <td>Como administrador ou barbeiro, eu quero visualizar os agendamentos filtrados por funcionário com detalhes do serviço, data, cliente e duração para que eu possa planejar melhor os atendimentos e acompanhar a rotina de trabalho.</td>
-<td><a href="#temas-específicos-tm"><strong>T02</strong></a></td>
+<td><a href="#temas-específicos-tm"><strong>T03</strong></a></td>
 <td><a href="#épicos-e"><strong>E06</strong></a></td>
 </tr>
 </tbody>
