@@ -27,16 +27,19 @@
 ## 10.2 Unidade 2
 
 1. **Revisão contínua de requisitos**
+
 - Dificuldade: Essa prática busca adaptar o software à evolução das necessidades do cliente durante o projeto,exigindo comunicação constante, processos flexíveis e análises de impacto para incorporar alterações, mantendo o alinhamento e a relevância da solução.
 
 - Lição aprendida:  A flexibilidade para adaptar requisitos via comunicação constante e análise de impacto é crucial para alinhar o software às necessidades evolutivas do cliente.
 
 2. **Regras de Negócios** 
+
 - Dificuldade: Assegurar que as diretrizes operacionais da empresa fossem registradas e compreendidas de maneira inequívoca por todos os envolvidos, prevenindo divergências de entendimento.
 
 - Lição aprendida: A formalização e validação conjunta das regras de negócio são essenciais para um entendimento unificado e para evitar falhas de implementação.
 
 3. **Dominar as Ferramentas da Engenharia de Requisitos**
+
 - Dificuldade: Identificar a aplicação prática das metodologias de requisitos em cada etapa do ciclo de vida OpenUP e RAD, garantindo o alinhamento entre as atividades 
 propostas e as necessidades específicas de cada fase.
 
