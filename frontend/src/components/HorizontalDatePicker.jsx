@@ -6,7 +6,6 @@ export default function HorizontalDatePicker({ date, onDateChange }) {
   const [selectedDate, setSelectedDate] = useState(date);
   const containerRef = useRef(null);
 
-  // Gera os dias do mês com base no selectedDate
   useEffect(() => {
     const year = selectedDate.getFullYear();
     const month = selectedDate.getMonth();
@@ -24,7 +23,6 @@ export default function HorizontalDatePicker({ date, onDateChange }) {
     setDays(daysArr);
   }, [selectedDate]);
 
-  // Função para centralizar um dia no scroll
   const handleScroll = useCallback((matchFn) => {
     if (!containerRef.current) return;
     const index = days.findIndex(matchFn);
@@ -35,13 +33,8 @@ export default function HorizontalDatePicker({ date, onDateChange }) {
         const childLeft = child.offsetLeft;
         const childWidth = child.offsetWidth;
         const containerWidth = container.offsetWidth;
-
         const scrollPosition = childLeft - (containerWidth / 2) + (childWidth / 2);
-
-        container.scrollTo({
-          left: scrollPosition,
-          behavior: 'smooth',
-        });
+        container.scrollTo({ left: scrollPosition, behavior: 'smooth' });
       }
     }
   }, [days]);
@@ -69,8 +62,8 @@ export default function HorizontalDatePicker({ date, onDateChange }) {
         overflowX: 'auto',
         gap: 1,
         padding: 1,
-        scrollbarWidth: 'none', // Firefox
-        '&::-webkit-scrollbar': { display: 'none' }, // Chrome/Safari
+        scrollbarWidth: 'none',
+        '&::-webkit-scrollbar': { display: 'none' },
       }}
     >
       {days.map((day, index) => {
@@ -78,7 +71,7 @@ export default function HorizontalDatePicker({ date, onDateChange }) {
         return (
           <Paper
             key={index}
-            elevation={0} // zero sombra para todos
+            elevation={0}
             onClick={() => handleDateClick(day.date)}
             sx={{
               minWidth: 60,
@@ -86,13 +79,14 @@ export default function HorizontalDatePicker({ date, onDateChange }) {
               padding: 1,
               textAlign: 'center',
               cursor: 'pointer',
-              borderRadius: 1,
-              bgcolor: isSelected ? '#000' : 'transparent',
-              color: isSelected ? '#fff' : 'text.primary',
+              borderRadius: 2,
+              boxShadow: '0 1px 4px rgba(0,0,0,0.1)',
+              bgcolor: isSelected ? 'var(--color-secondary)' : 'transparent',
+              color: isSelected ? 'var(--color-primary)' : 'var(--color-secondary)',
               position: 'relative',
-              transition: 'background-color 0.2s, color 0.2s',
+              transition: 'color 0.3s',
               '&:hover': {
-                bgcolor: isSelected ? '#222' : 'grey.200',
+                bgcolor: isSelected ? 'var(--color-secondary)' : 'var(--color-accent-hover)',
               },
             }}
           >
@@ -113,7 +107,7 @@ export default function HorizontalDatePicker({ date, onDateChange }) {
                   transform: 'translateX(-50%)',
                   width: 6,
                   height: 6,
-                  bgcolor: '#fff',
+                  bgcolor: 'var(--color-accent)',
                   borderRadius: '50%',
                 }}
               />

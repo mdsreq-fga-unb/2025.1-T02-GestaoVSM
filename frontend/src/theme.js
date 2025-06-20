@@ -15,11 +15,11 @@ const theme = createTheme({
     },
     text: {
       primary: '#0D0D0D',
-      secondary: '#FFB959',
+      secondary: '#555555',
     },
   },
   typography: {
-    fontFamily: `'Urbanist', 'sans-serif'`, 
+    fontFamily: `'Outfit', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif`,
   },
   shape: {
     borderRadius: 8, 
