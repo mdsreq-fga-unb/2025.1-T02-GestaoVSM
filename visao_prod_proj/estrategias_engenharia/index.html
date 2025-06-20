@@ -1,0 +1,1055 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://mydomain.org/mysite/visao_prod_proj/estrategias_engenharia/">
+      
+      
+        <link rel="prev" href="../solucao_proposta/">
+      
+      
+        <link rel="next" href="../engenharia_requisitos/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>3. Estratégias de Engenharia de Software - Gestão VSM</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#31-estrategia-priorizada" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Gestão VSM" class="md-header__button md-logo" aria-label="Gestão VSM" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gestão VSM
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3. Estratégias de Engenharia de Software
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="black"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../cenario_atual/" class="md-tabs__link">
+          
+  
+  
+  Visão do Produto e Projeto
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../apresentacoes_entregas/apresentacao_1/" class="md-tabs__link">
+          
+  
+  
+  Apresentações e Entregas
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Gestão VSM" class="md-nav__button md-logo" aria-label="Gestão VSM" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Gestão VSM
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Início
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Visão do Produto e Projeto
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Visão do Produto e Projeto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cenario_atual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. Cenário Atual do Cliente e do Negócio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solucao_proposta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. Solução Proposta
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    3. Estratégias de Engenharia de Software
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Estratégias de Engenharia de Software
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31-estrategia-priorizada" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Estratégia Priorizada
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-quadro-comparativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Quadro Comparativo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-justificativa" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Justificativa
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historico-de-versao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Histórico de Versão
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engenharia_requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Engenharia de Requisitos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cronograma_entregas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5. Cronograma e Entregas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interacao_equipe_cliente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6. Interação entre Equipe e Cliente
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requisitos_software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    7. Requisitos de Software
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dor_dod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    8. DoR e DoD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backlog_produto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    9. Backlog do Produto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../licoes_aprendidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10. Lições Aprendidas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencias_bibliograficas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11. Bibliografia e Referências Bibliográficas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Apresentações e Entregas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Apresentações e Entregas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apresentacoes_entregas/apresentacao_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apresentação Unidade 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apresentacoes_entregas/apresentacao_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apresentação Unidade 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31-estrategia-priorizada" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Estratégia Priorizada
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-quadro-comparativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Quadro Comparativo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-justificativa" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Justificativa
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historico-de-versao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Histórico de Versão
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>3. Estratégias de Engenharia de Software</h1>
+
+<h2 id="31-estrategia-priorizada">3.1 Estratégia Priorizada</h2>
+<p><em>Abordagem de Desenvolvimento de Software</em> <br />
+A abordagem escolhida para o desenvolvimento da solução será a <strong>Híbrida</strong>, combinando elementos das filosofias dirigida por plano (como a definição antecipada de requisitos e a ênfase na previsibilidade do escopo) e ágil (como a adaptação contínua e a colaboração direta com o cliente). Essa escolha se alinha às particularidades do projeto da Barbearia VSM, que conta com requisitos iniciais bem definidos, mas também com a forte disponibilidade do cliente, o que permite um ciclo constante de validação e de adaptação contínua às necessidades identificadas ao longo do desenvolvimento.
+A previsibilidade é alcançada pela organização dos requisitos desde o início, o que viabiliza um planejamento claro e estruturado. A flexibilidade, por sua vez, será assegurada pela abertura a ajustes ao longo do desenvolvimento, baseada em interações frequentes com o cliente, além da priorização de funcionalidades em entregas incrementais.</p>
+<p><em>Ciclo de Vida</em><br />
+O ciclo de vida selecionado é o <strong>Iterativo e Incremental</strong>, pois permite o desenvolvimento gradual da solução por meio de entregas parciais, funcionais e evolutivas. Cada incremento será validado junto ao cliente, permitindo a identificação prévia de desvios, a correção contínua de problemas e a adaptação do produto às reais necessidades do negócio.
+Esse modelo favorece o alinhamento entre a solução desenvolvida e as expectativas do usuário final, ao mesmo tempo em que reduz o risco de retrabalho por falhas de entendimento.</p>
+<p><em>Processo de Engenharia de Software</em><br />
+O processo será conduzido por uma abordagem híbrida entre RAD e OpenUP, reorganizada em quatro fases sequenciais para melhor atender às necessidades do projeto.</p>
+<p>Na <strong>Fase de Concepção (OpenUP)</strong>, serão estabelecidos os fundamentos do projeto, com a definição do escopo inicial, identificação de stakeholders e riscos principais, e a elaboração da visão do produto. Esta etapa preparará o terreno para o trabalho de prototipação, garantindo que todos os participantes compartilhem uma compreensão comum dos objetivos antes da fase seguinte.</p>
+<p>Em seguida, a <strong>Fase de Elaboração (OpenUP)</strong> terá como foco o refinamento e detalhamento dos requisitos identificados, a estruturação inicial do backlog e a definição clara dos critérios de aceitação. Essa fase permite que o projeto avance com uma base sólida de entendimento funcional, reduzindo ambiguidades e preparando as histórias de usuário para a prototipação.</p>
+<p>A <strong>Fase de User Design (RAD)</strong> concentrar-se-á na prototipação rápida de interfaces e fluxos críticos, com validação visual direta junto ao cliente. Através de iterações ágeis e sessões frequentes de feedback, os requisitos serão refinados continuamente, antecipando decisões de design e assegurando que a solução atenda às expectativas de usabilidade antes do desenvolvimento em si.</p>
+<p>Com os fluxos principais validados, o projeto avançará para a <strong>Fase de Construção (OpenUP)</strong>, onde o desenvolvimento ocorrerá de forma incremental, orientado por histórias de usuário priorizadas. Esta fase manterá ciclos curtos de entrega (2 semanas), com ênfase na qualidade do código e rastreabilidade dos requisitos, enquanto incorpora mudanças pontuais quando necessário. Testes automatizados e integração contínua assegurarão a estabilidade do produto durante sua evolução.</p>
+<p>Por fim, a <strong>Fase de Transição (OpenUP)</strong> preparará a implantação final, com treinamento dos usuários, ajustes baseados em feedbacks operacionais e consolidação da documentação. O encerramento do projeto incluirá uma revisão das lições aprendidas, garantindo que insights valiosos sejam capturados para iniciativas futuras.</p>
+<p>Esta estrutura combinada preserva a agilidade do RAD na fase crítica de definição da experiência do usuário, enquanto aproveita a disciplina e organização do OpenUP para garantir um desenvolvimento controlado e adaptável. O resultado será um processo que equilibra velocidade com qualidade, mantendo o foco na entrega de valor contínuo ao cliente.</p>
+<h2 id="32-quadro-comparativo">3.2 Quadro Comparativo</h2>
+<p>A seguir, apresenta-se um quadro comparativo entre dois processos de desenvolvimento de software considerados para o projeto: o RAD, focado na agilidade e prototipação rápida, e a abordagem híbrida RAD + OpenUP, que combina a validação visual com desenvolvimento estruturado.</p>
+<table>
+<thead>
+<tr>
+<th>Características</th>
+<th>RAD</th>
+<th>RAD + OpenUP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Abordagem Geral</td>
+<td>Ênfase na prototipação rápida e iterativa. Foco principal no Design Centrado no Usuário.</td>
+<td>Mantém a prototipação rápida do RAD, com desenvolvimento incremental e estrutura leve do OpenUP.</td>
+</tr>
+<tr>
+<td>Estrutura de Processos</td>
+<td>Planejamento formal seguido de ciclos rápidos; requisitos de alto nível; protótipos iterativos.</td>
+<td>Validação visual, por meio de prototipações (RAD), com desenvolvimento estruturado, por meio de fases de construção, elaboração e transição (OpenUP).</td>
+</tr>
+<tr>
+<td>Colaboração com o Cliente</td>
+<td>Participação ativa do cliente durante todo o processo; feedback contínuo e ajustes rápidos.</td>
+<td>Contato contínuo com o cliente, validação de protótipos e incremento de valor em cada entrega.</td>
+</tr>
+<tr>
+<td>Flexibilidade de Requisitos</td>
+<td>Requisitos são tratados como variáveis; mudanças são facilmente incorporadas.</td>
+<td>Flexibilidade mantida, mas com gestão de mudanças dentro de ciclos iterativos e rastreamento mais estruturado.</td>
+</tr>
+<tr>
+<td>Ciclo de Vida do Projeto</td>
+<td>Rápido e voltado à entrega funcional em pouco tempo.</td>
+<td>Estruturado com micro-incrementos: ciclos curtos (iterações) e visão de longo prazo (ciclo de projeto).</td>
+</tr>
+<tr>
+<td>Complexidade do Processo</td>
+<td>Processo dividido em 4 fases, com foco na prototipação e no envolvimento do usuário.</td>
+<td>Mesmas 4 fases, com maior apoio à transição e construção final, promovendo gerenciamento de risco.</td>
+</tr>
+<tr>
+<td>Práticas de Desenvolvimento</td>
+<td>Ênfase em ferramentas CASE e geração de protótipos; documentação mínima</td>
+<td>Uso das mesmas ferramentas com organização adicional; camadas de micro-incrementos e documentação enxuta.</td>
+</tr>
+<tr>
+<td>Adequação ao Cliente</td>
+<td>Ideal para usuários com baixa familiaridade com tecnologia, pois incentiva o aprendizado prático.</td>
+<td>RAD ajuda na familiarização inicial; OpenUP estrutura o avanço com governança leve e foco em valor contínuo</td>
+</tr>
+</tbody>
+</table>
+<h2 id="33-justificativa">3.3 Justificativa</h2>
+<p>A escolha pela combinação entre os processos RAD e OpenUP foi feita de forma estratégica, considerando as características do cliente e a natureza do projeto. Cada processo será utilizado em fases específicas, de acordo com seus pontos fortes e a necessidade de equilíbrio entre agilidade, estrutura e colaboração contínua.</p>
+<p>Iniciamos com a fase de Concepção do OpenUP, voltada para a definição da visão do sistema, delimitação do escopo e entendimento do contexto da barbearia. Na sequência, a fase de Elaboração (OpenUP) permitirá o detalhamento dos requisitos por meio de histórias de usuário e a definição dos critérios de aceitação, preparando o terreno para a fase de prototipação com maior clareza e foco.</p>
+<p>A seguir, será adotada a fase de Design do Usuário do RAD, priorizando a prototipação rápida e interativa com o cliente. Essa abordagem permite validar visualmente os fluxos principais e ajustar os requisitos de forma colaborativa e eficaz, especialmente considerando o baixo grau de familiaridade técnica do cliente.</p>
+<p>Com os fluxos validados, o projeto segue para as fases de Construção e Transição do OpenUP, nas quais o desenvolvimento será conduzido de forma incremental, com entregas funcionais, testes automatizados e documentação enxuta. A escolha do OpenUP neste ponto parte da necessidade de organizar o desenvolvimento técnico com qualidade, rastreabilidade e flexibilidade suficiente para incorporar ajustes pontuais.</p>
+<p>Optamos por manter um processo iterativo mesmo após a validação dos requisitos, justamente para aproveitar ao máximo a disponibilidade do cliente ao longo de todo o projeto. Essa colaboração contínua poderá trazer melhorias incrementais durante a execução, sem comprometer o planejamento e a consistência do produto final.</p>
+<p>Assim, a junção entre RAD e OpenUP permite iniciar com velocidade e envolvimento direto do cliente, garantindo clareza nos requisitos, e avançar com uma abordagem estruturada, que favorece entregas de valor contínuas, com controle de qualidade e adaptabilidade.</p>
+<h2 id="historico-de-versao">Histórico de Versão</h2>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Versão</th>
+<th>Descrição</th>
+<th>Autor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20/04/2025</td>
+<td>1.1</td>
+<td>Atualização no Tópico 3.2 e 3.3</td>
+<td><a href="https://github.com/RufinoVfR">Vinícius Rufino</a></td>
+</tr>
+<tr>
+<td>20/04/2025</td>
+<td>1.2</td>
+<td>Atualização do Tópico 3.1</td>
+<td><a href="https://github.com/vevetin">Weverton Rodrigues</a></td>
+</tr>
+<tr>
+<td>21/04/2025</td>
+<td>1.4</td>
+<td>Refatoração dos Tópicos 3.2 e 3.3</td>
+<td><a href="https://github.com/RufinoVfR">Vinícius Rufino</a></td>
+</tr>
+<tr>
+<td>03/05/2025</td>
+<td>2.0</td>
+<td>Refatoração do Documento</td>
+<td><a href="https://github.com/RufinoVfR">Vinícius Rufino</a> e <a href="https://github.com/vevetin">Weverton Rodrigues</a></td>
+</tr>
+<tr>
+<td>24/05/2025</td>
+<td>2.1</td>
+<td>Atualização dos Tópicos 3.1 e 3.3</td>
+<td><a href="https://github.com/vevetin">Weverton Rodrigues</a></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.instant.preview", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>
