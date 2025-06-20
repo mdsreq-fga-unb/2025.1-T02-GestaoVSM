@@ -28,6 +28,8 @@ function AgendaPage() {
         { id: 1, name: 'Corte de cabelo', price: 30, done: false },
         { id: 2, name: 'Barba', price: 20, done: true },
       ],
+      finalized: false,
+      paymentMethod: '',
     },
     {
       id: 2,
@@ -38,6 +40,8 @@ function AgendaPage() {
         { id: 1, name: 'Coloração', price: 120, done: true },
         { id: 2, name: 'Hidratação', price: 80, done: false },
       ],
+      finalized: false,
+      paymentMethod: '',
     },
     {
       id: 3,
@@ -48,6 +52,8 @@ function AgendaPage() {
         { id: 1, name: 'Coloração', price: 120, done: false },
         { id: 2, name: 'Hidratação', price: 80, done: false },
       ],
+      finalized: false,
+      paymentMethod: '',
     },
   ]);
 
@@ -76,6 +82,8 @@ function AgendaPage() {
 
   const [finalizingAppointment, setFinalizingAppointment] = useState(null);
   const [showFinalizeModal, setShowFinalizeModal] = useState(false);
+  // Backup para restaurar serviços caso o usuário cancele a finalização
+  const [servicesBackup, setServicesBackup] = useState(null);
 
   // Modal novo agendamento
   const [showAppointmentModal, setShowAppointmentModal] = useState(false);
@@ -86,91 +94,143 @@ function AgendaPage() {
 
   const isAdmin = true;
 
+  // Função para atualizar o done de um serviço e, se for o último para finalizar, abrir modal
   const toggleServiceDone = (appointmentId, serviceId) => {
-    setAppointments((prev) =>
-      prev.map((appointment) => {
+    setAppointments((prev) => {
+      return prev.map((appointment) => {
         if (appointment.id !== appointmentId) return appointment;
 
         const updatedServices = appointment.services.map((service) =>
           service.id === serviceId ? { ...service, done: !service.done } : service
         );
 
+        // Detecta se agora todos os serviços estão marcados como done (ou seja, pronto para finalizar)
+        const allDone = updatedServices.length > 0 && updatedServices.every(s => s.done);
+
+        // Se antes NÃO estava finalizado, e agora todos estão done, precisamos abrir modal de finalização
+        if (!appointment.finalized && allDone) {
+          // Salva backup dos serviços ANTES da mudança (backup do estado anterior ao último toggle)
+          setServicesBackup(appointment.services.map(s => ({ ...s })));
+
+          // Abre modal de finalização com estado atualizado dos serviços
+          setFinalizingAppointment({
+            ...appointment,
+            services: updatedServices,
+            paymentMethod: appointment.paymentMethod || '',
+          });
+          setShowFinalizeModal(true);
+
+          // Atualiza somente os serviços (checkboxes marcados)
+          return {
+            ...appointment,
+            services: updatedServices,
+          };
+        }
+
+        // Se desmarcou algum serviço e o atendimento estava finalizado, "desfinaliza" o atendimento
+        const wasServiceDone = appointment.services.find(s => s.id === serviceId)?.done;
+        const isNowUndone = wasServiceDone === true && updatedServices.find(s => s.id === serviceId).done === false;
+
+        if (isNowUndone && appointment.finalized) {
+          return {
+            ...appointment,
+            services: updatedServices,
+            paymentMethod: '',
+            finalized: false,
+          };
+        }
+
+        // Caso normal, só atualiza os serviços
         return {
           ...appointment,
           services: updatedServices,
         };
-      })
-    );
+      });
+    });
   };
 
   useEffect(() => {
+    // Se o modal estiver aberto, não precisa reabrir automaticamente
+    if (showFinalizeModal) return;
+
+    // Checa se há algum agendamento pronto para finalizar (todos os serviços done e não finalizado)
     const appointmentToFinalize = appointments.find(
       (appointment) =>
+        !appointment.finalized &&
         appointment.services.length > 0 &&
         appointment.services.every((s) => s.done)
     );
 
     if (appointmentToFinalize) {
+      // Salva backup para caso precise cancelar
+      setServicesBackup(appointmentToFinalize.services.map((s) => ({ ...s })));
+
       setFinalizingAppointment({
         ...appointmentToFinalize,
-        paymentMethod: '',
+        paymentMethod: appointmentToFinalize.paymentMethod || '',
       });
       setShowFinalizeModal(true);
     } else {
       setShowFinalizeModal(false);
       setFinalizingAppointment(null);
+      setServicesBackup(null);
     }
-  }, [appointments]);
+  }, [appointments, showFinalizeModal]);
 
+  // Confirmar finalização: aplica finalized=true e fecha modal
   const handleConfirmFinalize = () => {
+    if (!finalizingAppointment) return;
+
     setAppointments((prev) =>
       prev.map((appointment) =>
         appointment.id === finalizingAppointment.id
-          ? { ...finalizingAppointment }
+          ? {
+              ...finalizingAppointment,
+              finalized: true,
+            }
           : appointment
       )
     );
 
-    console.log(
-      `Atendimento de ${finalizingAppointment.clientName} finalizado com pagamento: ${finalizingAppointment.paymentMethod}`
-    );
-
     setShowFinalizeModal(false);
     setFinalizingAppointment(null);
+    setServicesBackup(null);
   };
 
+  // Cancelar finalização: restaura backup dos serviços e fecha modal
   const handleCancelFinalize = () => {
-    setAppointments((prev) =>
-      prev.map((appointment) => {
-        if (appointment.id !== finalizingAppointment.id) return appointment;
-        return {
-          ...appointment,
-          services: appointment.services.map((service) => ({
-            ...service,
-            done: false,
-          })),
-        };
-      })
-    );
+    if (finalizingAppointment && servicesBackup) {
+      setAppointments((prev) =>
+        prev.map((appointment) => {
+          if (appointment.id !== finalizingAppointment.id) return appointment;
+          return {
+            ...appointment,
+            services: servicesBackup,
+          };
+        })
+      );
+    }
     setShowFinalizeModal(false);
     setFinalizingAppointment(null);
+    setServicesBackup(null);
   };
 
-  const getStatusByServices = (services) => {
+  const getStatusByServices = (services, finalized) => {
+    if (finalized) return 'finalizado';
+
     const allDone = services.every((s) => s.done);
     const someDone = services.some((s) => s.done);
 
-    if (allDone) return 'finalizado';
+    if (allDone) return 'em andamento'; // Tudo marcado, mas ainda não finalizado
     if (someDone) return 'em andamento';
     return 'agendado';
   };
 
   const appointmentsWithStatus = appointments.map((appointment) => ({
     ...appointment,
-    status: getStatusByServices(appointment.services),
+    status: getStatusByServices(appointment.services, appointment.finalized),
   }));
 
-  // Aqui ajusta filtro: selectedBarber é string (valor do select), mas barberId é number
   const filteredAppointments = selectedBarber
     ? appointmentsWithStatus.filter((a) => a.barberId === Number(selectedBarber))
     : appointmentsWithStatus;
@@ -196,6 +256,8 @@ function AgendaPage() {
       services: availableServices
         .filter((s) => newSelectedServices.includes(s.id))
         .map((s) => ({ ...s, done: false })),
+      finalized: false,
+      paymentMethod: '',
     };
 
     setAppointments((prev) => [...prev, newAppointment]);
