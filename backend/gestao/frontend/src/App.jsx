@@ -1,13 +1,18 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import AgendaPage from './pages/AgendaPage.jsx';
+import { ThemeProvider } from '@emotion/react';
+import theme from './theme.js'; 
+
 function App() {
   return (
-    <div className="min-h-screen bg-primary text-secondary font-primary flex flex-col items-center justify-center">
-      <h1 className="text-4xl font-bold text-accent">
-        Teste Gestão VSM
-      </h1>
-      <p className="mt-4 text-lg">
-        algum texto aqui para preencher o espaço e testar o layout
-      </p>
-    </div>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Routes>
+          {/* <Route path="/" element={<App />} /> */}
+          <Route path="/" element={<AgendaPage />} /> {/* trocar path depois */}
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
