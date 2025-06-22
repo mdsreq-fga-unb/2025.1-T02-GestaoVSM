@@ -17,7 +17,28 @@ import {
 
 import DropdownSelect from '../components/DropdownSelect.jsx';
 
-export default function AppointmentModal({
+/**
+ * Modal para criação ou edição de um agendamento.
+ * Exibe campos para nome do cliente, horário, barbeiro e serviços selecionados.
+ * Calcula duração total e subtotal dos serviços escolhidos.
+ * 
+ * Props:
+ * - open: controla visibilidade do modal
+ * - onClose: callback para fechar o modal
+ * - onSave: callback para salvar o agendamento
+ * - clientName: nome do cliente
+ * - onClientNameChange: callback para atualizar nome do cliente
+ * - time: horário selecionado
+ * - onTimeChange: callback para atualizar horário
+ * - barberId: id do barbeiro selecionado
+ * - onBarberChange: callback para atualizar barbeiro
+ * - barbers: lista de barbeiros disponíveis [{id, name}]
+ * - services: lista de serviços disponíveis [{id, name, duration, price}]
+ * - selectedServices: array de ids dos serviços selecionados
+ * - onServicesChange: callback para atualizar serviços selecionados
+ * - availableTimes: lista de horários disponíveis (strings)
+ */
+function AppointmentModal({
   open,
   onClose,
   onSave,
@@ -33,26 +54,35 @@ export default function AppointmentModal({
   onServicesChange,
   availableTimes,
 }) {
+  // Filtra objetos dos serviços selecionados para cálculo de duração e subtotal
   const selectedServiceObjects = services.filter((s) =>
     selectedServices.includes(s.id)
   );
+
+  // Soma da duração total dos serviços selecionados (minutos)
   const totalDuration = selectedServiceObjects.reduce(
     (acc, s) => acc + (s.duration || 0),
     0
   );
+
+  // Soma do preço total dos serviços selecionados
   const subtotal = selectedServiceObjects.reduce(
     (acc, s) => acc + (s.price || 0),
     0
   );
 
+  // Manipulador de mudança do barbeiro (converte valor para número)
   const handleBarberChange = (e) => {
     onBarberChange(Number(e.target.value));
   };
 
+  // Manipulador de mudança do horário
   const handleTimeChange = (e) => {
     onTimeChange(e.target.value);
   };
 
+  // Manipulador de mudança dos serviços selecionados,
+  // converte valores para números e chama callback
   const handleServicesChange = (e) => {
     const values = Array.isArray(e.target.value)
       ? e.target.value.map((v) => Number(v))
@@ -87,6 +117,7 @@ export default function AppointmentModal({
         },
       }}
     >
+      {/* Título do modal */}
       <DialogTitle
         sx={{
           textAlign: 'center',
@@ -97,8 +128,9 @@ export default function AppointmentModal({
         Novo Agendamento
       </DialogTitle>
 
+      {/* Conteúdo do modal com campos de entrada */}
       <DialogContent sx={{ pt: 1, pb: 0, flexGrow: 1, overflowY: 'auto' }}>
-        {/* Nome do cliente */}
+        {/* Campo para nome do cliente */}
         <TextField
           placeholder="Nome do cliente"
           value={clientName}
@@ -123,7 +155,7 @@ export default function AppointmentModal({
           }}
         />
 
-        {/* Horário */}
+        {/* Dropdown para seleção do horário */}
         <Box>
           <DropdownSelect
             label="Horário"
@@ -136,7 +168,7 @@ export default function AppointmentModal({
           />
         </Box>
 
-        {/* Barbeiro */}
+        {/* Dropdown para seleção do barbeiro */}
         <Box>
           <DropdownSelect
             label="Barbeiro"
@@ -149,7 +181,7 @@ export default function AppointmentModal({
           />
         </Box>
 
-        {/* Serviços (múltipla seleção) */}
+        {/* Select múltiplo para seleção dos serviços */}
         <Box sx={{ mb: 2, mt: 2 }}>
           <Select
             multiple
@@ -187,6 +219,7 @@ export default function AppointmentModal({
               },
             }}
           >
+            {/* Lista de serviços com checkbox para múltipla seleção */}
             {services.map((service) => (
               <MenuItem key={service.id} value={service.id}>
                 <Checkbox checked={selectedServices.indexOf(service.id) > -1} />
@@ -196,7 +229,7 @@ export default function AppointmentModal({
           </Select>
         </Box>
 
-        {/* Tempo estimado e subtotal */}
+        {/* Exibe tempo total estimado dos serviços */}
         <Box
           sx={{
             display: 'flex',
@@ -208,6 +241,8 @@ export default function AppointmentModal({
           <Typography>Tempo estimado:</Typography>
           <Typography>{totalDuration} min</Typography>
         </Box>
+
+        {/* Exibe subtotal dos serviços selecionados */}
         <Box
           sx={{
             display: 'flex',
@@ -220,6 +255,7 @@ export default function AppointmentModal({
         </Box>
       </DialogContent>
 
+      {/* Ações do modal: cancelar e salvar */}
       <DialogActions
         sx={{
           display: 'flex',
@@ -229,6 +265,7 @@ export default function AppointmentModal({
           pt: 1,
         }}
       >
+        {/* Botão cancelar */}
         <Button
           onClick={onClose}
           sx={{
@@ -239,6 +276,7 @@ export default function AppointmentModal({
           Cancelar
         </Button>
 
+        {/* Botão salvar, desabilitado se campos obrigatórios estiverem vazios */}
         <Button
           variant="contained"
           onClick={onSave}
@@ -262,3 +300,5 @@ export default function AppointmentModal({
     </Dialog>
   );
 }
+
+export default AppointmentModal;

@@ -9,20 +9,37 @@ import {
 } from '@mui/material';
 import DropdownSelect from '../components/DropdownSelect.jsx';
 
-export default function FinalizeAppointmentModal({
+/**
+ * Modal para finalizar um atendimento/agendamento.
+ * Exibe os serviços concluídos com seus preços, o subtotal,
+ * e permite selecionar a forma de pagamento antes da confirmação.
+ * 
+ * Props:
+ * - open: controla a visibilidade do modal
+ * - appointment: objeto do agendamento atual (pode ser null)
+ * - onCancel: callback para cancelar/fechar o modal
+ * - onConfirm: callback para confirmar finalização do atendimento
+ * - onPaymentChange: callback para atualizar a forma de pagamento selecionada
+ */
+function FinalizeAppointmentModal({
   open,
   appointment,
   onCancel,
   onConfirm,
   onPaymentChange,
 }) {
+  // Se não houver agendamento, não renderiza o modal
   if (!appointment) return null;
 
+  // Filtra apenas os serviços marcados como concluídos
   const doneServices = appointment.services.filter((service) => service.done);
+
+  // Calcula subtotal somando o preço dos serviços concluídos
   const subtotal = doneServices.reduce((acc, s) => acc + s.price, 0);
 
   return (
     <Dialog open={open} onClose={onCancel} maxWidth="sm" fullWidth>
+      {/* Título do modal */}
       <DialogTitle
         sx={{
           textAlign: 'center',
@@ -33,8 +50,9 @@ export default function FinalizeAppointmentModal({
         Finalizar Atendimento
       </DialogTitle>
 
+      {/* Conteúdo do modal exibindo serviços e subtotal */}
       <DialogContent sx={{ pt: 1, pb: 0 }}>
-        {/* Serviços Concluídos */}
+        {/* Lista dos serviços finalizados com nome e preço */}
         {doneServices.map((service) => (
           <div
             key={service.id}
@@ -49,7 +67,7 @@ export default function FinalizeAppointmentModal({
           </div>
         ))}
 
-        {/* Subtotal */}
+        {/* Exibe o subtotal dos serviços com destaque */}
         <div
           style={{
             display: 'flex',
@@ -65,7 +83,7 @@ export default function FinalizeAppointmentModal({
           <Typography sx={{ fontWeight: 'bold' }}>R$ {subtotal.toFixed(2)}</Typography>
         </div>
 
-        {/* Forma de Pagamento */}
+        {/* Dropdown para selecionar a forma de pagamento */}
         <DropdownSelect
           label="Forma de Pagamento"
           options={[
@@ -82,6 +100,7 @@ export default function FinalizeAppointmentModal({
         />
       </DialogContent>
 
+      {/* Ações do modal: cancelar ou confirmar finalização */}
       <DialogActions
         sx={{
           display: 'flex',
@@ -91,6 +110,7 @@ export default function FinalizeAppointmentModal({
           pt: 1,
         }}
       >
+        {/* Botão para cancelar e fechar o modal */}
         <Button
           onClick={onCancel}
           sx={{
@@ -101,6 +121,7 @@ export default function FinalizeAppointmentModal({
           Cancelar
         </Button>
 
+        {/* Botão para confirmar finalização, desabilitado se forma de pagamento não selecionada */}
         <Button
           variant="contained"
           onClick={onConfirm}
@@ -124,3 +145,5 @@ export default function FinalizeAppointmentModal({
     </Dialog>
   );
 }
+
+export default FinalizeAppointmentModal;

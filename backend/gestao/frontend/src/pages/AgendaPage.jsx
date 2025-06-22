@@ -4,8 +4,6 @@ import {
   Chip,
   Avatar,
   Fab,
-  Skeleton,
-  Button
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 
@@ -16,105 +14,50 @@ import FinalizeAppointmentModal from '../modals/FinalizeAppointmentModal.jsx';
 import AppointmentModal from '../modals/AppointmentModal.jsx';
 import Sidebar from '../components/Sidebar.jsx';
 
-function AgendaPage() {
+function AgendaPage({
+  initialAppointments = [],  // Agendamentos iniciais passados por props
+  barbers = [],             // Lista de barbeiros
+  availableServices = [],   // Serviços disponíveis para agendamento
+  availableTimes = [],      // Horários disponíveis
+  isAdmin = true,           // Se o usuário é administrador (para mostrar filtro)
+}) {
+  // Estados para controle do filtro, agendamentos e modais
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedBarber, setSelectedBarber] = useState('');
-  const [loading, setLoading] = useState(true);
-  const [appointments, setAppointments] = useState([
-    {
-      id: 1,
-      clientName: 'João Silva',
-      time: '09:30 - 10:00',
-      barberId: 1,
-      services: [
-        { id: 1, name: 'Corte de cabelo', price: 30, done: false },
-        { id: 2, name: 'Barba', price: 20, done: true },
-      ],
-      finalized: false,
-      paymentMethod: '',
-    },
-    {
-      id: 2,
-      clientName: 'Maria Oliveira',
-      time: '10:30 - 11:00',
-      barberId: 2,
-      services: [
-        { id: 1, name: 'Coloração', price: 120, done: true },
-        { id: 2, name: 'Hidratação', price: 80, done: false },
-      ],
-      finalized: false,
-      paymentMethod: '',
-    },
-    {
-      id: 3,
-      clientName: 'Carlos Pereira',
-      time: '11:30 - 12:30',
-      barberId: 3,
-      services: [
-        { id: 1, name: 'Coloração', price: 120, done: false },
-        { id: 2, name: 'Hidratação', price: 80, done: false },
-      ],
-      finalized: false,
-      paymentMethod: '',
-    },
-  ]);
+  const [appointments, setAppointments] = useState(initialAppointments);
 
-  const barbers = [
-    { id: 1, name: 'Barbeiro 1' },
-    { id: 2, name: 'Barbeiro 2' },
-    { id: 3, name: 'Barbeiro 3' },
-  ];
-
-  const availableServices = [
-    { id: 1, name: 'Corte de cabelo', price: 30, duration: 30 },
-    { id: 2, name: 'Barba', price: 20, duration: 20 },
-    { id: 3, name: 'Coloração', price: 120, duration: 90 },
-    { id: 4, name: 'Hidratação', price: 80, duration: 45 },
-  ];
-
-  const availableTimes = [
-    '09:00 - 09:30',
-    '09:30 - 10:00',
-    '10:00 - 10:30',
-    '10:30 - 11:00',
-    '11:00 - 11:30',
-    '11:30 - 12:00',
-    '12:00 - 12:30',
-  ];
-
+  // Controle do modal de finalização e dados temporários para rollback
   const [finalizingAppointment, setFinalizingAppointment] = useState(null);
   const [showFinalizeModal, setShowFinalizeModal] = useState(false);
-  // Backup para restaurar serviços caso o usuário cancele a finalização
   const [servicesBackup, setServicesBackup] = useState(null);
 
-  // Modal novo agendamento
+  // Controle do modal de novo agendamento e campos do formulário
   const [showAppointmentModal, setShowAppointmentModal] = useState(false);
   const [newClientName, setNewClientName] = useState('');
   const [newTime, setNewTime] = useState('');
   const [newBarberId, setNewBarberId] = useState('');
   const [newSelectedServices, setNewSelectedServices] = useState([]);
 
-  const isAdmin = true;
-
-  // Função para atualizar o done de um serviço e, se for o último para finalizar, abrir modal
+  /**
+   * Alterna o estado "done" de um serviço dentro de um agendamento,
+   * atualiza o agendamento, e dispara modal de finalização se todos os serviços forem concluídos.
+   */
   const toggleServiceDone = (appointmentId, serviceId) => {
     setAppointments((prev) => {
       return prev.map((appointment) => {
         if (appointment.id !== appointmentId) return appointment;
 
+        // Atualiza o serviço específico invertendo o done
         const updatedServices = appointment.services.map((service) =>
           service.id === serviceId ? { ...service, done: !service.done } : service
         );
 
-        // Detecta se agora todos os serviços estão marcados como done (ou seja, pronto para finalizar)
+        // Verifica se todos os serviços estão marcados como feitos
         const allDone = updatedServices.length > 0 && updatedServices.every(s => s.done);
 
-        // Se antes NÃO estava finalizado, e agora todos estão done, precisamos abrir modal de finalização
+        // Se ainda não finalizado e todos serviços feitos, abre modal de finalização
         if (!appointment.finalized && allDone) {
-          // Salva backup dos serviços ANTES da mudança (backup do estado anterior ao último toggle)
-          setServicesBackup(appointment.services.map(s => ({ ...s })));
-
-          // Abre modal de finalização com estado atualizado dos serviços
+          setServicesBackup(appointment.services.map(s => ({ ...s }))); // guarda backup para possível rollback
           setFinalizingAppointment({
             ...appointment,
             services: updatedServices,
@@ -122,14 +65,13 @@ function AgendaPage() {
           });
           setShowFinalizeModal(true);
 
-          // Atualiza somente os serviços (checkboxes marcados)
           return {
             ...appointment,
             services: updatedServices,
           };
         }
 
-        // Se desmarcou algum serviço e o atendimento estava finalizado, "desfinaliza" o atendimento
+        // Se serviço foi desmarcado depois de finalizado, reabre o agendamento para edição
         const wasServiceDone = appointment.services.find(s => s.id === serviceId)?.done;
         const isNowUndone = wasServiceDone === true && updatedServices.find(s => s.id === serviceId).done === false;
 
@@ -142,7 +84,7 @@ function AgendaPage() {
           };
         }
 
-        // Caso normal, só atualiza os serviços
+        // Atualiza serviços sem mudar status finalizado
         return {
           ...appointment,
           services: updatedServices,
@@ -151,11 +93,13 @@ function AgendaPage() {
     });
   };
 
+  /**
+   * Efeito que abre o modal de finalização automaticamente
+   * caso exista algum agendamento com todos os serviços marcados como feitos e não finalizado.
+   */
   useEffect(() => {
-    // Se o modal estiver aberto, não precisa reabrir automaticamente
     if (showFinalizeModal) return;
 
-    // Checa se há algum agendamento pronto para finalizar (todos os serviços done e não finalizado)
     const appointmentToFinalize = appointments.find(
       (appointment) =>
         !appointment.finalized &&
@@ -164,9 +108,7 @@ function AgendaPage() {
     );
 
     if (appointmentToFinalize) {
-      // Salva backup para caso precise cancelar
       setServicesBackup(appointmentToFinalize.services.map((s) => ({ ...s })));
-
       setFinalizingAppointment({
         ...appointmentToFinalize,
         paymentMethod: appointmentToFinalize.paymentMethod || '',
@@ -179,7 +121,10 @@ function AgendaPage() {
     }
   }, [appointments, showFinalizeModal]);
 
-  // Confirmar finalização: aplica finalized=true e fecha modal
+  /**
+   * Confirma finalização do agendamento,
+   * marcando-o como finalizado no estado.
+   */
   const handleConfirmFinalize = () => {
     if (!finalizingAppointment) return;
 
@@ -199,7 +144,9 @@ function AgendaPage() {
     setServicesBackup(null);
   };
 
-  // Cancelar finalização: restaura backup dos serviços e fecha modal
+  /**
+   * Cancela finalização e restaura os serviços ao backup anterior.
+   */
   const handleCancelFinalize = () => {
     if (finalizingAppointment && servicesBackup) {
       setAppointments((prev) =>
@@ -217,30 +164,37 @@ function AgendaPage() {
     setServicesBackup(null);
   };
 
+  /**
+   * Retorna o status de um agendamento com base no estado dos seus serviços e se está finalizado.
+   */
   const getStatusByServices = (services, finalized) => {
     if (finalized) return 'finalizado';
 
     const allDone = services.every((s) => s.done);
     const someDone = services.some((s) => s.done);
 
-    if (allDone) return 'em andamento'; // Tudo marcado, mas ainda não finalizado
+    if (allDone) return 'em andamento';
     if (someDone) return 'em andamento';
     return 'agendado';
   };
 
+  // Mapeia os agendamentos adicionando o campo status para facilitar exibição
   const appointmentsWithStatus = appointments.map((appointment) => ({
     ...appointment,
     status: getStatusByServices(appointment.services, appointment.finalized),
   }));
 
+  // Filtra agendamentos pelo barbeiro selecionado, se houver filtro ativo
   const filteredAppointments = selectedBarber
     ? appointmentsWithStatus.filter((a) => a.barberId === Number(selectedBarber))
     : appointmentsWithStatus;
 
+  // Abre modal de novo agendamento
   const handleAddAppointmentClick = () => {
     setShowAppointmentModal(true);
   };
 
+  // Fecha modal de novo agendamento e limpa campos
   const handleCloseAppointmentModal = () => {
     setShowAppointmentModal(false);
     setNewClientName('');
@@ -249,6 +203,9 @@ function AgendaPage() {
     setNewSelectedServices([]);
   };
 
+  /**
+   * Salva novo agendamento com os dados do formulário, adicionando no estado local.
+   */
   const handleSaveAppointment = () => {
     const newAppointment = {
       id: appointments.length + 1,
@@ -266,11 +223,6 @@ function AgendaPage() {
     handleCloseAppointmentModal();
   };
 
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1500);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <div
       className="p-4 mt-8"
@@ -279,98 +231,58 @@ function AgendaPage() {
         backgroundColor: 'var(--color-primary)',
       }}
     >
-      {/* Header */}
-      {loading ? (
-        <div className="flex justify-between items-center mb-4">
-          <Skeleton variant="text" width={32} height={40} animation="wave" />
-          <Skeleton variant="text" width={90} height={40} animation="wave" />
-        </div>
-      ) : (
-        <div className="flex justify-between items-center mb-4">
-          <Sidebar />
-          <Chip
-            avatar={<Avatar sx={{ bgcolor: 'var(--color-accent)' }}>M</Avatar>}
-            label="Meu Perfil"
-            size="small"
-            sx={{
-              borderRadius: 2,
-              height: 24,
-              fontSize: '0.8rem',
-              backgroundColor: '#FFF5E5',
-              color: 'var(--color-secondary)',
-            }}
-          />
-        </div>
-      )}
-
-      {/* Data */}
-      {loading ? (
-        <Skeleton variant="text" width={160} height={40} animation="wave" sx={{ mt: 4 }} />
-      ) : (
-        <Typography
+      {/* Cabeçalho com Sidebar e perfil */}
+      <div className="flex justify-between items-center mb-4">
+        <Sidebar />
+        <Chip
+          avatar={<Avatar sx={{ bgcolor: 'var(--color-accent)' }}>M</Avatar>}
+          label="Meu Perfil"
+          size="small"
           sx={{
-            mt: 4,
-            fontSize: '1.4rem',
-            fontWeight: 'bold',
+            borderRadius: 2,
+            height: 24,
+            fontSize: '0.8rem',
+            backgroundColor: '#FFF5E5',
             color: 'var(--color-secondary)',
-            textAlign: 'left',
           }}
-        >
-          {`${selectedDate.getDate()} de ${selectedDate
-            .toLocaleDateString('pt-BR', { month: 'long' })
-            .replace(/^./, (c) => c.toUpperCase())}`}
-        </Typography>
+        />
+      </div>
+
+      {/* Exibe data selecionada formatada */}
+      <Typography
+        aria-label="data selecionada"
+        sx={{
+          mt: 4,
+          fontSize: '1.4rem',
+          fontWeight: 'bold',
+          color: 'var(--color-secondary)',
+          textAlign: 'left',
+        }}
+      >
+        {`${selectedDate.getDate()} de ${selectedDate
+          .toLocaleDateString('pt-BR', { month: 'long' })
+          .replace(/^./, (c) => c.toUpperCase())}`}
+      </Typography>
+
+      {/* Componente customizado para escolher data horizontalmente */}
+      <HorizontalDatePicker
+        date={selectedDate}
+        onDateChange={(date) => setSelectedDate(date)}
+      />
+
+      {/* Filtro de barbeiro (apenas para admin) */}
+      {isAdmin && (
+        <DropdownSelect
+          label="Filtrar por barbeiro"
+          options={barbers.map((b) => ({ value: b.id, label: b.name }))}
+          value={selectedBarber}
+          onChange={(e) => setSelectedBarber(e.target.value)}
+          placeholder="Filtrar por barbeiro"
+        />
       )}
 
-      {/* Date Picker */}
-      {loading ? (
-        <Skeleton
-          variant="rectangular"
-          height={60}
-          width="100%"
-          sx={{ borderRadius: 2, mt: 2, mb: 2 }}
-          animation="wave"
-        />
-      ) : (
-        <HorizontalDatePicker
-          date={selectedDate}
-          onDateChange={(date) => setSelectedDate(date)}
-        />
-      )}
-
-      {/* Dropdown */}
-      {isAdmin &&
-        (loading ? (
-          <Skeleton
-            variant="rectangular"
-            height={40}
-            width="100%"
-            sx={{ borderRadius: 2, mb: 2 }}
-            animation="wave"
-          />
-        ) : (
-          <DropdownSelect
-            label="Filtrar por barbeiro"
-            options={barbers.map((b) => ({ value: b.id, label: b.name }))}
-            value={selectedBarber}
-            onChange={(e) => setSelectedBarber(e.target.value)}
-            placeholder="Filtrar por barbeiro"
-          />
-        ))}
-
-      {/* Lista de agendamentos */}
-      {loading ? (
-        Array.from({ length: 3 }).map((_, index) => (
-          <Skeleton
-            key={index}
-            variant="rectangular"
-            height={88}
-            width="100%"
-            sx={{ borderRadius: 2, mb: 2 }}
-            animation="wave"
-          />
-        ))
-      ) : filteredAppointments.length > 0 ? (
+      {/* Lista de agendamentos filtrados, ou mensagem caso vazio */}
+      {filteredAppointments.length > 0 ? (
         filteredAppointments.map((appointment) => (
           <AppointmentCard
             key={appointment.id}
@@ -384,7 +296,7 @@ function AgendaPage() {
         </Typography>
       )}
 
-      {/* Modal Finalização */}
+      {/* Modal para finalizar agendamento (aparece quando necessário) */}
       {finalizingAppointment && (
         <FinalizeAppointmentModal
           open={showFinalizeModal}
@@ -400,7 +312,7 @@ function AgendaPage() {
         />
       )}
 
-      {/* Modal Novo Agendamento */}
+      {/* Modal para criar novo agendamento */}
       <AppointmentModal
         open={showAppointmentModal}
         onClose={handleCloseAppointmentModal}
@@ -418,48 +330,33 @@ function AgendaPage() {
         availableTimes={availableTimes}
       />
 
-      {/* FAB */}
-      {loading ? (
-        <Skeleton
-          variant="rectangular"
-          width={140}
-          height={48}
-          sx={{
-            position: 'fixed',
-            bottom: 16,
-            right: 16,
-            borderRadius: 4,
-          }}
-          animation="wave"
-        />
-      ) : (
-        <Fab
-          variant="extended"
-          aria-label="Novo agendamento"
-          onClick={handleAddAppointmentClick}
-          sx={{
-            position: 'fixed',
-            bottom: 16,
-            right: 16,
-            boxShadow: '0 1px 4px rgba(0,0,0,0.1)',
-            textTransform: 'none',
-            borderRadius: 2,
-            bgcolor: 'var(--color-secondary)',
-            color: '#fff',
-            '& .MuiSvgIcon-root': {
-              color: 'var(--color-accent)',
-              transition: 'color 0.3s',
-            },
-            '&:hover': {
-              bgcolor: 'var(--color-primary)',
-              color: 'var(--color-secondary)',
-            },
-          }}
-        >
-          <AddIcon sx={{ mr: 1 }} />
-          Agendar
-        </Fab>
-      )}
+      {/* Botão flutuante para abrir modal de novo agendamento */}
+      <Fab
+        variant="extended"
+        aria-label="Novo agendamento"
+        onClick={handleAddAppointmentClick}
+        sx={{
+          position: 'fixed',
+          bottom: 16,
+          right: 16,
+          boxShadow: '0 1px 4px rgba(0,0,0,0.1)',
+          textTransform: 'none',
+          borderRadius: 2,
+          bgcolor: 'var(--color-secondary)',
+          color: '#fff',
+          '& .MuiSvgIcon-root': {
+            color: 'var(--color-accent)',
+            transition: 'color 0.3s',
+          },
+          '&:hover': {
+            bgcolor: 'var(--color-primary)',
+            color: 'var(--color-secondary)',
+          },
+        }}
+      >
+        <AddIcon sx={{ mr: 1 }} />
+        Agendar
+      </Fab>
     </div>
   );
 }

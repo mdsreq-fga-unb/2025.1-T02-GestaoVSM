@@ -7,7 +7,6 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
-  Divider,
   ListItemIcon,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -17,7 +16,6 @@ import {
   CurrencyDollarIcon as CurrencyOutline,
   CreditCardIcon as CreditCardOutline,
   ShoppingBagIcon as ShoppingBagOutline,
-  Cog6ToothIcon as CogOutline,
   UsersIcon as UsersOutline,
   ScissorsIcon as ScissorsOutline,
 } from '@heroicons/react/24/outline';
@@ -27,19 +25,28 @@ import {
   CurrencyDollarIcon as CurrencySolid,
   CreditCardIcon as CreditCardSolid,
   ShoppingBagIcon as ShoppingBagSolid,
-  Cog6ToothIcon as CogSolid,
   UsersIcon as UsersSolid,
   ScissorsIcon as ScissorsSolid,
 } from '@heroicons/react/24/solid';
 
+/**
+ * Componente Sidebar que exibe um menu lateral deslizante.
+ * Contém itens navegáveis com ícones que mudam ao passar o mouse.
+ * O menu pode ser aberto e fechado via botão de menu.
+ */
 function Sidebar() {
+  // Estado para controlar se o drawer está aberto ou fechado
   const [open, setOpen] = useState(false);
+
+  // Estado para armazenar o label do item que está sendo "hovered" (passado o mouse)
   const [hovered, setHovered] = useState(null);
 
+  // Função para abrir/fechar o drawer
   const toggleDrawer = (state) => () => {
     setOpen(state);
   };
 
+  // Lista de itens do menu com seus ícones (outline e solid para hover)
   const menuItems = [
     { label: 'Agenda', icon: CalendarOutline, hoverIcon: CalendarSolid },
     { label: 'Registrar Gasto', icon: CurrencyOutline, hoverIcon: CurrencySolid },
@@ -51,6 +58,7 @@ function Sidebar() {
 
   return (
     <>
+      {/* Botão que abre o menu lateral, com animação de rotação */}
       <IconButton
         onClick={toggleDrawer(true)}
         sx={{
@@ -67,6 +75,7 @@ function Sidebar() {
         <MenuIcon />
       </IconButton>
 
+      {/* Drawer do Material UI que aparece do lado esquerdo */}
       <Drawer
         anchor="left"
         open={open}
@@ -80,6 +89,7 @@ function Sidebar() {
         }}
       >
         <div className="p-4 mt-8 flex flex-col h-full">
+          {/* Cabeçalho do menu com título e botão para fechar */}
           <div className="flex justify-between items-center mb-4">
             <Typography variant="h6">Gestão VSM</Typography>
             <IconButton
@@ -99,6 +109,7 @@ function Sidebar() {
             </IconButton>
           </div>
 
+          {/* Lista de itens do menu, com troca do ícone quando hover */}
           <List>
             {menuItems.map(({ label, icon: Icon, hoverIcon: HoverIcon }) => (
               <ListItem key={label} disablePadding>
@@ -107,14 +118,15 @@ function Sidebar() {
                     borderRadius: 1,
                     '&:hover': { backgroundColor: 'var(--color-accent)' },
                   }}
-                  onMouseEnter={() => setHovered(label)}
-                  onMouseLeave={() => setHovered(null)}
+                  onMouseEnter={() => setHovered(label)} // Marca item como hovered
+                  onMouseLeave={() => setHovered(null)}  // Remove hover ao sair
                   onClick={() => {
-                    console.log(`Navegar para: ${label}`);
-                    setOpen(false);
+                    console.log(`Navegar para: ${label}`); // Exemplo de ação ao clicar
+                    setOpen(false); // Fecha o menu ao clicar
                   }}
                 >
                   <ListItemIcon sx={{ color: 'var(--color-secondary)', minWidth: '36px' }}>
+                    {/* Exibe ícone sólido quando hover, outline caso contrário */}
                     {hovered === label ? (
                       <HoverIcon className="h-5 w-5" />
                     ) : (
@@ -127,6 +139,7 @@ function Sidebar() {
             ))}
           </List>
 
+          {/* Rodapé fixo com informação da versão */}
           <div className="mt-auto text-center text-xs text-gray-500">
             Versão MVP 1.0
           </div>
