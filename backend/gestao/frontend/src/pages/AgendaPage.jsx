@@ -5,6 +5,7 @@ import {
   Avatar,
   Fab,
   Skeleton,
+  Button
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 
@@ -13,6 +14,7 @@ import AppointmentCard from '../components/AppointmentCard.jsx';
 import DropdownSelect from '../components/DropdownSelect.jsx';
 import FinalizeAppointmentModal from '../modals/FinalizeAppointmentModal.jsx';
 import AppointmentModal from '../modals/AppointmentModal.jsx';
+import Sidebar from '../components/Sidebar.jsx';
 
 function AgendaPage() {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -185,9 +187,9 @@ function AgendaPage() {
       prev.map((appointment) =>
         appointment.id === finalizingAppointment.id
           ? {
-              ...finalizingAppointment,
-              finalized: true,
-            }
+            ...finalizingAppointment,
+            finalized: true,
+          }
           : appointment
       )
     );
@@ -271,7 +273,7 @@ function AgendaPage() {
 
   return (
     <div
-      className="p-4"
+      className="p-4 mt-8"
       style={{
         color: 'var(--color-secondary)',
         backgroundColor: 'var(--color-primary)',
@@ -280,23 +282,21 @@ function AgendaPage() {
       {/* Header */}
       {loading ? (
         <div className="flex justify-between items-center mb-4">
-          <Skeleton variant="text" width={120} />
-          <Skeleton variant="circular" width={32} height={32} />
+          <Skeleton variant="text" width={32} height={40} animation="wave" />
+          <Skeleton variant="text" width={90} height={40} animation="wave" />
         </div>
       ) : (
         <div className="flex justify-between items-center mb-4">
-          <Typography variant="h5" sx={{ color: 'var(--color-secondary)' }}>
-            Olá, usuário!
-          </Typography>
+          <Sidebar />
           <Chip
             avatar={<Avatar sx={{ bgcolor: 'var(--color-accent)' }}>M</Avatar>}
             label="Meu Perfil"
             size="small"
             sx={{
               borderRadius: 2,
-              height: 32,
+              height: 24,
               fontSize: '0.8rem',
-              backgroundColor: 'var(--color-accent-hover)',
+              backgroundColor: '#FFF5E5',
               color: 'var(--color-secondary)',
             }}
           />
@@ -305,15 +305,15 @@ function AgendaPage() {
 
       {/* Data */}
       {loading ? (
-        <Skeleton variant="text" width={150} height={30} />
+        <Skeleton variant="text" width={160} height={40} animation="wave" sx={{ mt: 4 }} />
       ) : (
         <Typography
           sx={{
             mt: 4,
-            fontSize: '1.2rem',
+            fontSize: '1.4rem',
             fontWeight: 'bold',
             color: 'var(--color-secondary)',
-            textAlign: 'right',
+            textAlign: 'left',
           }}
         >
           {`${selectedDate.getDate()} de ${selectedDate
@@ -324,7 +324,13 @@ function AgendaPage() {
 
       {/* Date Picker */}
       {loading ? (
-        <Skeleton variant="rectangular" height={60} sx={{ borderRadius: 2, mt: 2, mb: 2 }} />
+        <Skeleton
+          variant="rectangular"
+          height={60}
+          width="100%"
+          sx={{ borderRadius: 2, mt: 2, mb: 2 }}
+          animation="wave"
+        />
       ) : (
         <HorizontalDatePicker
           date={selectedDate}
@@ -335,7 +341,13 @@ function AgendaPage() {
       {/* Dropdown */}
       {isAdmin &&
         (loading ? (
-          <Skeleton variant="rectangular" height={40} sx={{ borderRadius: 2, mb: 2 }} />
+          <Skeleton
+            variant="rectangular"
+            height={40}
+            width="100%"
+            sx={{ borderRadius: 2, mb: 2 }}
+            animation="wave"
+          />
         ) : (
           <DropdownSelect
             label="Filtrar por barbeiro"
@@ -352,8 +364,10 @@ function AgendaPage() {
           <Skeleton
             key={index}
             variant="rectangular"
-            height={80}
+            height={88}
+            width="100%"
             sx={{ borderRadius: 2, mb: 2 }}
+            animation="wave"
           />
         ))
       ) : filteredAppointments.length > 0 ? (
@@ -408,14 +422,15 @@ function AgendaPage() {
       {loading ? (
         <Skeleton
           variant="rectangular"
-          width={112}
+          width={140}
           height={48}
           sx={{
             position: 'fixed',
             bottom: 16,
             right: 16,
-            borderRadius: 2,
+            borderRadius: 4,
           }}
+          animation="wave"
         />
       ) : (
         <Fab
