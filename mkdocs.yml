@@ -42,6 +42,10 @@ nav:
     - 10. Lições Aprendidas: visao_prod_proj/licoes_aprendidas.md
     - 11. Bibliografia e Referências Bibliográficas: visao_prod_proj/referencias_bibliograficas.md
 
+  - Estudos de Caso:
+    - Product Backlog Building: estudos_caso/product_backlog_building.md
+    - User Story Mapping: estudos_caso/user_story_mapping.md
+
   - Apresentações e Entregas: 
     - apresentacoes_entregas/apresentacao_1.md
     - apresentacoes_entregas/apresentacao_2.md
