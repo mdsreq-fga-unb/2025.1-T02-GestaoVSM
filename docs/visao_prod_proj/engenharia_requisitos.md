@@ -111,7 +111,7 @@
 | ----------------------- | ------------------------- | ------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | **Concepção (OpenUP)**  | Elicitação e Descoberta   | Levantamento inicial de requisitos                | Entrevista, Análise de Tarefas, Observação (Etnografia) | Compreensão profunda dos processos e necessidades da barbearia                        |
 |                         | Análise e Consenso        | Revisão e refinamento inicial                     | INVEST, Conversas com o cliente                         | Requisitos bem definidos, claros e compreendidos pelas partes envolvidas              |
-|                         | Declaração                | Estruturação do backlog                           | User Story Mapping (Temas, Épicos, US)                  | Backlog organizado em níveis estratégicos e operacionais                              |
+|                         | Declaração                | Estruturação do backlog                           | User Story (Temas, Épicos, US)                  | Backlog organizado em níveis estratégicos e operacionais                              |
 |                         | Verificação e Validação   | Validação inicial com cliente                     | Revisão de Requisitos                                   | Confirmação de que os requisitos estão alinhados com a realidade                      |
 |                         | Organização e Atualização | Estruturação e manutenção do backlog              | DEEP                                                    | Backlog bem mantido desde o início                                                    |
 | **Elaboração (OpenUP)** | Elicitação e Descoberta   | Coleta de novos dados com base em descobertas     | Entrevista, reuniões                                    | Ajustes nos requisitos com base em evolução de entendimento                           |
@@ -135,3 +135,4 @@
 |---|---|---|---|
 |23/05/2025|1.0|Criação do documento|[Caio Melo](https://github.com/CaioMelo25)|
 |26/05/2025|1.1|Finalização do Documento|[Vinícius Rufino](https://github.com/RufinoVfR)|
+|19/06/2025|1.2|Atualização do documento (issue #15)|[Caio Melo](https://github.com/CaioMelo25)|
