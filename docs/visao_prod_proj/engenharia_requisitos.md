@@ -67,7 +67,6 @@
 
 #### *Verificação e Validação*
 
-* **Definition of Done (DoD)**: Critérios para confirmar que a funcionalidade está concluída e pronta para desenvolvimento.
 * **Feedback com o cliente**: Validação contínua durante os ciclos de prototipação e ajuste.
 
 #### *Organização e Atualização*
@@ -121,7 +120,7 @@
 |                         | Organização e Atualização | Repriorização e detalhamento                      | DEEP, Análise contínua                                  | Backlog vivo e ajustado conforme decisões estratégicas                                |
 | **User Design (RAD)**   | Representação             | Construção visual das soluções                    | Mockups, Protótipos de Alta Fidelidade                  | Validação de fluxos e interfaces com o cliente                                        |
 |                         | Declaração                | Ajustes ou criação de US com base no feedback     | Framework de User Story                                 | User Stories atualizadas conforme necessidades visuais e de usabilidade               |
-|                         | Verificação e Validação   | Validação do que está pronto para desenvolvimento | Feedback, DoD                                           | Garantia de que o protótipo reflete os requisitos esperados e pode seguir para código |
+|                         | Verificação e Validação   | Validação do que está pronto para desenvolvimento | Feedback                                           | Garantia de que o protótipo reflete os requisitos esperados e pode seguir para código |
 |                         | Organização e Atualização | Repriorização pós-feedback                        | Ajuste manual, DEEP                                     | Backlog reordenado com base nas decisões reais do cliente                             |
 | **Construção (OpenUP)** | Declaração                | Finalização das US para desenvolvimento           | Framework de User Story                                 | Requisitos 100% preparados para implementação                                         |
 |                         | Verificação e Validação   | Confirmação da completude antes da entrega        | DoD, Walkthroughs                                       | Funcionalidades testadas, validadas e prontas para produção                           |
@@ -136,3 +135,4 @@
 |23/05/2025|1.0|Criação do documento|[Caio Melo](https://github.com/CaioMelo25)|
 |26/05/2025|1.1|Finalização do Documento|[Vinícius Rufino](https://github.com/RufinoVfR)|
 |19/06/2025|1.2|Atualização do documento (issue #15)|[Caio Melo](https://github.com/CaioMelo25)|
+|24/06/2025|1.3|Correção do documento|[Vinícius Rufino](https://github.com/RufinoVfR)|
