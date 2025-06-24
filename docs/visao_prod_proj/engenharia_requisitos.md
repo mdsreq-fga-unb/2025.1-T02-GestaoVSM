@@ -1,79 +1,133 @@
-## 4.1 Atividades e Técnicas de ER
+##  4.1 Atividades e Técnicas de Engenharia de Requisitos
 
-### Concepção (OpenUP)
-**Elicitação e Descoberta**  
+### **Concepção (OpenUP)**
 
-- **Entrevista:** Conversar com proprietários e equipe da barbearia para entender metas, processos de agendamento, vendas, finanças e identificar dores e necessidades para o sistema. Buscar clareza sobre os fluxos de valor atuais e os resultados esperados com a nova ferramenta de gestão.
+#### *Elicitação e Descoberta*
 
-- **Análise de Tarefas:** Detalhar os passos de atividades chave como fechar o caixa, agendar clientes ou gerir estoque para mapear os fluxos de trabalho. Identificar ineficiências e requisitos funcionais para otimizar estas operações no novo sistema de gestão.
+* **Entrevista**: Conversar com o proprietário e equipe da barbearia para entender metas, processos e dores relacionadas a agendamentos, vendas, finanças e organização.
+* **Análise de Tarefas**: Mapear o passo a passo de atividades como fechamento de caixa, agendamentos e controle de estoque, identificando ineficiências.
+* **Observação / Imersão (Etnografia)**: Acompanhar a rotina da barbearia para identificar necessidades contextuais, não verbalizadas, e validar a realidade de uso.
 
-- **Observação / Imersão (Etnografia):** Acompanhar o dia a dia da barbearia para entender na prática os processos de atendimento, vendas e gestão e captar necessidades não ditas. Observar as interações reais e o uso de ferramentas atuais para identificar requisitos contextuais e de usabilidade para o sistema.
+#### *Análise e Consenso*
 
-### Elaboração (OpenUP)
+* **INVEST**: Aplicar os critérios para garantir que as User Stories iniciais sejam independentes, negociáveis, valiosas, estimáveis, pequenas e testáveis.
+* **Discussões com o cliente**: Validar entendimento mútuo das tarefas e necessidades antes de organizar requisitos.
 
-**Análise e Consenso**  
+#### *Declaração*
 
-- **Priorização a partir de uma Análise de Custo / Benefício:** A priorização dos requisitos foi feita a partir de uma análise dos seguintes critérios: Benefício (B), Urgência (U), Esforço (E), Risco (R) e Dependência (D). O cálculo foi feito a partir da seguinte fórmula: (B x 2 + U) - (E + R + D).
+* **User Story (Temas, Épicos e User Stories)**: Estruturar o backlog em níveis hierárquicos para facilitar organização e planejamento incremental.
 
-- **Análise de Risco:** Identificar potenciais problemas técnicos, operacionais ou de aceitação do novo sistema de gestão pela equipe da barbearia.
+#### *Verificação e Validação*
 
-**Declaração**  
+* **Revisão com o cliente**: Validar se os requisitos identificados realmente correspondem ao contexto da barbearia.
 
-- **Framework de User Story (Temas, Épicos e User Stories):** Os requisitos  serão organizados em Temas estratégicos (ex: Organizar e centralizar operações da barbearia), detalhados em Épicos (grandes funcionalidades como “Cadastro de produtos”). Estes Épicos serão decompostos em User Stories específicas (ações e valor para o usuário), facilitando o planejamento e desenvolvimento incremental.
+#### *Organização e Atualização*
 
-### User Design (RAD)
-**Verificação e Validação**  
+* **DEEP**: Aplicado para garantir que o backlog esteja bem detalhado, estimado, emergente e priorizado desde a fase inicial.
 
-- **Critérios de Aceitação e DoR (Definition of Ready):** Para cada User Story serão definidos Critérios de Aceitação claros e testáveis, que validam a entrega de valor para a barbearia. A Definition of Ready (DoR) garantirá que as User Stories possuam toda a informação necessária antes de iniciar o desenvolvimento.
+---
 
-- **Definition of Done (DoD):** Estabelecer uma Definition of Done clara, com todos os critérios que uma funcionalidade do sistema deve atender para ser considerada completa. Isso verificará a qualidade das entregas, garantindo que testes foram feitos, o código está em conformidade e a documentação pertinente foi criada.
+### **Elaboração (OpenUP)**
 
-- **Feedback:** Coletar continuamente as percepções dos proprietários e equipe da barbearia sobre o sistema durante o desenvolvimento dos protótipos. Isso validará se as funcionalidades entregues atendem às necessidades reais e expectativas do negócio.
+#### *Elicitação e Descoberta*
 
-- **INVEST:** Aplicar os critérios INVEST para revisar as User Stories do sistema, assegurando que sejam claras, independentes e testáveis. Isso verificará a qualidade dos requisitos, facilitando o desenvolvimento e a entrega de valor para a barbearia.
+* **Entrevistas complementares**: Coletar novos requisitos e atualizações conforme o projeto evolui.
 
-- **DEEP:** Gerenciar o backlog de User Stories do projeto utilizando os atributos DEEP, garantindo detalhamento, estimativa, emergência e priorização adequados. Isso validará que o trabalho esteja bem organizado e que o time se concentre nos itens de maior impacto para a gestão da barbearia.
+#### *Análise e Consenso*
 
-### Construção (OpenUP)
+* **Análise Custo-Benefício (B x 2 + U - E - R - D)**: Classificação dos requisitos por benefício, urgência, esforço, risco e dependência.
+* **Análise de Risco**: Identificação de barreiras técnicas, operacionais ou humanas.
 
-**Declaração**
-- **Framework de User Story** (Temas, Épicos e User Stories): Continuidade da decomposição de épicos em User Stories refinadas.
+#### *Declaração*
 
-**Verificação e Validação**
-- **Revisão**: Aplicação de Code Review, Integração Contínua e testes automatizados para garantir que os requisitos estejam corretamente implementados.
-- **Definition of Ready** (DoR): Durante a fase de construção, os requisitos refinados a partir dos protótipos e do feedback dos usuários deverão ser reavaliados com base na Definition of Ready (DoR). Essa prática garantirá que qualquer ajuste ou nova User Story esteja completa, compreensível e validada antes de ser encaminhada para desenvolvimento, mantendo a qualidade e o alinhamento.
+* **Refinamento de User Stories**: Detalhamento contínuo do backlog com base nas decisões tomadas nas análises.
 
-### Transição (OpenUP)
+#### *Verificação e Validação*
 
-**Verificação e Validação**
-- **Walkthrough**: Apresentação do produto para validação de alguns usuários finais. (funcionários da barbearia).
+* **Definition of Ready (DoR)**: Garantir que as User Stories estejam completas, compreensíveis e prontas antes de passarem ao User Design.
+* **Critérios de Aceitação**: Definidos para cada User Story, permitindo validação objetiva da entrega.
 
-**Organização e Atualização**
-- **Registro de requisitos não implementados**: Documentar requisitos que não foram entregues nesta versão, mas que surgiram ou evoluíram durante o projeto, como uma base para futuras versões.
+#### *Organização e Atualização*
 
-**Declaração**
-- **Documentação de escopo entregue**: Gerar um artefato final que consolide todos os requisitos implementados, suas versões finais e observações sobre ajustes realizados.
+* **DEEP contínuo**: Manutenção da qualidade do backlog.
+* **Repriorização com base em mudanças de contexto ou novas descobertas**.
 
-## 4.2 Engenharia de Requisitos e RAD + OpenUP
+---
 
-Aqui, as atividades da ER, suas práticas e técnicas devem ser mapeadas, a partir das fases (etapas) do processo estabelecido pela equipe, para a condução do projeto. Essas informações devem ser apresentadas em uma tabela conforme indicado, a seguir (exemplo).
+### **User Design (RAD)**
 
-| Fases do Processo         | Atividades ER               | Prática                                    | Técnica                                                                 | Resultado Esperado                                                                                      |
-|--------------------------|-----------------------------|--------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
-| **Concepção (OpenUP)**   | *Elicitação e Descoberta*   | Levantamento de requisitos                 | Entrevista, Análise de Tarefas, Observação                             | Levantar necessidades e dores do cliente com base em processos reais da barbearia                       |
-| **Elaboração (OpenUP)**                   | *Análise e Consenso*        | Priorização e mitigação de riscos          | Análise Custo/Benefício, Análise de Risco                              | Requisitos priorizados com base em impacto, esforço e riscos                                            |
-|                          | Declaração                  | Organização inicial dos requisitos         | Framework de User Story (Temas, Épicos, US)                            | Backlog estruturado e alinhado aos objetivos do negócio                                                 |
-| **User Design (RAD)**    | Verificação e Validação     | Validação do que será desenvolvido         | Critérios de Aceitação, INVEST, Feedback, [DoD](https://en.wikipedia.org/wiki/Definition_of_done)         | Requisitos validados com usuários e preparados com clareza para desenvolvimento                         |
-|                          | Declaração                  | Atualização e detalhamento de novos requisitos | Framework de User Story (para novos requisitos)                     | User Stories coerentes com os protótipos e necessidades emergentes                                      |
-|                          | Representação               | Esboço e simulação do sistema              | Mockups, Protótipos de Alta Fidelidade                                 | Representações visuais das interfaces para facilitar validação e refinamento com usuários               |
-|                          | Organização e Atualização   | Ajustes no backlog após feedback           | DEEP, Repriorização com base em Feedback                               | Backlog atualizado e priorizado de acordo com necessidades reais e feedbacks coletados                  |
-| **Construção (OpenUP)**  | Declaração                  | Continuidade do detalhamento               | Framework de User Story                                                | User Stories refinadas para orientar o desenvolvimento incremental                                      |
-|                          | Verificação e Validação     | Garantia de qualidade na entrega           | Code Review, Testes Automatizados, Integração Contínua, DoR            | Funcionalidades implementadas corretamente, testadas e validadas                                       |
-| **Transição (OpenUP)**   | Verificação e Validação     | Validação final com usuários               | Walkthrough com usuários finais                                        | Confirmação de que o sistema atende às expectativas e ao uso real no ambiente da barbearia             |
-|                          | Organização e Atualização   | Encerramento e rastreamento de pendências  | Registro de requisitos não implementados                               | Base registrada para versões futuras, mantendo histórico e continuidade evolutiva do sistema            |
-|                          | Declaração                  | Formalização da entrega final              | Documentação de escopo entregue                                        | Artefato consolidado com todos os requisitos implementados e ajustes registrados para auditoria         |
+#### *Representação*
 
+* **Mockups**: Criação de esboços visuais para representar telas e interações.
+* **Protótipos de Alta Fidelidade**: Simulações visuais interativas com maior realismo para validação com o cliente.
 
+#### *Declaração*
+
+* **User Stories derivadas de feedback**: Criação ou refinamento de requisitos com base em interações com os protótipos.
+
+#### *Verificação e Validação*
+
+* **Definition of Done (DoD)**: Critérios para confirmar que a funcionalidade está concluída e pronta para desenvolvimento.
+* **Feedback com o cliente**: Validação contínua durante os ciclos de prototipação e ajuste.
+
+#### *Organização e Atualização*
+
+* **Repriorização do backlog com base em feedback real**.
+
+---
+
+### **Construção (OpenUP)**
+
+#### *Declaração*
+
+* **Refinamento final das User Stories**: Baseadas em tudo que foi ajustado após os protótipos.
+
+#### *Verificação e Validação*
+
+* **Aplicação do DoD**: Validação de que as funcionalidades estão concluídas, documentadas, testadas e alinhadas com o escopo aprovado.
+* **Walkthroughs internos**: Para verificar se as entregas estão prontas para produção antes da transição.
+
+---
+
+### **Transição (OpenUP)**
+
+#### *Verificação e Validação*
+
+* **Walkthrough com usuários reais**: Validação do sistema em ambiente real, garantindo usabilidade e completude funcional.
+
+#### *Declaração*
+
+* **Documentação de Escopo Entregue**: Registro de todos os requisitos implementados com observações finais.
+
+#### *Organização e Atualização*
+
+* **Registro de requisitos não implementados**: Criação de backlog complementar para versões futuras.
+
+---
+
+##  4.2 Tabela – Engenharia de Requisitos aplicada ao Processo
+
+| **Fase do Processo**    | **Atividade ER**          | **Prática**                                       | **Técnica**                                             | **Resultado Esperado**                                                                |
+| ----------------------- | ------------------------- | ------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| **Concepção (OpenUP)**  | Elicitação e Descoberta   | Levantamento inicial de requisitos                | Entrevista, Análise de Tarefas, Observação (Etnografia) | Compreensão profunda dos processos e necessidades da barbearia                        |
+|                         | Análise e Consenso        | Revisão e refinamento inicial                     | INVEST, Conversas com o cliente                         | Requisitos bem definidos, claros e compreendidos pelas partes envolvidas              |
+|                         | Declaração                | Estruturação do backlog                           | User Story (Temas, Épicos, US)                  | Backlog organizado em níveis estratégicos e operacionais                              |
+|                         | Verificação e Validação   | Validação inicial com cliente                     | Revisão de Requisitos                                   | Confirmação de que os requisitos estão alinhados com a realidade                      |
+|                         | Organização e Atualização | Estruturação e manutenção do backlog              | DEEP                                                    | Backlog bem mantido desde o início                                                    |
+| **Elaboração (OpenUP)** | Elicitação e Descoberta   | Coleta de novos dados com base em descobertas     | Entrevista, reuniões                                    | Ajustes nos requisitos com base em evolução de entendimento                           |
+|                         | Análise e Consenso        | Priorização e avaliação de riscos                 | Custo-Benefício, Análise de Risco                       | Backlog priorizado com base em valor, urgência e viabilidade                          |
+|                         | Declaração                | Refinamento do backlog                            | Framework de User Story                                 | User Stories mais claras e direcionadas para execução                                 |
+|                         | Verificação e Validação   | Checagem da completude de requisitos              | DoR, Critérios de Aceitação                             | Garantia de que as US estão prontas para serem representadas                          |
+|                         | Organização e Atualização | Repriorização e detalhamento                      | DEEP, Análise contínua                                  | Backlog vivo e ajustado conforme decisões estratégicas                                |
+| **User Design (RAD)**   | Representação             | Construção visual das soluções                    | Mockups, Protótipos de Alta Fidelidade                  | Validação de fluxos e interfaces com o cliente                                        |
+|                         | Declaração                | Ajustes ou criação de US com base no feedback     | Framework de User Story                                 | User Stories atualizadas conforme necessidades visuais e de usabilidade               |
+|                         | Verificação e Validação   | Validação do que está pronto para desenvolvimento | Feedback, DoD                                           | Garantia de que o protótipo reflete os requisitos esperados e pode seguir para código |
+|                         | Organização e Atualização | Repriorização pós-feedback                        | Ajuste manual, DEEP                                     | Backlog reordenado com base nas decisões reais do cliente                             |
+| **Construção (OpenUP)** | Declaração                | Finalização das US para desenvolvimento           | Framework de User Story                                 | Requisitos 100% preparados para implementação                                         |
+|                         | Verificação e Validação   | Confirmação da completude antes da entrega        | DoD, Walkthroughs                                       | Funcionalidades testadas, validadas e prontas para produção                           |
+| **Transição (OpenUP)**  | Verificação e Validação   | Validação real no ambiente da barbearia           | Walkthrough com usuários reais                          | Confirmação de que o sistema atende às expectativas e está pronto para uso            |
+|                         | Declaração                | Registro da entrega final                         | Documentação de Escopo Entregue                         | Registro formal de tudo que foi entregue                                              |
+|                         | Organização e Atualização | Mapeamento de requisitos não implementados        | Registro de Backlog para futuras versões                | Continuidade planejada para novas iterações                                           |
 
 ## Histórico de Versão
 
@@ -81,3 +135,4 @@ Aqui, as atividades da ER, suas práticas e técnicas devem ser mapeadas, a part
 |---|---|---|---|
 |23/05/2025|1.0|Criação do documento|[Caio Melo](https://github.com/CaioMelo25)|
 |26/05/2025|1.1|Finalização do Documento|[Vinícius Rufino](https://github.com/RufinoVfR)|
+|19/06/2025|1.2|Atualização do documento (issue #15)|[Caio Melo](https://github.com/CaioMelo25)|
