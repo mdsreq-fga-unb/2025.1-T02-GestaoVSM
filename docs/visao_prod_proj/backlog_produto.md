@@ -44,9 +44,9 @@ O backlog geral reúne todas as funcionalidades previstas para o sistema na form
 | **US16** | Como administrador, eu quero excluir ou inativar funcionários sem perder os registros associados para que eu possa preservar o histórico de atendimentos e comissões mesmo após desligamentos. | [**T02**](#temas-especificos-te) | [**E05**](#epicos-e) |
 | **US17** | Como administrador ou barbeiro, eu quero visualizar o calendário com os agendamentos filtrados por serviço, data, cliente e duração para que eu possa planejar melhor os atendimentos e acompanhar a rotina de trabalho.  | [**T03**](#temas-especificos-te) | [**E06**](#epicos-e) |
 | **US18** | Como administrador ou barbeiro, eu quero adicionar serviços ao calendário do barbeiro responsável para que eu possa organizar os atendimentos de acordo com a disponibilidade do profissional. | [**T03**](#temas-especificos-te) | [**E06**](#epicos-e) |
-| **US19** | Como chatbot, eu quero enviar uma confirmação automática do agendamento no WhatsApp do cliente, para que ele tenha certeza de que o horário foi reservado corretamente. | [**T03**](#temas-especificos-te) | [**E07**](#epicos-e) |
-| **US20** | Como chatbot, eu quero dar a opção para o cliente escolher o profissional desejado, para que eu possa ser atendido por quem eu prefiro. | [**T03**](#temas-especificos-te) | [**E07**](#epicos-e) |
-| **US21** | Como chatbot, eu quero permitir que meu cliente visualize os horários disponíveis diretamente no chat, para que ele possa escolher rapidamente o melhor horário. | [**T03**](#temas-especificos-te) | [**E07**](#epicos-e) |
+| **US19** | Como cliente, quero receber uma confirmação automática do agendamento via WhatsApp, para ter certeza de que meu horário foi reservado corretamente. | [**T03**](#temas-especificos-te) | [**E07**](#epicos-e) |
+| **US20** | Como cliente, quero escolher o profissional desejado durante o agendamento no WhatsApp, para ser atendido por quem eu prefiro. | [**T03**](#temas-especificos-te) | [**E07**](#epicos-e) |
+| **US21** | Como cliente, quero visualizar os horários disponíveis diretamente no WhatsApp, para escolher o melhor horário com rapidez. | [**T03**](#temas-especificos-te) | [**E07**](#epicos-e) |
 
 ## 9.2 Priorização do Backlog Geral
 
