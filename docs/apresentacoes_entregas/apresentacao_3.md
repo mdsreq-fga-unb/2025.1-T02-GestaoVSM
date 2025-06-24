@@ -6,4 +6,4 @@
 
 |Data|Versão|Descrição|Autor|
 |----|------|---------|-----|
-|26/05/2025|1.0|Criação do Documento|[Vinícius Rufino](https://github.com/RufinoVfR)|
+|26/05/2025|1.0|Criação do Documento|[Vinícius Rufino](https://github.com/RufinoVfR)| 
