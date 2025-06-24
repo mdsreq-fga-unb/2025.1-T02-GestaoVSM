@@ -75,6 +75,118 @@ Com base na priorização realizada, foi possível identificar o conjunto de fun
 |US17|Permitir que administradores e barbeiros visualizem agendamentos em calendários, com filtros por data, funcionário, cliente e tipo de serviço.|Organizar e centralizar operações da barbearia|4|1|X|
 |US18|Permitir que administradores e barbeiros adicionem serviços ao calendário conforme a disponibilidade do funcionário.|Automatização de agendamentos|6|2|X|
 
+## 9.4 Critérios de Aceitação do MVP
+
+**US01**: Permitir ao administrador realizar o fechamento de caixa com base na consolidação automática de todas as vendas de produtos, serviços prestados e comissões pagas aos funcionários no período selecionado.
+Critérios de aceitação:
+
+- O sistema deve permitir selecionar um intervalo de datas para o fechamento de caixa.
+
+- O sistema deve consolidar automaticamente os valores de vendas de produtos, serviços e comissões.
+
+- O total consolidado deve ser exibido em uma tela de resumo com valores separados por categoria.
+
+**US02**: Permitir ao administrador visualizar e calcular o faturamento total da barbearia dentro de um intervalo de datas, com filtros por funcionário, tipo de serviço ou produto.
+Critérios de aceitação:
+
+- Deve ser possível selecionar um intervalo de datas.
+
+- Deve haver filtros por funcionário, tipo de serviço e tipo de produto.
+
+- O sistema deve exibir o valor total faturado de acordo com os filtros aplicados.
+
+- Os resultados devem ser atualizados automaticamente ao aplicar os filtros.
+
+**US03**: Permitir o registro de gastos operacionais, informando categoria, valor, data e descrição, para que sejam considerados no cálculo financeiro da barbearia.
+Critérios de aceitação:
+
+- O sistema deve disponibilizar um formulário com os campos: categoria, valor, data e descrição.
+
+- Todos os campos devem ser obrigatórios e validados.
+
+- Os gastos devem impactar os relatórios financeiros, especialmente o cálculo do lucro líquido.
+
+- Deve ser possível visualizar, editar e excluir gastos registrados.
+
+**US05**: Permitir ao administrador visualizar o valor bruto do faturamento filtrado por dia, semana e mês.
+Critérios de aceitação:
+
+- O sistema deve oferecer filtros por dia, semana e mês.
+
+- O valor exibido deve considerar apenas o faturamento bruto.
+
+- Os dados devem ser atualizados automaticamente ao trocar o filtro.
+
+- O administrador deve conseguir navegar entre períodos anteriores.
+
+**US07**: Permitir ao administrador acessar um extrato financeiro geral com a divisão do faturamento por funcionário, contendo a soma dos serviços realizados, produtos vendidos e comissões devidas em um determinado período.
+Critérios de aceitação:
+
+- Deve ser possível selecionar um período para gerar o extrato.
+
+- O extrato deve exibir informações por funcionário, com os totais de serviços, produtos e comissões.
+
+- Os dados devem estar corretamente somados e organizados.
+
+**US09**: Permitir a edição de informações dos produtos cadastrados, incluindo alterações no nome, valor ou descrição.
+Critérios de aceitação:
+
+- O sistema deve listar os produtos com opção de edição.
+
+- O formulário de edição deve permitir alterar nome, valor e descrição.
+
+- As mudanças devem ser aplicadas imediatamente após o salvamento.
+
+- Deve haver confirmação de sucesso ou falha ao editar.
+
+**US12**: Permitir a edição dos dados de serviços cadastrados, como valores, tempo ou associação com barbeiros.
+Critérios de aceitação:
+
+- Deve ser possível listar e selecionar serviços para edição.
+
+- O sistema deve permitir modificar valor, tempo de execução e barbeiros associados.
+
+- Os dados devem ser validados antes de salvar.
+
+- As alterações devem ser refletidas imediatamente no sistema.
+
+- Deve haver uma mensagem de confirmação após a edição.
+
+**US15**: Permitir a edição de funcionários para atualização de comissões, horários ou especialidades.
+Critérios de aceitação:
+
+- O sistema deve permitir editar comissões, horários de trabalho e especialidades.
+
+- As mudanças devem ser aplicadas imediatamente no sistema.
+
+- Deve haver mensagem de confirmação ou erro após a edição.
+
+**US17**: Permitir que administradores e barbeiros visualizem agendamentos em calendários, com filtros por data, funcionário, cliente e tipo de serviço.
+Critérios de aceitação:
+
+- O calendário deve exibir todos os agendamentos com data e hora.
+
+- Deve ser possível aplicar filtros por data, funcionário, cliente e tipo de serviço.
+
+- O calendário deve atualizar automaticamente ao aplicar os filtros.
+
+- Ao clicar em um agendamento, os detalhes devem ser exibidos.
+
+- Deve haver visualizações por dia, semana e mês.
+
+**US18**: Permitir que administradores e barbeiros adicionem serviços ao calendário conforme a disponibilidade do funcionário.
+Critérios de aceitação:
+
+- O sistema deve validar a disponibilidade do funcionário antes de criar o agendamento.
+
+- O formulário de agendamento deve conter cliente, serviço, data e hora.
+
+- Caso o horário esteja ocupado, o sistema deve exibir uma mensagem de conflito.
+
+- O agendamento deve aparecer no calendário imediatamente após a confirmação.
+
+- Deve ser possível editar ou cancelar agendamentos.
+
 ## Histórico de Versão
 
 |Data|Versão|Descrição|Autor|
@@ -82,3 +194,4 @@ Com base na priorização realizada, foi possível identificar o conjunto de fun
 | 23/05/2025| 1.0 | Criação do documento | [Weverton Rodrigues](https://github.com/vevetin) |
 |26/05/2025|1.1|Correção do Backlog|[Vinícius Rufino](https://github.com/RufinoVfR)|
 | 05/06/2025 |1.2| Atualização do Backlog do produto | [Caio Sabino](https://github.com/caiomsabino), [Caio Melo](https://github.com/CaioMelo25), [Felipe Campelo](https://github.com/felipeacampelo), [Felipe Henrique](https://github.com/fhenrique77), [Vinícius Rufino](https://github.com/RufinoVfR) e [Weverton Rodrigues](https://github.com/vevetin) |
+|24/06/2025|1.3|Adição dos Critérios de Avaliação|[Vinícius Rufino](https://github.com/RufinoVfR)|
