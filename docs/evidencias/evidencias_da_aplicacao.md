@@ -10,11 +10,12 @@ Para garantir a validação das funcionalidades com os usuários, desenvolvemos 
 
 A seguir, um *vídeo demonstrativo* do funcionamento do frontend da aplicação, evidenciando a aderência da solução aos processos reais da barbearia e confirmando a execução prática do ciclo de requisitos: da elicitação até a entrega funcional.
 
-<center>
-<video width="560" height="315" controls preload="auto">
-  <source src="../images/prototipo-mockado.mp4" type="video/mp4">
-</video>
-</center>
+<div style="text-align: center;">
+  <video width="560" height="315" controls preload="auto">
+    <source src="../images/prototipo-mockado.mp4" type="video/mp4">
+    Seu navegador não suporta a exibição de vídeos.
+  </video>
+</div>
 
 Além disso, a equipe aplicou uma análise de tarefas com base no modelo GOMS (Goals, Operators, Methods, Selection Rules), conforme descrito por Barbosa e Silva (2010) em Interação Humano-Computador e Experiência do Usuário. Essa análise detalhou as ações necessárias para a execução das principais tarefas do sistema, identificando oportunidades de melhoria nos fluxos de interação e usabilidade.
 
