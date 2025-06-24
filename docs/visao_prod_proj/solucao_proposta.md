@@ -42,15 +42,13 @@ _Desenvolvimento da Aplicação_
 
 - Tailwind CSS: Possível uso para estilização do aplicativo, proporcionando um design moderno e responsivo.
 
-- Django: Framework backend baseado em Python, responsável pelo gerenciamento de dados, regras de negócio e segurança da aplicação.
+- Java com Spring Boot: Framework backend baseado em Java, responsável pelo gerenciamento de dados, implementação das regras de negócio e controle da segurança da aplicação.
 
-- MySQL: Sistema de gerenciamento de banco de dados relacional, utilizado para armazenar e organizar os dados da aplicação de forma estruturada, permitindo consultas eficientes e seguras.
+- PostgreSQL: Sistema de gerenciamento de banco de dados relacional, utilizado para armazenar e organizar os dados da aplicação de forma estruturada, permitindo consultas eficientes, seguras e com suporte avançado a dados geoespaciais e relacionamentos complexos.
 
 _Desenvolvimento do Protótipo_  
 
 - Figma: Ferramenta principal para a criação de protótipos de baixa e alta fidelidade, permitindo a validação antecipada do design da interface.
-
-- Canva: Alternativa para criação de materiais visuais complementares.
 
 - Excalidraw: Ferramenta para diagramas e wireframes simples, facilitando a concepção inicial da interface.
 
