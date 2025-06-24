@@ -78,6 +78,7 @@ Com base na priorização realizada, foi possível identificar o conjunto de fun
 ## 9.4 Critérios de Aceitação do MVP
 
 **US01**: Permitir ao administrador realizar o fechamento de caixa com base na consolidação automática de todas as vendas de produtos, serviços prestados e comissões pagas aos funcionários no período selecionado.
+
 Critérios de aceitação:
 
 - O sistema deve permitir selecionar um intervalo de datas para o fechamento de caixa.
@@ -87,6 +88,7 @@ Critérios de aceitação:
 - O total consolidado deve ser exibido em uma tela de resumo com valores separados por categoria.
 
 **US02**: Permitir ao administrador visualizar e calcular o faturamento total da barbearia dentro de um intervalo de datas, com filtros por funcionário, tipo de serviço ou produto.
+
 Critérios de aceitação:
 
 - Deve ser possível selecionar um intervalo de datas.
@@ -98,6 +100,7 @@ Critérios de aceitação:
 - Os resultados devem ser atualizados automaticamente ao aplicar os filtros.
 
 **US03**: Permitir o registro de gastos operacionais, informando categoria, valor, data e descrição, para que sejam considerados no cálculo financeiro da barbearia.
+
 Critérios de aceitação:
 
 - O sistema deve disponibilizar um formulário com os campos: categoria, valor, data e descrição.
@@ -109,6 +112,7 @@ Critérios de aceitação:
 - Deve ser possível visualizar, editar e excluir gastos registrados.
 
 **US05**: Permitir ao administrador visualizar o valor bruto do faturamento filtrado por dia, semana e mês.
+
 Critérios de aceitação:
 
 - O sistema deve oferecer filtros por dia, semana e mês.
@@ -120,6 +124,7 @@ Critérios de aceitação:
 - O administrador deve conseguir navegar entre períodos anteriores.
 
 **US07**: Permitir ao administrador acessar um extrato financeiro geral com a divisão do faturamento por funcionário, contendo a soma dos serviços realizados, produtos vendidos e comissões devidas em um determinado período.
+
 Critérios de aceitação:
 
 - Deve ser possível selecionar um período para gerar o extrato.
@@ -129,6 +134,7 @@ Critérios de aceitação:
 - Os dados devem estar corretamente somados e organizados.
 
 **US09**: Permitir a edição de informações dos produtos cadastrados, incluindo alterações no nome, valor ou descrição.
+
 Critérios de aceitação:
 
 - O sistema deve listar os produtos com opção de edição.
@@ -140,6 +146,7 @@ Critérios de aceitação:
 - Deve haver confirmação de sucesso ou falha ao editar.
 
 **US12**: Permitir a edição dos dados de serviços cadastrados, como valores, tempo ou associação com barbeiros.
+
 Critérios de aceitação:
 
 - Deve ser possível listar e selecionar serviços para edição.
@@ -153,6 +160,7 @@ Critérios de aceitação:
 - Deve haver uma mensagem de confirmação após a edição.
 
 **US15**: Permitir a edição de funcionários para atualização de comissões, horários ou especialidades.
+
 Critérios de aceitação:
 
 - O sistema deve permitir editar comissões, horários de trabalho e especialidades.
@@ -162,6 +170,7 @@ Critérios de aceitação:
 - Deve haver mensagem de confirmação ou erro após a edição.
 
 **US17**: Permitir que administradores e barbeiros visualizem agendamentos em calendários, com filtros por data, funcionário, cliente e tipo de serviço.
+
 Critérios de aceitação:
 
 - O calendário deve exibir todos os agendamentos com data e hora.
@@ -175,6 +184,7 @@ Critérios de aceitação:
 - Deve haver visualizações por dia, semana e mês.
 
 **US18**: Permitir que administradores e barbeiros adicionem serviços ao calendário conforme a disponibilidade do funcionário.
+
 Critérios de aceitação:
 
 - O sistema deve validar a disponibilidade do funcionário antes de criar o agendamento.
