@@ -1,9 +1,17 @@
 package com.vsm.gestao.entity;
 
 import jakarta.persistence.*;
-import lombok.Data; 
-import java.math.BigDecimal;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Entity
 @Table(name = "usuarios")
@@ -13,17 +21,17 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "nome", nullable = false)
     private String nome;
-    private String especialidade;
 
-    @Column(name = "horario_trabalho")
-    private String horarioTrabalho;
-
-    @Column(name = "percentual_comissao")
-    private BigDecimal percentualComissao;
-
+    @Enumerated(EnumType.STRING)
     @Column(name = "tipo_usuario")
-    private String tipoUsuario; // Ex: "BARBEIRO", "ADMIN"
+    private TipoUsuario tipoUsuario;
 
-    private Boolean ativo;
+    @Column(name = "ativo")
+    private boolean ativo;
+
+    @Column(name = "login", unique = true, nullable = false)
+    private String login;
+
 }
