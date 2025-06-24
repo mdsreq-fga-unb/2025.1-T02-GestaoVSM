@@ -51,17 +51,17 @@ propostas e as necessidades específicas de cada fase.
 
     -  Dificuldade: No início, tivemos dificuldade para aplicar corretamente os métodos. Esquecíamos de incluir tópicos importantes e, muitas vezes, deixávamos as descrições vagas ou subjetivas, o que prejudicava a clareza dos elementos do backlog.
 
-    - Lições Aprendidas: Aprofundamos nosso conhecimento nos métodos de construção de Product Backlog. Através de atividades práticas e estudos teóricos, conseguimos entender melhor como aplicar cada abordagem e como estruturar e manter o backlog de forma organizada e alinhada com os objetivos do projeto.
+    - Lição Aprendida: Aprofundamos nosso conhecimento nos métodos de construção de Product Backlog. Através de atividades práticas e estudos teóricos, conseguimos entender melhor como aplicar cada abordagem e como estruturar e manter o backlog de forma organizada e alinhada com os objetivos do projeto.
 
 2. **Melhor compreensão do DoR e DoD**
-    - Dificuldades: As mesmas falhas de subjetividade apareceram também no DoR e no DoD. Inicialmente, escrevemos critérios vagos, com termos pouco claros e sem detalhamento do que realmente precisava ser feito. Além disso, tivemos dificuldade para entender em qual etapa da engenharia de requisitos o DoD deveria ser aplicado de forma mais efetiva.
+    - Dificuldade: As mesmas falhas de subjetividade apareceram também no DoR e no DoD. Inicialmente, escrevemos critérios vagos, com termos pouco claros e sem detalhamento do que realmente precisava ser feito. Além disso, tivemos dificuldade para entender em qual etapa da engenharia de requisitos o DoD deveria ser aplicado de forma mais efetiva.
 
-    - Lições Aprendidas: Com a devolutiva do professor e uma análise mais cuidadosa, passamos a compreender melhor como devem ser definidos o DoR (Definition of Ready) e o DoD (Definition of Done). Ajustamos nossos critérios para torná-los mais objetivos, claros e úteis, garantindo que todos tivessem uma noção precisa do que define uma tarefa pronta para começar e do que a torna concluída.
+    - Lição Aprendida: Com a devolutiva do professor e uma análise mais cuidadosa, passamos a compreender melhor como devem ser definidos o DoR (Definition of Ready) e o DoD (Definition of Done). Ajustamos nossos critérios para torná-los mais objetivos, claros e úteis, garantindo que todos tivessem uma noção precisa do que define uma tarefa pronta para começar e do que a torna concluída.
 
 3. **Desenvolvimento mais incremental**
-    - Dificuldades: Percebemos que, da forma como estávamos conduzindo o projeto no início, acabamos nos afastando da ideia de entregas incrementais. Nossa abordagem estava mais próxima de um modelo preditivo, o que dificultava ajustes e tornava o desenvolvimento mais engessado.
+    - Dificuldade: Percebemos que, da forma como estávamos conduzindo o projeto no início, acabamos nos afastando da ideia de entregas incrementais. Nossa abordagem estava mais próxima de um modelo preditivo, o que dificultava ajustes e tornava o desenvolvimento mais engessado.
 
-    - Lições Aprendidas: Aprendemos a tornar o desenvolvimento mais incremental, estruturando nosso trabalho em entregas menores, contínuas e com valor agregado. Isso nos permitiu revisar o cronograma e adaptar nosso processo para uma abordagem mais flexível, que favorece ajustes e melhorias ao longo do caminho.
+    - Lição Aprendida: Aprendemos a tornar o desenvolvimento mais incremental, estruturando nosso trabalho em entregas menores, contínuas e com valor agregado. Isso nos permitiu revisar o cronograma e adaptar nosso processo para uma abordagem mais flexível, que favorece ajustes e melhorias ao longo do caminho.
 
 ## Histórico de Versão
 
