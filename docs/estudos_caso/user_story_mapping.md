@@ -73,4 +73,35 @@
 | MVP16 | Eu, como parte interessada, quero receber um e-mail lembrando de confirmar minha presença, para garantir que estarei no evento no dia.  | Comunicações e Presença (Bb14)       | Us03 – Parte Interessada |
 | MVP17 | Eu, como parte interessada, quero confirmar minha presença com um clique no e-mail, para sinalizar minha participação de forma prática. | Comunicações e Presença (Bb14)       | Us03 – Parte Interessada |
 
+## RELEASE 1
+| ID  | Descrição                                                                                                                               | Backbone / Épico                     | Usuário                  |
+| --- | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | ------------------------ |
+| R01 | Eu, como organizador, quero adicionar botão de inscrição para que os participantes possam se registrar diretamente na página do evento. | Página do Evento (Bb03)              | Us01 – Organizador       |
+| R02 | Eu, como organizador, quero programar publicações promocionais para manter a visibilidade constante.                                    | Compartilhar Evento (Bb04)           | Us01 – Organizador       |
+| R03 | Eu, como organizador, quero integrar meio de pagamento online para aceitar inscrições pagas.                                            | Pagamentos (Bb06)                    | Us01 – Organizador       |
+| R04 | Eu, como organizador, quero exportar lista de participantes para uma planilha para melhor controle.                                     | Inscrição de Participantes (Bb05)    | Us01 – Organizador       |
+| R05 | Eu, como organizador, quero acompanhar dados dos participantes para gerar relatórios depois.                                            | Inscrição de Participantes (Bb05)    | Us01 – Organizador       |
+| R06 | Eu, como organizador, quero limitar vagas por categoria para balancear os públicos participantes.                                       | Inscrição de Participantes (Bb05)    | Us01 – Organizador       |
+| R07 | Eu, como organizador, quero permitir envio de mensagens para inscritos para que dúvidas possam ser resolvidas.                          | Comunicação Direta (Bb13)            | Us01 – Organizador       |
+| R08 | Eu, como organizador, quero criar mensagens automáticas para facilitar a comunicação com os participantes.                              | Comunicação Direta (Bb13)            | Us01 – Organizador       |
+| R09 | Eu, como organizador, quero notificar alterações no evento para manter os inscritos informados.                                         | Acompanhamento e Notificações (Bb12) | Us01 – Organizador       |
+| R10 | Eu, como organizador, quero definir horários e tarefas para cada voluntário para organizar a equipe no dia.                             | Voluntários (Bb07)                   | Us01 – Organizador       |
+| R11 | Eu, como organizador, quero confirmar presença dos voluntários para assegurar apoio no dia.                                             | Voluntários (Bb07)                   | Us01 – Organizador       |
+| R12 | Eu, como organizador, quero anexar contrato ou acordo com fornecedores para garantir segurança jurídica.                                | Fornecedores (Bb08)                  | Us01 – Organizador       |
+| R13 | Eu, como organizador, quero avaliar fornecedor após o evento para decisões futuras.                                                     | Fornecedores (Bb08)                  | Us01 – Organizador       |
+| R14 | Eu, como organizador, quero gerar relatório de visibilidade para prestar contas aos patrocinadores.                                     | Patrocinadores (Bb09)                | Us01 – Organizador       |
+| R15 | Eu, como organizador, quero enviar certificado de parceria para reconhecer os patrocinadores.                                           | Patrocinadores (Bb09)                | Us01 – Organizador       |
+| R16 | Eu, como organizador, quero visualizar status das tarefas em tempo real para manter tudo sob controle.                                  | No Dia do Evento (Bb10)              | Us01 – Organizador       |
+| R17 | Eu, como organizador, quero gerar relatório com métricas do evento para avaliar os resultados.                                          | Pós-Evento (Bb11)                    | Us01 – Organizador       |
+| R18 | Eu, como organizador, quero compartilhar resultado com patrocinadores e comunidade para mostrar o impacto do evento.                    | Pós-Evento (Bb11)                    | Us01 – Organizador       |
+| R19 | Eu, como participante, quero responder dúvidas por chat ou formulário para esclarecer informações.                                      | Comunicação Direta (Bb13)            | Us02 – Participante      |
+| R20 | Eu, como participante, quero receber notificações sobre alterações no evento para me planejar.                                          | Acompanhamento e Notificações (Bb12) | Us02 – Participante      |
+| R21 | Eu, como participante, quero receber lembrete automático pré-evento para não esquecer a data.                                           | Acompanhamento e Notificações (Bb12) | Us02 – Participante      |
+| R22 | Eu, como participante, quero enviar mensagens para os organizadores caso tenha dúvidas.                                                 | Comunicação Direta (Bb13)            | Us02 – Participante      |
+| R23 | Eu, como parte interessada, quero responder uma pesquisa de satisfação específica sobre meu papel no evento.                            | Reconhecimento e Feedback (Bb16)     | Us03 – Parte Interessada |
+| R24 | Eu, como parte interessada, quero ter acesso a um comprovante de participação em PDF.                                                   | Reconhecimento e Feedback (Bb16)     | Us03 – Parte Interessada |
+| R25 | Eu, como parte interessada, quero receber lembrete automático próximo ao evento para não esquecer de comparecer.                        | Comunicações e Presença (Bb14)       | Us03 – Parte Interessada |
+| R26 | Eu, como parte interessada, quero ver meus dados registrados (nome, função, papel no evento) para validar se está tudo correto.         | Acesso à Informação (Bb15)           | Us03 – Parte Interessada |
+
+
 
