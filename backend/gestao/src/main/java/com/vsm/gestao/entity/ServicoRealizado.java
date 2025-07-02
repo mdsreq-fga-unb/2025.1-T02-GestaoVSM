@@ -37,4 +37,7 @@ public class ServicoRealizado {
 
     @Column(name = "forma_pagamento", nullable = false)
     private String formaPagamento;
+
+    @Column(name = "confirmado")
+    private boolean confirmado = false;
 }
