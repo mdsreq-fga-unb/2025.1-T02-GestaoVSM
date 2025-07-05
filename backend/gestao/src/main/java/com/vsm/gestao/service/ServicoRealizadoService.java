@@ -1,10 +1,15 @@
 package com.vsm.gestao.service;
 
 import com.vsm.gestao.entity.ServicoRealizado;
+import com.vsm.gestao.entity.Agendamento;
 import com.vsm.gestao.entity.Usuario;
 import com.vsm.gestao.entity.Servico;
 import com.vsm.gestao.entity.TipoUsuario;
 import com.vsm.gestao.repository.ServicoRealizadoRepository;
+
+import jakarta.transaction.Transactional;
+
+import com.vsm.gestao.repository.AgendamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,59 +26,51 @@ public class ServicoRealizadoService {
     @Autowired
     private ServicoRealizadoRepository servicoRealizadoRepository;
 
-    // Registrar/agendar serviço realizado (admin pode agendar para qualquer barbeiro, barbeiro só para si mesmo)
-    public ServicoRealizado registrarServicoRealizado(
-            Usuario solicitante,
-            Usuario barbeiro,
-            Servico servico,
-            LocalDateTime dataHora,
-            BigDecimal valor,
-            String formaPagamento
-    ) {
-        if (solicitante.getTipoUsuario() == TipoUsuario.BARBEIRO && !solicitante.getId().equals(barbeiro.getId())) {
-            throw new SecurityException("Barbeiro só pode agendar para si mesmo.");
+    @Autowired
+    private AgendamentoRepository agendamentoRepository;
+
+    @Transactional
+    public ServicoRealizado confirmarServicoAgendado(Long agendamentoId, Usuario usuario, String formaPagamento) {
+        Agendamento agendamento = agendamentoRepository.findById(agendamentoId)
+            .orElseThrow(() -> new IllegalArgumentException("Agendamento não encontrado."));
+
+        if (usuario.getTipoUsuario() == TipoUsuario.BARBEIRO && !agendamento.getUsuario().getId().equals(usuario.getId())) {
+            throw new SecurityException("Barbeiro só pode confirmar seus próprios agendamentos.");
         }
-        if (!disponibilidadeBarbeiro(barbeiro, dataHora)) {
-            throw new IllegalArgumentException("Barbeiro não está disponível neste horário.");
-        }
+
+        // Soma o valor bruto dos serviços
+        BigDecimal valorBruto = agendamento.getServicos().stream()
+                .map(Servico::getPreco)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        // *** NOVA LÓGICA DE DESCONTO ***
+        BigDecimal valorFinal = calcularValorComDesconto(valorBruto, formaPagamento);
+
         ServicoRealizado realizado = new ServicoRealizado();
-        realizado.setUsuario(barbeiro);
-        realizado.setServico(servico);
-        realizado.setDataExecucao(dataHora);
-        realizado.setValor(valor);
-        realizado.setFormaPagamento(formaPagamento);
-        realizado.setConfirmado(false);
-        return servicoRealizadoRepository.save(realizado);
-    }
-
-    // Checa se o barbeiro está disponível no horário
-    private boolean disponibilidadeBarbeiro(Usuario barbeiro, LocalDateTime dataHora) {
-        // Considera que não pode haver dois serviços para o mesmo barbeiro no mesmo horário exato
-        List<ServicoRealizado> conflitos = servicoRealizadoRepository
-                .findAllByUsuarioIdAndDataExecucao(barbeiro.getId(), dataHora);
-        return conflitos.isEmpty();
-    }
-
-    // Confirmar serviço realizado (admin ou barbeiro)
-    public ServicoRealizado confirmarServicoRealizado(Long id, Usuario usuario, String formaPagamento) {
-        if (usuario.getTipoUsuario() != TipoUsuario.ADMIN && usuario.getTipoUsuario() != TipoUsuario.BARBEIRO) {
-            throw new SecurityException("Apenas admin ou barbeiro pode confirmar serviço realizado.");
-        }
-        ServicoRealizado realizado = servicoRealizadoRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Serviço realizado não encontrado."));
-        if (usuario.getTipoUsuario() == TipoUsuario.BARBEIRO && !realizado.getUsuario().getId().equals(usuario.getId())) {
-            throw new SecurityException("Barbeiro só pode confirmar seus próprios serviços.");
-        }
+        realizado.setUsuario(agendamento.getUsuario());
+        realizado.setServicos(agendamento.getServicos());
+        realizado.setDataExecucao(agendamento.getDataAgendamento());
+        realizado.setValor(valorFinal); // Salva o valor líquido (com desconto)
+        realizado.setFormaPagamento(formaPagamento.toUpperCase());
         realizado.setConfirmado(true);
-        realizado.setFormaPagamento(formaPagamento);
-        return servicoRealizadoRepository.save(realizado);
+
+        servicoRealizadoRepository.save(realizado);
+        agendamentoRepository.deleteById(agendamentoId);
+
+        return realizado;
     }
 
-    // Admin vê todos, barbeiro vê só os seus serviços realizados por dia
+    private BigDecimal calcularValorComDesconto(BigDecimal valorBruto, String formaPagamento) {
+        return switch (formaPagamento.toUpperCase()) {
+            case "CREDITO" -> valorBruto.multiply(new BigDecimal("0.96")); // 4% de desconto
+            case "DEBITO" -> valorBruto.multiply(new BigDecimal("0.99"));  // 1% de desconto
+            default -> valorBruto; // PIX, DINHEIRO, etc.
+        };
+    }
+
+
+    // Listar serviços realizados por dia (admin vê todos, barbeiro só os seus)
     public List<ServicoRealizado> listarServicosPorDia(LocalDate dia, Usuario usuario, Optional<Long> barbeiroId) {
-        if (usuario.getTipoUsuario() != TipoUsuario.ADMIN && usuario.getTipoUsuario() != TipoUsuario.BARBEIRO) {
-            throw new SecurityException("Acesso negado.");
-        }
         LocalDateTime inicio = dia.atStartOfDay();
         LocalDateTime fim = dia.atTime(LocalTime.MAX);
 
@@ -83,8 +80,10 @@ public class ServicoRealizadoService {
             } else {
                 return servicoRealizadoRepository.findAllByDataExecucaoBetween(inicio, fim);
             }
-        } else {
+        } else if (usuario.getTipoUsuario() == TipoUsuario.BARBEIRO) {
             return servicoRealizadoRepository.findAllByUsuarioIdAndDataExecucaoBetween(usuario.getId(), inicio, fim);
+        } else {
+            throw new SecurityException("Acesso negado.");
         }
     }
 

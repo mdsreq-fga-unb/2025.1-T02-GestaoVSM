@@ -29,9 +29,6 @@ public class Gastos {
     @Column(name = "preco", nullable = false)
     private BigDecimal preco;
 
-    @Column(name = "comissao_produto", nullable = false)
-    private BigDecimal comissao_produto;
-
     @CreationTimestamp
     @Column(name = "data_gasto", nullable = false, updatable = false)
     private LocalDate dataGasto;

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "agendamentos")
@@ -21,10 +22,14 @@ public class Agendamento {
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_servico", nullable = false)
-    private Servico servico;
-
+   @ManyToMany
+    @JoinTable(
+    name = "agendamento_servicos", // Nome da tabela de ligação
+    joinColumns = @JoinColumn(name = "agendamento_id"),
+    inverseJoinColumns = @JoinColumn(name = "servico_id")
+)
+    private List<Servico> servicos;
+    
     @Column(name = "nome_cliente", nullable = false)
     private String nomeCliente;
 

@@ -27,6 +27,9 @@ public class Produto {
     @Column(name = "preco", nullable = false)
     private BigDecimal preco;
 
+    @Column(name = "comissao_produto", nullable = false)
+    private BigDecimal comissaoProduto;
+
     @Column(name = "disponivel", nullable = false)
     private boolean disponivel;
 }
