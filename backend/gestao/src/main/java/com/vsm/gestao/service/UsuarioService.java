@@ -1,6 +1,7 @@
 package com.vsm.gestao.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.vsm.gestao.entity.TipoUsuario;
@@ -14,12 +15,18 @@ import java.util.Optional;
 public class UsuarioService {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private  UsuarioRepository usuarioRepository;
+    private  PasswordEncoder passwordEncoder;
 
     public Usuario criarUsuario(Usuario admin, Usuario criado){
         if(admin.getTipoUsuario() != TipoUsuario.ADMIN){
             throw new SecurityException("Apenas admin pode realizar essa ação.");
         }
+
+        String senhaPura = criado.getPassword();
+        String senhaCriptografada = passwordEncoder.encode(senhaPura);
+        criado.setPassword(senhaCriptografada);
+
         criado.setAtivo(true);
         return usuarioRepository.save(criado);
     }

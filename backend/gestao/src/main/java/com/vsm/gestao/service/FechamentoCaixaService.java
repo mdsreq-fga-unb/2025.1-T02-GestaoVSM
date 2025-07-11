@@ -61,7 +61,7 @@ public class FechamentoCaixaService {
 
             // 2. Calcular o total de comissões de produtos vendidos pelo barbeiro
             List<VendasProdutos> vendasDoBarbeiro = vendasProdutosRepository
-                    .findAllByUsuarioIdAndDataVendaBetween(barbeiro.getId(), inicio.toLocalDate(), fim.toLocalDate()); // **Adicionar este método ao Repository**
+                    .findAllByUsuarioIdAndDataGastoBetween(barbeiro.getId(), inicio.toLocalDate(), fim.toLocalDate()); // **Adicionar este método ao Repository**
             
             BigDecimal comissoesProdutos = vendasDoBarbeiro.stream()
                 .map(venda -> venda.getProduto().getComissaoProduto())
@@ -99,7 +99,7 @@ public class FechamentoCaixaService {
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
         
         // 2. Calcular receitas de produtos
-        List<VendasProdutos> todasAsVendas = vendasProdutosRepository.findAllByDataVendaBetween(dataInicio.toLocalDate(), dataFim.toLocalDate());
+        List<VendasProdutos> todasAsVendas = vendasProdutosRepository.findAllByDataGastoBetween(dataInicio.toLocalDate(), dataFim.toLocalDate());
         BigDecimal receitasProdutos = todasAsVendas.stream()
                 .map(VendasProdutos::getPreco)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);

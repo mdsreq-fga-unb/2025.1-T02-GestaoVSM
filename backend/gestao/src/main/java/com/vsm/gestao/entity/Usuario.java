@@ -3,19 +3,20 @@ package com.vsm.gestao.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
+import java.util.List;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
 @Entity
 @Table(name = "usuarios")
-public class Usuario {
+public class Usuario implements UserDetails { 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +26,7 @@ public class Usuario {
     private String nome;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "tipo_usuario")
+    @Column(name = "tipo_usuario", nullable = false)
     private TipoUsuario tipoUsuario;
 
     @Column(name = "ativo")
@@ -34,4 +35,44 @@ public class Usuario {
     @Column(name = "login", unique = true, nullable = false)
     private String login;
 
+    @Column(name = "password", nullable = false) 
+    private String password;
+
+
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(tipoUsuario.name()));
+    }
+
+    @Override
+    public String getPassword() {
+        // Retorna o campo que armazena a senha.
+        return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return login;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return this.ativo;
+    }
 }

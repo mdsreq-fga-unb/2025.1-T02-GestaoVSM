@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,6 +31,7 @@ public class ServicoRealizadoRepositoryTest {
         barbeiro.setTipoUsuario(TipoUsuario.BARBEIRO);
         barbeiro.setAtivo(true);
         barbeiro.setLogin("barbeiro.teste");
+        barbeiro.setPassword("senha_de_teste");
         barbeiro = usuarioRepository.save(barbeiro);
 
         Servico servico = new Servico();
@@ -40,8 +42,9 @@ public class ServicoRealizadoRepositoryTest {
         servico = servicoRepository.save(servico);
 
         ServicoRealizado realizado = new ServicoRealizado();
+        List<Servico> servicos = List.of(servico);
         realizado.setUsuario(barbeiro);
-        realizado.setServico(servico);
+        realizado.setServicos(servicos);
         realizado.setDataExecucao(LocalDateTime.now());
         realizado.setValor(new BigDecimal("50.00"));
         realizado.setFormaPagamento("DINHEIRO");

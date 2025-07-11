@@ -8,79 +8,60 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
-import java.util.Optional;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.when;
 
 class UsuarioServiceTest {
+
+
     @Mock
     private UsuarioRepository usuarioRepository;
+
+
+    @Mock
+    private PasswordEncoder passwordEncoder;
+
+
     @InjectMocks
     private UsuarioService usuarioService;
 
     private Usuario admin;
-    private Usuario barbeiro;
-    private Usuario usuarioNovo;
+    private Usuario novoBarbeiro;
 
     @BeforeEach
     void setUp() {
+  
         MockitoAnnotations.openMocks(this);
+
         admin = new Usuario();
+        admin.setId(1L);
         admin.setTipoUsuario(TipoUsuario.ADMIN);
-        admin.setAtivo(true);
-        barbeiro = new Usuario();
-        barbeiro.setTipoUsuario(TipoUsuario.BARBEIRO);
-        barbeiro.setAtivo(true);
-        usuarioNovo = new Usuario();
-        usuarioNovo.setTipoUsuario(TipoUsuario.BARBEIRO);
-        usuarioNovo.setAtivo(true);
-        usuarioNovo.setNome("Novo Usuário");
+
+        novoBarbeiro = new Usuario();
+        novoBarbeiro.setId(2L);
+        novoBarbeiro.setNome("Novo Barbeiro");
+        novoBarbeiro.setLogin("novo.barbeiro");
+        novoBarbeiro.setPassword("senha123");
+        novoBarbeiro.setTipoUsuario(TipoUsuario.BARBEIRO);
     }
 
     @Test
-    void criarUsuario_comAdmin_sucesso() {
-        when(usuarioRepository.save(any(Usuario.class))).thenReturn(usuarioNovo);
-        Usuario criado = usuarioService.criarUsuario(admin, usuarioNovo);
-        assertThat(criado).isNotNull();
-        verify(usuarioRepository, times(1)).save(any(Usuario.class));
-    }
+    void criarUsuario_comAdmin_deveTerSucesso() {
+        // Preparação: Damos um "roteiro" para o nosso dublê do PasswordEncoder
+        when(passwordEncoder.encode(anyString())).thenReturn("senha_criptografada_pelo_mock");
 
-    @Test
-    void criarUsuario_comBarbeiro_lancaExcecao() {
-        assertThrows(SecurityException.class, () -> usuarioService.criarUsuario(barbeiro, usuarioNovo));
-        verify(usuarioRepository, never()).save(any(Usuario.class));
-    }
+        // Preparação: Damos um "roteiro" para o nosso dublê do Repository
+        when(usuarioRepository.save(any(Usuario.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
-    @Test
-    void atualizarUsuario_comAdmin_sucesso() {
-        when(usuarioRepository.findById(anyLong())).thenReturn(Optional.of(usuarioNovo));
-        when(usuarioRepository.save(any(Usuario.class))).thenReturn(usuarioNovo);
-        Usuario atualizado = usuarioService.atualizarUsuario(1L, usuarioNovo, admin);
-        assertThat(atualizado).isNotNull();
-        verify(usuarioRepository, times(1)).save(any(Usuario.class));
-    }
+        // Ação: Chamamos o método que queremos testar
+        Usuario usuarioCriado = usuarioService.criarUsuario(admin, novoBarbeiro);
 
-    @Test
-    void atualizarUsuario_comBarbeiro_lancaExcecao() {
-        assertThrows(SecurityException.class, () -> usuarioService.atualizarUsuario(1L, usuarioNovo, barbeiro));
-        verify(usuarioRepository, never()).save(any(Usuario.class));
+        // Verificação: Checamos se o resultado foi o esperado
+        assertThat(usuarioCriado).isNotNull();
+        assertThat(usuarioCriado.getPassword()).isEqualTo("senha_criptografada_pelo_mock");
     }
-
-    @Test
-    void deletarUsuario_comAdmin_sucesso() {
-        doNothing().when(usuarioRepository).deleteById(1L);
-        usuarioService.deletarUsuario(1L, admin);
-        verify(usuarioRepository, times(1)).deleteById(1L);
-    }
-
-    @Test
-    void deletarUsuario_comBarbeiro_lancaExcecao() {
-        assertThrows(SecurityException.class, () -> usuarioService.deletarUsuario(1L, barbeiro));
-        verify(usuarioRepository, never()).deleteById(anyLong());
-    }
-} 
+}

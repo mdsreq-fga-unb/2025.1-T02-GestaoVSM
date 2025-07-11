@@ -21,6 +21,7 @@ public class ProdutoRepositoryTest {
         produto.setNome("Shampoo");
         produto.setPreco(new BigDecimal("25.00"));
         produto.setDisponivel(true);
+        produto.setComissaoProduto(new BigDecimal("2.50"));
 
         produto = produtoRepository.save(produto);
         assertThat(produto.getId()).isNotNull();

@@ -10,6 +10,6 @@ import com.vsm.gestao.entity.*;
 
 @Repository
 public interface VendasProdutosRepository extends JpaRepository<VendasProdutos, Long> {
-    List<VendasProdutos> findAllByUsuarioIdAndDataVendaBetween(Long usuarioId, LocalDate inicio, LocalDate fim);
-    List<VendasProdutos> findAllByDataVendaBetween(LocalDate inicio, LocalDate fim);
+    List<VendasProdutos> findAllByUsuarioIdAndDataGastoBetween(Long usuarioId, LocalDate inicio, LocalDate fim);
+    List<VendasProdutos> findAllByDataGastoBetween(LocalDate inicio, LocalDate fim);
 }
