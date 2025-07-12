@@ -75,7 +75,7 @@ function CloseTillPage({ employees = [] }) {
             }}
         >
             {/* Botão para voltar à página anterior */}
-            <Box sx={{ position: 'absolute', left: 8, top: 8, zIndex: 1 }}>
+            <Box sx={{ position: 'fixed', left: 8, top: 8, zIndex: 100, backgroundColor: 'white', width: '100vw' }}>
                 <IconButton
                     aria-label="Voltar para agenda"
                     onClick={() => navigate(-1)}
