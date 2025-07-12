@@ -106,12 +106,13 @@ function CloseTillPage({ employees = [] }) {
                 onChange={handleTabChange}
                 textColor="secondary"
                 indicatorColor="primary"
+                variant="fullWidth"
                 sx={{ mb: 4 }}
                 centered
             >
                 <Tab label="Semana atual" sx={{ fontSize: '0.9rem', textTransform: 'none' }} />
                 <Tab label="Mês atual" sx={{ fontSize: '0.9rem', textTransform: 'none' }} />
-                <Tab label="Personalizado" sx={{ fontSize: '0.9rem', textTransform: 'none' }} />
+                {/*<Tab label="Personalizado" sx={{ fontSize: '0.9rem', textTransform: 'none' }} />*/}
             </Tabs>
 
             {/* Componente que exibe resumo financeiro total */}
