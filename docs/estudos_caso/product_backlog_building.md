@@ -1,6 +1,10 @@
-## Exercício de Construção de Backlog de Produto usando PBB - TechFix
+## Exercício de Construção de Backlog de Produto usando PBB
 
 Este documento apresenta o detalhamento do Product Backlog referente ao sistema de gestão de serviços de campo da empresa fictícia TechFix, com base no estudo de caso proposto. Abaixo estão listadas todas as funcionalidades, suas respectivas User Stories (US), os critérios de aceitação e, para algumas delas, exemplos de cenários em Behavior-Driven Development (BDD).
+
+<center><p>Figura 1 - PBB Canvas (TechFix)</p></center>
+
+[![Figura 1 - PBB Canvas (TechFix)](../images/PBB%20-%20TechFix.png)](../images/PBB%20-%20TechFix.png)
 
 <iframe width="768" height="432" src="https://miro.com/app/live-embed/uXjVIqWZSOg=/?embedMode=view_only_without_ui&moveToViewport=-11677,-10633,21578,9205&embedId=616245545460" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
 

@@ -1,5 +1,4 @@
-## Exercício de Construção de Backlog de Produto usando USM - ComunEventos
-
+## Exercício de Construção de Backlog de Produto usando USM
 
 <iframe width="768" height="432" src="https://miro.com/app/live-embed/uXjVIqVC20c=/?embedMode=view_only_without_ui&moveToViewport=5335,-2280,13846,5467&embedId=934228893915" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
 

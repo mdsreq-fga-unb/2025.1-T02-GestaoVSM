@@ -1,5 +1,10 @@
 site_name: Gestão VSM
 site_url: https://mydomain.org/mysite
+markdown_extensions:
+  - admonition
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.superfences
 theme:
   name: material
   features:
@@ -43,8 +48,9 @@ nav:
     - 11. Bibliografia e Referências Bibliográficas: visao_prod_proj/referencias_bibliograficas.md
 
   - Estudos de Caso:
-    - Product Backlog Building: estudos_caso/product_backlog_building.md
-    - User Story Mapping: estudos_caso/user_story_mapping.md
+    - PBB - TechFix: estudos_caso/product_backlog_building.md
+    - USM - ComunEventos: estudos_caso/user_story_mapping.md
+    - Caso de Uso - ConnectCare: estudos_caso/caso_de_uso.md
 
   - Evidências:
     - evidencias/evidencias_da_aplicacao.md
