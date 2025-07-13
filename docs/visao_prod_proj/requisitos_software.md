@@ -12,7 +12,7 @@ Os requisitos funcionais descrevem as funcionalidades específicas que o sistema
 
 **RF04** - Visualizar resumo financeiro consolidado: Permitir ao administrador visualizar um resumo financeiro global com a distribuição percentual do faturamento entre serviços, produtos e consumíveis.
 
-**RF05** - Visualizar resumo financeiro diário e semanal: Permitir ao administrador visualizar o valor bruto do faturamento filtrado por dia, semana e mês.
+**RF05** - Visualizar resumo financeiro diário e semanal: Permitir ao administrador visualizar o valor bruto do faturamento do dia, semana e mês.
 
 **RF06** - Visualizar gráfico de faturamento:  Permitir ao administrador visualizar um gráfico com a consolidação do faturamento por dia, semana e mês, com a possibilidade de filtrar os dados por funcionário.
 

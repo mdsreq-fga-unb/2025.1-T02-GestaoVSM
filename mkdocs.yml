@@ -53,7 +53,12 @@ nav:
     - Caso de Uso - ConnectCare: estudos_caso/caso_de_uso.md
 
   - Evidências:
-    - evidencias/evidencias_da_aplicacao.md
+    - Concepção - OpenUP: evidencias/concepcao_OpenUP.md
+    - Elaboração - OpenUP: evidencias/elaboracao_OpenUP.md
+    - User Design - RAD: evidencias/userdesign_RAD.md
+    - Construção - OpenUP: evidencias/construcao_OpenUP.md
+    - Transição - OpenUP: evidencias/transicao_OpenUP.md
+    - Evidências da Aplicação: evidencias/evidencias_da_aplicacao.md
 
   - Apresentações e Entregas: 
     - apresentacoes_entregas/apresentacao_1.md
