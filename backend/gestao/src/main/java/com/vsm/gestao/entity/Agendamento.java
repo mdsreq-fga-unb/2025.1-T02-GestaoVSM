@@ -22,7 +22,7 @@ public class Agendamento {
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
-   @ManyToMany
+    @ManyToMany
     @JoinTable(
     name = "agendamento_servicos", // Nome da tabela de ligação
     joinColumns = @JoinColumn(name = "agendamento_id"),

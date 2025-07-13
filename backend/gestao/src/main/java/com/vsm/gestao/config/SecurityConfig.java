@@ -3,7 +3,6 @@ package com.vsm.gestao.config;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -30,7 +29,13 @@ public class SecurityConfig {
 
                 // Regras para ADMIN
                 .requestMatchers("/api/usuarios/**").hasAuthority("ADMIN")
-                // ... (suas outras regras continuam aqui)
+                .requestMatchers("/api/vendas-produtos").hasAnyAuthority("ADMIN", "BARBEIRO")
+                .requestMatchers("/api/agendamentos/**").hasAnyAuthority("ADMIN", "BARBEIRO")
+                .requestMatchers("/api/fechamentos-caixa").hasAuthority("ADMIN")
+                .requestMatchers("/api/servicos-realizados").hasAnyAuthority("ADMIN", "BARBEIRO'")
+                .requestMatchers("/api/servicos/**").hasAuthority("ADMIN")
+                .requestMatchers("/api/produtos/**").hasAuthority("ADMIN")
+                .requestMatchers("/api/gastos/**").hasAuthority("ADMIN")
                 
                 // Qualquer outra requisição precisa ser autenticada
                 .anyRequest().authenticated()
