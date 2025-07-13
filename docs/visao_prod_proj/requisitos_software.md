@@ -40,7 +40,7 @@ Os requisitos funcionais descrevem as funcionalidades específicas que o sistema
 
 ### Objetivo específico 3: Objetivo: Automatização de agendamentos
 
-**RF17** - Visualizar agendamentos em calendário: Permitir que administradores e barbeiros visualizem agendamentos em calendários, com filtros por data, funcionário, cliente e tipo de serviço.
+**RF17** - Visualizar agendamentos em calendário: Permitir que administradores e barbeiros visualizem agendamentos em calendários, com filtros por data e funcionário.
 
 **RF18** - Adicionar agendamento ao calendário: Permitir que administradores e barbeiros adicionem serviços ao calendário conforme a disponibilidade do funcionário.
 
@@ -74,7 +74,7 @@ Os requisitos funcionais descrevem as funcionalidades específicas que o sistema
 
 **RNF09** - O sistema deve utilizar a API oficial do WhatsApp Business (Cloud API) para registrar agendamentos automaticamente por meio de chatbot.
 
-**RNF10** - A comunicação entre o aplicativo móvel e o backend deve ser autenticada via tokens JWT, transmitidos no cabeçalho das requisições HTTP.
+**RNF10** - A comunicação entre o site e o backend deve ser autenticada via tokens JWT, transmitidos no cabeçalho das requisições HTTP.
 
 ## Histórico de Versão
 

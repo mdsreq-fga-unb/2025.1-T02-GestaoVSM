@@ -36,21 +36,21 @@ Essas funcionalidades garantirão maior organização, transparência e eficiên
 
 Para o desenvolvimento da solução proposta, serão utilizadas as seguintes tecnologias:
 
-_Desenvolvimento da Aplicação_  
+_Desenvolvimento do Site_  
 
-- React Native: Framework para desenvolvimento do aplicativo mobile, garantindo compatibilidade com diferentes plataformas.
+- React: Biblioteca JavaScript para desenvolvimento da interface web, permitindo a criação de componentes reutilizáveis e uma experiência de usuário dinâmica e responsiva.
 
-- Tailwind CSS: Possível uso para estilização do aplicativo, proporcionando um design moderno e responsivo.
+- Tailwind CSS: Utilizado para a estilização do site, oferecendo utilitários de CSS que facilitam a criação de um design moderno, responsivo e consistente.
 
-- Java com Spring Boot: Framework backend baseado em Java, responsável pelo gerenciamento de dados, implementação das regras de negócio e controle da segurança da aplicação.
+- Java com Spring Boot: Framework backend baseado em Java, responsável pelo gerenciamento de dados, implementação das regras de negócio e controle da segurança do site.
 
-- PostgreSQL: Sistema de gerenciamento de banco de dados relacional, utilizado para armazenar e organizar os dados da aplicação de forma estruturada, permitindo consultas eficientes, seguras e com suporte avançado a dados geoespaciais e relacionamentos complexos.
+- PostgreSQL: Sistema de gerenciamento de banco de dados relacional, utilizado para armazenar e organizar os dados do site de forma estruturada, permitindo consultas eficientes, seguras e com suporte avançado a dados geoespaciais e relacionamentos complexos.
 
 _Desenvolvimento do Protótipo_  
 
-- Figma: Ferramenta principal para a criação de protótipos de baixa e alta fidelidade, permitindo a validação antecipada do design da interface.
+- Figma: Ferramenta principal para a criação de protótipos de alta fidelidade, permitindo a validação antecipada do design da interface.
 
-- Excalidraw: Ferramenta para diagramas e wireframes simples, facilitando a concepção inicial da interface.
+- Excalidraw: Ferramenta para diagramas, wireframes simples e protótipos de baixa e média, facilitando a concepção inicial da interface.
 
 ## 2.4 Pesquisa de Mercado e Análise Competitiva
 
@@ -58,7 +58,7 @@ Atualmente, existem diversas soluções voltadas para o setor de barbearias, com
 A solução proposta se diferencia ao ser desenvolvida especificamente para a gestão interna do negócio, com foco na organização financeira e na otimização de processos administrativos, como o controle de fluxo de caixa, registro de vendas e serviços, acompanhamento de despesas operacionais e cálculo de comissões. Os principais diferenciais incluem:
 Gestão financeira integrada: O sistema auxiliará no fechamento de caixa, considerando serviços prestados, vendas de produtos, comissões dos funcionários e custos operacionais.
 
-Controle interno aprimorado: Diferente das soluções existentes, que priorizam a experiência do cliente final, o aplicativo será voltado exclusivamente para a equipe da barbearia, proporcionando maior controle sobre os registros financeiros e operacionais.
+Controle interno aprimorado: Diferente das soluções existentes, que priorizam a experiência do cliente final, o site será voltado exclusivamente para a equipe da barbearia, proporcionando maior controle sobre os registros financeiros e operacionais.
 
 Facilidade na distribuição de comissões: O cálculo automático de comissões para os funcionários garantirá maior transparência e reduzirá erros manuais.
 
@@ -67,7 +67,7 @@ Dessa forma, a nova solução visa preencher uma lacuna no mercado ao oferecer u
 ## 2.5 Análise de Viabilidade
 
 A solução proposta é viável, pois não apresenta requisitos excessivamente complexos e pode ser desenvolvida dentro do prazo estipulado, com conclusão prevista para 17/07/2025. Além disso, a equipe possui conhecimento nas tecnologias escolhidas para o desenvolvimento, garantindo maior eficiência na implementação.
-Para o desenvolvimento da solução, serão utilizadas tecnologias consolidadas no mercado, como React Native para a aplicação mobile, Django para o backend e Figma para a prototipação da interface, assegurando um fluxo de trabalho ágil e eficiente.
+Para o desenvolvimento da solução, serão utilizadas tecnologias consolidadas no mercado, como React para a criação do site, Java Spring para o backend e Excalidraw para a prototipação da interface, assegurando um fluxo de trabalho ágil e eficiente.
 A solução será essencial para a gestão da barbearia, tornando-se a principal ferramenta de registro e administração interna. Seu custo financeiro será reduzido, limitando-se à hospedagem do sistema, o que reforça sua viabilidade e sustentabilidade a longo prazo.
 
 ## 2.6 Impacto da Solução

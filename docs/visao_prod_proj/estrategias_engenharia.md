@@ -1,27 +1,34 @@
 ## 3.1 Estratégia Priorizada
 
-*Abordagem de Desenvolvimento de Software*   
-A abordagem escolhida para o desenvolvimento da solução será a **Híbrida**, combinando elementos das filosofias dirigida por plano (como a definição antecipada de requisitos e a ênfase na previsibilidade do escopo) e ágil (como a adaptação contínua e a colaboração direta com o cliente). Essa escolha se alinha às particularidades do projeto da Barbearia VSM, que conta com requisitos iniciais bem definidos, mas também com a forte disponibilidade do cliente, o que permite um ciclo constante de validação e de adaptação contínua às necessidades identificadas ao longo do desenvolvimento.
-A previsibilidade é alcançada pela organização dos requisitos desde o início, o que viabiliza um planejamento claro e estruturado. A flexibilidade, por sua vez, será assegurada pela abertura a ajustes ao longo do desenvolvimento, baseada em interações frequentes com o cliente, além da priorização de funcionalidades em entregas incrementais.
+*Abordagem de Desenvolvimento de Software*  
+
+A abordagem adotada para o desenvolvimento do sistema é a **híbrida**, combinando elementos das filosofias dirigida por plano e ágil. Foram incorporadas práticas típicas de abordagens preditivas — como a definição inicial dos requisitos e o planejamento estruturado — juntamente com princípios ágeis, como a priorização incremental, a colaboração direta com o cliente e a abertura a adaptações ao longo do projeto.
+
+Essa escolha foi motivada pelas características específicas do projeto da Barbearia VSM: por um lado, o cliente apresentou uma visão clara e bem definida de suas necessidades desde o início; por outro, mostrou-se disponível para interações frequentes, o que possibilitou ciclos contínuos de validação. Esse cenário favoreceu a adoção de uma abordagem que equilibrasse previsibilidade com flexibilidade, e controle com adaptação, promovendo uma entrega mais alinhada às reais expectativas do cliente.
 
 *Ciclo de Vida*  
-O ciclo de vida selecionado é o **Iterativo e Incremental**, pois permite o desenvolvimento gradual da solução por meio de entregas parciais, funcionais e evolutivas. Cada incremento será validado junto ao cliente, permitindo a identificação prévia de desvios, a correção contínua de problemas e a adaptação do produto às reais necessidades do negócio.
-Esse modelo favorece o alinhamento entre a solução desenvolvida e as expectativas do usuário final, ao mesmo tempo em que reduz o risco de retrabalho por falhas de entendimento.
+
+O ciclo de vida selecionado foi o **iterativo e incremental**, por permitir a construção progressiva do sistema em partes evolutivas e validadas. Embora tenha sido prevista apenas uma entrega formal ao final do projeto, o uso de protótipos funcionais e validações constantes com o cliente proporcionou ciclos internos de revisão e melhoria contínua.
+
+Essa estrutura contribuiu para o alinhamento contínuo entre equipe e cliente, além de reduzir o risco de retrabalho por falhas de entendimento. Com cada iteração, foi possível refinar os requisitos, antecipar problemas e ajustar o escopo de maneira controlada, resultando em maior qualidade e aderência à realidade do negócio.
 
 *Processo de Engenharia de Software*  
-O processo será conduzido por uma abordagem híbrida entre RAD e OpenUP, reorganizada em quatro fases sequenciais para melhor atender às necessidades do projeto.
 
-Na **Fase de Concepção (OpenUP)**, serão estabelecidos os fundamentos do projeto, com a definição do escopo inicial, identificação de stakeholders e riscos principais, e a elaboração da visão do produto. Esta etapa preparará o terreno para o trabalho de prototipação, garantindo que todos os participantes compartilhem uma compreensão comum dos objetivos antes da fase seguinte.
+O processo seguido foi estruturado por meio da combinação entre OpenUP e RAD, aproveitando as forças de cada um em momentos específicos do projeto. A condução se deu em cinco fases principais, com foco na progressividade, validação contínua e reaproveitamento de artefatos sempre que possível.
 
-Em seguida, a **Fase de Elaboração (OpenUP)** terá como foco o refinamento e detalhamento dos requisitos identificados, a estruturação inicial do backlog e a definição clara dos critérios de aceitação. Essa fase permite que o projeto avance com uma base sólida de entendimento funcional, reduzindo ambiguidades e preparando as histórias de usuário para a prototipação.
+A **Fase de Concepção (OpenUP)** teve como objetivo estabelecer os fundamentos do projeto. Foram definidos o escopo preliminar, os objetivos do sistema, os principais stakeholders e riscos associados. Também foi elaborada a visão do produto, garantindo um entendimento compartilhado entre os envolvidos antes do início do detalhamento técnico.
 
-A **Fase de User Design (RAD)** concentrar-se-á na prototipação rápida de interfaces e fluxos críticos, com validação visual direta junto ao cliente. Através de iterações ágeis e sessões frequentes de feedback, os requisitos serão refinados continuamente, antecipando decisões de design e assegurando que a solução atenda às expectativas de usabilidade antes do desenvolvimento em si.
+Em seguinda, na **Fase de Elaboração (OpenUP)**, os requisitos foram refinados e estruturados por meio de histórias de usuário, com definição clara de critérios de aceitação. Também foi organizada a primeira versão do backlog do produto. A elaboração serviu como base sólida para as fases seguintes, reduzindo ambiguidade e promovendo clareza nos fluxos e funcionalidades essenciais.
 
-Com os fluxos principais validados, o projeto avançará para a **Fase de Construção (OpenUP)**, onde o desenvolvimento ocorrerá de forma incremental, orientado por histórias de usuário priorizadas. Esta fase manterá ciclos curtos de entrega (2 semanas), com ênfase na qualidade do código e rastreabilidade dos requisitos, enquanto incorpora mudanças pontuais quando necessário. Testes automatizados e integração contínua assegurarão a estabilidade do produto durante sua evolução.
+A prototipação rápida ocorreu na **Fase de Design de Usuário (RAD)**, com foco nas interfaces e nos fluxos de navegação mais relevantes. Foram criados protótipos de alta fidelidade diretamente em ambiente de front-end, com simulação de comportamentos e respostas visuais mesmo antes da integração com o backend.
 
-Por fim, a **Fase de Transição (OpenUP)** preparará a implantação final, com treinamento dos usuários, ajustes baseados em feedbacks operacionais e consolidação da documentação. O encerramento do projeto incluirá uma revisão das lições aprendidas, garantindo que insights valiosos sejam capturados para iniciativas futuras.
+Embora esses protótipos não estivessem completamente conectados à lógica do sistema, foram desenvolvidos com código real, o que permitiu reaproveitamento substancial na fase de construção, conforme preconiza o modelo RAD. Além disso, sessões de feedback frequentes com o cliente garantiram validações visuais que direcionaram decisões de design e ajudaram a antecipar ajustes ainda antes da implementação técnica definitiva.
 
-Esta estrutura combinada preserva a agilidade do RAD na fase crítica de definição da experiência do usuário, enquanto aproveita a disciplina e organização do OpenUP para garantir um desenvolvimento controlado e adaptável. O resultado será um processo que equilibra velocidade com qualidade, mantendo o foco na entrega de valor contínuo ao cliente.
+Com os fluxos validados, a equipe deu início à **Fase de Construção (OpenUP)** do sistema. O desenvolvimento foi orientado por histórias de usuário priorizadas no backlog, com entregas técnicas em ciclos curtos. A fase foi marcada por boas práticas de engenharia, como versionamento, rastreabilidade de requisitos, testes automatizados e integração contínua, garantindo qualidade e estabilidade progressiva do produto.
+
+A **Fase de Transição (OpenUP)** foi dedicada à preparação da implantação, treinamento de usuários e ajustes finos com base nos testes operacionais. Também foi consolidada a documentação essencial, e realizada uma retrospectiva para registrar as lições aprendidas, visando o aprimoramento de futuros projetos.
+
+Essa estrutura combinada permitiu que o projeto evoluísse de forma ágil e validada na fase de design, com o aproveitamento técnico dos protótipos, e avançasse de forma disciplinada e controlada durante o desenvolvimento e entrega, como preconiza o OpenUP. O resultado foi um processo equilibrado, capaz de unir rapidez, qualidade e alinhamento constante com o cliente.
 
 ## 3.2 Quadro Comparativo
 
@@ -40,17 +47,17 @@ A seguir, apresenta-se um quadro comparativo entre dois processos de desenvolvim
 
 ## 3.3 Justificativa
 
-A escolha pela combinação entre os processos RAD e OpenUP foi feita de forma estratégica, considerando as características do cliente e a natureza do projeto. Cada processo será utilizado em fases específicas, de acordo com seus pontos fortes e a necessidade de equilíbrio entre agilidade, estrutura e colaboração contínua.
+A decisão de combinar os processos OpenUP e RAD foi tomada com base nas particularidades do projeto e nas necessidades específicas do cliente, buscando equilibrar agilidade, estrutura e colaboração contínua. Cada processo foi aplicado em momentos distintos, de forma complementar, aproveitando suas forças em fases nas quais são mais eficazes.
 
-Iniciamos com a fase de Concepção do OpenUP, voltada para a definição da visão do sistema, delimitação do escopo e entendimento do contexto da barbearia. Na sequência, a fase de Elaboração (OpenUP) permitirá o detalhamento dos requisitos por meio de histórias de usuário e a definição dos critérios de aceitação, preparando o terreno para a fase de prototipação com maior clareza e foco.
+Iniciamos com as fases de Concepção e Elaboração do OpenUP, que forneceram uma base sólida para o projeto. Nessas etapas, foram definidos o escopo, os principais riscos, os stakeholders e a visão inicial do produto. A seguir, realizamos o refinamento dos requisitos por meio da modelagem de histórias de usuário e da definição dos critérios de aceitação, estruturando o backlog inicial e eliminando ambiguidade funcional.
 
-A seguir, será adotada a fase de Design do Usuário do RAD, priorizando a prototipação rápida e interativa com o cliente. Essa abordagem permite validar visualmente os fluxos principais e ajustar os requisitos de forma colaborativa e eficaz, especialmente considerando o baixo grau de familiaridade técnica do cliente.
+Na sequência, adotamos a abordagem de Design do Usuário inspirada no RAD, priorizando a prototipação rápida e validando as interfaces diretamente com o cliente. Os protótipos foram desenvolvidos em código real de front-end e simularam os principais fluxos do sistema, mesmo antes da integração com o backend. Essa prática antecipou decisões de design e usabilidade e possibilitou um alto grau de reaproveitamento dos artefatos produzidos — alinhando-se ao princípio central do RAD de evitar retrabalho e acelerar a evolução da solução com base em feedback contínuo.
 
-Com os fluxos validados, o projeto segue para as fases de Construção e Transição do OpenUP, nas quais o desenvolvimento será conduzido de forma incremental, com entregas funcionais, testes automatizados e documentação enxuta. A escolha do OpenUP neste ponto parte da necessidade de organizar o desenvolvimento técnico com qualidade, rastreabilidade e flexibilidade suficiente para incorporar ajustes pontuais.
+Com os fluxos validados, o projeto avançou para as fases de Construção e Transição do OpenUP. O desenvolvimento foi conduzido de forma incremental, com foco na rastreabilidade de requisitos, qualidade técnica e estabilidade do produto. Testes automatizados, versionamento e integração contínua foram utilizados para garantir robustez e facilitar eventuais ajustes ao longo da implementação. A fase de transição contemplou a preparação para a entrega final, treinamento do cliente e consolidação da documentação essencial.
 
-Optamos por manter um processo iterativo mesmo após a validação dos requisitos, justamente para aproveitar ao máximo a disponibilidade do cliente ao longo de todo o projeto. Essa colaboração contínua poderá trazer melhorias incrementais durante a execução, sem comprometer o planejamento e a consistência do produto final.
+Ao manter um processo iterativo mesmo após a validação dos requisitos e protótipos, conseguimos aproveitar ao máximo a disponibilidade do cliente e incorporar melhorias incrementais com segurança, sem comprometer a consistência e o planejamento da solução.
 
-Assim, a junção entre RAD e OpenUP permite iniciar com velocidade e envolvimento direto do cliente, garantindo clareza nos requisitos, e avançar com uma abordagem estruturada, que favorece entregas de valor contínuas, com controle de qualidade e adaptabilidade.
+Portanto, a adoção dessa estrutura híbrida permitiu iniciar o projeto com agilidade, forte colaboração e foco na experiência do usuário, e avançar com uma abordagem disciplinada, orientada à qualidade e à entrega contínua de valor. Essa combinação reforça a adaptabilidade metodológica preconizada pela Engenharia de Software moderna, oferecendo um processo coerente com o contexto real do projeto e com as boas práticas descritas na literatura.
 
 ## Histórico de Versão
 
@@ -61,3 +68,4 @@ Assim, a junção entre RAD e OpenUP permite iniciar com velocidade e envolvimen
 | 21/04/2025 | 1.4 | Refatoração dos Tópicos 3.2 e 3.3 | [Vinícius Rufino](https://github.com/RufinoVfR) |
 | 03/05/2025 | 2.0 | Refatoração do Documento | [Vinícius Rufino](https://github.com/RufinoVfR) e [Weverton Rodrigues](https://github.com/vevetin)|
 | 24/05/2025| 2.1 | Atualização dos Tópicos 3.1 e 3.3 | [Weverton Rodrigues](https://github.com/vevetin) |
+| 13/07/2025 | 2.2 | Atualização dos Tópicos 3.1 e 3.3 para uma melhor adequação ao que foi seguido |[Weverton Rodrigues](https://github.com/vevetin)|
