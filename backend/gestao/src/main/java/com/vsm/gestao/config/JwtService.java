@@ -18,14 +18,10 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
-    // Lendo a chave secreta e o tempo de expiração do application.properties
-    // É UMA PRÁTICA MUITO MELHOR E MAIS SEGURA!
     @Value("${application.security.jwt.secret-key}")
     private String secretKey;
-
     @Value("${application.security.jwt.expiration}")
     private long jwtExpiration;
-
 
     public String generateToken(UserDetails userDetails) {
         return generateToken(new HashMap<>(), userDetails);
@@ -36,7 +32,6 @@ public class JwtService {
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                // Tempo de expiração agora é lido do application.properties
                 .setExpiration(new Date(System.currentTimeMillis() + jwtExpiration))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();

@@ -37,4 +37,9 @@ public class Gastos {
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
+    @PrePersist
+    protected void onCreate() {
+        this.dataGasto = LocalDate.now();
+    }
+
 }

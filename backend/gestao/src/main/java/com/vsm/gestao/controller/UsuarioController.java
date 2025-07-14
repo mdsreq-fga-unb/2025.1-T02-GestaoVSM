@@ -23,7 +23,7 @@ public class UsuarioController {
     public ResponseEntity<UsuarioDTO.UsuarioResponse> criarUsuario(
             @RequestBody UsuarioDTO.UsuarioRequest requestDTO,
             @AuthenticationPrincipal Usuario admin) {
-
+        
         Usuario entidadeSalva = usuarioService.criarUsuario(admin, requestDTO);
         UsuarioDTO.UsuarioResponse responseDTO = UsuarioDTO.UsuarioResponse.fromEntity(entidadeSalva);
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
@@ -32,7 +32,6 @@ public class UsuarioController {
     @GetMapping
     public ResponseEntity<List<UsuarioDTO.UsuarioResponse>> listarUsuarios(@AuthenticationPrincipal Usuario admin) {
         List<Usuario> usuarios = usuarioService.listarUsuarios(admin);
-        // Converte a lista de entidades para uma lista de DTOs de resposta
         List<UsuarioDTO.UsuarioResponse> responseDTOs = usuarios.stream()
                 .map(UsuarioDTO.UsuarioResponse::fromEntity)
                 .collect(Collectors.toList());
@@ -42,7 +41,7 @@ public class UsuarioController {
     @GetMapping("/{id}")
     public ResponseEntity<UsuarioDTO.UsuarioResponse> buscarPorId(@PathVariable Long id, @AuthenticationPrincipal Usuario admin) {
         return usuarioService.buscarPorId(id, admin)
-                .map(UsuarioDTO.UsuarioResponse::fromEntity) // Converte a entidade para DTO
+                .map(UsuarioDTO.UsuarioResponse::fromEntity)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }

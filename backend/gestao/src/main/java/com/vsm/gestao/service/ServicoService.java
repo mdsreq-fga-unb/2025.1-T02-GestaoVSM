@@ -37,7 +37,6 @@ public class ServicoService {
         }
         Servico servico = servicoRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Serviço com ID " + id + " não encontrado."));
-
         servico.setNome(dto.nome());
         servico.setPreco(dto.preco());
         servico.setDuracaoEstimadaMinutos(dto.duracaoEstimadaMinutos());

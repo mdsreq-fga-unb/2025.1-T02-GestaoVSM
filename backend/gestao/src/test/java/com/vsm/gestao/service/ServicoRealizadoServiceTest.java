@@ -1,5 +1,6 @@
 package com.vsm.gestao.service;
 
+import com.vsm.gestao.dto.ConfirmacaoServicoDTO; // Importe o DTO
 import com.vsm.gestao.entity.*;
 import com.vsm.gestao.repository.AgendamentoRepository;
 import com.vsm.gestao.repository.ServicoRealizadoRepository;
@@ -63,50 +64,53 @@ class ServicoRealizadoServiceTest {
 
     @Test
     void confirmarServicoAgendado_comAdmin_deveTerSucesso() {
-        // Mock
+        // Arrange
         when(agendamentoRepository.findById(1L)).thenReturn(Optional.of(agendamento));
-        // Captura o ServicoRealizado para verificar o valor
         when(servicoRealizadoRepository.save(any(ServicoRealizado.class))).thenAnswer(invocation -> invocation.getArgument(0));
+        
+        // Criamos o DTO que o método do serviço espera
+        ConfirmacaoServicoDTO dto = new ConfirmacaoServicoDTO(1L, "CREDITO");
 
-        // Ação: pagamento com CRÉDITO para testar o desconto de 4%
-        ServicoRealizado confirmado = servicoRealizadoService.confirmarServicoAgendado(1L, admin, "CREDITO");
-      
+        // Act: Chamamos o método passando o DTO e o solicitante
+        ServicoRealizado confirmado = servicoRealizadoService.confirmarServicoAgendado(dto, admin);
 
-        // Verificação
+        // Assert
         assertThat(confirmado).isNotNull();
         assertThat(confirmado.isConfirmado()).isTrue();
         assertThat(confirmado.getFormaPagamento()).isEqualTo("CREDITO");
-        // Verifica se o desconto de 4% foi aplicado (100.00 * 0.96 = 96.00)
         assertThat(confirmado.getValor()).isEqualByComparingTo(new BigDecimal("96.00"));
-        // Verifica se o agendamento foi deletado
         verify(agendamentoRepository).deleteById(1L);
     }
 
     @Test
     void confirmarServicoAgendado_barbeiroConfirmaServicoDeOutro_deveLancarExcecao() {
-        // Setup: um agendamento que pertence a outro barbeiro
+        // Arrange
         Usuario outroBarbeiro = new Usuario();
         outroBarbeiro.setId(3L);
         agendamento.setUsuario(outroBarbeiro);
-
-        // Mock
         when(agendamentoRepository.findById(1L)).thenReturn(Optional.of(agendamento));
+        
+        // Criamos o DTO para a chamada
+        ConfirmacaoServicoDTO dto = new ConfirmacaoServicoDTO(1L, "PIX");
 
-        // Ação e Verificação
+        // Act & Assert
         assertThrows(SecurityException.class, () -> {
             // O 'barbeiro' (ID 2) tenta confirmar um serviço do 'outroBarbeiro' (ID 3)
-            servicoRealizadoService.confirmarServicoAgendado(1L, barbeiro, "PIX");
+            servicoRealizadoService.confirmarServicoAgendado(dto, barbeiro);
         });
     }
 
     @Test
     void confirmarServicoAgendado_agendamentoNaoEncontrado_deveLancarExcecao() {
-        // Mock: o agendamento não é encontrado
+        // Arrange
         when(agendamentoRepository.findById(99L)).thenReturn(Optional.empty());
+        
+        // Criamos o DTO para a chamada
+        ConfirmacaoServicoDTO dto = new ConfirmacaoServicoDTO(99L, "DINHEIRO");
 
-        // Ação e Verificação
+        // Act & Assert
         assertThrows(IllegalArgumentException.class, () -> {
-            servicoRealizadoService.confirmarServicoAgendado(99L, admin, "DINHEIRO");
+            servicoRealizadoService.confirmarServicoAgendado(dto, admin);
         });
     }
 }

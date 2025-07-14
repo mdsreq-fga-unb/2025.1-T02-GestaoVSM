@@ -5,8 +5,11 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.util.List;
 
 import java.math.BigDecimal;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Getter
 @Setter
@@ -31,4 +34,8 @@ public class Servico {
 
     @Column(name = "ativo")
     private Boolean ativo;
+
+    @ManyToMany(mappedBy = "servicos")
+    @JsonIgnore
+    private List<Agendamento> agendamentos;
 }

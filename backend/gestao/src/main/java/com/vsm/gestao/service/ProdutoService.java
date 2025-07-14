@@ -37,15 +37,13 @@ public class ProdutoService {
         }
         Produto produto = produtoRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Produto com ID " + id + " não encontrado."));
-
         produto.setNome(dto.nome());
         produto.setPreco(dto.preco());
         produto.setComissaoProduto(dto.comissaoProduto());
         produto.setDisponivel(dto.disponivel());
         return produtoRepository.save(produto);
     }
-    
-    // Métodos de listagem e busca não precisam de alteração no service.
+
     public List<Produto> listarTodos() {
         return produtoRepository.findAll();
     }

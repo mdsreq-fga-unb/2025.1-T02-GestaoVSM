@@ -6,18 +6,15 @@ import java.time.LocalDate;
 
 public class GastoDTO {
 
+    // CORRIGIDO: usuarioId está de volta para permitir que o admin atribua o gasto
     public record GastoRequest(
             String tipo,
-            BigDecimal preco
+            BigDecimal preco,
+            Long usuarioId
     ) {}
 
     public record GastoResponse(
-            Long id,
-            String tipo,
-            BigDecimal preco,
-            LocalDate dataGasto,
-            Long usuarioId
-    ) {
+            Long id, String tipo, BigDecimal preco, LocalDate dataGasto, Long usuarioId) {
         public static GastoResponse fromEntity(Gastos gasto) {
             return new GastoResponse(
                     gasto.getId(),

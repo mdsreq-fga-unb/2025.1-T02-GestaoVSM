@@ -22,11 +22,11 @@ public class Agendamento {
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
-    @ManyToMany
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
-    name = "agendamento_servicos", // Nome da tabela de ligação
-    joinColumns = @JoinColumn(name = "agendamento_id"),
-    inverseJoinColumns = @JoinColumn(name = "servico_id")
+        name = "agendamento_servicos", 
+        joinColumns = @JoinColumn(name = "agendamento_id"),
+        inverseJoinColumns = @JoinColumn(name = "servico_id")
 )
     private List<Servico> servicos;
     

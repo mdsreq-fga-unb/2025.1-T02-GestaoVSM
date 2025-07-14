@@ -25,17 +25,28 @@ public class FechamentoCaixa {
     @Column(name = "data_fim", nullable = false)
     private LocalDateTime dataFim;
 
-    @Column(name = "receitas_servicos", nullable = false)
-    private BigDecimal receitasServicos;
+    // --- NOVOS CAMPOS PARA DETALHAMENTO ---
 
-    @Column(name = "receitas_produtos", nullable = false)
-    private BigDecimal receitasProdutos;
+    @Column(name = "faturamento_bruto_servicos", nullable = false)
+    private BigDecimal faturamentoBrutoServicos; // Valor total sem descontos
 
-    @Column(nullable = false)
-    private BigDecimal despesas;
+    @Column(name = "faturamento_liquido_servicos", nullable = false)
+    private BigDecimal faturamentoLiquidoServicos; // Valor com descontos de pagamento
 
-    @Column(name = "comissoes_pagas", nullable = false)
-    private BigDecimal comissoesPagas;
+    @Column(name = "faturamento_produtos", nullable = false)
+    private BigDecimal faturamentoProdutos; // Valor total das vendas de produtos
+
+    @Column(name = "total_despesas", nullable = false)
+    private BigDecimal totalDespesas; // Soma de todos os gastos
+
+    @Column(name = "total_comissoes_produto", nullable = false)
+    private BigDecimal totalComissoesProduto; // Soma de todas as comissões de produto
+
+    @Column(name = "total_pago_barbeiros", nullable = false)
+    private BigDecimal totalPagoBarbeiros; // O valor total que a barbearia pagou aos barbeiros
+
+    @Column(name = "lucro_final_barbearia", nullable = false)
+    private BigDecimal lucroFinalBarbearia; // O que sobrou para a barbearia
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_responsavel", nullable = false)

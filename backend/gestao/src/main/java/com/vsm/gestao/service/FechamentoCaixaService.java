@@ -2,9 +2,8 @@ package com.vsm.gestao.service;
 
 import com.vsm.gestao.entity.*;
 import com.vsm.gestao.repository.*;
-
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -19,24 +18,23 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class FechamentoCaixaService {
 
-    @Autowired private FechamentoCaixaRepository fechamentoCaixaRepository;
-    @Autowired private ServicoRealizadoRepository servicoRealizadoRepository;
-    @Autowired private VendasProdutosRepository vendasProdutosRepository;
-    @Autowired private GastosRepository gastosRepository;
-    @Autowired private UsuarioRepository usuarioRepository;
+    private final FechamentoCaixaRepository fechamentoCaixaRepository;
+    private final ServicoRealizadoRepository servicoRealizadoRepository;
+    private final VendasProdutosRepository vendasProdutosRepository;
+    private final GastosRepository gastosRepository;
+    private final UsuarioRepository usuarioRepository;
 
-    // Constante para a porcentagem do barbeiro
     private static final BigDecimal PERCENTUAL_BARBEIRO = new BigDecimal("0.40");
+    private static final BigDecimal PERCENTUAL_BARBEARIA = new BigDecimal("0.60");
 
     /**
-     * Calcula o pagamento devido a cada barbeiro em um período específico.
-     * Este método é ideal para o relatório de pagamento.
-     * @return Um mapa com o ID do barbeiro e o valor a ser pago.
+     * Calcula o pagamento individual de cada barbeiro para um período.
+     * Fórmula: (40% do Valor Líquido dos Serviços) + (Comissões de Produtos) - (Gastos Atribuídos)
      */
     public Map<Long, BigDecimal> calcularPagamentoBarbeiros(LocalDateTime inicio, LocalDateTime fim) {
-        // Encontra todos os barbeiros ativos
         List<Usuario> barbeiros = usuarioRepository.findAll().stream()
                 .filter(u -> u.getTipoUsuario() == TipoUsuario.BARBEIRO && u.isAtivo())
                 .collect(Collectors.toList());
@@ -44,39 +42,34 @@ public class FechamentoCaixaService {
         Map<Long, BigDecimal> pagamentos = new HashMap<>();
 
         for (Usuario barbeiro : barbeiros) {
-            // 1. Calcular o valor bruto dos serviços realizados pelo barbeiro
-            List<ServicoRealizado> servicosDoBarbeiro = servicoRealizadoRepository
-                    .findAllByUsuarioIdAndDataExecucaoBetween(barbeiro.getId(), inicio, fim);
-            
-            BigDecimal valorBrutoServicos = BigDecimal.ZERO;
-            for(ServicoRealizado sr : servicosDoBarbeiro) {
-                // Soma o preço original dos serviços, IGNORANDO o desconto para o cálculo do barbeiro
-                BigDecimal valorBrutoDoServicoRealizado = sr.getServicos().stream()
-                    .map(Servico::getPreco)
+            // 1. Pega 40% do valor LÍQUIDO dos serviços
+            BigDecimal faturamentoLiquidoServicos = servicoRealizadoRepository
+                    .findAllByUsuarioIdAndDataExecucaoBetween(barbeiro.getId(), inicio, fim).stream()
+                    .map(ServicoRealizado::getValor) // Usa o valor já com desconto
                     .reduce(BigDecimal.ZERO, BigDecimal::add);
-                valorBrutoServicos = valorBrutoServicos.add(valorBrutoDoServicoRealizado);
-            }
-            
-            BigDecimal pagamentoServicos = valorBrutoServicos.multiply(PERCENTUAL_BARBEIRO);
+            BigDecimal pagamentoServicos = faturamentoLiquidoServicos.multiply(PERCENTUAL_BARBEIRO);
 
-            // 2. Calcular o total de comissões de produtos vendidos pelo barbeiro
-            List<VendasProdutos> vendasDoBarbeiro = vendasProdutosRepository
-                    .findAllByUsuarioIdAndDataGastoBetween(barbeiro.getId(), inicio.toLocalDate(), fim.toLocalDate()); // **Adicionar este método ao Repository**
-            
-            BigDecimal comissoesProdutos = vendasDoBarbeiro.stream()
-                .map(venda -> venda.getProduto().getComissaoProduto())
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+            // 2. Adiciona as comissões de produtos
+            BigDecimal comissoesProdutos = vendasProdutosRepository
+                    .findAllByUsuarioIdAndDataGastoBetween(barbeiro.getId(), inicio.toLocalDate(), fim.toLocalDate()).stream()
+                    .map(VendasProdutos::getProduto)
+                    .map(Produto::getComissaoProduto)
+                    .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-            // 3. Pagamento total do barbeiro = 40% dos serviços + comissões de produtos
-            pagamentos.put(barbeiro.getId(), pagamentoServicos.add(comissoesProdutos));
+            // 3. Subtrai os gastos atribuídos ao barbeiro
+            BigDecimal gastosBarbeiro = gastosRepository
+                    .findAllByUsuarioIdAndDataGastoBetween(barbeiro.getId(), inicio.toLocalDate(), fim.toLocalDate()).stream()
+                    .map(Gastos::getPreco)
+                    .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+            BigDecimal pagamentoFinal = pagamentoServicos.add(comissoesProdutos).subtract(gastosBarbeiro);
+            pagamentos.put(barbeiro.getId(), pagamentoFinal);
         }
-
         return pagamentos;
     }
 
     /**
-     * Gera e salva um relatório consolidado do fechamento de caixa da barbearia
-     * para a semana anterior (Segunda a Sábado).
+     * Gera o relatório financeiro completo da semana para a barbearia.
      */
     @Transactional
     public FechamentoCaixa gerarFechamentoSemanal(Usuario responsavel) {
@@ -84,51 +77,72 @@ public class FechamentoCaixaService {
             throw new SecurityException("Apenas Admin pode fechar o caixa.");
         }
 
-        // Define o período: da segunda-feira da semana passada até o sábado da semana passada
         LocalDate hoje = LocalDate.now();
-        LocalDate inicioSemana = hoje.with(TemporalAdjusters.previous(DayOfWeek.MONDAY));
-        LocalDate fimSemana = inicioSemana.plusDays(5); // Sábado
+        LocalDate inicioSemana = hoje.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY));
+        LocalDate fimSemana = hoje.with(TemporalAdjusters.nextOrSame(DayOfWeek.SATURDAY));
 
         LocalDateTime dataInicio = inicioSemana.atStartOfDay();
         LocalDateTime dataFim = fimSemana.atTime(LocalTime.MAX);
 
-        // 1. Calcular receitas de serviços (valor líquido, após descontos)
-        BigDecimal receitasServicos = servicoRealizadoRepository.findAllByDataExecucaoBetween(dataInicio, dataFim)
-                .stream()
+        // --- Cálculos Globais ---
+        List<ServicoRealizado> todosServicosRealizados = servicoRealizadoRepository.findAllByDataExecucaoBetween(dataInicio, dataFim);
+        List<VendasProdutos> todasAsVendas = vendasProdutosRepository.findAllByDataGastoBetween(dataInicio.toLocalDate(), dataFim.toLocalDate());
+        List<Gastos> todosOsGastos = gastosRepository.findAllByDataGastoBetween(dataInicio.toLocalDate(), dataFim.toLocalDate());
+
+        // Faturamento LÍQUIDO dos serviços (soma dos valores já com desconto)
+        BigDecimal faturamentoLiquidoServicos = todosServicosRealizados.stream()
                 .map(ServicoRealizado::getValor)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
-        
-        // 2. Calcular receitas de produtos
-        List<VendasProdutos> todasAsVendas = vendasProdutosRepository.findAllByDataGastoBetween(dataInicio.toLocalDate(), dataFim.toLocalDate());
-        BigDecimal receitasProdutos = todasAsVendas.stream()
+
+        // Faturamento BRUTO dos serviços (soma dos preços originais)
+        BigDecimal faturamentoBrutoServicos = todosServicosRealizados.stream()
+                .flatMap(sr -> sr.getServicos().stream())
+                .map(Servico::getPreco)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        // Faturamento total de produtos
+        BigDecimal faturamentoProdutos = todasAsVendas.stream()
                 .map(VendasProdutos::getPreco)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        // 3. Calcular comissões totais (de produtos) a serem pagas
-         BigDecimal comissoesPagas = todasAsVendas.stream()
-                .map(venda -> venda.getProduto().getComissaoProduto())
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-        
-        // O pagamento de 40% sobre serviços é um cálculo de RH/Pagamento, não necessariamente uma "comissão" no mesmo sentido.
-        // O campo "comissoes_pagas" da entidade FechamentoCaixa parece mais adequado para comissões de produtos.
-
-        // 4. Calcular despesas totais
-        BigDecimal despesas = gastosRepository.findAllByDataGastoBetween(dataInicio.toLocalDate(), dataFim.toLocalDate()) // **Adicionar este método ao Repository**
-                .stream()
+        // Total de despesas/gastos
+        BigDecimal totalDespesas = todosOsGastos.stream()
                 .map(Gastos::getPreco)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
         
-        // 5. Criar e salvar a entidade de fechamento
+        // Total de comissões de produto pagas
+        BigDecimal totalComissoesProduto = todasAsVendas.stream()
+                .map(v -> v.getProduto().getComissaoProduto())
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        // --- Cálculo do Lucro da Barbearia ---
+        // 1. A barbearia fica com 60% do valor LÍQUIDO dos serviços
+        BigDecimal lucroServicosBarbearia = faturamentoLiquidoServicos.multiply(PERCENTUAL_BARBEARIA);
+        
+        // 2. A barbearia fica com o valor dos produtos MENOS as comissões
+        BigDecimal lucroProdutosBarbearia = faturamentoProdutos.subtract(totalComissoesProduto);
+
+        // 3. A barbearia arca com todas as despesas
+        BigDecimal lucroFinalBarbearia = lucroServicosBarbearia.add(lucroProdutosBarbearia).subtract(totalDespesas);
+
+        // --- Cálculo do Total Pago aos Barbeiros ---
+        // (40% do líquido dos serviços) + (comissões) - (gastos específicos)
+        Map<Long, BigDecimal> pagamentosIndividuais = calcularPagamentoBarbeiros(dataInicio, dataFim);
+        BigDecimal totalPagoBarbeiros = pagamentosIndividuais.values().stream().reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        // --- Montando o Relatório Final ---
         FechamentoCaixa fechamento = new FechamentoCaixa();
         fechamento.setDataInicio(dataInicio);
         fechamento.setDataFim(dataFim);
-        fechamento.setReceitasServicos(receitasServicos);
-        fechamento.setReceitasProdutos(receitasProdutos);
-        fechamento.setDespesas(despesas);
-        fechamento.setComissoesPagas(comissoesPagas);
+        fechamento.setFaturamentoBrutoServicos(faturamentoBrutoServicos);
+        fechamento.setFaturamentoLiquidoServicos(faturamentoLiquidoServicos);
+        fechamento.setFaturamentoProdutos(faturamentoProdutos);
+        fechamento.setTotalDespesas(totalDespesas);
+        fechamento.setTotalComissoesProduto(totalComissoesProduto);
+        fechamento.setTotalPagoBarbeiros(totalPagoBarbeiros);
+        fechamento.setLucroFinalBarbearia(lucroFinalBarbearia);
         fechamento.setResponsavel(responsavel);
 
         return fechamentoCaixaRepository.save(fechamento);
     }
 }
-

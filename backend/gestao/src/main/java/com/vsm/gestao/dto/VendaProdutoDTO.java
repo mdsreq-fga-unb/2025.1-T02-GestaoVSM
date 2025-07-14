@@ -1,8 +1,44 @@
 package com.vsm.gestao.dto;
 
-// DTO para REGISTRAR a venda de um produto
-public record VendaProdutoDTO(
-    Long produtoId,
-    Long barbeiroId,
-    String formaPagamento
-) {}
+import com.vsm.gestao.entity.VendasProdutos;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+public class VendaProdutoDTO {
+
+    /**
+     * DTO para receber os dados ao registrar uma nova venda.
+     */
+    public record VendaProdutoRequest(
+            Long produtoId,
+            Long barbeiroId,
+            String formaPagamento
+    ) {}
+
+    /**
+     * DTO para enviar a resposta ao cliente, com dados mais detalhados.
+     */
+    public record VendaProdutoResponse(
+            Long id,
+            LocalDate dataVenda,
+            BigDecimal preco,
+            String formaPagamento,
+            String nomeProduto,
+            String nomeBarbeiro
+    ) {
+        public static VendaProdutoResponse fromEntity(VendasProdutos venda) {
+            String nomeProduto = venda.getProduto() != null ? venda.getProduto().getNome() : "Produto não informado";
+            String nomeBarbeiro = venda.getUsuario() != null ? venda.getUsuario().getNome() : "Barbeiro não informado";
+            
+            return new VendaProdutoResponse(
+                    venda.getId(),
+                    venda.getDataGasto(),
+                    venda.getPreco(),
+                    venda.getPagamento(),
+                    nomeProduto,
+                    nomeBarbeiro
+            );
+        }
+    }
+}

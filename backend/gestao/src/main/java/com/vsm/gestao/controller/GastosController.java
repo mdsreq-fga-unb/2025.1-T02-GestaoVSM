@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,7 +29,7 @@ public class GastosController {
 
     @GetMapping
     public ResponseEntity<List<GastoDTO.GastoResponse>> listarGastos(@AuthenticationPrincipal Usuario solicitante) {
-        List<GastoDTO.GastoResponse> gastos = gastosService.listarTodos(solicitante)
+        List<GastoDTO.GastoResponse> gastos = gastosService.listarGastos(solicitante)
                 .stream()
                 .map(GastoDTO.GastoResponse::fromEntity)
                 .collect(Collectors.toList());

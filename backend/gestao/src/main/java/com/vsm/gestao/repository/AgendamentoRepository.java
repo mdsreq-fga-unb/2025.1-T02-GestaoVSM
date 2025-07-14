@@ -11,12 +11,13 @@ import java.util.List;
 @Repository
 public interface AgendamentoRepository extends JpaRepository<Agendamento, Long> {
 
-
+    // --- QUERY FINAL E CORRIGIDA ---
+    // Esta versão usa a sintaxe nativa do PostgreSQL para garantir a compatibilidade.
     @Query(value = "SELECT * FROM agendamentos a WHERE a.id_usuario = :usuarioId " +
                    "AND a.data_agendamento < :novoFim " +
                    "AND (a.data_agendamento + CAST(a.duracao_minutos || ' minutes' AS interval)) > :novoInicio " +
                    "AND (:agendamentoIdExcluido IS NULL OR a.id <> :agendamentoIdExcluido)",
-           nativeQuery = true) // Usamos nativeQuery = true para garantir que a sintaxe do PostgreSQL seja usada.
+           nativeQuery = true) // nativeQuery = true é essencial aqui.
     List<Agendamento> findAgendamentosConflitantes(Long usuarioId, LocalDateTime novoInicio, LocalDateTime novoFim, Long agendamentoIdExcluido);
 
     // Métodos de busca por período

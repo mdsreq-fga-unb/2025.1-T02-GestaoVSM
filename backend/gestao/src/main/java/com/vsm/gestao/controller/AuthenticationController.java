@@ -25,20 +25,12 @@ public class AuthenticationController {
 
     @PostMapping("/login")
     public ResponseEntity<AuthResponseDTO> login(@RequestBody AuthRequestDTO request) {
-        // 1. Autenticar o usuário
-        // O AuthenticationManager chama nosso AuthenticationProvider, que usa o
-        // UserDetailsService e o PasswordEncoder para validar a senha.
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.login(), request.password())
         );
 
-        // 2. Se a autenticação for bem-sucedida, buscar os detalhes do usuário
         final UserDetails userDetails = userDetailsService.loadUserByUsername(request.login());
-        
-        // 3. Gerar o token JWT para este usuário
         final String token = jwtService.generateToken(userDetails);
-
-        // 4. Retornar o token na resposta
         return ResponseEntity.ok(new AuthResponseDTO(token));
     }
 }

@@ -3,24 +3,21 @@ package com.vsm.gestao.controller;
 import com.vsm.gestao.entity.FechamentoCaixa;
 import com.vsm.gestao.entity.Usuario;
 import com.vsm.gestao.service.FechamentoCaixaService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api/fechamentos-caixa")
+@RequiredArgsConstructor
 public class FechamentoCaixaController {
 
     private final FechamentoCaixaService fechamentoCaixaService;
-
-    public FechamentoCaixaController(FechamentoCaixaService fechamentoCaixaService) {
-        this.fechamentoCaixaService = fechamentoCaixaService;
-    }
 
     @PostMapping("/gerar-semanal")
     public ResponseEntity<FechamentoCaixa> gerarFechamentoSemanal(@AuthenticationPrincipal Usuario responsavel) {

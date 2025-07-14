@@ -31,17 +31,10 @@ public class ApplicationConfig {
     }
 
     @Bean
-    @SuppressWarnings("deprecation") 
-    public AuthenticationProvider authenticationProvider(
-            UserDetailsService userDetailsService,
-            PasswordEncoder passwordEncoder
-    ) {
-        // Usamos o construtor que aceita o PasswordEncoder
+    @SuppressWarnings("deprecation")
+    public AuthenticationProvider authenticationProvider(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(passwordEncoder);
-        
-        // E configuramos o UserDetailsService. Esta linha ainda mostra o aviso.
         authProvider.setUserDetailsService(userDetailsService);
-        
         return authProvider;
     }
 

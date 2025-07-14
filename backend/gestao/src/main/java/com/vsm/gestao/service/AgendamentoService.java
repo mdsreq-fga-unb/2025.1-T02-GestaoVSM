@@ -27,29 +27,19 @@ public class AgendamentoService {
     private final UsuarioRepository usuarioRepository;
     private final ServicoRepository servicoRepository;
 
-    /**
-     * Cria um novo agendamento a partir de um DTO.
-     * Valida permissões e disponibilidade de horário.
-     */
     @Transactional
     public Agendamento criarAgendamento(AgendamentoDTO dto, Usuario solicitante) {
         Usuario barbeiroAgendado = getBarbeiroFromDto(dto.barbeiroId());
         validarPermissao(solicitante, barbeiroAgendado);
-
         List<Servico> servicos = getServicosFromDto(dto.servicoIds());
 
         Agendamento novoAgendamento = new Agendamento();
         mapearDtoParaEntidade(dto, novoAgendamento, barbeiroAgendado, servicos);
-        
         validarDisponibilidade(novoAgendamento, null);
 
         return agendamentoRepository.save(novoAgendamento);
     }
 
-    /**
-     * Lista agendamentos. Se o solicitante for ADMIN, pode filtrar por barbeiro.
-     * Se for BARBEIRO, vê apenas os seus próprios agendamentos para o dia.
-     */
     public List<Agendamento> listarAgendamentos(LocalDate dia, Optional<Long> barbeiroId, Usuario solicitante) {
         LocalDateTime inicioDoDia = dia.atStartOfDay();
         LocalDateTime fimDoDia = dia.atTime(LocalTime.MAX);
@@ -63,60 +53,40 @@ public class AgendamentoService {
         return Collections.emptyList();
     }
 
-    /**
-     * Busca um agendamento por ID, validando a permissão do solicitante.
-     */
     public Optional<Agendamento> buscarPorId(Long id, Usuario solicitante) {
         return agendamentoRepository.findById(id)
                 .filter(agendamento -> temPermissaoParaAcessar(solicitante, agendamento.getUsuario()));
     }
 
-    /**
-     * Atualiza um agendamento existente.
-     * Revalida permissões e disponibilidade de horário.
-     */
     @Transactional
     public Agendamento atualizarAgendamento(Long id, AgendamentoDTO dto, Usuario solicitante) {
         Agendamento agendamentoExistente = agendamentoRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Agendamento com ID " + id + " não encontrado."));
-
         validarPermissao(solicitante, agendamentoExistente.getUsuario());
 
         Usuario barbeiroAgendado = getBarbeiroFromDto(dto.barbeiroId());
         List<Servico> servicos = getServicosFromDto(dto.servicoIds());
 
         mapearDtoParaEntidade(dto, agendamentoExistente, barbeiroAgendado, servicos);
-        
-        // Ao validar disponibilidade, ignoramos o próprio agendamento que está sendo atualizado.
         validarDisponibilidade(agendamentoExistente, id);
 
         return agendamentoRepository.save(agendamentoExistente);
     }
 
-    /**
-     * Apaga um agendamento, validando a permissão do solicitante.
-     */
     @Transactional
     public void apagarAgendamento(Long id, Usuario solicitante) {
         Agendamento agendamento = agendamentoRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Agendamento com ID " + id + " não encontrado."));
-        
         validarPermissao(solicitante, agendamento.getUsuario());
-
         agendamentoRepository.deleteById(id);
     }
-
-    // --- Métodos de Apoio ---
 
     private void mapearDtoParaEntidade(AgendamentoDTO dto, Agendamento agendamento, Usuario barbeiro, List<Servico> servicos) {
         agendamento.setUsuario(barbeiro);
         agendamento.setNomeCliente(dto.nomeCliente());
         agendamento.setServicos(servicos);
         agendamento.setDataAgendamento(dto.dataAgendamento());
-        
-        int duracaoTotalMinutos = servicos.stream()
-                .mapToInt(Servico::getDuracaoEstimadaMinutos)
-                .sum();
+        int duracaoTotalMinutos = servicos.stream().mapToInt(Servico::getDuracaoEstimadaMinutos).sum();
         agendamento.setDuracaoMinutos(duracaoTotalMinutos);
     }
 
@@ -125,7 +95,6 @@ public class AgendamentoService {
         LocalDateTime fim = inicio.plusMinutes(agendamento.getDuracaoMinutos());
         List<Agendamento> conflitos = agendamentoRepository.findAgendamentosConflitantes(
                 agendamento.getUsuario().getId(), inicio, fim, idExcluido);
-        
         if (!conflitos.isEmpty()) {
             throw new IllegalStateException("O barbeiro já possui um agendamento neste horário.");
         }

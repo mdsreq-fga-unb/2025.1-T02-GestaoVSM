@@ -3,6 +3,7 @@ package com.vsm.gestao.config;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -24,19 +25,26 @@ public class SecurityConfig {
         http
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(authorize -> authorize
-                // Endpoints públicos
-                .requestMatchers("/api/auth/**", "/error").permitAll() // <-- ADICIONEI "/error" AQUI
+                // --- Endpoints Públicos ---
+                .requestMatchers("/api/auth/**", "/error").permitAll()
 
-                // Regras para ADMIN
-                .requestMatchers("/api/usuarios/**").hasAuthority("ADMIN")
-                .requestMatchers("/api/vendas-produtos").hasAnyAuthority("ADMIN", "BARBEIRO")
+                // --- Regras para Visualização (GET) ---
+                .requestMatchers(HttpMethod.GET, "/api/servicos/**", "/api/produtos/**").authenticated()
+
+                // --- Regras para Barbeiros e Admins ---
                 .requestMatchers("/api/agendamentos/**").hasAnyAuthority("ADMIN", "BARBEIRO")
-                .requestMatchers("/api/fechamentos-caixa").hasAuthority("ADMIN")
-                .requestMatchers("/api/servicos-realizados").hasAnyAuthority("ADMIN", "BARBEIRO'")
-                .requestMatchers("/api/servicos/**").hasAuthority("ADMIN")
-                .requestMatchers("/api/produtos/**").hasAuthority("ADMIN")
-                .requestMatchers("/api/gastos/**").hasAuthority("ADMIN")
-                
+                .requestMatchers("/api/servicos-realizados/**").hasAnyAuthority("ADMIN", "BARBEIRO")
+                .requestMatchers(HttpMethod.POST, "/api/vendas-produtos").hasAnyAuthority("ADMIN", "BARBEIRO")
+
+                // --- Regras Apenas para ADMIN ---
+                .requestMatchers("/api/usuarios/**").hasAuthority("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/api/produtos/**", "/api/servicos/**").hasAuthority("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/api/produtos/**", "/api/servicos/**").hasAuthority("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/api/produtos/**", "/api/servicos/**").hasAuthority("ADMIN")
+                .requestMatchers("/api/gastos/**").hasAuthority("ADMIN") // Gasto agora é só admin
+                .requestMatchers("/api/fechamentos-caixa/**").hasAuthority("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/api/vendas-produtos").hasAuthority("ADMIN")
+
                 // Qualquer outra requisição precisa ser autenticada
                 .anyRequest().authenticated()
             )
