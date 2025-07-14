@@ -4,6 +4,7 @@ import {
   Chip,
   Avatar,
   Fab,
+  Box
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 
@@ -291,7 +292,7 @@ function AgendaPage({
           />
         ))
       ) : (
-        <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
+        <Typography variant="body2" color="text.secondary" sx={{ mt: 2, textAlign: 'center' }}>
           Nenhum agendamento encontrado.
         </Typography>
       )}
@@ -329,6 +330,8 @@ function AgendaPage({
         onServicesChange={setNewSelectedServices}
         availableTimes={availableTimes}
       />
+
+      <Box sx={{ height: (theme) => theme.spacing(8) }} />
 
       {/* Botão flutuante para abrir modal de novo agendamento */}
       <Fab

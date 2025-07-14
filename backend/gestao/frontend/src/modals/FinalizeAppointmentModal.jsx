@@ -6,20 +6,28 @@ import {
   DialogActions,
   Typography,
   Button,
+  Box,
+  IconButton,
 } from '@mui/material';
+
+import { XMarkIcon } from '@heroicons/react/24/outline';
 import DropdownSelect from '../components/DropdownSelect.jsx';
+import PrimaryActionButton from '../components/PrimaryActionButton.jsx';
 
 /**
  * Modal para finalizar um atendimento/agendamento.
- * Exibe os serviços concluídos com seus preços, o subtotal,
- * e permite selecionar a forma de pagamento antes da confirmação.
+ * 
+ * Este componente exibe uma lista dos serviços concluídos (done),
+ * calcula e mostra o subtotal dos serviços,
+ * permite que o usuário selecione a forma de pagamento,
+ * e confirma a finalização do atendimento.
  * 
  * Props:
- * - open: controla a visibilidade do modal
- * - appointment: objeto do agendamento atual (pode ser null)
- * - onCancel: callback para cancelar/fechar o modal
- * - onConfirm: callback para confirmar finalização do atendimento
- * - onPaymentChange: callback para atualizar a forma de pagamento selecionada
+ * - open (bool): controla a visibilidade do modal.
+ * - appointment (object|null): objeto do agendamento atual, pode ser null.
+ * - onCancel (func): callback para cancelar/fechar o modal.
+ * - onConfirm (func): callback para confirmar a finalização do atendimento.
+ * - onPaymentChange (func): callback para atualizar a forma de pagamento selecionada.
  */
 function FinalizeAppointmentModal({
   open,
@@ -28,62 +36,81 @@ function FinalizeAppointmentModal({
   onConfirm,
   onPaymentChange,
 }) {
-  // Se não houver agendamento, não renderiza o modal
+  // Se não houver agendamento (null), não renderiza nada
   if (!appointment) return null;
 
   // Filtra apenas os serviços marcados como concluídos
   const doneServices = appointment.services.filter((service) => service.done);
-
-  // Calcula subtotal somando o preço dos serviços concluídos
+  // Calcula o subtotal somando os preços dos serviços concluídos
   const subtotal = doneServices.reduce((acc, s) => acc + s.price, 0);
 
   return (
     <Dialog open={open} onClose={onCancel} maxWidth="sm" fullWidth>
+      {/* Botão para fechar modal no canto superior direito */}
+      <Box
+        sx={{
+          position: 'absolute',
+          right: 8,
+          top: 8,
+          zIndex: 1,
+        }}
+      >
+        <IconButton
+          onClick={onCancel}
+          aria-label="Fechar modal"
+          sx={{ color: 'var(--color-secondary)' }}
+        >
+          <XMarkIcon className="h-4 w-4" />
+        </IconButton>
+      </Box>
+
       {/* Título do modal */}
       <DialogTitle
         sx={{
           textAlign: 'center',
           fontWeight: 'bold',
           fontSize: '1.2rem',
+          pt: 4,
+          pb: 3,
         }}
       >
         Finalizar Atendimento
       </DialogTitle>
 
-      {/* Conteúdo do modal exibindo serviços e subtotal */}
+      {/* Conteúdo principal do modal */}
       <DialogContent sx={{ pt: 1, pb: 0 }}>
-        {/* Lista dos serviços finalizados com nome e preço */}
+        {/* Lista dos serviços concluídos com seus preços */}
         {doneServices.map((service) => (
-          <div
+          <Box
             key={service.id}
-            style={{
+            sx={{
               display: 'flex',
               justifyContent: 'space-between',
-              marginBottom: 6,
+              mb: 0.75,
             }}
           >
             <Typography>{service.name}</Typography>
             <Typography>R$ {service.price.toFixed(2)}</Typography>
-          </div>
+          </Box>
         ))}
 
-        {/* Exibe o subtotal dos serviços com destaque */}
-        <div
-          style={{
+        {/* Exibição do subtotal com estilo de separação */}
+        <Box
+          sx={{
             display: 'flex',
             justifyContent: 'space-between',
             fontWeight: 'bold',
             borderTop: '1px solid #e0e0e0',
-            paddingTop: 8,
-            marginTop: 8,
-            marginBottom: 16,
+            pt: 1,
+            mt: 1,
+            mb: 1,
           }}
         >
           <Typography sx={{ fontWeight: 'bold' }}>Subtotal:</Typography>
           <Typography sx={{ fontWeight: 'bold' }}>R$ {subtotal.toFixed(2)}</Typography>
-        </div>
+        </Box>
 
-        {/* Dropdown para selecionar a forma de pagamento */}
+        {/* Dropdown para seleção da forma de pagamento */}
         <DropdownSelect
           label="Forma de Pagamento"
           options={[
@@ -100,7 +127,7 @@ function FinalizeAppointmentModal({
         />
       </DialogContent>
 
-      {/* Ações do modal: cancelar ou confirmar finalização */}
+      {/* Botões de ação Cancelar e Confirmar */}
       <DialogActions
         sx={{
           display: 'flex',
@@ -110,7 +137,6 @@ function FinalizeAppointmentModal({
           pt: 1,
         }}
       >
-        {/* Botão para cancelar e fechar o modal */}
         <Button
           onClick={onCancel}
           sx={{
@@ -121,26 +147,13 @@ function FinalizeAppointmentModal({
           Cancelar
         </Button>
 
-        {/* Botão para confirmar finalização, desabilitado se forma de pagamento não selecionada */}
-        <Button
-          variant="contained"
+        <PrimaryActionButton
           onClick={onConfirm}
+          // Botão confirm só habilitado se forma de pagamento estiver selecionada
           disabled={!appointment.paymentMethod}
-          sx={{
-            textTransform: 'none',
-            borderRadius: 2,
-            bgcolor: 'var(--color-secondary)',
-            color: '#fff',
-            boxShadow: '0 1px 4px rgba(0,0,0,0.1)',
-            px: 4,
-            '&:hover': {
-              bgcolor: 'var(--color-primary)',
-              color: 'var(--color-secondary)',
-            },
-          }}
         >
           Confirmar
-        </Button>
+        </PrimaryActionButton>
       </DialogActions>
     </Dialog>
   );

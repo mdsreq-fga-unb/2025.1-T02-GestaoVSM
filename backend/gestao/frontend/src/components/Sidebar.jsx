@@ -29,12 +29,15 @@ import {
   ScissorsIcon as ScissorsSolid,
 } from '@heroicons/react/24/solid';
 
+import { useNavigate } from 'react-router-dom';
+
 /**
  * Componente Sidebar que exibe um menu lateral deslizante.
  * Contém itens navegáveis com ícones que mudam ao passar o mouse.
  * O menu pode ser aberto e fechado via botão de menu.
  */
 function Sidebar() {
+  const navigate = useNavigate();
   // Estado para controlar se o drawer está aberto ou fechado
   const [open, setOpen] = useState(false);
 
@@ -48,9 +51,9 @@ function Sidebar() {
 
   // Lista de itens do menu com seus ícones (outline e solid para hover)
   const menuItems = [
-    { label: 'Agenda', icon: CalendarOutline, hoverIcon: CalendarSolid },
+    { label: 'Agenda', icon: CalendarOutline, hoverIcon: CalendarSolid, path: '/' },
     { label: 'Registrar Gasto', icon: CurrencyOutline, hoverIcon: CurrencySolid },
-    { label: 'Fechar Caixa', icon: CreditCardOutline, hoverIcon: CreditCardSolid },
+    { label: 'Fechar Caixa', icon: CreditCardOutline, hoverIcon: CreditCardSolid, path: '/fechar-caixa' },
     { label: 'Produtos', icon: ShoppingBagOutline, hoverIcon: ShoppingBagSolid },
     { label: 'Serviços', icon: ScissorsOutline, hoverIcon: ScissorsSolid },
     { label: 'Funcionários', icon: UsersOutline, hoverIcon: UsersSolid },
@@ -111,7 +114,7 @@ function Sidebar() {
 
           {/* Lista de itens do menu, com troca do ícone quando hover */}
           <List>
-            {menuItems.map(({ label, icon: Icon, hoverIcon: HoverIcon }) => (
+            {menuItems.map(({ label, icon: Icon, hoverIcon: HoverIcon, path }) => (
               <ListItem key={label} disablePadding>
                 <ListItemButton
                   sx={{
@@ -121,7 +124,7 @@ function Sidebar() {
                   onMouseEnter={() => setHovered(label)} // Marca item como hovered
                   onMouseLeave={() => setHovered(null)}  // Remove hover ao sair
                   onClick={() => {
-                    console.log(`Navegar para: ${label}`); // Exemplo de ação ao clicar
+                    navigate(path);
                     setOpen(false); // Fecha o menu ao clicar
                   }}
                 >

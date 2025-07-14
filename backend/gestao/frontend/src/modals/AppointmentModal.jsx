@@ -13,30 +13,35 @@ import {
   Box,
   MenuItem,
   Select,
+  IconButton,
 } from '@mui/material';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 
 import DropdownSelect from '../components/DropdownSelect.jsx';
+import PrimaryActionButton from '../components/PrimaryActionButton.jsx';
 
 /**
- * Modal para criação ou edição de um agendamento.
- * Exibe campos para nome do cliente, horário, barbeiro e serviços selecionados.
- * Calcula duração total e subtotal dos serviços escolhidos.
+ * Componente AppointmentModal
+ * 
+ * Modal para criação de um novo agendamento.
+ * Permite preencher nome do cliente, horário, barbeiro e selecionar serviços.
+ * Calcula o tempo estimado e subtotal conforme os serviços selecionados.
  * 
  * Props:
- * - open: controla visibilidade do modal
- * - onClose: callback para fechar o modal
- * - onSave: callback para salvar o agendamento
- * - clientName: nome do cliente
- * - onClientNameChange: callback para atualizar nome do cliente
- * - time: horário selecionado
- * - onTimeChange: callback para atualizar horário
- * - barberId: id do barbeiro selecionado
- * - onBarberChange: callback para atualizar barbeiro
- * - barbers: lista de barbeiros disponíveis [{id, name}]
- * - services: lista de serviços disponíveis [{id, name, duration, price}]
- * - selectedServices: array de ids dos serviços selecionados
- * - onServicesChange: callback para atualizar serviços selecionados
- * - availableTimes: lista de horários disponíveis (strings)
+ * - open (bool): controla a visibilidade do modal
+ * - onClose (func): callback para fechar o modal
+ * - onSave (func): callback para salvar o agendamento
+ * - clientName (string): nome do cliente preenchido
+ * - onClientNameChange (func): callback ao alterar o nome do cliente
+ * - time (string): horário selecionado
+ * - onTimeChange (func): callback ao alterar o horário
+ * - barberId (number|string): id do barbeiro selecionado
+ * - onBarberChange (func): callback ao alterar barbeiro
+ * - barbers (array): lista de barbeiros disponíveis { id, name }
+ * - services (array): lista de serviços disponíveis { id, name, price, duration }
+ * - selectedServices (array): ids dos serviços selecionados
+ * - onServicesChange (func): callback ao alterar seleção de serviços
+ * - availableTimes (array): horários disponíveis para agendamento (strings)
  */
 function AppointmentModal({
   open,
@@ -54,38 +59,30 @@ function AppointmentModal({
   onServicesChange,
   availableTimes,
 }) {
-  // Filtra objetos dos serviços selecionados para cálculo de duração e subtotal
+  // Obtém objetos completos dos serviços selecionados para cálculos
   const selectedServiceObjects = services.filter((s) =>
     selectedServices.includes(s.id)
   );
 
-  // Soma da duração total dos serviços selecionados (minutos)
+  // Soma total da duração dos serviços selecionados
   const totalDuration = selectedServiceObjects.reduce(
     (acc, s) => acc + (s.duration || 0),
     0
   );
 
-  // Soma do preço total dos serviços selecionados
+  // Soma total do preço dos serviços selecionados (subtotal)
   const subtotal = selectedServiceObjects.reduce(
     (acc, s) => acc + (s.price || 0),
     0
   );
 
-  // Manipulador de mudança do barbeiro (converte valor para número)
-  const handleBarberChange = (e) => {
-    onBarberChange(Number(e.target.value));
-  };
-
-  // Manipulador de mudança do horário
-  const handleTimeChange = (e) => {
-    onTimeChange(e.target.value);
-  };
-
-  // Manipulador de mudança dos serviços selecionados,
-  // converte valores para números e chama callback
+  // Funções internas para lidar com mudanças nos inputs, convertendo os valores quando necessário
+  const handleBarberChange = (e) => onBarberChange(Number(e.target.value));
+  const handleTimeChange = (e) => onTimeChange(e.target.value);
   const handleServicesChange = (e) => {
+    // No select múltiplo, os valores vêm como array de strings, convertemos para números
     const values = Array.isArray(e.target.value)
-      ? e.target.value.map((v) => Number(v))
+      ? e.target.value.map(Number)
       : [];
     onServicesChange(values);
   };
@@ -117,20 +114,33 @@ function AppointmentModal({
         },
       }}
     >
+      {/* Botão para fechar o modal no canto superior direito */}
+      <Box sx={{ position: 'absolute', right: 8, top: 8, zIndex: 1 }}>
+        <IconButton
+          onClick={onClose}
+          aria-label="Fechar modal"
+          sx={{ color: 'var(--color-secondary)' }}
+        >
+          <XMarkIcon className="h-4 w-4" />
+        </IconButton>
+      </Box>
+
       {/* Título do modal */}
       <DialogTitle
         sx={{
           textAlign: 'center',
           fontWeight: 'bold',
           fontSize: '1.2rem',
+          pt: 4,
+          pb: 3,
         }}
       >
         Novo Agendamento
       </DialogTitle>
 
-      {/* Conteúdo do modal com campos de entrada */}
+      {/* Conteúdo do modal: inputs para dados do agendamento */}
       <DialogContent sx={{ pt: 1, pb: 0, flexGrow: 1, overflowY: 'auto' }}>
-        {/* Campo para nome do cliente */}
+        {/* Input para nome do cliente */}
         <TextField
           placeholder="Nome do cliente"
           value={clientName}
@@ -138,6 +148,7 @@ function AppointmentModal({
           fullWidth
           size="medium"
           variant="outlined"
+          slotProps={{ htmlInput: { maxLength: 20 } }}
           sx={{
             mb: 2,
             boxShadow: '0 1px 4px rgba(0,0,0,0.1)',
@@ -156,20 +167,18 @@ function AppointmentModal({
         />
 
         {/* Dropdown para seleção do horário */}
-        <Box>
-          <DropdownSelect
-            label="Horário"
-            options={availableTimes.map((t) => ({ value: t, label: t }))}
-            value={time}
-            onChange={handleTimeChange}
-            placeholder="Selecione o horário"
-            size="medium"
-            fullWidth
-          />
-        </Box>
+        <DropdownSelect
+          label="Horário"
+          options={availableTimes.map((t) => ({ value: t, label: t }))}
+          value={time}
+          onChange={handleTimeChange}
+          placeholder="Selecione o horário"
+          size="medium"
+          fullWidth
+        />
 
         {/* Dropdown para seleção do barbeiro */}
-        <Box>
+        <Box mt={1}>
           <DropdownSelect
             label="Barbeiro"
             options={barbers.map((b) => ({ value: b.id, label: b.name }))}
@@ -206,96 +215,50 @@ function AppointmentModal({
               backgroundColor: 'white',
               px: 1,
               py: 0.5,
-              cursor: 'pointer',
               border: 'none',
               '& .MuiOutlinedInput-notchedOutline': {
                 borderColor: 'transparent',
               },
-              '&:hover .MuiOutlinedInput-notchedOutline': {
-                borderColor: 'transparent',
-              },
-              '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                borderColor: 'transparent',
-              },
             }}
           >
-            {/* Lista de serviços com checkbox para múltipla seleção */}
             {services.map((service) => (
               <MenuItem key={service.id} value={service.id}>
-                <Checkbox checked={selectedServices.indexOf(service.id) > -1} />
+                <Checkbox checked={selectedServices.includes(service.id)} />
                 <ListItemText primary={service.name} />
               </MenuItem>
             ))}
           </Select>
         </Box>
 
-        {/* Exibe tempo total estimado dos serviços */}
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            mb: 1,
-            mt: 5,
-          }}
-        >
+        {/* Exibição do tempo estimado da soma dos serviços selecionados */}
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1, mt: 5 }}>
           <Typography>Tempo estimado:</Typography>
           <Typography>{totalDuration} min</Typography>
         </Box>
 
-        {/* Exibe subtotal dos serviços selecionados */}
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            mb: 2,
-          }}
-        >
+        {/* Exibição do subtotal dos serviços selecionados */}
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
           <Typography sx={{ fontWeight: 'bold' }}>Subtotal:</Typography>
           <Typography sx={{ fontWeight: 'bold' }}>R$ {subtotal.toFixed(2)}</Typography>
         </Box>
       </DialogContent>
 
-      {/* Ações do modal: cancelar e salvar */}
-      <DialogActions
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          px: 3,
-          pb: 2,
-          pt: 1,
-        }}
-      >
-        {/* Botão cancelar */}
+      {/* Ações do modal: Cancelar e Salvar */}
+      <DialogActions sx={{ display: 'flex', justifyContent: 'space-between', px: 3, pb: 2, pt: 1 }}>
         <Button
           onClick={onClose}
-          sx={{
-            textTransform: 'none',
-            color: 'var(--color-secondary)',
-          }}
+          sx={{ textTransform: 'none', color: 'var(--color-secondary)' }}
         >
           Cancelar
         </Button>
 
-        {/* Botão salvar, desabilitado se campos obrigatórios estiverem vazios */}
-        <Button
-          variant="contained"
+        <PrimaryActionButton
           onClick={onSave}
-          sx={{
-            textTransform: 'none',
-            borderRadius: 2,
-            bgcolor: 'var(--color-secondary)',
-            color: '#fff',
-            boxShadow: '0 1px 4px rgba(0,0,0,0.1)',
-            px: 4,
-            '&:hover': {
-              bgcolor: 'var(--color-primary)',
-              color: 'var(--color-secondary)',
-            },
-          }}
+          // Habilita botão Salvar apenas se todos os campos obrigatórios estiverem preenchidos
           disabled={!clientName || !time || !barberId || selectedServices.length === 0}
         >
           Salvar
-        </Button>
+        </PrimaryActionButton>
       </DialogActions>
     </Dialog>
   );
