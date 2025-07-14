@@ -1,5 +1,6 @@
 # Estágio 1: Build da Aplicação (com Java, Maven e Node.js)
-FROM maven:3.9.6-eclipse-temurin-17 AS build
+# ATUALIZADO para usar uma imagem com Java 21
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
 
 # --- INÍCIO DA SEÇÃO NOVA ---
@@ -21,7 +22,8 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 # Estágio 2: Execução da Aplicação (continua o mesmo)
-FROM eclipse-temurin:17-jre-jammy
+# ATUALIZADO para usar uma imagem com Java 21
+FROM eclipse-temurin:21-jre-jammy
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
