@@ -63,7 +63,7 @@ function LoginPage() {
         </Typography>
 
         <TextField
-          label="Usuário"
+          placeholder="Usuário"
           variant="outlined"
           fullWidth
           value={usuario}
@@ -76,7 +76,7 @@ function LoginPage() {
         />
 
         <TextField
-          label="Senha"
+          placeholder="Senha"
           variant="outlined"
           type="password"
           fullWidth
@@ -109,6 +109,27 @@ function LoginPage() {
         >
           Login
         </Button>
+
+        <Typography
+          variant="body2"
+          sx={{
+            textAlign: 'center',
+            mt: 2,
+            color: 'var(--color-secondary)',
+          }}
+        >
+          Esqueceu a senha?{" "}
+          <span
+            onClick={() => {}}
+            style={{
+              textDecoration: 'underline',
+              cursor: 'pointer',
+              fontWeight: 500,
+            }}
+          >
+            Recupere aqui
+          </span>
+        </Typography>
       </Box>
 
       <Snackbar
