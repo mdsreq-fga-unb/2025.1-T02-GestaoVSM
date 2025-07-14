@@ -70,15 +70,15 @@ function CloseTillPage({ employees = [] }) {
             sx={{
                 backgroundColor: 'var(--color-primary)',
                 color: 'var(--color-secondary)',
-                pb: '96px', // espaço extra para o footer fixo
+                pb: '96px', 
                 position: 'relative',
             }}
         >
             {/* Botão para voltar à página anterior */}
-            <Box sx={{ position: 'fixed', left: 8, top: 8, zIndex: 100, backgroundColor: 'white', width: '100vw' }}>
+            <Box sx={{ position: 'fixed', left: 8, top: 16, zIndex: 100, backgroundColor: 'white', width: '100vw' }}>
                 <IconButton
                     aria-label="Voltar para agenda"
-                    onClick={() => navigate(-1)}
+                    onClick={() => navigate('/')} 
                     sx={{ color: 'var(--color-secondary)' }}
                 >
                     <ChevronLeftIcon className="h-5 w-5" />
@@ -112,7 +112,6 @@ function CloseTillPage({ employees = [] }) {
             >
                 <Tab label="Semana atual" sx={{ fontSize: '0.9rem', textTransform: 'none' }} />
                 <Tab label="Mês atual" sx={{ fontSize: '0.9rem', textTransform: 'none' }} />
-                {/*<Tab label="Personalizado" sx={{ fontSize: '0.9rem', textTransform: 'none' }} />*/}
             </Tabs>
 
             {/* Componente que exibe resumo financeiro total */}
