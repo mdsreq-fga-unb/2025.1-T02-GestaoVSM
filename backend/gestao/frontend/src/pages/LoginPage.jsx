@@ -1,153 +1,154 @@
 import React, { useState } from "react";
+import {
+  Box,
+  Typography,
+  TextField,
+  Button,
+  Snackbar,
+  Alert,
+} from "@mui/material";
+import { ScissorsIcon } from '@heroicons/react/24/outline';
+import { useNavigate } from 'react-router-dom'; 
 
-const LoginPage = () => {
+function LoginPage() {
   const [usuario, setUsuario] = useState("");
   const [senha, setSenha] = useState("");
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const navigate = useNavigate(); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aqui você pode adicionar a lógica de autenticação
-    alert(`Usuário: ${usuario}\nSenha: ${senha}`);
+
+    // Simula login e exibe Snackbar
+    setSnackbarOpen(true);
+
+    // Espera 2.5 segundos e navega para /agenda
+    setTimeout(() => {
+      navigate('/agenda');
+    }, 2500); // tempo igual ao autoHideDuration
+  };
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
   };
 
   return (
-    <div style={{
-      minHeight: "100vh",
-      width: "100vw",
-      background: "#fff",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      fontFamily: "Poppins, sans-serif",
-    }}>
-      <div style={{
-        width: 324,
-        minHeight: 641,
-        background: "#fff",
-        borderRadius: 10,
-        border: "0.5px solid #878787",
-        boxShadow: "0px 4px 64px rgba(0, 0, 0, 0.05)",
-        padding: 0,
-        position: "relative",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-      }}>
-        <div style={{
-          color: "#000",
-          fontSize: 19,
-          fontWeight: 300,
-          marginBottom: 8,
-          fontFamily: "Poppins, sans-serif",
-          textAlign: "center",
-          width: "100%"
-        }}>
-          Sistema de Gestão
-        </div>
-        <div style={{
-          color: "#000",
-          fontSize: 16,
-          fontWeight: 400,
-          marginBottom: 24,
-          fontFamily: "Poppins, sans-serif",
-          textAlign: "center",
-          width: "100%"
-        }}>
-          BARBEARIA VSM
-        </div>
-        {/* Campo Usuário */}
-        <form onSubmit={handleSubmit} style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
-          <div style={{ width: "100%", marginBottom: 24, display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <div style={{ color: "#000", fontSize: 16, fontWeight: 400, marginBottom: 8, textAlign: "left", width: 278.84 }}>Usuário</div>
-            <input
-              type="text"
-              placeholder="Digite seu usuário"
-              value={usuario}
-              onChange={(e) => setUsuario(e.target.value)}
-              required
-              style={{
-                width: 278.84,
-                height: 59,
-                borderRadius: 6,
-                border: "0.6px solid #282828",
-                background: "#fff",
-                color: "#000",
-                fontSize: 16,
-                fontFamily: "Poppins, sans-serif",
-                paddingLeft: 18,
-                outline: "none",
-                fontWeight: 300,
-                boxSizing: "border-box",
-                textAlign: "left"
-              }}
-            />
-          </div>
-          {/* Campo Senha */}
-          <div style={{ width: "100%", marginBottom: 14, display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <div style={{ color: "#000", fontSize: 16, fontWeight: 400, marginBottom: 8, textAlign: "left", width: 278.84 }}>Senha</div>
-            <input
-              type="password"
-              placeholder="Digite sua senha"
-              value={senha}
-              onChange={(e) => setSenha(e.target.value)}
-              required
-              style={{
-                width: 278.84,
-                height: 59,
-                borderRadius: 6,
-                border: "0.6px solid #282828",
-                background: "#fff",
-                color: "#000",
-                fontSize: 16,
-                fontFamily: "Poppins, sans-serif",
-                paddingLeft: 18,
-                outline: "none",
-                fontWeight: 300,
-                boxSizing: "border-box",
-                textAlign: "left"
-              }}
-            />
-          </div>
-          <div style={{ width: "100%", color: "#4D4D4D", fontSize: 12, fontWeight: 300, cursor: "pointer", marginBottom: 28, textAlign: "center" }}>
-            Esqueceu a senha?
-          </div>
-          {/* Botão Login */}
-          <button
-            type="submit"
+    <>
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        sx={{
+          backgroundColor: 'var(--color-primary)',
+          color: 'var(--color-secondary)',
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          px: 4,
+          gap: 3,
+        }}
+      >
+        <ScissorsIcon className="h-8 w-8 mx-auto text-[var(--color-secondary)]" />
+
+        <Typography
+          variant="h6"
+          sx={{
+            fontWeight: 'bold',
+            fontSize: '1.5rem',
+            textAlign: 'center',
+            mb: 8,
+          }}
+        >
+          Gestão VSM
+        </Typography>
+
+        <TextField
+          placeholder="Usuário"
+          variant="outlined"
+          fullWidth
+          value={usuario}
+          onChange={(e) => setUsuario(e.target.value)}
+          inputProps={{ maxLength: 30 }}
+          sx={{
+            backgroundColor: 'white',
+            borderRadius: 2,
+          }}
+        />
+
+        <TextField
+          placeholder="Senha"
+          variant="outlined"
+          type="password"
+          fullWidth
+          value={senha}
+          onChange={(e) => setSenha(e.target.value)}
+          inputProps={{ maxLength: 30 }}
+          sx={{
+            backgroundColor: 'white',
+            borderRadius: 2,
+          }}
+        />
+
+        <Button
+          type="submit"
+          variant="contained"
+          fullWidth
+          sx={{
+            backgroundColor: 'var(--color-secondary)',
+            color: '#fff',
+            fontWeight: 500,
+            textTransform: 'none',
+            borderRadius: 2,
+            height: 48,
+            marginTop: 4,
+            '&:hover': {
+              backgroundColor: 'var(--color-primary)',
+              color: 'var(--color-secondary)',
+            },
+          }}
+        >
+          Login
+        </Button>
+
+        <Typography
+          variant="body2"
+          sx={{
+            textAlign: 'center',
+            mt: 2,
+            color: 'var(--color-secondary)',
+          }}
+        >
+          Esqueceu a senha?{" "}
+          <span
+            onClick={() => {}}
             style={{
-              width: 278.84,
-              height: 57,
-              background: "#000",
-              color: "#fff",
-              border: "none",
-              borderRadius: 6,
-              fontSize: 16,
+              textDecoration: 'underline',
+              cursor: 'pointer',
               fontWeight: 500,
-              fontFamily: "Poppins, sans-serif",
-              cursor: "pointer",
-              letterSpacing: 1,
-              transition: "background 0.2s, color 0.2s",
-              marginBottom: 24,
             }}
           >
-            Login
-          </button>
-        </form>
-        <div style={{
-          color: "#7D7D7D",
-          fontSize: 12,
-          fontWeight: 700,
-          fontFamily: "Poppins, sans-serif",
-          cursor: "pointer",
-          textAlign: "center",
-          width: "100%"
-        }}>
-          REALIZAR CADASTRO
-        </div>
-      </div>
-    </div>
-  );
-};
+            Recupere aqui
+          </span>
+        </Typography>
+      </Box>
 
-export default LoginPage; 
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={1000}
+        onClose={handleSnackbarClose}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        <Alert
+          onClose={handleSnackbarClose}
+          severity="success"
+          sx={{ width: '70%' }}
+          icon={false}
+        >
+          Login realizado com sucesso!
+        </Alert>
+      </Snackbar>
+    </>
+  );
+}
+
+export default LoginPage;

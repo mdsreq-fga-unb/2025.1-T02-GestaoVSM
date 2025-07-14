@@ -26,58 +26,48 @@ function DropdownSelect({
   size = 'small',
   fullWidth = true,
 }) {
-  /**
-   * Retorna o label da opção baseado no valor selecionado.
-   * Caso não encontre a opção correspondente, retorna o próprio valor.
-   */
   const getLabelByValue = (val) => {
     const option = options.find((o) => o.value === val);
     return option ? option.label : val;
   };
 
   return (
-    <FormControl
-      fullWidth={fullWidth}
-      size={size}
-      sx={{
-        mt: 2,
-        mb: 2,
-        boxShadow: '0 1px 4px rgba(0,0,0,0.1)',
-        borderRadius: 2,
-        '& .MuiOutlinedInput-root': {
-          '& fieldset': { borderColor: 'transparent' },
-          '&:hover fieldset': { borderColor: 'transparent' },
-          '&.Mui-focused fieldset': { borderColor: 'transparent' },
-          backgroundColor: 'white',
-        },
-      }}
-    >
+    <FormControl fullWidth={fullWidth} size={size} variant="outlined" sx={{ mt: 2, mb: 2 }}>
       <Select
         value={value}
         onChange={onChange}
         displayEmpty
         renderValue={(selected) => {
-          // Exibe o placeholder estilizado quando nada está selecionado
           if (!selected) {
             return <em style={{ color: '#9e9e9e' }}>{placeholder}</em>;
           }
-          // Se a função renderValue foi passada, usa ela para renderizar
-          // Senão, usa o label da opção pelo valor selecionado
           return renderValue ? renderValue(selected) : getLabelByValue(selected);
         }}
         inputProps={{ 'aria-label': label }}
         sx={{
           backgroundColor: 'white',
+          borderRadius: 2,
+          boxShadow: 'none',
+          '& fieldset': {
+            borderColor: 'rgba(0, 0, 0, 0.23)',
+            borderRadius: 1,
+          },
+          '&:hover fieldset': {
+            borderColor: 'rgba(0, 0, 0, 0.87)',
+          },
+          '&.Mui-focused fieldset': {
+            borderColor: 'var(--color-secondary)', // mesma cor do foco no LoginPage
+            borderWidth: 2,
+          },
+          // Cursor e texto
           cursor: 'pointer',
-          border: 'none',
+          color: 'rgba(0, 0, 0, 0.87)',
         }}
       >
-        {/* Item padrão que representa a ausência de seleção */}
         <MenuItem value="">
           <em>{placeholder}</em>
         </MenuItem>
 
-        {/* Lista de opções mapeadas para MenuItems */}
         {options.map((option) => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}
