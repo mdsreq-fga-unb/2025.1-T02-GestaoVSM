@@ -53,7 +53,7 @@ function Sidebar() {
 
   // Lista de itens do menu com seus ícones (outline e solid para hover)
   const menuItems = [
-    { label: 'Agenda', icon: CalendarOutline, hoverIcon: CalendarSolid, path: '/' },
+    { label: 'Agenda', icon: CalendarOutline, hoverIcon: CalendarSolid, path: '/agenda' },
     { label: 'Painel', icon: RectangleGroupOutline, hoverIcon: RectangleGroupSolid, path: '/painel' },
     { label: 'Registrar Gasto', icon: CurrencyOutline, hoverIcon: CurrencySolid },
     { label: 'Fechar Caixa', icon: CreditCardOutline, hoverIcon: CreditCardSolid, path: '/fechar-caixa' },

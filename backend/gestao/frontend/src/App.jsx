@@ -12,9 +12,9 @@ function App() {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<AgendaPage />} />
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/agenda" element={<AgendaPage />} />
           <Route path="/fechar-caixa" element={<CloseTillPage />} />
-          <Route path="/login" element={<LoginPage />} />
           <Route path="/painel" element={<PanelPage />} />
         </Routes>
       </BrowserRouter>

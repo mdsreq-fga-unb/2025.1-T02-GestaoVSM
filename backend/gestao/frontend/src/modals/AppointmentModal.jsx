@@ -142,27 +142,16 @@ function AppointmentModal({
       <DialogContent sx={{ pt: 1, pb: 0, flexGrow: 1, overflowY: 'auto' }}>
         {/* Input para nome do cliente */}
         <TextField
-          placeholder="Nome do cliente"
+          label="Nome do cliente"
+          variant="outlined"
           value={clientName}
           onChange={(e) => onClientNameChange(e.target.value)}
           fullWidth
           size="medium"
-          variant="outlined"
           slotProps={{ htmlInput: { maxLength: 20 } }}
           sx={{
-            mb: 2,
-            boxShadow: '0 1px 4px rgba(0,0,0,0.1)',
-            borderRadius: 2,
             backgroundColor: 'white',
-            '& .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'transparent',
-            },
-            '&:hover .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'transparent',
-            },
-            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'transparent',
-            },
+            borderRadius: 1,
           }}
         />
 
