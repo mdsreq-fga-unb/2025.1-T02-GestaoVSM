@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import AgendaPage from './pages/AgendaPage.jsx';
 import CloseTillPage from './pages/CloseTillPage.jsx';
-import PanelPage from './pages/PanelPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
+import PanelPage from './pages/PanelPage.jsx';
 //import AgendaMock from './pages/AgendaMock.jsx';
 import { ThemeProvider } from '@emotion/react';
 import theme from './theme.js'; 
