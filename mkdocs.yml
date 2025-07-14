@@ -5,6 +5,7 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.superfences
+  - attr_list
 theme:
   name: material
   features:
