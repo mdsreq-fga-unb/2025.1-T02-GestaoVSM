@@ -35,9 +35,8 @@ export const getFinancialReport = async (tipo) => {
 };
 
 export const getAppointmentsByDate = async (date, barberId = null) => {
-  const dateStr = date.toISOString().slice(0, 19);
+  const dateStr = date.toISOString().split('T')[0]; 
   let url = `${BASE_URL}/agendamentos?dia=${dateStr}`;
   if (barberId) url += `&barbeiroId=${barberId}`;
-
   return axios.get(url, createConfig());
-};
+}
