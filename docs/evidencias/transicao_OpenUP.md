@@ -9,9 +9,6 @@ Com o objetivo de validar o sistema em ambiente real, garantindo usabilidade e c
 ## Declaração
 
 ### Documentação de Escopo Entregue
----
-
-# Documentação de Escopo Entregue
 
 **Projeto:** Sistema de Gestão para Barbearia VSM  
 **Equipe:** Caio Sabino,Caio Melo, Felipe de Aquino, Felipe Henrique, Vinicius Fernandes e Weverton Rodrigues  
@@ -116,7 +113,7 @@ A equipe realizou múltiplas reuniões com o cliente para apresentar protótipos
 
 ### Registro de Requisitos Não Implementados
 
-Ao final do MVP, tiveram alguns requisitos que acabaram não sendo implementados, devido a fatores como: falta de tempo e risco de desenvolvimento. Isso fez com que 3 requisitos funcionais fossem descartados desse MVP, estes são:
+Ao final do MVP, tiveram alguns requisitos que acabaram não sendo implementados, devido a fatores como: falta de tempo e risco de desenvolvimento. Isso fez com que 4 requisitos funcionais fossem descartados desse MVP, estes são:
 
 - **RF03** - Registrar gasto operacional: Permitir o registro de gastos operacionais, informando categoria, valor, data e descrição, para que sejam considerados no cálculo financeiro da barbearia.
 
