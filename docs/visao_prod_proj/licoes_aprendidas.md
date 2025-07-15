@@ -62,6 +62,24 @@ propostas e as necessidades específicas de cada fase.
     - Dificuldade: Percebemos que, da forma como estávamos conduzindo o projeto no início, acabamos nos afastando da ideia de entregas incrementais. Nossa abordagem estava mais próxima de um modelo preditivo, o que dificultava ajustes e tornava o desenvolvimento mais engessado.
 
     - Lição Aprendida: Aprendemos a tornar o desenvolvimento mais incremental, estruturando nosso trabalho em entregas menores, contínuas e com valor agregado. Isso nos permitiu revisar o cronograma e adaptar nosso processo para uma abordagem mais flexível, que favorece ajustes e melhorias ao longo do caminho.
+  
+ ## 10.4 Unidade 4
+ 1. **Criação do diagrama da UML**
+    -  Dificuldade: Perceber que o diagrama inicial não estava alinhado aos padrões exigidos.
+
+    - Lições aprendidas: Refatoramos o diagrama UML para assegurar que ele atendesse completamente aos padrões estabelecidos.
+
+ 2. **Implantação da aplicação web**
+    -  Dificuldade: Escolher uma plataforma gratuita e de uso simples para realizar a implantação da aplicação.
+
+    - Lições aprendidas: É essencial planejar com antecedência a escolha da plataforma de implantação e conduzir uma avaliação minuciosa das opções disponíveis.
+   
+ 2. **Elaboração do Diagrama de Casos de Uso**
+    -  Dificuldade: Modelar de forma clara os casos de uso que são compartilhados entre múltiplos atores e, ao mesmo tempo, atribuir corretamente as funcionalidades específicas para cada perfil de usuário.
+
+    - Lições aprendidas: Aprofundar o estudo sobre a notação do diagrama de casos de uso para aplicar seus recursos de maneira eficiente. O objetivo é aprimorar a representação gráfica, proporcionando uma visão mais precisa e abrangente do comportamento funcional do sistema.
+ 
+ 
 
 ## Histórico de Versão
 
@@ -70,3 +88,4 @@ propostas e as necessidades específicas de cada fase.
 | 20/04/2025 | 1.3 | Inserção do Tópico 6.1 | [Caio Sabino](https://github.com/caiomsabino) |
 | 26/05/2025 | 2.0 | Lições Aprendidas Unidade 2| [Felipe Henrique](https://github.com/fhenrique77) |
 | 23/06/2025 | 3.0 | Lições Aprendidas Unidade 3| [Vinícius Rufino](https://github.com/RufinoVfR) |
+| 15/07/2025 | 4.0 | Lições Aprendidas Unidade 3| [Caio Melo](https://github.com/CaioMelo25) |
