@@ -458,8 +458,97 @@ A organização inicial dos requisitos para o projeto Gestão VSM está estrutur
 ## Verificação e Validação
 
 ### Revisão com o cliente
-<!-- adicionar algum registro -->
 
+Aqui estão presentes todas as atas de reuniões entre nossa equipe e o cliente que aconteceram durante o período do desenvolvimento do projeto:
+
+**ATA DE REUNIÃO**  
+**Data:** 09/04/2024  
+
+**Informações coletadas:**  
+- 7 anos no mercado  
+- Equipe: Valder + 5 barbeiros  
+- Serviços: cortes e produtos  
+
+**Problemas atuais:**  
+- Organização interna  
+- Comunicação com equipe  
+- Fechamento de caixa complicado  
+
+**Funcionalidades solicitadas:**  
+- Agendamento/remarcação  
+- Cadastro de clientes  
+- Gestão de comissões  
+- Controle de caixa  
+- Calendário compartilhado  
+
+**ATA DE REUNIÃO**  
+**Data:** 09/05/2024  
+
+**Processo atual:**  
+- Agendamentos por WhatsApp/celular  
+- Planilha manual com: nome do cliente, serviços feitos, forma de pagamento  
+
+<center><p>Figura 1 - Planilha de Serviços </p></center>
+
+[![Figura 1 - Planilha de Serviços](docs\evidencias\assets\tabela_de_registros.jpeg)](docs\evidencias\assets\tabela_de_registros.jpeg)
+
+**Requisitos:**  
+- Android e iOS  
+- Uso do domínio VSM  
+
+**Dores principais:**  
+- Atrasos quando lotado  
+- Folgas não organizadas  
+- Anotações manuais demoradas  
+
+**Comissões:**  
+- Produtos: R$5 ou R$10  
+- Bebidas: sem comissão  
+
+<center><p>Figura 2 - Tabela de Valores </p></center>
+
+[![Figura 2 - Tabela de Valores](docs\evidencias\assets\tabela_de_valores.jpeg)](docs\evidencias\assets\tabela_de_valores.jpeg)
+
+**ATA DE REUNIÃO**  
+**Data:** 24/05/2024  
+
+**Fechamento de caixa:**  
+- Dinheiro/PIX: valor cheio  
+- Cartão: desconta taxa (débito 1%, crédito 4%)  
+- Comissões: 60% barbearia / 40% barbeiro  
+- Descontos: consumo dos barbeiros  
+- Pagamento semanal  
+- Contas fixas: aluguel, luz, internet, impostos  
+
+**ATA DE REUNIÃO**  
+**Data:** 19/06/2024  
+
+**Equipe:** Valder, Elson, Ian, Moisés, Gabriel, Eliene, Marcos  
+
+**Preços dos serviços:**  
+- Corte: R$40  
+- Barba: R$35  
+- Sobrancelha: R$15-R$20  
+- Selagem: R$70+  
+- Luzes: R$90+  
+- Platinado: R$150+  
+
+**ATA DE REUNIÃO**  
+**Data:** 23/06/2024  
+
+**Atualizações:**  
+- Protótipo aprovado  
+- Em expansão - novo funcionário para caixa  
+
+**Produtos:**  
+- Com R$5 comissão: Pomada (R$40), Balm (R$45), Óleo (R$35)  
+- Com R$10 comissão: Máquina (R$180)  
+- Sem comissão: Bebidas (cerveja R$10, refri R$5, energético R$8-R$12)  
+
+<center><p>Figura 3 - Comissão e Porcentagens </p></center>
+
+[![Figura 3 - Comissão e Porcentagens](docs\evidencias\assets\comissao_e_porcentagem.jpeg)](docs\evidencias\assets\comissao_e_porcentagem.jpeg)
+ 
 ## Organização e Atualização
 
 ### Aplicação do DEEP
