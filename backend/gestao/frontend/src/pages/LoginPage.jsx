@@ -9,23 +9,38 @@ import {
 } from "@mui/material";
 import { ScissorsIcon } from '@heroicons/react/24/outline';
 import { useNavigate } from 'react-router-dom'; 
+import { login as loginRequest } from '../services/api';
 
 function LoginPage() {
-  const [usuario, setUsuario] = useState("");
-  const [senha, setSenha] = useState("");
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
   const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarSeverity, setSnackbarSeverity] = useState("success");
   const navigate = useNavigate(); 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Simula login e exibe Snackbar
-    setSnackbarOpen(true);
+    try {
+      const response = await loginRequest({ login, password });
+      const token = response.data.token;
 
-    // Espera 2.5 segundos e navega para /agenda
-    setTimeout(() => {
-      navigate('/agenda');
-    }, 2500); // tempo igual ao autoHideDuration
+      localStorage.setItem('token', token);
+
+      setSnackbarMessage("Login realizado com sucesso!");
+      setSnackbarSeverity("success");
+      setSnackbarOpen(true);
+
+      setTimeout(() => {
+        navigate('/agenda');
+      }, 1500);
+    } catch (err) {
+      console.error(err);
+      setSnackbarMessage("Erro ao fazer login. Verifique suas credenciais.");
+      setSnackbarSeverity("error");
+      setSnackbarOpen(true);
+    }
   };
 
   const handleSnackbarClose = () => {
@@ -66,8 +81,8 @@ function LoginPage() {
           placeholder="Usuário"
           variant="outlined"
           fullWidth
-          value={usuario}
-          onChange={(e) => setUsuario(e.target.value)}
+          value={login}
+          onChange={(e) => setLogin(e.target.value)}
           inputProps={{ maxLength: 30 }}
           sx={{
             backgroundColor: 'white',
@@ -80,8 +95,8 @@ function LoginPage() {
           variant="outlined"
           type="password"
           fullWidth
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           inputProps={{ maxLength: 30 }}
           sx={{
             backgroundColor: 'white',
@@ -134,17 +149,17 @@ function LoginPage() {
 
       <Snackbar
         open={snackbarOpen}
-        autoHideDuration={1000}
+        autoHideDuration={2000}
         onClose={handleSnackbarClose}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       >
         <Alert
           onClose={handleSnackbarClose}
-          severity="success"
+          severity={snackbarSeverity}
           sx={{ width: '70%' }}
           icon={false}
         >
-          Login realizado com sucesso!
+          {snackbarMessage}
         </Alert>
       </Snackbar>
     </>

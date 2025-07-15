@@ -11,20 +11,13 @@ import { Box, Paper, Typography } from '@mui/material';
  * - onDateChange: função callback chamada quando a data selecionada muda
  */
 function HorizontalDatePicker({ date, onDateChange }) {
-  // Estado com a lista de dias do mês da data selecionada
   const [days, setDays] = useState([]);
-
-  // Estado da data atualmente selecionada (controlado internamente)
-  const [selectedDate, setSelectedDate] = useState(date);
-
-  // Ref para o container que possui a lista horizontal de dias, para controlar scroll
+  const [selectedDate, setSelectedDate] = useState(new Date(date));
   const containerRef = useRef(null);
 
-  // Gera a lista de dias do mês toda vez que selectedDate muda
   useEffect(() => {
     const year = selectedDate.getFullYear();
     const month = selectedDate.getMonth();
-    // Calcula número total de dias do mês
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
     const daysArr = [];
@@ -32,63 +25,44 @@ function HorizontalDatePicker({ date, onDateChange }) {
       const dayDate = new Date(year, month, i);
       daysArr.push({
         date: dayDate,
-        // Nome do dia da semana abreviado, ex: 'seg', 'ter'
         dayName: dayDate.toLocaleDateString('pt-BR', { weekday: 'short' }),
-        // Data completa em formato local (dd/mm/aaaa)
         fullDate: dayDate.toLocaleDateString('pt-BR'),
       });
     }
+
     setDays(daysArr);
   }, [selectedDate]);
 
-  /**
-   * Função que centraliza a rolagem no elemento que corresponde
-   * a uma condição dada por matchFn, usada para posicionar a data selecionada.
-   */
   const handleScroll = useCallback((matchFn) => {
     if (!containerRef.current) return;
 
-    // Encontra índice do dia que satisfaz a condição
     const index = days.findIndex(matchFn);
     if (index >= 0) {
       const container = containerRef.current;
       const child = container.children[index];
 
       if (child) {
-        // Calcula posição para centralizar o item na viewport do container
-        const childLeft = child.offsetLeft;
-        const childWidth = child.offsetWidth;
-        const containerWidth = container.offsetWidth;
-        const scrollPosition = childLeft - (containerWidth / 2) + (childWidth / 2);
-
-        // Faz scroll suave para a posição calculada
-        if (container.scrollTo) {
-          container.scrollTo({ left: scrollPosition, behavior: 'smooth' });
-        } else {
-          container.scrollLeft = scrollPosition;
-        }
+        const scrollPosition = child.offsetLeft - (container.offsetWidth / 2) + (child.offsetWidth / 2);
+        container.scrollTo?.({ left: scrollPosition, behavior: 'smooth' });
       }
     }
   }, [days]);
 
-  // Quando a lista de dias muda ou a data selecionada muda,
-  // chama handleScroll para centralizar a data selecionada
   useEffect(() => {
     if (days.length > 0) {
       handleScroll(day => day.date.toDateString() === selectedDate.toDateString());
     }
   }, [days, selectedDate, handleScroll]);
 
-  // Atualiza o estado selectedDate se a prop date mudar (sincroniza estado interno)
   useEffect(() => {
-    setSelectedDate(date);
+    // Garante que o estado interno seja sempre um objeto Date válido
+    setSelectedDate(new Date(date));
   }, [date]);
 
-  // Handler chamado ao clicar em uma data da lista
-  // Atualiza estado interno e chama callback externo onDateChange
   const handleDateClick = (clickedDate) => {
-    setSelectedDate(clickedDate);
-    if (onDateChange) onDateChange(clickedDate);
+    const validDate = new Date(clickedDate);
+    setSelectedDate(validDate);
+    onDateChange?.(validDate); // Garante que seja Date
   };
 
   return (
@@ -99,13 +73,11 @@ function HorizontalDatePicker({ date, onDateChange }) {
         overflowX: 'auto',
         gap: 1,
         padding: 1,
-        // Esconde barras de scroll para uma aparência limpa
         scrollbarWidth: 'none',
         '&::-webkit-scrollbar': { display: 'none' },
       }}
     >
       {days.map((day, index) => {
-        // Verifica se o dia é o selecionado para aplicar estilos
         const isSelected = day.date.toDateString() === selectedDate.toDateString();
         return (
           <Paper
@@ -129,17 +101,12 @@ function HorizontalDatePicker({ date, onDateChange }) {
               },
             }}
           >
-            {/* Nome do dia da semana abreviado (ex: seg, ter) */}
             <Typography variant="caption" sx={{ textTransform: 'capitalize' }}>
               {day.dayName}
             </Typography>
-
-            {/* Número do dia no mês */}
             <Typography variant="subtitle2" fontWeight="bold" sx={{ mb: 0.5 }}>
               {day.date.getDate()}
             </Typography>
-
-            {/* Indicador visual (bolinha) para o dia selecionado */}
             {isSelected && (
               <Box
                 component="span"

@@ -4,22 +4,39 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  Typography,
   Button,
   TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
   Checkbox,
   ListItemText,
   OutlinedInput,
   Box,
-  MenuItem,
-  Select,
-  IconButton,
+  FormHelperText,
 } from '@mui/material';
-import { XMarkIcon } from '@heroicons/react/24/outline';
 
-import DropdownSelect from '../components/DropdownSelect.jsx';
-import PrimaryActionButton from '../components/PrimaryActionButton.jsx';
-
+/**
+ * Modal para criar um novo agendamento.
+ * 
+ * Props:
+ * - open: boolean para mostrar/ocultar o modal
+ * - onClose: função para fechar o modal
+ * - onSave: função para salvar o agendamento (botão "Salvar")
+ * - clientName: nome do cliente (controlled)
+ * - onClientNameChange: callback para alterar o nome do cliente
+ * - time: horário selecionado (controlled)
+ * - onTimeChange: callback para alterar o horário
+ * - barberId: id do barbeiro selecionado (controlled)
+ * - onBarberChange: callback para alterar o barbeiro
+ * - barbers: lista de barbeiros [{id, name}]
+ * - services: lista de serviços [{id, name, price}]
+ * - selectedServices: lista de ids de serviços selecionados
+ * - onServicesChange: callback para alterar os serviços selecionados
+ * - availableTimes: lista de horários disponíveis para seleção
+ * - isAdmin: boolean para controlar se é admin (exibe dropdown barbeiro)
+ */
 function AppointmentModal({
   open,
   onClose,
@@ -35,178 +52,133 @@ function AppointmentModal({
   selectedServices,
   onServicesChange,
   availableTimes,
+  isAdmin = true,
 }) {
-  const selectedServiceObjects = services.filter((s) =>
-    selectedServices.includes(s.id)
-  );
+  // Normalize para string (evita warnings do MUI)
+  const normalizedBarberId = barberId ?? '';
+  const normalizedTime = time ?? '';
 
-  const totalDuration = selectedServiceObjects.reduce(
-    (acc, s) => acc + (s.duration || 0),
-    0
-  );
+  const canSave =
+    clientName.trim() !== '' &&
+    normalizedTime !== '' &&
+    (isAdmin ? normalizedBarberId !== '' : true) &&
+    selectedServices.length > 0;
 
-  const subtotal = selectedServiceObjects.reduce(
-    (acc, s) => acc + (s.price || 0),
-    0
-  );
-
-  const handleBarberChange = (e) => onBarberChange(Number(e.target.value));
-  const handleTimeChange = (e) => onTimeChange(e.target.value);
-  const handleServicesChange = (e) => {
-    const values = Array.isArray(e.target.value)
-      ? e.target.value.map(Number)
-      : [];
-    onServicesChange(values);
+  const handleServicesChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    onServicesChange(typeof value === 'string' ? value.split(',') : value);
   };
 
   return (
-    <Dialog
-      open={open}
-      onClose={onClose}
-      maxWidth="sm"
-      fullWidth
-      slotProps={{
-        paper: {
-          sx: {
-            position: 'fixed',
-            margin: 0,
-            bottom: 0,
-            left: 0,
-            right: 0,
-            width: '100vw',
-            maxWidth: '100vw',
-            height: '70vh',
-            borderTopLeftRadius: 16,
-            borderTopRightRadius: 16,
-            boxShadow: '0 -2px 8px rgba(0,0,0,0.15)',
-            backgroundColor: 'white',
-            display: 'flex',
-            flexDirection: 'column',
-          },
-        },
-      }}
-    >
-      <Box sx={{ position: 'absolute', right: 8, top: 8, zIndex: 1 }}>
-        <IconButton
-          onClick={onClose}
-          aria-label="Fechar modal"
-          sx={{ color: 'var(--color-secondary)' }}
+    <Dialog open={open} onClose={onClose} maxWidth="xs" fullWidth>
+      <DialogTitle>Novo Agendamento</DialogTitle>
+      <DialogContent dividers>
+        <Box
+          component="form"
+          noValidate
+          autoComplete="off"
+          sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
         >
-          <XMarkIcon className="h-4 w-4" />
-        </IconButton>
-      </Box>
+          <TextField
+            label="Nome do Cliente"
+            value={clientName}
+            onChange={(e) => onClientNameChange(e.target.value)}
+            autoFocus
+            required
+            fullWidth
+            inputProps={{ 'aria-label': 'Nome do Cliente' }}
+          />
 
-      <DialogTitle
-        sx={{
-          textAlign: 'center',
-          fontWeight: 'bold',
-          fontSize: '1.2rem',
-          backgroundColor: 'transparent',
-          pt: 4,
-          pb: 3,
-        }}
-      >
-        Novo Agendamento
-      </DialogTitle>
+          <FormControl fullWidth required>
+            <InputLabel id="time-select-label">Horário</InputLabel>
+            <Select
+              labelId="time-select-label"
+              id="time-select"
+              name="time"
+              value={normalizedTime}
+              onChange={(e) => onTimeChange(e.target.value)}
+              label="Horário"
+              inputProps={{ 'aria-label': 'Horário do agendamento' }}
+            >
+              {availableTimes.length > 0 ? (
+                availableTimes.map((t) => (
+                  <MenuItem key={t} value={t}>
+                    {t}
+                  </MenuItem>
+                ))
+              ) : (
+                <MenuItem disabled>Nenhum horário disponível</MenuItem>
+              )}
+            </Select>
+          </FormControl>
 
-      <DialogContent sx={{ pt: 1, pb: 0, flexGrow: 1, overflowY: 'auto' }}>
-        <TextField
-          variant="outlined"
-          value={clientName}
-          onChange={(e) => onClientNameChange(e.target.value)}
-          fullWidth
-          placeholder="Nome do cliente"
-          size="medium"
-          slotProps={{ htmlInput: { maxLength: 20 } }}
-          sx={{
-            backgroundColor: 'white',
-            borderRadius: 1,
-            my: 2,
-          }}
-        />
+          {isAdmin && (
+            <FormControl fullWidth required>
+              <InputLabel id="barber-select-label">Barbeiro</InputLabel>
+              <Select
+                labelId="barber-select-label"
+                id="barber-select"
+                name="barber"
+                value={normalizedBarberId}
+                onChange={(e) => onBarberChange(e.target.value)}
+                label="Barbeiro"
+                inputProps={{ 'aria-label': 'Selecionar barbeiro' }}
+              >
+                {barbers.map((barber) => (
+                  <MenuItem key={barber.id} value={barber.id}>
+                    {barber.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          )}
 
-        <DropdownSelect
-          label="Horário"
-          options={availableTimes.map((t) => ({ value: t, label: t }))}
-          value={time}
-          onChange={handleTimeChange}
-          placeholder="Selecione o horário"
-          size="medium"
-          fullWidth
-          sx={{ my: 2 }}
-        />
-
-        <DropdownSelect
-          label="Barbeiro"
-          options={barbers.map((b) => ({ value: b.id, label: b.name }))}
-          value={barberId}
-          onChange={handleBarberChange}
-          placeholder="Selecione o barbeiro"
-          size="medium"
-          fullWidth
-          sx={{ my: 2 }}
-        />
-
-        <Select
-          multiple
-          value={selectedServices}
-          onChange={handleServicesChange}
-          input={<OutlinedInput />}
-          renderValue={(selected) => {
-            if (selected.length === 0) {
-              return <em style={{ color: '#9e9e9e' }}>Selecione os serviços</em>;
-            }
-            return services
-              .filter((s) => selected.includes(s.id))
-              .map((s) => s.name)
-              .join(', ');
-          }}
-          fullWidth
-          size="small"
-          displayEmpty
-          sx={{
-            borderRadius: 1,
-            backgroundColor: 'white',
-            px: 1,
-            py: 0.5,
-            my: 2,
-          }}
-        >
-          {services.map((service) => (
-            <MenuItem key={service.id} value={service.id}>
-              <Checkbox checked={selectedServices.includes(service.id)} />
-              <ListItemText primary={service.name} />
-            </MenuItem>
-          ))}
-        </Select>
-
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-          <Typography>Tempo estimado:</Typography>
-          <Typography>{totalDuration} min</Typography>
-        </Box>
-
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
-          <Typography sx={{ fontWeight: 'bold' }}>Subtotal:</Typography>
-          <Typography sx={{ fontWeight: 'bold' }}>R$ {subtotal.toFixed(2)}</Typography>
+          <FormControl fullWidth required error={selectedServices.length === 0}>
+            <InputLabel id="services-select-label">Serviços</InputLabel>
+            <Select
+              labelId="services-select-label"
+              id="services-select"
+              multiple
+              value={selectedServices}
+              onChange={handleServicesChange}
+              input={<OutlinedInput label="Serviços" />}
+              renderValue={(selected) =>
+                services
+                  .filter((s) => selected.includes(s.id))
+                  .map((s) => s.name)
+                  .join(', ')
+              }
+              inputProps={{ 'aria-label': 'Selecionar serviços' }}
+              aria-describedby={selectedServices.length === 0 ? 'services-helper-text' : undefined}
+            >
+              {services.map((service) => (
+                <MenuItem key={service.id} value={service.id}>
+                  <Checkbox checked={selectedServices.includes(service.id)} />
+                  <ListItemText primary={`${service.name} (R$ ${service.price.toFixed(2)})`} />
+                </MenuItem>
+              ))}
+            </Select>
+            {selectedServices.length === 0 && (
+              <FormHelperText id="services-helper-text">Selecione ao menos um serviço.</FormHelperText>
+            )}
+          </FormControl>
         </Box>
       </DialogContent>
 
-      <DialogActions
-        sx={{ display: 'flex', justifyContent: 'space-between', px: 3, pb: 2, pt: 1 }}
-      >
-        <Button
-          onClick={onClose}
-          sx={{ textTransform: 'none', color: 'var(--color-secondary)' }}
-        >
+      <DialogActions>
+        <Button onClick={onClose} aria-label="Cancelar agendamento">
           Cancelar
         </Button>
-
-        <PrimaryActionButton
+        <Button
           onClick={onSave}
-          disabled={!clientName || !time || !barberId || selectedServices.length === 0}
+          disabled={!canSave}
+          variant="contained"
+          aria-label="Salvar agendamento"
         >
           Salvar
-        </PrimaryActionButton>
+        </Button>
       </DialogActions>
     </Dialog>
   );

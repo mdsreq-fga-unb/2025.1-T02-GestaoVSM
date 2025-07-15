@@ -5,24 +5,19 @@ import { Paper, Box, Typography, Stack } from '@mui/material';
  * Componente RevenueSummarySection
  * 
  * Exibe um resumo financeiro de faturamento baseado nos dados recebidos via prop `data`.
- * Mostra totais de serviços, produtos, comissões, faturamento total e lucro líquido.
+ * Mostra faturamento bruto, faturamento líquido e lucro líquido (já calculado pelo backend).
  * 
  * @param {object} data - Dados financeiros com os seguintes campos:
- *   - servicesTotal: número (total faturado em serviços)
- *   - productsTotal: número (total faturado em produtos)
- *   - commissionsTotal: número (total pago em comissões)
+ *   - faturamentoTotalBruto: número (total bruto faturado)
+ *   - faturamentoTotalLiquido: número (total líquido faturado)
+ *   - lucroFinalBarbearia: número (lucro líquido calculado pelo backend)
  */
 function RevenueSummarySection({ data }) {
   const {
-    servicesTotal = 0,
-    productsTotal = 0,
-    commissionsTotal = 0,
+    faturamentoTotalBruto = 0,
+    faturamentoTotalLiquido = 0,
+    lucroFinalBarbearia = 0,
   } = data || {};
-
-  // Calcula faturamento bruto (serviços + produtos)
-  const revenue = servicesTotal + productsTotal;
-  // Calcula lucro líquido (faturamento - comissões)
-  const netProfit = revenue - commissionsTotal;
 
   return (
     <Box mt={4}>
@@ -49,11 +44,9 @@ function RevenueSummarySection({ data }) {
         }}
       >
         <Stack spacing={0.5}>
-          <Row label="Total em serviços:" value={`R$ ${servicesTotal.toFixed(2)}`} />
-          <Row label="Total em produtos:" value={`R$ ${productsTotal.toFixed(2)}`} />
-          <Row label="Total em comissões:" value={`- R$ ${commissionsTotal.toFixed(2)}`} />
-          <Row label="Faturamento total:" value={`R$ ${revenue.toFixed(2)}`} bold />
-          <Row label="Lucro líquido:" value={`R$ ${netProfit.toFixed(2)}`} bold accent />
+          <Row label="Faturamento bruto:" value={`R$ ${Number(faturamentoTotalBruto).toFixed(2)}`} />
+          <Row label="Faturamento líquido:" value={`R$ ${Number(faturamentoTotalLiquido).toFixed(2)}`} />
+          <Row label="Lucro líquido:" value={`R$ ${Number(lucroFinalBarbearia).toFixed(2)}`} bold accent />
         </Stack>
       </Paper>
     </Box>

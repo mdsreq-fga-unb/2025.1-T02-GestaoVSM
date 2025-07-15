@@ -21,15 +21,12 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
  * - onToggleServiceDone: função chamada ao marcar/desmarcar serviço como feito
  */
 function AppointmentCard({ appointment, onToggleServiceDone }) {
-  // Estado local para controlar se a lista de serviços está expandida ou recolhida
   const [expanded, setExpanded] = useState(false);
 
-  // Alterna o estado de expansão ao clicar no card ou botão
   const handleToggle = () => {
     setExpanded(!expanded);
   };
 
-  // Define as cores do chip de status baseado no status do agendamento
   const statusColor = {
     agendado: { backgroundColor: '#FEF3C7', color: '#92400E' },
     'em andamento': { backgroundColor: '#DBEAFE', color: '#1E40AF' },
@@ -41,8 +38,6 @@ function AppointmentCard({ appointment, onToggleServiceDone }) {
       className="mb-4 shadow-md"
       sx={{ borderRadius: 2, boxShadow: '0 1px 4px rgba(0,0,0,0.1)' }}
     >
-      {/* Cabeçalho do card que mostra horário, cliente e status.
-          Pode ser clicado ou acionado via teclado (Enter/Espaço) para expandir */}
       <CardContent
         onClick={handleToggle}
         onKeyDown={(e) => {
@@ -54,21 +49,20 @@ function AppointmentCard({ appointment, onToggleServiceDone }) {
         sx={{ padding: 2, paddingBottom: 1 }}
       >
         <div className="flex justify-between items-center">
-          {/* Informação principal: horário e nome do cliente */}
           <Stack spacing={0.25}>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ lineHeight: 1.2 }}
-            >
-              {appointment.time}
+            <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.2 }}>
+              {appointment.dataAgendamento
+                ? new Date(appointment.dataAgendamento).toLocaleTimeString('pt-BR', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                  })
+                : 'Sem horário'}
             </Typography>
             <Typography variant="subtitle2" fontWeight="bold" sx={{ lineHeight: 1.2 }}>
-              {appointment.clientName}
+              {appointment.nomeCliente}
             </Typography>
           </Stack>
 
-          {/* Status do agendamento e método de pagamento (se finalizado) */}
           <Stack spacing={0.5} alignItems="flex-end">
             <Chip
               label={appointment.status}
@@ -80,7 +74,6 @@ function AppointmentCard({ appointment, onToggleServiceDone }) {
                 ...statusColor,
               }}
             />
-            {/* Exibe método de pagamento apenas se status for finalizado */}
             {appointment.status === 'finalizado' && appointment.paymentMethod && (
               <Chip
                 label={appointment.paymentMethod}
@@ -100,33 +93,28 @@ function AppointmentCard({ appointment, onToggleServiceDone }) {
         </div>
       </CardContent>
 
-      {/* Lista de serviços, que aparece somente se expanded === true */}
       <Collapse in={expanded} unmountOnExit>
         <div className="p-4 pb-1 bg-accent-hover">
-          {/* Mapeia os serviços do agendamento */}
           {appointment.services.map((service) => (
             <div
               key={service.id}
               className="flex justify-between items-center mb-2"
-              // Evita que clique nos checkboxes expanda/recolha o card
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Checkbox para marcar serviço como concluído */}
               <Checkbox
                 checked={service.done}
                 onChange={() => onToggleServiceDone(appointment.id, service.id)}
                 slotProps={{
                   input: {
-                    'aria-label': `Serviço ${service.name} do cliente ${appointment.clientName}`,
+                    'aria-label': `Serviço ${service.nome} do cliente ${appointment.nomeCliente}`,
                   },
                 }}
               />
 
-              {/* Nome e preço do serviço */}
               <Stack spacing={0.15} sx={{ ml: 1, alignItems: 'flex-end' }}>
-                <Typography>{service.name}</Typography>
+                <Typography>{service.nome}</Typography>
                 <Typography variant="body2" color="text.secondary">
-                  R$ {service.price.toFixed(2)}
+                  R$ {service.preco.toFixed(2)}
                 </Typography>
               </Stack>
             </div>
@@ -134,7 +122,6 @@ function AppointmentCard({ appointment, onToggleServiceDone }) {
         </div>
       </Collapse>
 
-      {/* Botão com ícone para expandir/recolher serviços, com animação de rotação */}
       <div className="flex justify-center">
         <IconButton
           aria-label="expandir serviços"

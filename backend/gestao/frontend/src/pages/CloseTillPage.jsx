@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Box,
     Typography,
     Tabs,
     Tab,
     IconButton,
+    CircularProgress,
+    Alert,
 } from '@mui/material';
 import { ArrowDownTrayIcon, ChevronLeftIcon } from '@heroicons/react/24/outline';
 import { useNavigate } from 'react-router-dom';
@@ -14,55 +16,73 @@ import RevenueSummarySection from '../components/RevenueSummarySection';
 import PrimaryActionButton from '../components/PrimaryActionButton';
 import ExportConfirmationModal from '../modals/ExportConfirmationModal';
 
+import { getFinancialReport } from '../services/api';
+
 /**
  * Página para fechamento de caixa.
  * 
  * Exibe resumo de faturamento geral e por funcionário,
- * permite alternar entre períodos (semana atual, mês atual, personalizado),
+ * permite alternar entre períodos (semana atual, mês atual),
  * e exportar o extrato financeiro em PDF.
- * 
- * Props:
- * - employees (array): lista dos funcionários com seus dados financeiros.
  */
-function CloseTillPage({ employees = [] }) {
-    const navigate = useNavigate(); // Hook para navegação no histórico do react-router
-    const [tab, setTab] = useState(0); // Estado para controle da aba selecionada
-    const [exportModalOpen, setExportModalOpen] = useState(false); // Estado para controle do modal de exportação
+function CloseTillPage() {
+    const navigate = useNavigate();
+    const [tab, setTab] = useState(0);
+    const [exportModalOpen, setExportModalOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [financialData, setFinancialData] = useState(null);
+
+    // Define o tipo de relatório conforme a aba
+    const tipoRelatorio = tab === 0 ? 'SEMANAL' : 'MENSAL';
+
+    // Função para buscar dados financeiros do backend
+    const fetchFinancialReport = async () => {
+        setLoading(true);
+        setError(null);
+        try {
+            const response = await getFinancialReport(tipoRelatorio);
+            console.log('Dados financeiros recebidos:', response.data);
+            setFinancialData(response.data);
+        } catch (err) {
+            console.error(err);
+            setError('Erro ao carregar dados financeiros.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    // Recarrega dados sempre que o tipoRelatorio (tab) mudar
+    useEffect(() => {
+        fetchFinancialReport();
+    }, [tipoRelatorio]);
 
     // Atualiza a aba selecionada
     const handleTabChange = (_, newValue) => setTab(newValue);
 
-    // Abre o modal de exportação
+    // Exportação (a implementar)
     const handleExportClick = () => setExportModalOpen(true);
-
-    // Fecha o modal de exportação
     const handleCloseModal = () => setExportModalOpen(false);
-
-    // Ação ao confirmar exportação: log e fechar modal
     const handleConfirmExport = () => {
-        console.log('Exportar PDF do período selecionado');
+        console.log('Exportar PDF do período selecionado:', periodoSelecionado.label);
         handleCloseModal();
     };
 
-    // Define o texto do período selecionado com base na aba ativa
+    // Texto do período baseado na aba
     const periodoSelecionado = {
-        label:
-            tab === 0
-                ? 'Semana Atual'
-                : tab === 1
-                    ? 'Mês Atual'
-                    : '01/06/2025 a 15/06/2025',
+        label: tab === 0 ? 'Semana Atual' : 'Mês Atual',
     };
 
-    // Calcula o resumo de receita somando os valores dos funcionários
-    const revenueData = employees.reduce(
-        (acc, emp) => ({
-            servicesTotal: acc.servicesTotal + emp.servicesTotal,
-            commissionsTotal: acc.commissionsTotal + emp.commissions,
-            productsTotal: acc.productsTotal,
-        }),
-        { servicesTotal: 0, commissionsTotal: 0, productsTotal: 0 }
-    );
+    // Monta o objeto de dados para o RevenueSummarySection
+    const revenueData = {
+        faturamentoTotalBruto: financialData?.faturamentoTotalBruto ?? 0,
+        faturamentoTotalLiquido: financialData?.faturamentoTotalLiquido ?? 0,
+        lucroFinalBarbearia: financialData?.lucroFinalBarbearia ?? 0,
+    };
+
+    // Lista de funcionários para o EmployeeSummarySection
+    // Já está no formato esperado (lista de objetos com campos corretos)
+    const employees = financialData?.detalhamentoFuncionarios || [];
 
     return (
         <Box
@@ -70,22 +90,23 @@ function CloseTillPage({ employees = [] }) {
             sx={{
                 backgroundColor: 'var(--color-primary)',
                 color: 'var(--color-secondary)',
-                pb: '96px', 
+                pb: '96px',
                 position: 'relative',
+                minHeight: '100vh',
             }}
         >
-            {/* Botão para voltar à página anterior */}
+            {/* Botão para voltar */}
             <Box sx={{ position: 'fixed', left: 8, top: 16, zIndex: 100, backgroundColor: 'white', width: '100vw' }}>
                 <IconButton
                     aria-label="Voltar para agenda"
-                    onClick={() => navigate('/')} 
+                    onClick={() => navigate('/agenda')}
                     sx={{ color: 'var(--color-secondary)' }}
                 >
                     <ChevronLeftIcon className="h-5 w-5" />
                 </IconButton>
             </Box>
 
-            {/* Título da página */}
+            {/* Título */}
             <Typography
                 aria-label="Fechamento de Caixa"
                 sx={{
@@ -100,7 +121,7 @@ function CloseTillPage({ employees = [] }) {
                 Fechamento de Caixa
             </Typography>
 
-            {/* Abas para seleção do período */}
+            {/* Abas */}
             <Tabs
                 value={tab}
                 onChange={handleTabChange}
@@ -114,13 +135,23 @@ function CloseTillPage({ employees = [] }) {
                 <Tab label="Mês atual" sx={{ fontSize: '0.9rem', textTransform: 'none' }} />
             </Tabs>
 
-            {/* Componente que exibe resumo financeiro total */}
-            <RevenueSummarySection data={revenueData} />
+            {/* Conteúdo principal: loading, erro ou dados */}
+            {loading ? (
+                <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+                    <CircularProgress color="secondary" />
+                </Box>
+            ) : error ? (
+                <Alert severity="error" sx={{ mt: 4 }}>
+                    {error}
+                </Alert>
+            ) : (
+                <>
+                    <RevenueSummarySection data={revenueData} />
+                    <EmployeeSummarySection employees={employees} />
+                </>
+            )}
 
-            {/* Componente que exibe resumo financeiro por funcionário */}
-            <EmployeeSummarySection employees={employees} />
-
-            {/* Footer fixo com botão para exportar extrato */}
+            {/* Footer fixo */}
             <Box
                 component="footer"
                 sx={{
@@ -141,7 +172,7 @@ function CloseTillPage({ employees = [] }) {
                 </PrimaryActionButton>
             </Box>
 
-            {/* Modal de confirmação de exportação */}
+            {/* Modal de exportação */}
             <ExportConfirmationModal
                 open={exportModalOpen}
                 onClose={handleCloseModal}

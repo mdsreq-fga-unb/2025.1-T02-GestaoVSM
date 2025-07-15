@@ -1,41 +1,20 @@
 import React from 'react';
 import { Paper, Box, Typography, Stack } from '@mui/material';
 
-// Lista fixa dos funcionários esperados no sistema.
-// OBS: Atualmente está hardcoded, mas será substituído por uma chamada GET ao backend no futuro.
-const baseEmployees = [
-  { id: 1, name: 'Lucas Silva' },
-  { id: 2, name: 'Rafaela Souza' },
-  { id: 3, name: 'Carlos Mendes' }, 
-];
-
 /**
  * Componente EmployeeSummarySection
  * 
  * Exibe um resumo financeiro por funcionário, mostrando:
- * - Total de serviços realizados
- * - Comissões recebidas
+ * - Total de serviços realizados (bruto)
+ * - Comissões recebidas (produtos)
  * - Gastos/Despesas atribuídas
- * - Total líquido a pagar (serviços + comissões - despesas)
+ * - Total líquido a pagar (calculado no backend)
  * 
- * Recebe a prop `employees` com dados financeiros reais para mesclar com a lista base.
- * Se algum funcionário base não estiver na lista recebida, assume zeros nos valores.
+ * Recebe a prop `employees` com dados financeiros reais da API.
  * 
- * Utiliza componentes do Material UI para layout e estilização visual.
- * 
- * @param {Array} employees - Lista de funcionários com dados financeiros (servicesTotal, commissions, expenses).
+ * @param {Array} employees - Lista de funcionários com dados financeiros
  */
 function EmployeeSummarySection({ employees = [] }) {
-  // Mescla os dados base com os valores reais fornecidos na prop
-  const mergedEmployees = baseEmployees.map((base) => {
-    const match = employees.find((e) => e.id === base.id);
-    return {
-      ...base,
-      servicesTotal: match?.servicesTotal ?? 0,
-      commissions: match?.commissions ?? 0,
-      expenses: match?.expenses ?? 0,
-    };
-  });
 
   return (
     <Box mt={4}>
@@ -53,14 +32,18 @@ function EmployeeSummarySection({ employees = [] }) {
       </Typography>
 
       <Stack spacing={2}>
-        {mergedEmployees.map((employee) => {
-          // Calcula total líquido a pagar para o funcionário
-          const totalToPay =
-            employee.servicesTotal + employee.commissions - employee.expenses;
+        {employees.length === 0 && (
+          <Typography
+            sx={{ color: 'var(--color-secondary)', textAlign: 'center', mt: 2 }}
+          >
+            Nenhum dado disponível.
+          </Typography>
+        )}
 
+        {employees.map((employee) => {
           return (
             <Paper
-              key={employee.id}
+              key={employee.funcionarioId}
               elevation={1}
               sx={{
                 p: 2,
@@ -71,15 +54,26 @@ function EmployeeSummarySection({ employees = [] }) {
             >
               <Stack spacing={0.5}>
                 <Typography variant="subtitle2" sx={{ lineHeight: 1.2 }}>
-                  {employee.name}
+                  {employee.funcionarioNome}
                 </Typography>
 
-                <Row label="Serviços:" value={`R$ ${employee.servicesTotal.toFixed(2)}`} />
-                <Row label="Comissão:" value={`R$ ${employee.commissions.toFixed(2)}`} />
-                <Row label="Gastos:" value={`- R$ ${employee.expenses.toFixed(2)}`} />
+                <Row
+                  label="Serviços:"
+                  value={`R$ ${Number(employee.totalBrutoServicos ?? 0).toFixed(2)}`}
+                />
+                <Row
+                  label="Comissão:"
+                  value={`R$ ${Number(employee.totalComissoesProdutos ?? 0).toFixed(2)}`}
+                />
+                {/* 
+                <Row
+                  label="Gastos:"
+                  value={`- R$ ${Number(employee.totalGastos ?? 0).toFixed(2)}`}
+                />
+                 */}
                 <Row
                   label="Total a pagar:"
-                  value={`R$ ${totalToPay.toFixed(2)}`}
+                  value={`R$ ${Number(employee.totalAReceber ?? 0).toFixed(2)}`}
                   bold
                   accent
                 />
@@ -97,11 +91,6 @@ function EmployeeSummarySection({ employees = [] }) {
  * 
  * Linha simples com label à esquerda e valor à direita,
  * suporta variações visuais para negrito e destaque (accent).
- * 
- * @param {string} label - Texto do lado esquerdo
- * @param {string} value - Texto do lado direito
- * @param {boolean} bold - Se o texto deve ser exibido em negrito (default: false)
- * @param {boolean} accent - Se o valor deve usar cor de destaque (default: false)
  */
 function Row({ label, value, bold = false, accent = false }) {
   return (

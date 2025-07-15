@@ -19,7 +19,7 @@ import { FormControl, Select, MenuItem } from '@mui/material';
 function DropdownSelect({
   label,
   options,
-  value,
+  value = '',
   onChange,
   renderValue,
   placeholder = 'Selecione uma opção',
@@ -37,13 +37,16 @@ function DropdownSelect({
         value={value}
         onChange={onChange}
         displayEmpty
-        renderValue={(selected) => {
-          if (!selected) {
-            return <em style={{ color: '#9e9e9e' }}>{placeholder}</em>;
-          }
-          return renderValue ? renderValue(selected) : getLabelByValue(selected);
-        }}
-        inputProps={{ 'aria-label': label }}
+        renderValue={(selected) =>
+          selected === '' ? (
+            <em style={{ color: '#9e9e9e' }}>{placeholder}</em>
+          ) : renderValue ? (
+            renderValue(selected)
+          ) : (
+            getLabelByValue(selected)
+          )
+        }
+        inputProps={{ 'aria-label': label, 'aria-placeholder': placeholder }}
         sx={{
           backgroundColor: 'white',
           borderRadius: 2,
@@ -56,10 +59,9 @@ function DropdownSelect({
             borderColor: 'rgba(0, 0, 0, 0.87)',
           },
           '&.Mui-focused fieldset': {
-            borderColor: 'var(--color-secondary)', // mesma cor do foco no LoginPage
+            borderColor: 'var(--color-secondary)',
             borderWidth: 2,
           },
-          // Cursor e texto
           cursor: 'pointer',
           color: 'rgba(0, 0, 0, 0.87)',
         }}
