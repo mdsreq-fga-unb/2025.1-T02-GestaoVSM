@@ -30,16 +30,30 @@ O desenvolvimento seguiu princípios de design centrado no usuário, fundamentad
 
 ### Criação/refinamento de US com base em feedback
 
+Durante os ciclos de validação dos mockups e protótipos, diversos feedbacks do cliente resultaram na criação, ajuste ou reformulação de User Stories. Essas mudanças refletiram melhor as necessidades reais da rotina da barbearia, incluindo ajustes em fluxos de agendamento, reorganização de informações financeiras e inclusão de elementos visuais para facilitar o entendimento do usuário final.
+
+A interação constante com o cliente permitiu detectar pontos que, até então, não estavam formalmente documentados nos requisitos. A partir disso, novas histórias foram registradas, e histórias existentes foram reescritas para incorporar aspectos como reorganização de campos, melhoria na navegabilidade e alterações nos critérios de aceitação.
+
+Esse processo de refinamento contribuiu para manter o backlog atualizado e alinhado à realidade de uso do sistema, além de reforçar o vínculo entre representação visual e documentação funcional.
+
 
 ## Verificação e Validação
 
 ### Feedback com o cliente
 
+A validação dos protótipos foi realizada diretamente com o cliente por meio de sessões de demonstração, reuniões presenciais e troca de mensagens assíncronas. Esses encontros possibilitaram a coleta de feedback contínuo e direcionado, com foco na usabilidade das interfaces e na aderência dos fluxos propostos às necessidades do negócio.
+
+A cada ciclo de validação, foram registrados comentários sobre pontos positivos e sugestões de melhoria, que foram analisados pela equipe e resultaram em ajustes rápidos nos protótipos ou em alterações no backlog. Esse mecanismo de validação iterativa reduziu significativamente o risco de retrabalho na fase de construção e fortaleceu a confiança do cliente nas decisões tomadas ao longo do projeto.
+
+A prática constante de feedback também possibilitou validar hipóteses de design e orientar a priorização de funcionalidades com base em valor percebido e clareza de uso.
 
 ## Organização e Atualização
 
 ### Repriorização do Backlog
 
+Com base nas validações visuais e nas interações com o cliente, o backlog foi reorganizado para refletir as novas percepções de valor, esforço e prioridade. Funcionalidades inicialmente previstas para ciclos posteriores foram antecipadas, enquanto outras, consideradas menos críticas, foram postergadas ou realocadas para versões futuras.
+
+Essa repriorização foi fundamental para ajustar o escopo de forma realista e estratégica, especialmente diante da definição do MVP e dos prazos disponíveis. A reorganização contínua garantiu que os ciclos seguintes se concentrassem nas entregas de maior impacto para o cliente e naquelas com melhor custo-benefício, respeitando os recursos disponíveis.
 
 ## Referências Bibliográficas
 
