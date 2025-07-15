@@ -9,7 +9,6 @@ const createConfig = () => {
   };
 };
 
-
 export const login = async (credentials) => {
   return axios.post(`${BASE_URL}/auth/login`, credentials);
 };

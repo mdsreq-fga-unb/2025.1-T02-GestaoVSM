@@ -42,8 +42,12 @@ function AgendaPage({
     const fetchAppointments = async () => {
       try {
         const dateObj = selectedDate instanceof Date ? selectedDate : new Date(selectedDate);
-        const barberId = selectedBarber ? Number(selectedBarber) : null; // Corrigido para enviar null se vazio
+        const barberId = selectedBarber ? Number(selectedBarber) : null;
         const response = await getAppointmentsByDate(dateObj, barberId);
+
+        console.log('Agendamentos carregados:', response.data);
+        response.data.forEach(app => console.log('Serviços do agendamento', app.id, ':', app.services));
+
         setAppointments(response.data);
       } catch (error) {
         console.error(error);
@@ -99,6 +103,7 @@ function AgendaPage({
     const appointmentToFinalize = appointments.find(
       (appointment) =>
         !appointment.finalized &&
+        Array.isArray(appointment.services) &&
         appointment.services.length > 0 &&
         appointment.services.every((s) => s.done)
     );
@@ -164,7 +169,7 @@ function AgendaPage({
     setServicesBackup(null);
   };
 
-  const getStatusByServices = (services, finalized) => {
+  const getStatusByServices = (services = [], finalized) => {
     if (finalized) return 'finalizado';
     const allDone = services.every((s) => s.done);
     const someDone = services.some((s) => s.done);
@@ -214,18 +219,7 @@ function AgendaPage({
     <div className="p-4 mt-8" style={{ color: 'var(--color-secondary)', backgroundColor: 'var(--color-primary)' }}>
       <div className="flex justify-between items-center mb-4">
         <Sidebar />
-        <Chip
-          avatar={<Avatar sx={{ bgcolor: 'var(--color-accent)' }}>M</Avatar>}
-          label="Meu Perfil"
-          size="small"
-          sx={{
-            borderRadius: 2,
-            height: 24,
-            fontSize: '0.8rem',
-            backgroundColor: '#FFF5E5',
-            color: 'var(--color-secondary)',
-          }}
-        />
+
       </div>
 
       <Typography

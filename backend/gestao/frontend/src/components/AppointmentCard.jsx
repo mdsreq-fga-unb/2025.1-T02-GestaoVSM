@@ -95,7 +95,7 @@ function AppointmentCard({ appointment, onToggleServiceDone }) {
 
       <Collapse in={expanded} unmountOnExit>
         <div className="p-4 pb-1 bg-accent-hover">
-          {appointment.services.map((service) => (
+          {(appointment.services || []).map((service) => (
             <div
               key={service.id}
               className="flex justify-between items-center mb-2"
