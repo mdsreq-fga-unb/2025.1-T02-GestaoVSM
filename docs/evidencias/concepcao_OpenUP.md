@@ -474,13 +474,6 @@ Aqui estão presentes todas as atas de reuniões entre nossa equipe e o cliente 
 - Comunicação com equipe  
 - Fechamento de caixa complicado  
 
-**Funcionalidades solicitadas:**  
-- Agendamento/remarcação  
-- Cadastro de clientes  
-- Gestão de comissões  
-- Controle de caixa  
-- Calendário compartilhado  
-
 **ATA DE REUNIÃO**  
 **Data:** 09/05/2024  
 
@@ -490,7 +483,7 @@ Aqui estão presentes todas as atas de reuniões entre nossa equipe e o cliente 
 
 <center><p>Figura 1 - Planilha de Serviços </p></center>
 
-[![Figura 1 - Planilha de Serviços](docs\evidencias\assets\tabela_de_registros.jpeg)](docs\evidencias\assets\tabela_de_registros.jpeg)
+[![Figura 1 - Planilha de Serviços](../evidencias/assets/tabela_de_registros.jpeg)](../evidencias/assets/tabela_de_registros.jpeg)
 
 **Requisitos:**  
 - Android e iOS  
@@ -507,7 +500,7 @@ Aqui estão presentes todas as atas de reuniões entre nossa equipe e o cliente 
 
 <center><p>Figura 2 - Tabela de Valores </p></center>
 
-[![Figura 2 - Tabela de Valores](docs\evidencias\assets\tabela_de_valores.jpeg)](docs\evidencias\assets\tabela_de_valores.jpeg)
+[![Figura 2 - Tabela de Valores](../evidencias/assets/tabela_de_valores.jpeg)](../evidencias/assets/tabela_de_valores.jpeg)
 
 **ATA DE REUNIÃO**  
 **Data:** 24/05/2024  
@@ -547,7 +540,7 @@ Aqui estão presentes todas as atas de reuniões entre nossa equipe e o cliente 
 
 <center><p>Figura 3 - Comissão e Porcentagens </p></center>
 
-[![Figura 3 - Comissão e Porcentagens](docs\evidencias\assets\comissao_e_porcentagem.jpeg)](docs\evidencias\assets\comissao_e_porcentagem.jpeg)
+[![Figura 3 - Comissão e Porcentagens](../evidencias/assets/comissao_e_porcentagem.jpeg)](../evidencias/assets/comissao_e_porcentagem.jpeg)
  
 ## Organização e Atualização
 
