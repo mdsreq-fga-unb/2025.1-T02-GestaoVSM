@@ -503,6 +503,22 @@ Aqui estão presentes todas as atas de reuniões entre nossa equipe e o cliente 
 [![Figura 2 - Tabela de Valores](../evidencias/assets/tabela_de_valores.jpeg)](../evidencias/assets/tabela_de_valores.jpeg)
 
 **ATA DE REUNIÃO**  
+**Data:** 20/05/2024  
+
+**Atualizações:**  
+- Protótipo aprovado  
+- Em expansão - novo funcionário para caixa  
+
+**Produtos:**  
+- Com R$5 comissão: Pomada (R$40), Balm (R$45), Óleo (R$35)  
+- Com R$10 comissão: Máquina (R$180)  
+- Sem comissão: Bebidas (cerveja R$10, refri R$5, energético R$8-R$12)  
+
+<center><p>Figura 3 - Comissão e Porcentagens </p></center>
+
+[![Figura 3 - Comissão e Porcentagens](../evidencias/assets/comissao_e_porcentagem.jpeg)](../evidencias/assets/comissao_e_porcentagem.jpeg)
+
+**ATA DE REUNIÃO**  
 **Data:** 24/05/2024  
 
 **Fechamento de caixa:**  
@@ -525,22 +541,6 @@ Aqui estão presentes todas as atas de reuniões entre nossa equipe e o cliente 
 - Selagem: R$70+  
 - Luzes: R$90+  
 - Platinado: R$150+  
-
-**ATA DE REUNIÃO**  
-**Data:** 23/06/2024  
-
-**Atualizações:**  
-- Protótipo aprovado  
-- Em expansão - novo funcionário para caixa  
-
-**Produtos:**  
-- Com R$5 comissão: Pomada (R$40), Balm (R$45), Óleo (R$35)  
-- Com R$10 comissão: Máquina (R$180)  
-- Sem comissão: Bebidas (cerveja R$10, refri R$5, energético R$8-R$12)  
-
-<center><p>Figura 3 - Comissão e Porcentagens </p></center>
-
-[![Figura 3 - Comissão e Porcentagens](../evidencias/assets/comissao_e_porcentagem.jpeg)](../evidencias/assets/comissao_e_porcentagem.jpeg)
  
 ## Organização e Atualização
 
@@ -553,3 +553,4 @@ A gestão contínua do [backlog no projeto Gestão VSM](../visao_prod_proj/backl
 |Data|Versão|Descrição|Autor|
 |---|---|---|---|
 | 11/05/2025| 1.0 | Criação do documento | [Weverton Rodrigues](https://github.com/vevetin) |
+| 15/07/2025| 1.1 | Atualização do documento | [Vinícius Rufino](https://github.com/RufinoVfR) |

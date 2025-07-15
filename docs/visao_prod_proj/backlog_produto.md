@@ -66,12 +66,8 @@ Com base na priorização realizada, foi possível identificar o conjunto de fun
 |:---:|---|---|:---:|:---:|:---:|
 |US01|Permitir ao administrador realizar o fechamento de caixa com base na consolidação automática de todas as vendas de produtos, serviços prestados e comissões pagas aos funcionários no período selecionado.|Eliminar processos manuais propensos a erros|6|1|X|
 |US02|Permitir ao administrador visualizar e calcular o faturamento total da barbearia dentro de um intervalo de datas, com filtros por funcionário, tipo de serviço ou produto.|Eliminar processos manuais propensos a erros|3|2|X|
-|US03|Permitir o registro de gastos operacionais, informando categoria, valor, data e descrição, para que sejam considerados no cálculo financeiro da barbearia.|Organizar e centralizar operações da barbearia|4|1|X|
 |US05|Permitir ao administrador visualizar o valor bruto do faturamento filtrado por dia, semana e mês.|Organizar e centralizar operações da barbearia|4|1|X|
 |US07|Permitir ao administrador acessar um extrato financeiro geral com a divisão do faturamento por funcionário, contendo a soma dos serviços realizados, produtos vendidos e comissões devidas em um determinado período.|Organizar e centralizar operações da barbearia|4|1|X|
-|US09|Permitir a edição de informações dos produtos cadastrados, incluindo alterações no nome, valor ou descrição.|Organizar e centralizar operações da barbearia|4|1|X|
-|US12|Permitir a edição dos dados de serviços cadastrados, como valores, tempo ou associação com barbeiros.|Organizar e centralizar operações da barbearia|4|1|X|
-|US15|Permitir a edição de funcionários para atualização de comissões, horários ou especialidades.|Organizar e centralizar operações da barbearia|4|1|X|
 |US17|Permitir que administradores e barbeiros visualizem agendamentos em calendários, com filtros por data e funcionário.|Organizar e centralizar operações da barbearia|4|1|X|
 |US18|Permitir que administradores e barbeiros adicionem serviços ao calendário conforme a disponibilidade do funcionário.|Automatização de agendamentos|6|2|X|
 
@@ -99,19 +95,7 @@ Critérios de aceitação:
 
 - Os valores exibidos são separados por categoria: serviços, produtos e comissões.
 
-**US03**: Como administrador, eu quero registrar gastos operacionais com categoria, valor, data e descrição para que eles sejam considerados no cálculo financeiro da barbearia.
-
-Critérios de aceitação:
-
-- O sistema deve disponibilizar um formulário com os campos: categoria, valor, data e descrição.
-
-- Todos os campos devem ser obrigatórios e validados.
-
-- Os gastos devem impactar os relatórios financeiros, especialmente o cálculo do lucro líquido.
-
-- Deve ser possível visualizar, editar e excluir gastos registrados.
-
-**US05**: Como administrador, eu quero visualizar o valor bruto do faturamento com detalhamento diário, semanal ou mensal para que eu possa acompanhar a saúde financeira da barbearia em diferentes escalas de tempo.
+**US05**: Como administrador, quero visualizar o valor bruto do faturamento semanal e mensal, para monitorar o desempenho financeiro da barbearia.
 
 Critérios de aceitação:
 
@@ -123,7 +107,7 @@ Critérios de aceitação:
 
 - O administrador deve conseguir navegar entre períodos anteriores.
 
-**US07**: Como administrador, eu quero acessar relatórios de faturamento por funcionário com detalhes de serviços, vendas e comissões para que eu possa acompanhar o desempenho individual da equipe e calcular corretamente os repasses.
+**US07**: Como administrador, quero acessar um extrato financeiro geral com divisão por funcionário, contendo serviços realizados, comissões e total a pagar por período, para acompanhar o desempenho da equipe e calcular repasses corretamente.
 
 Critérios de aceitação:
 
@@ -134,42 +118,6 @@ Critérios de aceitação:
 - A informação de "total a pagar" por funcionário é calculada automaticamente.
 
 - É possível exportar o extrato financeiro em formato PDF.
-
-**US09**: Como administrador, eu quero editar as informações de produtos cadastrados, como nome, valor e descrição para que eu possa manter os dados atualizados conforme mudanças no estoque ou estratégia de vendas.
-
-Critérios de aceitação:
-
-- O sistema deve listar os produtos com opção de edição.
-
-- O formulário de edição deve permitir alterar nome, valor e descrição.
-
-- As mudanças devem ser aplicadas imediatamente após o salvamento.
-
-- Deve haver confirmação de sucesso ou falha ao editar.
-
-**US12**: Como administrador, eu quero editar os dados dos serviços cadastrados, como preço, duração e barbeiros associados para que eu possa manter as informações sempre atualizadas e condizentes com a realidade da barbearia.
-
-Critérios de aceitação:
-
-- Deve ser possível listar e selecionar serviços para edição.
-
-- O sistema deve permitir modificar valor, tempo de execução e barbeiros associados.
-
-- Os dados devem ser validados antes de salvar.
-
-- As alterações devem ser refletidas imediatamente no sistema.
-
-- Deve haver uma mensagem de confirmação após a edição.
-
-**US15**: Como administrador, eu quero editar dados dos funcionários, incluindo comissões, horários e especialidades para que eu possa manter os dados da equipe sempre atualizados conforme mudanças operacionais.
-
-Critérios de aceitação:
-
-- O sistema deve permitir editar comissões, horários de trabalho e especialidades.
-
-- As mudanças devem ser aplicadas imediatamente no sistema.
-
-- Deve haver mensagem de confirmação ou erro após a edição.
 
 **US17**: Como administrador ou barbeiro, eu quero visualizar o calendário com os agendamentos filtrados por data, cliente e duração para que eu possa planejar melhor os atendimentos e acompanhar a rotina de trabalho.
 
@@ -212,3 +160,4 @@ Critérios de aceitação:
 |26/05/2025|1.1|Correção do Backlog|[Vinícius Rufino](https://github.com/RufinoVfR)|
 | 05/06/2025 |1.2| Atualização do Backlog do produto | [Caio Sabino](https://github.com/caiomsabino), [Caio Melo](https://github.com/CaioMelo25), [Felipe Campelo](https://github.com/felipeacampelo), [Felipe Henrique](https://github.com/fhenrique77), [Vinícius Rufino](https://github.com/RufinoVfR) e [Weverton Rodrigues](https://github.com/vevetin) |
 |24/06/2025|1.3|Adição dos Critérios de Avaliação|[Vinícius Rufino](https://github.com/RufinoVfR)|
+|15/07/2025|1.4|Atualização do Documento Conforme Mudanças no Escopo|[Vinícius Rufino](https://github.com/RufinoVfR)|

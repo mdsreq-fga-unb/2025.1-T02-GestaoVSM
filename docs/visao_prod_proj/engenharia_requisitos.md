@@ -84,7 +84,6 @@
 #### *Verificação e Validação*
 
 * **Aplicação do DoD**: Validação de que as funcionalidades estão concluídas, documentadas, testadas e alinhadas com o escopo aprovado.
-* **Walkthroughs internos**: Para verificar se as entregas estão prontas para produção antes da transição.
 
 ---
 
