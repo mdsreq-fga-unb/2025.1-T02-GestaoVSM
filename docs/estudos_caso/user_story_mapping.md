@@ -1,6 +1,9 @@
 ## Exercício de Construção de Backlog de Produto usando USM
+<img width="1975" height="506" alt="image" src="https://github.com/user-attachments/assets/b057ce11-b964-40b5-8a8a-51a3a9168f95" />
 
-<iframe width="768" height="432" src="https://miro.com/app/live-embed/uXjVIqVC20c=/?embedMode=view_only_without_ui&moveToViewport=5335,-2280,13846,5467&embedId=934228893915" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
+
+
+
 
 ---
 
