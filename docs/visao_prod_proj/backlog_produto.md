@@ -81,7 +81,7 @@ Critérios de aceitação:
 
 - Os valores de vendas de serviços e comissões são consolidados automaticamente.
 
-- O total consolidado é exibido em tela de resumo, separado por categoria (serviços, produtos e comissões).
+- O total consolidado é exibido em tela de resumo, separado por categoria (serviços e comissões).
 
 **US02**: Como administrador, eu quero calcular e visualizar o faturamento total da barbearia em um intervalo de datas, com filtros para funcionário para que eu possa acompanhar o desempenho financeiro do negócio de forma abrangente.
 
@@ -93,7 +93,7 @@ Critérios de aceitação:
 
 - O faturamento é recalculado automaticamente ao trocar o período (tab).
 
-- Os valores exibidos são separados por categoria: serviços, produtos e comissões.
+- Os valores exibidos são separados por categoria: serviços e comissões.
 
 **US05**: Como administrador, quero visualizar o valor bruto do faturamento semanal e mensal, para monitorar o desempenho financeiro da barbearia.
 
