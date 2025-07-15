@@ -4,6 +4,8 @@
 
 Com o objetivo de validar o sistema em ambiente real, garantindo usabilidade e completude funcional, foi feito um walkthrough com o cliente, no intuito de apresentá-lo o incremento e buscar sua validação. Com isso, após o desenvolvimento, tivemos uma reunião com o cliente, aonde foi apresentado o [MVP](../visao_prod_proj/backlog_produto.md)  para o mesmo, que aprovou e elogiou o progresso do time. O registro do Walkthrough está disponível a seguir:
 
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=YNMw0eZw7wI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## Declaração
 
 ### Documentação de Escopo Entregue
