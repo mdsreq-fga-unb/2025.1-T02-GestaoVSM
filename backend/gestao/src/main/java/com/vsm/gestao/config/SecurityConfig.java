@@ -74,7 +74,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         // ATENÇÃO: Verifique se a URL do seu frontend no Render está correta aqui.
-        configuration.setAllowedOrigins(List.of("http://localhost:5173", "https://seu-frontend.onrender.com")); 
+        configuration.setAllowedOrigins(List.of("http://localhost:5173", "https://two025-1-t02-gestaovsm-1.onrender.com")); 
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
