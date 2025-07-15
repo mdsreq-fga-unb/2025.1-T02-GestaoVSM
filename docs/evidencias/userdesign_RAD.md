@@ -30,15 +30,19 @@ O desenvolvimento seguiu princípios de design centrado no usuário, fundamentad
 
 ### Criação/refinamento de US com base em feedback
 
+- Com base nos feedbacks diretos obtidos nas reuniões com o cliente — especialmente após a entrega dos primeiros protótipos de alta fidelidade — refinamos e criamos novas User Stories. Esses ajustes foram baseados nas demandas emergentes durante a expansão da barbearia, como a necessidade de controle de caixa por um novo funcionário e a complexidade crescente na gestão dos serviços e comissões. A estrutura temática das US (Temas, Épicos e US específicas) foi constantemente atualizada para refletir essas mudanças, garantindo alinhamento com os objetivos de negócio.
 
 ## Verificação e Validação
 
 ### Feedback com o cliente
 
+- Realizamos diversas validações com o cliente, como evidenciado nas atas das reuniões de 20/05 e 19/06, onde o protótipo foi aprovado e ajustes importantes foram solicitados com base na realidade operacional da barbearia, como o sistema de comissões diferenciadas, a taxa sobre o uso de cartões e o registro detalhado de pagamentos. A cada iteração, colhemos feedback qualitativo do proprietário Valder e sua equipe, o que nos permitiu ajustar o comportamento esperado das telas, fluxos e regras de negócio simuladas.
 
 ## Organização e Atualização
 
 ### Repriorização do Backlog
+
+- A coleta contínua de percepções resultou em reestruturações no backlog por meio de repriorização dos requisitos com base em impacto e urgência. Após a prototipação, alguns requisitos originalmente considerados secundários passaram a ser tratados como essenciais — como a visualização detalhada do faturamento e o controle de forma de pagamento. Esse processo refletiu-se diretamente na atualização e priorização do backlog, com uso do modelo DEEP para manter o backlog detalhado, estimado, emergente e priorizado de forma estratégica.
 
 
 ## Referências Bibliográficas
