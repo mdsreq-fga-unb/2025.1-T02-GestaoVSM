@@ -26,6 +26,8 @@ public class ServicoRealizadoService {
     private final ServicoRealizadoRepository servicoRealizadoRepository;
     private final AgendamentoRepository agendamentoRepository;
 
+    // Dentro da classe ServicoRealizadoService
+
     @Transactional
     public ServicoRealizado confirmarServicoAgendado(ConfirmacaoServicoDTO dto, Usuario solicitante) {
         Agendamento agendamento = agendamentoRepository.findById(dto.agendamentoId())
@@ -34,6 +36,14 @@ public class ServicoRealizadoService {
         if (solicitante.getTipoUsuario() == TipoUsuario.BARBEIRO && !agendamento.getUsuario().getId().equals(solicitante.getId())) {
             throw new SecurityException("Barbeiro só pode confirmar seus próprios agendamentos.");
         }
+        
+        // Verifica se já existe um serviço confirmado para o mesmo barbeiro e no mesmo horário.
+        servicoRealizadoRepository.findByUsuarioIdAndDataExecucao(
+            agendamento.getUsuario().getId(), 
+            agendamento.getDataAgendamento()
+        ).ifPresent(servicoExistente -> {
+            throw new IllegalStateException("Já existe um serviço confirmado para este barbeiro neste mesmo horário.");
+        });
 
         BigDecimal valorBruto = agendamento.getServicos().stream()
                 .map(Servico::getPreco)

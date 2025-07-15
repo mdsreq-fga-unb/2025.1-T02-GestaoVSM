@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface VendasProdutosRepository extends JpaRepository<VendasProdutos, Long> {
-    List<VendasProdutos> findAllByDataGastoBetween(LocalDate inicio, LocalDate fim);
-    List<VendasProdutos> findAllByUsuarioIdAndDataGastoBetween(Long usuarioId, LocalDate inicio, LocalDate fim);
+    List<VendasProdutos> findAllByDataVendaBetween(LocalDate inicio, LocalDate fim);
+    List<VendasProdutos> findAllByUsuarioIdAndDataVendaBetween(Long usuarioId, LocalDate inicio, LocalDate fim);
     List<VendasProdutos> findAllByUsuarioId(Long usuarioId);
 }
