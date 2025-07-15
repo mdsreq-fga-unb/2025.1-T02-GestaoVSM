@@ -41,32 +41,15 @@ public class AgendamentoService {
     }
 
     public List<Agendamento> listarAgendamentos(LocalDate dia, Optional<Long> barbeiroId, Usuario solicitante) {
-        // ================== LOGGING PARA DEPURAR ==================
-        System.out.println("--- INICIANDO listarAgendamentos ---");
-        if (solicitante != null) {
-            System.out.println("ID do Solicitante: " + solicitante.getId());
-            System.out.println("Nome do Solicitante: " + solicitante.getNome());
-            System.out.println("Tipo de Usuário do Solicitante: " + solicitante.getTipoUsuario()); // A linha mais importante!
-        } else {
-            System.out.println("Objeto 'solicitante' é NULO.");
-        }
-        System.out.println("------------------------------------");
-        // =========================================================
-
         LocalDateTime inicioDoDia = dia.atStartOfDay();
         LocalDateTime fimDoDia = dia.atTime(LocalTime.MAX);
 
-        // A lógica de comparação original está correta, pois tipoUsuario é um enum.
-        if (solicitante != null && solicitante.getTipoUsuario() == TipoUsuario.ADMIN) {
-            System.out.println("Usuário é ADMIN. Buscando agendamentos...");
+        if (solicitante.getTipoUsuario() == TipoUsuario.ADMIN) {
             return barbeiroId.map(id -> agendamentoRepository.findAllByUsuarioIdAndDataAgendamentoBetween(id, inicioDoDia, fimDoDia))
                     .orElseGet(() -> agendamentoRepository.findAllByDataAgendamentoBetween(inicioDoDia, fimDoDia));
-        } else if (solicitante != null && solicitante.getTipoUsuario() == TipoUsuario.BARBEIRO) {
-            System.out.println("Usuário é BARBEIRO. Buscando agendamentos...");
+        } else if (solicitante.getTipoUsuario() == TipoUsuario.BARBEIRO) {
             return agendamentoRepository.findAllByUsuarioIdAndDataAgendamentoBetween(solicitante.getId(), inicioDoDia, fimDoDia);
         }
-        
-        System.out.println("Nenhuma permissão encontrada. Retornando lista vazia.");
         return Collections.emptyList();
     }
 
