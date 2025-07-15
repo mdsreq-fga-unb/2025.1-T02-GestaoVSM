@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -26,7 +27,6 @@ public class AgendamentoService {
     private final UsuarioRepository usuarioRepository;
     private final ServicoRepository servicoRepository;
 
-    // ... (outros métodos permanecem iguais) ...
     @Transactional
     public Agendamento criarAgendamento(AgendamentoDTO dto, Usuario solicitante) {
         Usuario barbeiroAgendado = getBarbeiroFromDto(dto.barbeiroId());
@@ -40,28 +40,19 @@ public class AgendamentoService {
         return agendamentoRepository.save(novoAgendamento);
     }
 
-
-    // ================== MÉTODO CORRIGIDO ==================
     public List<Agendamento> listarAgendamentos(LocalDate dia, Optional<Long> barbeiroId, Usuario solicitante) {
-        // Lógica de intervalo mais robusta: do início do dia selecionado ATÉ o início do próximo dia.
         LocalDateTime inicioDoDia = dia.atStartOfDay();
-        LocalDateTime fimDoDia = dia.plusDays(1).atStartOfDay(); 
+        LocalDateTime fimDoDia = dia.atTime(LocalTime.MAX);
 
-        if (solicitante != null && solicitante.getTipoUsuario() == TipoUsuario.ADMIN) {
-            // Chama os novos métodos do repositório
-            return barbeiroId.map(id -> agendamentoRepository.buscarPorUsuarioNoIntervalo(id, inicioDoDia, fimDoDia))
-                    .orElseGet(() -> agendamentoRepository.buscarTodosNoIntervalo(inicioDoDia, fimDoDia));
-        } else if (solicitante != null && solicitante.getTipoUsuario() == TipoUsuario.BARBEIRO) {
-            // Chama o novo método do repositório
-            return agendamentoRepository.buscarPorUsuarioNoIntervalo(solicitante.getId(), inicioDoDia, fimDoDia);
+        if (solicitante.getTipoUsuario() == TipoUsuario.ADMIN) {
+            return barbeiroId.map(id -> agendamentoRepository.findAllByUsuarioIdAndDataAgendamentoBetween(id, inicioDoDia, fimDoDia))
+                    .orElseGet(() -> agendamentoRepository.findAllByDataAgendamentoBetween(inicioDoDia, fimDoDia));
+        } else if (solicitante.getTipoUsuario() == TipoUsuario.BARBEIRO) {
+            return agendamentoRepository.findAllByUsuarioIdAndDataAgendamentoBetween(solicitante.getId(), inicioDoDia, fimDoDia);
         }
-        
         return Collections.emptyList();
     }
-    // =====================================================
 
-
-    // ... (O resto dos seus métodos continua aqui, sem alterações) ...
     public Optional<Agendamento> buscarPorId(Long id, Usuario solicitante) {
         return agendamentoRepository.findById(id)
                 .filter(agendamento -> temPermissaoParaAcessar(solicitante, agendamento.getUsuario()));
