@@ -13,8 +13,6 @@ import { useNavigate } from 'react-router-dom';
 
 import EmployeeSummarySection from '../components/EmployeeSummarySection';
 import RevenueSummarySection from '../components/RevenueSummarySection';
-import PrimaryActionButton from '../components/PrimaryActionButton';
-import ExportConfirmationModal from '../modals/ExportConfirmationModal';
 
 import { getFinancialReport } from '../services/api';
 
@@ -28,7 +26,6 @@ import { getFinancialReport } from '../services/api';
 function CloseTillPage() {
     const navigate = useNavigate();
     const [tab, setTab] = useState(0);
-    const [exportModalOpen, setExportModalOpen] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [financialData, setFinancialData] = useState(null);
@@ -42,7 +39,6 @@ function CloseTillPage() {
         setError(null);
         try {
             const response = await getFinancialReport(tipoRelatorio);
-            console.log('Dados financeiros recebidos:', response.data);
             setFinancialData(response.data);
         } catch (err) {
             console.error(err);
@@ -59,19 +55,6 @@ function CloseTillPage() {
 
     // Atualiza a aba selecionada
     const handleTabChange = (_, newValue) => setTab(newValue);
-
-    // Exportação (a implementar)
-    const handleExportClick = () => setExportModalOpen(true);
-    const handleCloseModal = () => setExportModalOpen(false);
-    const handleConfirmExport = () => {
-        console.log('Exportar PDF do período selecionado:', periodoSelecionado.label);
-        handleCloseModal();
-    };
-
-    // Texto do período baseado na aba
-    const periodoSelecionado = {
-        label: tab === 0 ? 'Semana Atual' : 'Mês Atual',
-    };
 
     // Monta o objeto de dados para o RevenueSummarySection
     const revenueData = {
@@ -150,35 +133,6 @@ function CloseTillPage() {
                     <EmployeeSummarySection employees={employees} />
                 </>
             )}
-
-            {/* Footer fixo */}
-            <Box
-                component="footer"
-                sx={{
-                    position: 'fixed',
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    backgroundColor: 'var(--color-primary)',
-                    borderTop: '1px solid rgba(0,0,0,0.05)',
-                    padding: '12px 0',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    zIndex: 10,
-                }}
-            >
-                <PrimaryActionButton icon={ArrowDownTrayIcon} onClick={handleExportClick}>
-                    Exportar extrato
-                </PrimaryActionButton>
-            </Box>
-
-            {/* Modal de exportação */}
-            <ExportConfirmationModal
-                open={exportModalOpen}
-                onClose={handleCloseModal}
-                onConfirm={handleConfirmExport}
-                selectedPeriod={periodoSelecionado.label}
-            />
         </Box>
     );
 }

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
   Typography,
-  Chip,
-  Avatar,
   Fab,
   Box
 } from '@mui/material';
@@ -17,16 +15,30 @@ import Sidebar from '../components/Sidebar.jsx';
 
 import { getAppointmentsByDate, confirmService } from '../services/api';
 
-function AgendaPage({
-  initialAppointments = [],
-  barbers = [],
-  availableServices = [],
-  availableTimes = [],
-  isAdmin = true,
-}) {
+function AgendaPage() {
+  // Dados mockados
+  const barbers = [
+    { id: 1, name: 'João Silva' },
+    { id: 2, name: 'Carlos Oliveira' },
+    { id: 3, name: 'Marcos Santos' },
+  ];
+
+  const availableServices = [
+    { id: 101, name: 'Corte de Cabelo', price: 30 },
+    { id: 102, name: 'Barba', price: 20 },
+    { id: 103, name: 'Sobrancelha', price: 15 },
+  ];
+
+  const availableTimes = [
+    '08:00', '09:00', '10:00', '11:00',
+    '13:00', '14:00', '15:00', '16:00',
+  ];
+
+  const isAdmin = true;
+
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedBarber, setSelectedBarber] = useState('');
-  const [appointments, setAppointments] = useState(initialAppointments);
+  const [appointments, setAppointments] = useState([]);
 
   const [finalizingAppointment, setFinalizingAppointment] = useState(null);
   const [showFinalizeModal, setShowFinalizeModal] = useState(false);
@@ -219,7 +231,6 @@ function AgendaPage({
     <div className="p-4 mt-8" style={{ color: 'var(--color-secondary)', backgroundColor: 'var(--color-primary)' }}>
       <div className="flex justify-between items-center mb-4">
         <Sidebar />
-
       </div>
 
       <Typography
@@ -293,7 +304,7 @@ function AgendaPage({
         selectedServices={newSelectedServices}
         onServicesChange={setNewSelectedServices}
         availableTimes={availableTimes}
-        isAdmin={isAdmin} // passe isAdmin para controlar visibilidade do dropdown
+        isAdmin={isAdmin}
       />
 
       <Box sx={{ height: (theme) => theme.spacing(8) }} />
