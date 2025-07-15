@@ -23,6 +23,9 @@ Esse tópico define as principais etapas e prazos do projeto, garantindo a entre
 |                       | 18        | 08/07/2025 | 08/07/2025 | Apresentar US's 09, 12 e 15 para o cliente.                                   | Buscar a aprovação do cliente quanto a entrega.                        |
 | **Transição (OpenUP)**         | 14       | 09/07/2025 | 15/07/2025 | Deploy, homologação, treinamento do cliente e encerramento do projeto.                        | Sistema em produção, feedback registrado, documentação final, aceite formal.       |
 
+
+> Embora as histórias US09, US12 e US15 tenham sido iniciadas no backend e estejam em progresso técnico, optou-se por não incluí-las na entrega final do projeto, dado o tempo insuficiente para concluir o desenvolvimento das interfaces, realizar a integração completa com o frontend e validar os fluxos com o cliente. Para garantir a qualidade da entrega e evitar riscos de funcionalidades parcialmente implementadas, essas histórias permanecerão documentadas no backlog como itens em andamento, com entrega prevista para versões futuras. Essa decisão permite manter o foco na estabilidade e usabilidade das funcionalidades principais já consolidadas.
+
 ## Histórico de Versão
 
 | Data | Versão | Descrição | Autor |
