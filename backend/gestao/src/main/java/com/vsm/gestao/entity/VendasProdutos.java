@@ -1,8 +1,6 @@
 package com.vsm.gestao.entity;
 
 import java.time.LocalDate;
-
-import org.hibernate.annotations.CreationTimestamp;
 import java.math.BigDecimal;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -16,17 +14,15 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Table(name = "vendas_produtos")
-
-
 public class VendasProdutos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @CreationTimestamp
-    @Column(name = "data_gasto", nullable = false, updatable = false)
-    private LocalDate dataGasto;
+    // CORRIGIDO: Nome da coluna e do campo ajustado para "data_venda"
+    @Column(name = "data_venda", nullable = false, updatable = false)
+    private LocalDate dataVenda;
 
     @Column(name = "preco", nullable = false)
     private BigDecimal preco;
@@ -42,8 +38,9 @@ public class VendasProdutos {
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
-     @PrePersist
+
+    @PrePersist
     protected void onCreate() {
-        this.dataGasto = LocalDate.now();
+        this.dataVenda = LocalDate.now();
     }
 }
