@@ -15,7 +15,7 @@
 
 #### *Declaração*
 
-* **User Story (Temas, Épicos e User Stories)**: Estruturar o backlog em níveis hierárquicos para facilitar organização e planejamento incremental.
+* **Backlog inicial (Temas, Épicos e US)**: Estruturar o backlog em níveis hierárquicos para facilitar organização e planejamento incremental.
 
 #### *Verificação e Validação*
 

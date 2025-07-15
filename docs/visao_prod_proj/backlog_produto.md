@@ -27,7 +27,7 @@ O backlog geral reúne todas as funcionalidades previstas para o sistema na form
 | ID     | História de Usuário | Tema Atrelado | Épico |
 |--------|---------------------|---------------|-------|
 | **US01** | Como administrador, eu quero realizar o fechamento de caixa com base na consolidação automática das receitas e comissões do período para que eu possa encerrar o dia de trabalho com segurança e sem erros manuais. | [**T01**](#temas-especificos-te) | [**E01**](#epicos-e) |
-| **US02** | Como administrador, eu quero calcular e visualizar o faturamento total da barbearia em um intervalo de datas, com filtros para funcionário, serviço e produto para que eu possa acompanhar o desempenho financeiro do negócio de forma abrangente. | [**T01**](#temas-especificos-te) | [**E01**](#epicos-e) |
+| **US02** | Como administrador, eu quero calcular e visualizar o faturamento total da barbearia em um intervalo de datas, com filtros para funcionário para que eu possa acompanhar o desempenho financeiro do negócio de forma abrangente. | [**T01**](#temas-especificos-te) | [**E01**](#epicos-e) |
 | **US03** | Como administrador, eu quero registrar gastos operacionais com categoria, valor, data e descrição para que eles sejam considerados no cálculo financeiro da barbearia. | [**T01**](#temas-especificos-te) | [**E01**](#epicos-e) |
 | **US04** | Como administrador, eu quero poder visualizar um resumo financeiro global com a distribuição percentual do faturamento entre serviços e consumíveis. | [**T01**](#temas-especificos-te) | [**E02**](#epicos-e) |
 | **US05** | Como administrador, eu quero visualizar o valor bruto do faturamento com detalhamento diário, semanal ou mensal para que eu possa acompanhar a saúde financeira da barbearia em diferentes escalas de tempo. | [**T01**](#temas-especificos-te) | [**E02**](#epicos-e) |
@@ -42,7 +42,7 @@ O backlog geral reúne todas as funcionalidades previstas para o sistema na form
 | **US14** | Como administrador, eu quero cadastrar funcionários com nome, especialidade, horário de trabalho, comissão e status para que eu possa gerenciar a equipe de forma eficiente dentro do sistema. | [**T02**](#temas-especificos-te) | [**E05**](#epicos-e) |
 | **US15** | Como administrador, eu quero editar dados dos funcionários, incluindo comissões, horários e especialidades para que eu possa manter os dados da equipe sempre atualizados conforme mudanças operacionais. | [**T02**](#temas-especificos-te) | [**E05**](#epicos-e) |
 | **US16** | Como administrador, eu quero excluir ou inativar funcionários sem perder os registros associados para que eu possa preservar o histórico de atendimentos e comissões mesmo após desligamentos. | [**T02**](#temas-especificos-te) | [**E05**](#epicos-e) |
-| **US17** | Como administrador ou barbeiro, eu quero visualizar o calendário com os agendamentos filtrados por serviço, data, cliente e duração para que eu possa planejar melhor os atendimentos e acompanhar a rotina de trabalho.  | [**T03**](#temas-especificos-te) | [**E06**](#epicos-e) |
+| **US17** | Como administrador ou barbeiro, eu quero visualizar o calendário com os agendamentos filtrados por data, cliente e duração para que eu possa planejar melhor os atendimentos e acompanhar a rotina de trabalho.  | [**T03**](#temas-especificos-te) | [**E06**](#epicos-e) |
 | **US18** | Como administrador ou barbeiro, eu quero adicionar serviços ao calendário do barbeiro responsável para que eu possa organizar os atendimentos de acordo com a disponibilidade do profissional. | [**T03**](#temas-especificos-te) | [**E06**](#epicos-e) |
 | **US19** | Como cliente, quero receber uma confirmação automática do agendamento via WhatsApp, para ter certeza de que meu horário foi reservado corretamente. | [**T03**](#temas-especificos-te) | [**E07**](#epicos-e) |
 | **US20** | Como cliente, quero escolher o profissional desejado durante o agendamento no WhatsApp, para ser atendido por quem eu prefiro. | [**T03**](#temas-especificos-te) | [**E07**](#epicos-e) |
@@ -72,34 +72,34 @@ Com base na priorização realizada, foi possível identificar o conjunto de fun
 |US09|Permitir a edição de informações dos produtos cadastrados, incluindo alterações no nome, valor ou descrição.|Organizar e centralizar operações da barbearia|4|1|X|
 |US12|Permitir a edição dos dados de serviços cadastrados, como valores, tempo ou associação com barbeiros.|Organizar e centralizar operações da barbearia|4|1|X|
 |US15|Permitir a edição de funcionários para atualização de comissões, horários ou especialidades.|Organizar e centralizar operações da barbearia|4|1|X|
-|US17|Permitir que administradores e barbeiros visualizem agendamentos em calendários, com filtros por data, funcionário, cliente e tipo de serviço.|Organizar e centralizar operações da barbearia|4|1|X|
+|US17|Permitir que administradores e barbeiros visualizem agendamentos em calendários, com filtros por data e funcionário.|Organizar e centralizar operações da barbearia|4|1|X|
 |US18|Permitir que administradores e barbeiros adicionem serviços ao calendário conforme a disponibilidade do funcionário.|Automatização de agendamentos|6|2|X|
 
 ## 9.4 Critérios de Aceitação do MVP
 
-**US01**: Permitir ao administrador realizar o fechamento de caixa com base na consolidação automática de todas as vendas de produtos, serviços prestados e comissões pagas aos funcionários no período selecionado.
+**US01**: Como administrador, eu quero realizar o fechamento de caixa com base na consolidação automática das receitas e comissões do período para que eu possa encerrar o dia de trabalho com segurança e sem erros manuais.
 
 Critérios de aceitação:
 
-- O sistema deve permitir selecionar um intervalo de datas para o fechamento de caixa.
+- O sistema permite selecionar o período de fechamento (semana ou mês atual).
 
-- O sistema deve consolidar automaticamente os valores de vendas de produtos, serviços e comissões.
+- Os valores de vendas de serviços e comissões são consolidados automaticamente.
 
-- O total consolidado deve ser exibido em uma tela de resumo com valores separados por categoria.
+- O total consolidado é exibido em tela de resumo, separado por categoria (serviços, produtos e comissões).
 
-**US02**: Permitir ao administrador visualizar e calcular o faturamento total da barbearia dentro de um intervalo de datas, com filtros por funcionário, tipo de serviço ou produto.
+**US02**: Como administrador, eu quero calcular e visualizar o faturamento total da barbearia em um intervalo de datas, com filtros para funcionário para que eu possa acompanhar o desempenho financeiro do negócio de forma abrangente.
 
 Critérios de aceitação:
 
-- Deve ser possível selecionar um intervalo de datas.
+- O administrador pode alternar entre os períodos “Semana Atual” e “Mês Atual” por meio de abas.
 
-- Deve haver filtros por funcionário, tipo de serviço e tipo de produto.
+- O sistema apresenta o faturamento total dentro do período selecionado.
 
-- O sistema deve exibir o valor total faturado de acordo com os filtros aplicados.
+- O faturamento é recalculado automaticamente ao trocar o período (tab).
 
-- Os resultados devem ser atualizados automaticamente ao aplicar os filtros.
+- Os valores exibidos são separados por categoria: serviços, produtos e comissões.
 
-**US03**: Permitir o registro de gastos operacionais, informando categoria, valor, data e descrição, para que sejam considerados no cálculo financeiro da barbearia.
+**US03**: Como administrador, eu quero registrar gastos operacionais com categoria, valor, data e descrição para que eles sejam considerados no cálculo financeiro da barbearia.
 
 Critérios de aceitação:
 
@@ -111,7 +111,7 @@ Critérios de aceitação:
 
 - Deve ser possível visualizar, editar e excluir gastos registrados.
 
-**US05**: Permitir ao administrador visualizar o valor bruto do faturamento filtrado por dia, semana e mês.
+**US05**: Como administrador, eu quero visualizar o valor bruto do faturamento com detalhamento diário, semanal ou mensal para que eu possa acompanhar a saúde financeira da barbearia em diferentes escalas de tempo.
 
 Critérios de aceitação:
 
@@ -123,17 +123,19 @@ Critérios de aceitação:
 
 - O administrador deve conseguir navegar entre períodos anteriores.
 
-**US07**: Permitir ao administrador acessar um extrato financeiro geral com a divisão do faturamento por funcionário, contendo a soma dos serviços realizados, produtos vendidos e comissões devidas em um determinado período.
+**US07**: Como administrador, eu quero acessar relatórios de faturamento por funcionário com detalhes de serviços, vendas e comissões para que eu possa acompanhar o desempenho individual da equipe e calcular corretamente os repasses.
 
 Critérios de aceitação:
 
-- Deve ser possível selecionar um período para gerar o extrato.
+- É possível visualizar um extrato dividido por funcionário.
 
-- O extrato deve exibir informações por funcionário, com os totais de serviços, produtos e comissões.
+- O extrato exibe totais de serviços, comissões e despesas.
 
-- Os dados devem estar corretamente somados e organizados.
+- A informação de "total a pagar" por funcionário é calculada automaticamente.
 
-**US09**: Permitir a edição de informações dos produtos cadastrados, incluindo alterações no nome, valor ou descrição.
+- É possível exportar o extrato financeiro em formato PDF.
+
+**US09**: Como administrador, eu quero editar as informações de produtos cadastrados, como nome, valor e descrição para que eu possa manter os dados atualizados conforme mudanças no estoque ou estratégia de vendas.
 
 Critérios de aceitação:
 
@@ -145,7 +147,7 @@ Critérios de aceitação:
 
 - Deve haver confirmação de sucesso ou falha ao editar.
 
-**US12**: Permitir a edição dos dados de serviços cadastrados, como valores, tempo ou associação com barbeiros.
+**US12**: Como administrador, eu quero editar os dados dos serviços cadastrados, como preço, duração e barbeiros associados para que eu possa manter as informações sempre atualizadas e condizentes com a realidade da barbearia.
 
 Critérios de aceitação:
 
@@ -159,7 +161,7 @@ Critérios de aceitação:
 
 - Deve haver uma mensagem de confirmação após a edição.
 
-**US15**: Permitir a edição de funcionários para atualização de comissões, horários ou especialidades.
+**US15**: Como administrador, eu quero editar dados dos funcionários, incluindo comissões, horários e especialidades para que eu possa manter os dados da equipe sempre atualizados conforme mudanças operacionais.
 
 Critérios de aceitação:
 
@@ -169,33 +171,38 @@ Critérios de aceitação:
 
 - Deve haver mensagem de confirmação ou erro após a edição.
 
-**US17**: Permitir que administradores e barbeiros visualizem agendamentos em calendários, com filtros por data, funcionário, cliente e tipo de serviço.
+**US17**: Como administrador ou barbeiro, eu quero visualizar o calendário com os agendamentos filtrados por data, cliente e duração para que eu possa planejar melhor os atendimentos e acompanhar a rotina de trabalho.
 
 Critérios de aceitação:
 
-- O calendário deve exibir todos os agendamentos com data e hora.
+- Deve ser possível selecionar uma data através de um calendário horizontal;
 
-- Deve ser possível aplicar filtros por data, funcionário, cliente e tipo de serviço.
+- Os agendamentos da data selecionada devem ser exibidos em lista com:
+    - Nome do cliente
+    - Horário do atendimento
+    - Lista dos serviços (nome e preço)
 
-- O calendário deve atualizar automaticamente ao aplicar os filtros.
+- Status visível com diferenciação por cor (agendado `amarelo`, em andamento `azul`, finalizado `verde`);
 
-- Ao clicar em um agendamento, os detalhes devem ser exibidos.
+- Filtro por barbeiro visível apenas para administradores;
 
-- Deve haver visualizações por dia, semana e mês.
+- Checkboxes para marcar serviços como concluídos, alterando status em tempo real;
 
-**US18**: Permitir que administradores e barbeiros adicionem serviços ao calendário conforme a disponibilidade do funcionário.
+- Ao concluir todos os serviços, abrir modal para forma de pagamento e aplicar tag visual;
+
+**US18**: Como administrador ou barbeiro, eu quero adicionar serviços ao calendário do barbeiro responsável para que eu possa organizar os atendimentos de acordo com a disponibilidade do profissional.
 
 Critérios de aceitação:
 
-- O sistema deve validar a disponibilidade do funcionário antes de criar o agendamento.
+- Botão de ação rápida para novo agendamento;
 
-- O formulário de agendamento deve conter cliente, serviço, data e hora.
+- Modal com campos obrigatórios:
+    - Cliente
+    - Barbeiro
+    - Horário
+    - Tipo(s) de serviço
 
-- Caso o horário esteja ocupado, o sistema deve exibir uma mensagem de conflito.
-
-- O agendamento deve aparecer no calendário imediatamente após a confirmação.
-
-- Deve ser possível editar ou cancelar agendamentos.
+- Validação de horários indisponíveis (mock)
 
 ## Histórico de Versão
 
