@@ -413,7 +413,7 @@ Para facilitar a consulta, o documento completo das análises GOMS está dispon�
 
 ### Observação/Imersão (Etnografia)
 
-Durante as visitas presenciais à barbearia VSM, em Rio Branco – AC, um integrante da equipe realizou a imersão no ambiente de trabalho por aproximadamente [inserir número de dias ou horas, se disponível], observando rotinas operacionais e interações informais entre os colaboradores. Essa aproximação permitiu identificar necessidades não verbalizadas e validar práticas reais do cotidiano.
+Durante as visitas presenciais à barbearia VSM, em Rio Branco – AC, um integrante da equipe realizou a imersão no ambiente de trabalho por aproximadamente 4 horas, observando rotinas operacionais e interações informais entre os colaboradores. Essa aproximação permitiu identificar necessidades não verbalizadas e validar práticas reais do cotidiano.
 
 A seguir, os principais achados observacionais e sua fundamentação empírica:
 
