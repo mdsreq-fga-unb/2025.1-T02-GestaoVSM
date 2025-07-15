@@ -345,6 +345,104 @@ Este documento apresenta o diagrama de casos de uso do aplicativo ConnectCare de
 
     8.3.2 O tempo para salvar um novo registro no prontuário não deve exceder 3 segundos.
 
+=== "UC12 - Monitorar Indicadores de Desempenho"
+
+    |Data|Versão|Descrição|Autor|
+    |---|---|---|---|
+    |05/07/2025|1.0|Criação do documento|Caio Melo|
+
+    **1. Monitorar Indicadores de Desempenho**
+
+    **1.1 Breve Descrição** 
+
+    Este caso de uso permite que o Administrador do Sistema monitore indicadores-chave de desempenho (KPIs) relacionados ao funcionamento e impacto social da plataforma ConnectCare, com o objetivo de avaliar resultados, tomar decisões estratégicas e fornecer dados para as organizações parceiras.
+
+    **1.2 Atores**
+
+    - Administrador do Sistema
+
+    **2. Fluxo Básico de Eventos (FB)**
+
+    **2.1** FB01 – O administrador acessa a área “Indicadores de  Desempenho” no painel administrativo.
+
+    **2.2** FB02 – O sistema exibe a lista de indicadores disponíveis.
+
+    **2.3** FB03 – O administrador seleciona um ou mais indicadores para monitoramento.
+
+    **2.4** FB04 – O sistema exibe gráficos e métricas em tempo real ou com filtros de período.
+    
+    **2.5** FB05 – O administrador pode exportar relatórios em PDF ou Excel com os dados selecionados.
+
+    **2.6** FB06 – O sistema registra a ação no log administrativo.
+
+    **2.7** FB07 - O caso de uso é encerrado.
+
+    **3. Fluxos Alternativos (FA)**
+
+    **3.1** FA01 – Aplicação de Filtros Avançados
+
+    FA01.1 – O administrador opta por aplicar filtros como região, tipo de usuário ou intervalo de tempo.
+
+    FA01.2 – O sistema atualiza os gráficos com base nos filtros aplicados.
+
+    **4. Fluxos de Exceção (FE)**
+
+    **4.1** FE01 – Falha ao carregar indicadores
+
+    O sistema exibe a mensagem: “Não foi possível carregar os indicadores. Tente novamente mais tarde.” O fluxo retorna para FB02.
+
+    **4.2** FE02 – Nenhum dado encontrado para o filtro
+
+    Caso o filtro não retorne resultados, o sistema exibe a mensagem: “Nenhum dado disponível para os critérios selecionados.” O fluxo retorna para FA01.1.
+
+    **5. Regras de Negócio (RN)**
+
+    **5.1** RN01 – O sistema deve oferecer, no mínimo, os seguintes indicadores:
+
+    - Número de usuários ativos por mês
+
+    - Tempo médio de agendamento de consultas
+
+    - Cobertura das campanhas por região
+
+    - Satisfação dos usuários com os atendimentos
+
+    - Número de atendimentos por especialidade
+
+    - Número de visitas domiciliares realizadas
+
+    - Quantidade de notificações enviadas e abertas
+
+    - Taxa de retorno dos pacientes às consultas
+
+    **5.2** RN02 – Os dados devem ser atualizados em tempo real ou diariamente, conforme a natureza do indicador.
+
+    **5.3** RN03 – Os relatórios exportados devem conter data de geração, filtros aplicados e responsável pela exportação.
+
+    **6. Pré-Condições**
+
+    O administrador deve estar autenticado na plataforma com perfil de acesso administrativo
+
+    **7. Pós-Condições**
+
+    Indicadores são exibidos e/ou exportados com sucesso.
+    
+    A ação de monitoramento fica registrada no log de auditoria.
+
+    **8. Requisitos Especiais (organizados pelo modelo URPS+)**
+
+    **8.1** Usabilidade
+
+    8.1.1 A área de indicadores deve apresentar gráficos interativos e visualmente claros.
+
+    8.1.2 O sistema deve apresentar opção de alternância entre visualização por gráfico, tabela e relatório.
+
+    **8.2** Desempenho
+
+    8.2.1 Os indicadores devem carregar em até 3 segundos em situações normais.
+
+    8.2.2 Exportações de relatórios devem ocorrer em até 5 segundos.
+
 === "UC14 - Gerenciar Informações de Parceiros"
 
     |Data|Versão|Descrição|Autor|
@@ -440,7 +538,7 @@ Este documento apresenta o diagrama de casos de uso do aplicativo ConnectCare de
 
     **4. Fluxos de Exceção (FE)**
 
-    4.1 FE01 – Validação de Informações
+    **4.1** FE01 – Validação de Informações
     
     Nos passos FB06 do fluxo principal, o sistema verifica que uma ou mais informações fornecidas para o registro da campanha não foram validadas (formato e/ou obrigatoriedade) e exibe uma mensagem informando ao administrador do sistema sobre os campos que precisam ser corrigidos. O sistema retorna ao passo FB04 do fluxo principal, permitindo que o administrador do sistema corrija as informações e tente o registro novamente.
 
