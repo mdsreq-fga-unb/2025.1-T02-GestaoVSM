@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@theme {
+  --font-primary: 'Outfit', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+
+  --color-primary: #FFFFFF;
+  --color-accent: #FFB959;
+  --color-accent-hover: #FFFDF8;
+  --color-secondary: #0D0D0D;
+}
