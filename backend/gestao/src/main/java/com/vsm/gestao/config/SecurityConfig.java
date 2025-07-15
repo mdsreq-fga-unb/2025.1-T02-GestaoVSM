@@ -29,10 +29,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .cors() // ATIVA CORS para o Spring Security
-            .and()
+            .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Usa a configuração de CORS abaixo
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(authorize -> authorize
+                // ================== ADICIONE ESTA LINHA ==================
+                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                // =========================================================
+
                 // --- Endpoints Públicos ---
                 .requestMatchers("/api/auth/**", "/error").permitAll()
 
@@ -65,19 +68,20 @@ public class SecurityConfig {
 
     /**
      * Configuração global de CORS para a aplicação.
-     * Permite requisições vindas do frontend em http://localhost:5173
+     * Esta configuração já está correta.
      */
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:5173", "https://two025-1-t02-gestaovsm.onrender.com")); // origem frontend
+        // ATENÇÃO: Verifique se a URL do seu frontend no Render está correta aqui.
+        configuration.setAllowedOrigins(List.of("http://localhost:5173", "https://seu-frontend.onrender.com")); 
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
-        configuration.setAllowCredentials(true); // permite cookies/tokens
-        configuration.setMaxAge(3600L); // cache das preflight por 1 hora
+        configuration.setAllowCredentials(true);
+        configuration.setMaxAge(3600L);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration); // aplica para todos endpoints
+        source.registerCorsConfiguration("/**", configuration);
 
         return source;
     }
