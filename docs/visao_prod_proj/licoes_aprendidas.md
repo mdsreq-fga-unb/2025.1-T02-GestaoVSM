@@ -88,4 +88,4 @@ propostas e as necessidades específicas de cada fase.
 | 20/04/2025 | 1.3 | Inserção do Tópico 6.1 | [Caio Sabino](https://github.com/caiomsabino) |
 | 26/05/2025 | 2.0 | Lições Aprendidas Unidade 2| [Felipe Henrique](https://github.com/fhenrique77) |
 | 23/06/2025 | 3.0 | Lições Aprendidas Unidade 3| [Vinícius Rufino](https://github.com/RufinoVfR) |
-| 15/07/2025 | 4.0 | Lições Aprendidas Unidade 3| [Caio Melo](https://github.com/CaioMelo25) |
+| 15/07/2025 | 4.0 | Lições Aprendidas Unidade 4| [Caio Melo](https://github.com/CaioMelo25) |
