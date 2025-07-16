@@ -1,0 +1,2048 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://mydomain.org/mysite/evidencias/concepcao_OpenUP/">
+      
+      
+        <link rel="prev" href="../../estudos_caso/caso_de_uso/">
+      
+      
+        <link rel="next" href="../elaboracao_OpenUP/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>Concepção - OpenUP - Gestão VSM</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#elicitacao-e-descoberta" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Gestão VSM" class="md-header__button md-logo" aria-label="Gestão VSM" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gestão VSM
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Concepção - OpenUP
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="black"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../visao_prod_proj/cenario_atual/" class="md-tabs__link">
+          
+  
+  
+  Visão do Produto e Projeto
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../estudos_caso/product_backlog_building/" class="md-tabs__link">
+          
+  
+  
+  Estudos de Caso
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Evidências
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../apresentacoes_entregas/apresentacao_1/" class="md-tabs__link">
+          
+  
+  
+  Apresentações e Entregas
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../acesso/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Acesso - Gestão VSM
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Gestão VSM" class="md-nav__button md-logo" aria-label="Gestão VSM" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Gestão VSM
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Início
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Visão do Produto e Projeto
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Visão do Produto e Projeto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao_prod_proj/cenario_atual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. Cenário Atual do Cliente e do Negócio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao_prod_proj/solucao_proposta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. Solução Proposta
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao_prod_proj/estrategias_engenharia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Estratégias de Engenharia de Software
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao_prod_proj/engenharia_requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Engenharia de Requisitos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao_prod_proj/cronograma_entregas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5. Cronograma e Entregas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao_prod_proj/interacao_equipe_cliente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6. Interação entre Equipe e Cliente
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao_prod_proj/requisitos_software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    7. Requisitos de Software
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao_prod_proj/dor_dod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    8. DoR e DoD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao_prod_proj/backlog_produto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    9. Backlog do Produto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao_prod_proj/licoes_aprendidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10. Lições Aprendidas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao_prod_proj/referencias_bibliograficas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11. Bibliografia e Referências Bibliográficas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Estudos de Caso
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Estudos de Caso
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../estudos_caso/product_backlog_building/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PBB - TechFix
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../estudos_caso/user_story_mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    USM - ComunEventos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../estudos_caso/caso_de_uso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Caso de Uso - ConnectCare
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Evidências
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Evidências
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Concepção - OpenUP
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Concepção - OpenUP
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#elicitacao-e-descoberta" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elicitação e Descoberta
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Elicitação e Descoberta">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entrevista" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entrevista
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analise-de-tarefas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Análise de Tarefas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observacaoimersao-etnografia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Observação/Imersão (Etnografia)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analise-e-consenso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Análise e Consenso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Análise e Consenso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#invest" class="md-nav__link">
+    <span class="md-ellipsis">
+      INVEST
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discussoes-com-o-cliente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discussões com o cliente
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#declaracao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Declaração
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Declaração">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backlog-inicial-temas-epicos-e-us" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backlog inicial (Temas, Épicos e US)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificacao-e-validacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verificação e Validação
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Verificação e Validação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#revisao-com-o-cliente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Revisão com o cliente
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#organizacao-e-atualizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Organização e Atualização
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Organização e Atualização">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aplicacao-do-deep" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicação do DEEP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historico-de-versao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Histórico de Versão
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../elaboracao_OpenUP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Elaboração - OpenUP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../userdesign_RAD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Design - RAD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../construcao_OpenUP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Construção - OpenUP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transicao_OpenUP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transição - OpenUP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Apresentações e Entregas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Apresentações e Entregas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apresentacoes_entregas/apresentacao_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apresentação Unidade 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apresentacoes_entregas/apresentacao_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apresentação Unidade 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apresentacoes_entregas/apresentacao_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apresentação Unidade 3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apresentacoes_entregas/apresentacao_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apresentação Unidade 4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../acesso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Acesso - Gestão VSM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#elicitacao-e-descoberta" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elicitação e Descoberta
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Elicitação e Descoberta">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entrevista" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entrevista
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analise-de-tarefas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Análise de Tarefas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observacaoimersao-etnografia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Observação/Imersão (Etnografia)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analise-e-consenso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Análise e Consenso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Análise e Consenso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#invest" class="md-nav__link">
+    <span class="md-ellipsis">
+      INVEST
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discussoes-com-o-cliente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discussões com o cliente
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#declaracao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Declaração
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Declaração">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backlog-inicial-temas-epicos-e-us" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backlog inicial (Temas, Épicos e US)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificacao-e-validacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verificação e Validação
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Verificação e Validação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#revisao-com-o-cliente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Revisão com o cliente
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#organizacao-e-atualizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Organização e Atualização
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Organização e Atualização">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aplicacao-do-deep" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicação do DEEP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historico-de-versao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Histórico de Versão
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Concepção - OpenUP</h1>
+
+<h2 id="elicitacao-e-descoberta">Elicitação e Descoberta</h2>
+<h3 id="entrevista">Entrevista</h3>
+<p>As entrevistas foram conduzidas com o proprietário e membros da equipe da barbearia em conjunto com a técnica de Etnografia, com o objetivo de compreender metas, processos cotidianos e dificuldades enfrentadas nas operações. A partir desses diálogos, foram identificadas as seguintes informações:</p>
+<ul>
+<li>
+<p>Fechamento de Caixa</p>
+<ul>
+<li>
+<p>Processo realizado manualmente, aos domingos.</p>
+</li>
+<li>
+<p>A receita é dividida em 60% para a barbearia e 40% entre os barbeiros.</p>
+</li>
+<li>
+<p>Taxas de transações: crédito (4%), débito (1%), PIX/dinheiro (sem desconto).</p>
+</li>
+<li>
+<p>A atividade é executada exclusivamente pelo proprietário (Valdernilson), sem apoio de ferramentas digitais, o que acarreta riscos de erros, perda de controle e falta de histórico confiável.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Agendamentos</p>
+<ul>
+<li>
+<p>São feitos manualmente via WhatsApp, ligação telefônica ou pessoalmente.</p>
+</li>
+<li>
+<p>Os próprios barbeiros anotam o nome e horário do cliente.</p>
+</li>
+<li>
+<p>Conflitos de horário e esquecimentos são frequentes, principalmente em dias de maior movimento.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Controle de Produtos</p>
+<ul>
+<li>
+<p>Produtos como pomadas, balm, shampoo e óleo de barba são vendidos diretamente no balcão.</p>
+</li>
+<li>
+<p>O controle de estoque e as comissões sobre as vendas são informais, dificultando rastreabilidade e auditorias.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Essas informações revelam diversas ineficiências operacionais, reforçando a necessidade de digitalização dos processos, especialmente nas áreas de controle financeiro, organização de agendas e gestão de produtos.</p>
+<h3 id="analise-de-tarefas">Análise de Tarefas</h3>
+<p>A análise de tarefas constitui uma etapa essencial no projeto Gestão VSM, visando identificar e detalhar as ações realizadas pelos usuários no sistema. Para isso, foi aplicada a metodologia GOMS, que permite decompor as tarefas em seus componentes fundamentais, facilitando a compreensão dos processos e apoiando a melhoria da interação e eficiência operacional.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:10"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><input id="__tabbed_1_7" name="__tabbed_1" type="radio" /><input id="__tabbed_1_8" name="__tabbed_1" type="radio" /><input id="__tabbed_1_9" name="__tabbed_1" type="radio" /><input id="__tabbed_1_10" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">US01 - Fechamento de Caixa</label><label for="__tabbed_1_2">US02 - Visualizar e Calcular Faturamento Total</label><label for="__tabbed_1_3">US03 - Registro de Gastos Operacionais</label><label for="__tabbed_1_4">US05 - Visualizar o Faturamento Bruto por Dia, Semana e Mês</label><label for="__tabbed_1_5">US07 - Visualizar Extrato Geral</label><label for="__tabbed_1_6">US09 - Edição de Informações dos Produtos</label><label for="__tabbed_1_7">US12 - Edição de Serviços</label><label for="__tabbed_1_8">US15 - Edição de Funcionários</label><label for="__tabbed_1_9">US17 - Visualizar Agendamentos no Calendário</label><label for="__tabbed_1_10">US18 - Adicionar Serviços ao Calendário</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>GOAL 0:</strong> Realizar o fechamento de caixa da barbearia</p>
+<p><strong>GOAL 1:</strong> Acessar o módulo de Extrato Financeiro</p>
+<p><strong>METHOD 1.A:</strong> Acessar via Dashboard<br />
+(SEL. RULE: Usuário está na tela inicial após o login)<br />
+- OP. 1.A.1: Tocar ou clicar no card “Fechar caixa”</p>
+<p><strong>METHOD 1.B:</strong> Acessar via Sidebar<br />
+(SEL. RULE: Usuário está navegando pelo menu lateral)<br />
+- OP. 1.B.1: Abrir o menu lateral<br />
+- OP. 1.B.2: Selecionar a opção “Fechar caixa”</p>
+<p><strong>GOAL 2:</strong> Escolher o período de fechamento</p>
+<p><strong>METHOD 2.A:</strong> Selecionar aba de período padrão (Semana ou Mês)<br />
+(SEL. RULE: Se o usuário desejar consultar a semana ou o mês atual)<br />
+- OP. 2.A.1: Tocar ou clicar na aba “Semana Atual” ou “Mês Atual”</p>
+<p><strong>GOAL 3:</strong> Visualizar detalhamento financeiro<br />
+- OP. 3.1: Analisar os totais de serviços, produtos e comissões exibidos por funcionário</p>
+<p><strong>GOAL 4:</strong> Exportar o fechamento de caixa em PDF</p>
+<p><strong>METHOD 4.A:</strong> Confirmar exportação<br />
+(SEL. RULE: Se o usuário desejar gerar o relatório em PDF)<br />
+- OP. 4.A.1: Tocar ou clicar no botão “Baixar extrato”<br />
+- OP. 4.A.2: Confirmar a exportação no modal exibido</p>
+<p><strong>METHOD 4.B:</strong> Cancelar exportação<br />
+(SEL. RULE: Se o usuário quiser desistir)<br />
+- OP. 4.B.1: Tocar ou clicar no “X” no modal de exportação</p>
+</div>
+<div class="tabbed-block">
+<p><strong>GOAL 0:</strong> Visualizar e calcular o faturamento total da barbearia em um período específico</p>
+<p><strong>GOAL 1:</strong> Acessar o módulo de Extrato Financeiro</p>
+<p><strong>METHOD 1.A:</strong> Acessar via Dashboard<br />
+(SEL. RULE: Usuário está na tela inicial após login)<br />
+- OP. 1.A.1: Tocar ou clicar no card “Fechar caixa”</p>
+<p><strong>METHOD 1.B:</strong> Acessar via Sidebar<br />
+(SEL. RULE: Usuário acessando via menu lateral)<br />
+- OP. 1.B.1: Abrir o menu lateral<br />
+- OP. 1.B.2: Selecionar “Fechar caixa”</p>
+<p><strong>GOAL 2:</strong> Escolher o período para o cálculo do faturamento</p>
+<p><strong>METHOD 2.A:</strong> Selecionar período padrão<br />
+(SEL. RULE: Se o período for “Semana Atual” ou “Mês Atual”)<br />
+- OP. 2.A.1: Tocar ou clicar na aba correspondente</p>
+<p><strong>GOAL 3:</strong> Aplicar filtros adicionais</p>
+<p><strong>METHOD 3.A:</strong> Observar faturamento por funcionário<br />
+(SEL. RULE: O sistema apresenta cards com total de faturamento por colaborador)<br />
+- OP. 3.A.1: Localizar visualmente o card correspondente ao funcionário desejado<br />
+- OP. 3.A.2: Analisar o valor de faturamento exibido no card</p>
+<p><strong>METHOD 3.B:</strong> Observar faturamento por tipo de serviço ou produto<br />
+(SEL. RULE: O sistema apresenta cards categorizados por tipo de atendimento)<br />
+- OP. 3.B.1: Localizar visualmente o card com as informações de faturamento de comissões, produtos, serviços e faturamento total<br />
+- OP. 3.B.2: Analisar o valor de faturamento exibido no card</p>
+<p><strong>GOAL 4:</strong> Visualizar o resultado do faturamento<br />
+- OP. 4.1: Analisar o total de faturamento exibido na tela</p>
+</div>
+<div class="tabbed-block">
+<p><strong>GOAL 0:</strong> Registrar um novo gasto operacional da barbearia</p>
+<p><strong>GOAL 1:</strong> Acessar a tela de Gastos Operacionais</p>
+<p><strong>METHOD 1.A:</strong> Acessar via Dashboard<br />
+(SEL. RULE: Usuário está na tela principal)<br />
+- OP. 1.A.1: Tocar ou clicar no card “Registrar Gasto”</p>
+<p><strong>METHOD 1.B:</strong> Acessar via Sidebar<br />
+(SEL. RULE: Usuário acessando via menu lateral)<br />
+- OP. 1.B.1: Abrir o menu lateral<br />
+- OP. 1.B.2: Selecionar a opção “Registrar Gasto”</p>
+<p><strong>GOAL 2:</strong> Visualizar lista de gastos já cadastrados<br />
+- OP. 2.1: Rolar a lista de gastos, se desejar consultar registros anteriores</p>
+<p><strong>GOAL 3:</strong> Iniciar novo registro de gasto<br />
+- OP. 3.1: Tocar ou clicar no botão “Adicionar Gasto”</p>
+<p><strong>GOAL 4:</strong> Preencher os campos obrigatórios no Modal de Adicionar Gasto<br />
+- OP. 4.1: Tocar ou clicar no campo “Categoria” e selecionar a categoria<br />
+- OP. 4.2: Tocar ou clicar no campo “Valor” e inserir o valor numérico<br />
+- OP. 4.3: Tocar ou clicar no campo “Data” e selecionar a data<br />
+- OP. 4.4: Tocar ou clicar no campo “Descrição” e digitar a descrição do gasto<br />
+- OP. 4.5: Tocar ou clicar no campo “Funcionário” e selecionar o funcionário</p>
+<p><strong>GOAL 5:</strong> Finalizar o cadastro de gasto</p>
+<p><strong>METHOD 5.A:</strong> Salvar o gasto<br />
+(SEL. RULE: Se o usuário deseja concluir o cadastro)<br />
+- OP. 5.A.1: Tocar ou clicar no botão “Salvar”</p>
+<p><strong>METHOD 5.B:</strong> Cancelar o cadastro<br />
+(SEL. RULE: Se o usuário deseja desistir)<br />
+- OP. 5.B.1: Tocar ou clicar no botão “Cancelar”</p>
+</div>
+<div class="tabbed-block">
+<p><strong>GOAL 0:</strong> Consultar o faturamento bruto da barbearia com base em períodos padrão</p>
+<p><strong>GOAL 1:</strong> Acessar a Dashboard</p>
+<p><strong>METHOD 1.A:</strong> Acessar via menu lateral<br />
+(SEL. RULE: O usuário está na tela Agenda após login)<br />
+- OP. 1.A.1: Abrir o menu lateral<br />
+- OP. 1.A.2: Selecionar a opção “Dashboard”<br />
+- OP. 1.A.3: Aguardar o carregamento da tela principal</p>
+<p><strong>GOAL 2:</strong> Analisar o faturamento bruto por período</p>
+<p><strong>METHOD 2.A:</strong> Observar os cards de faturamento padrão<br />
+(SEL. RULE: Sempre visíveis no topo da tela, acima dos atalhos)<br />
+- OP. 2.A.1: Observar o valor de faturamento bruto diário no card “Hoje”<br />
+- OP. 2.A.2: Observar o valor de faturamento bruto semanal no card “Semana”<br />
+- OP. 2.A.3: Observar o valor de faturamento bruto mensal no card “Mês”</p>
+</div>
+<div class="tabbed-block">
+<p><strong>GOAL 0:</strong> Acompanhar a divisão do faturamento por funcionário em um determinado período</p>
+<p><strong>GOAL 1:</strong> Acessar o módulo de Extrato Financeiro</p>
+<p><strong>METHOD 1.A:</strong> Acessar via Dashboard<br />
+(SEL. RULE: Usuário está na tela inicial após login)<br />
+- OP. 1.A.1: Tocar ou clicar no card “Fechar Caixa”</p>
+<p><strong>METHOD 1.B:</strong> Acessar via Sidebar<br />
+(SEL. RULE: Usuário prefere navegar pelo menu)<br />
+- OP. 1.B.1: Abrir o menu lateral<br />
+- OP. 1.B.2: Selecionar “Fechar Caixa”</p>
+<p><strong>GOAL 2:</strong> Selecionar o período desejado</p>
+<p><strong>METHOD 2.A:</strong> Períodos padrão<br />
+(SEL. RULE: Se for semana ou mês atual)<br />
+- OP. 2.A.1: Tocar ou clicar na aba “Semana Atual” ou “Mês Atual”</p>
+<p><strong>GOAL 3:</strong> Analisar os dados financeiros</p>
+<p><strong>METHOD 3.A:</strong> Visualizar o resumo geral de faturamento<br />
+(SEL. RULE: Sempre exibido no topo da tela)<br />
+- OP. 3.A.1: Localizar visualmente o card de Resumo Geral de Faturamento<br />
+- OP. 3.A.2: Observar os seguintes dados apresentados no card:<br />
+  - Total em serviços<br />
+  - Total em produtos<br />
+  - Total de comissões<br />
+  - Faturamento total<br />
+  - Lucro líquido</p>
+<p><strong>METHOD 3.B:</strong> Analisar detalhamento por funcionário<br />
+(SEL. RULE: Sempre exibido abaixo do resumo geral)<br />
+- OP. 3.B.1: Localizar visualmente os cards individuais de cada funcionário<br />
+- OP. 3.B.2: Para cada card, observar os seguintes dados:<br />
+  - Valor total em serviços prestados<br />
+  - Comissão do funcionário<br />
+  - Gastos associados (se aplicável)<br />
+  - Total a pagar (valor líquido)</p>
+</div>
+<div class="tabbed-block">
+<p><strong>GOAL 0:</strong> Alterar nome, valor ou descrição de um produto cadastrado</p>
+<p><strong>GOAL 1:</strong> Acessar a tela de Produtos</p>
+<p><strong>METHOD 1.A:</strong> Acessar via Dashboard<br />
+(SEL. RULE: Usuário está na tela inicial)<br />
+- OP. 1.A.1: Tocar ou clicar no card “Produtos”</p>
+<p><strong>METHOD 1.B:</strong> Acessar via Sidebar<br />
+(SEL. RULE: Usuário prefere o menu)<br />
+- OP. 1.B.1: Abrir o menu lateral<br />
+- OP. 1.B.2: Selecionar “Produtos”</p>
+<p><strong>GOAL 2:</strong> Localizar o produto a ser editado</p>
+<p><strong>METHOD 2.A:</strong> Rolar a lista<br />
+(SEL. RULE: Poucos produtos cadastrados)<br />
+- OP. 2.A.1: Deslizar a tela até encontrar o produto desejado</p>
+<p><strong>METHOD 2.B:</strong> Buscar pelo nome<br />
+(SEL. RULE: Muitos produtos cadastrados)<br />
+- OP. 2.B.1: Tocar ou clicar no campo de busca<br />
+- OP. 2.B.2: Digitar o nome do produto<br />
+- OP. 2.B.3: Selecionar o item da lista de resultados</p>
+<p><strong>GOAL 3:</strong> Abrir o modal de edição<br />
+- OP. 3.1: Tocar ou clicar no item da lista de produtos</p>
+<p><strong>GOAL 4:</strong> Modificar os dados do produto<br />
+- OP. 4.1: Editar o campo “Nome”, se necessário<br />
+- OP. 4.2: Editar o campo “Valor”, se necessário<br />
+- OP. 4.3: Editar o campo “Comissão”, se necessário</p>
+<p><strong>GOAL 5:</strong> Salvar ou cancelar a edição</p>
+<p><strong>METHOD 5.A:</strong> Salvar<br />
+(SEL. RULE: Se todas as alterações foram concluídas)<br />
+- OP. 5.A.1: Tocar ou clicar em “Salvar”</p>
+<p><strong>METHOD 5.B:</strong> Cancelar<br />
+(SEL. RULE: Se o usuário não deseja aplicar mudanças)<br />
+- OP. 5.B.1: Tocar ou clicar em “Cancelar”</p>
+</div>
+<div class="tabbed-block">
+<p><strong>GOAL 0:</strong> Atualizar informações de um serviço cadastrado, como nome, valor, tempo de duração e profissionais habilitados</p>
+<p><strong>GOAL 1:</strong> Acessar a tela de Serviços</p>
+<p><strong>METHOD 1.A:</strong> Acessar via Dashboard<br />
+(SEL. RULE: Usuário está na tela inicial)<br />
+- OP. 1.A.1: Tocar ou clicar no card “Serviços”</p>
+<p><strong>METHOD 1.B:</strong> Acessar via Sidebar<br />
+(SEL. RULE: Usuário prefere usar o menu lateral)<br />
+- OP. 1.B.1: Abrir o menu lateral<br />
+- OP. 1.B.2: Selecionar “Serviços”</p>
+<p><strong>GOAL 2:</strong> Localizar o serviço a ser editado</p>
+<p><strong>METHOD 2.A:</strong> Rolar a lista de serviços<br />
+(SEL. RULE: Quando o número de serviços é pequeno)<br />
+- OP. 2.A.1: Deslizar a tela até o serviço desejado</p>
+<p><strong>METHOD 2.B:</strong> Buscar pelo nome<br />
+(SEL. RULE: Quando há muitos serviços cadastrados)<br />
+- OP. 2.B.1: Tocar ou clicar no campo de busca<br />
+- OP. 2.B.2: Digitar o nome do serviço<br />
+- OP. 2.B.3: Selecionar o resultado desejado</p>
+<p><strong>GOAL 3:</strong> Abrir o modal de edição<br />
+- OP. 3.1: Tocar ou clicar no item da lista de serviços</p>
+<p><strong>GOAL 4:</strong> Alterar informações do serviço<br />
+- OP. 4.1: Editar o campo “Nome”, se necessário<br />
+- OP. 4.2: Editar o campo “Valor”, se necessário<br />
+- OP. 4.3: Editar o campo “Tempo estimado”, se necessário</p>
+<p><strong>GOAL 5:</strong> Finalizar a edição</p>
+<p><strong>METHOD 5.A:</strong> Salvar<br />
+(SEL. RULE: Se todas as alterações foram concluídas)<br />
+- OP. 5.A.1: Tocar ou clicar no botão “Salvar”</p>
+<p><strong>METHOD 5.B:</strong> Cancelar<br />
+(SEL. RULE: Se o usuário não quiser aplicar mudanças)<br />
+- OP. 5.B.1: Tocar ou clicar no botão “Cancelar”</p>
+</div>
+<div class="tabbed-block">
+<p><strong>GOAL 0:</strong> Atualizar as informações de um funcionário, como comissão, horário e especialidades</p>
+<p><strong>GOAL 1:</strong> Acessar a tela de Funcionários</p>
+<p><strong>METHOD 1.A:</strong> Acessar via Dashboard<br />
+(SEL. RULE: Usuário está na tela principal)<br />
+- OP. 1.A.1: Tocar ou clicar no card “Funcionários”</p>
+<p><strong>METHOD 1.B:</strong> Acessar via Sidebar<br />
+(SEL. RULE: Usuário utiliza o menu lateral)<br />
+- OP. 1.B.1: Abrir o menu lateral<br />
+- OP. 1.B.2: Selecionar “Funcionários”</p>
+<p><strong>GOAL 2:</strong> Localizar o funcionário a ser editado</p>
+<p><strong>METHOD 2.A:</strong> Rolar a lista<br />
+(SEL. RULE: Quando há poucos funcionários)<br />
+- OP. 2.A.1: Deslizar a tela até o funcionário desejado</p>
+<p><strong>METHOD 2.B:</strong> Buscar pelo nome<br />
+(SEL. RULE: Quando há muitos funcionários)<br />
+- OP. 2.B.1: Tocar ou clicar no campo de busca<br />
+- OP. 2.B.2: Digitar o nome do funcionário<br />
+- OP. 2.B.3: Selecionar o resultado da busca</p>
+<p><strong>GOAL 3:</strong> Abrir o modal de edição<br />
+- OP. 3.1: Tocar ou clicar no item da lista de funcionários</p>
+<p><strong>GOAL 4:</strong> Alterar as informações<br />
+- OP. 4.1: Editar o campo “Nome do funcionário”, se necessário<br />
+- OP. 4.2: Editar o campo “Início do expediente”, se necessário<br />
+- OP. 4.3: Editar o campo “Fim do expediente”, se necessário<br />
+- OP. 4.4: Editar o campo “Email”, se necessário<br />
+- OP. 4.5: Editar o campo “Usuário”, se necessário<br />
+- OP. 4.6: Editar o campo “Senha”, se necessário</p>
+<p><strong>GOAL 5:</strong> Finalizar a edição</p>
+<p><strong>METHOD 5.A:</strong> Salvar<br />
+(SEL. RULE: Se todas as modificações foram feitas)<br />
+- OP. 5.A.1: Tocar ou clicar no botão “Salvar”</p>
+<p><strong>METHOD 5.B:</strong> Cancelar<br />
+(SEL. RULE: Se o usuário quiser descartar as alterações)<br />
+- OP. 5.B.1: Tocar ou clicar no botão “Cancelar”</p>
+</div>
+<div class="tabbed-block">
+<p><strong>GOAL 0:</strong> Consultar os agendamentos no calendário da barbearia com base em filtros</p>
+<p><strong>GOAL 1:</strong> Acessar a Agenda</p>
+<p><strong>METHOD 1.A:</strong> Acessar via Dashboard<br />
+(SEL. RULE: Usuário está na tela inicial após o login)<br />
+- OP. 1.A.1: Tocar ou clicar no card “Agenda”</p>
+<p><strong>METHOD 1.B:</strong> Acessar via Sidebar<br />
+(SEL. RULE: Usuário navega pelo menu)<br />
+- OP. 1.B.1: Abrir o menu lateral<br />
+- OP. 1.B.2: Selecionar “Agenda”</p>
+<p><strong>GOAL 2:</strong> Selecionar o dia a ser consultado<br />
+- OP. 2.1: Navegar horizontalmente entre os dias da semana/mês<br />
+- OP. 2.2: Tocar ou clicar na data desejada</p>
+<p><strong>GOAL 3:</strong> Aplicar filtro por barbeiro (opcional)<br />
+- OP. 3.1: Tocar ou clicar no campo de filtro de barbeiro<br />
+- OP. 3.2: Selecionar o nome do barbeiro</p>
+<p><strong>GOAL 4:</strong> Visualizar os agendamentos<br />
+- OP. 4.1: Observar a lista de agendamentos exibida na tela, organizada por horário e profissional</p>
+</div>
+<div class="tabbed-block">
+<p><strong>GOAL 0:</strong> Adicionar um novo agendamento à agenda da barbearia, considerando a disponibilidade do funcionário</p>
+<p><strong>GOAL 1:</strong> Acessar a Agenda</p>
+<p><strong>METHOD 1:</strong> Acesso automático à Agenda<br />
+- OP. 1.A.1: Aguardar carregamento automático da tela “Agenda” após login</p>
+<p><strong>GOAL 2:</strong> Abrir o modal de novo agendamento<br />
+- OP. 2.1: Tocar ou clicar no botão de ação flutuante “Agendar” (FAB)</p>
+<p><strong>GOAL 3:</strong> Preencher as informações do agendamento<br />
+- OP. 3.1: Tocar ou clicar no campo “Nome do Cliente” e digitar o nome<br />
+- OP. 3.2: Tocar ou clicar no campo “Selecione o horário” e selecionar a hora disponível<br />
+- OP. 3.3: Tocar ou clicar no campo “Selecione o barbeiro” e selecionar o profissional<br />
+- OP. 3.4: Tocar ou clicar no campo “Selecione os serviços” e selecionar um ou mais serviços<br />
+- OP. 3.5: Verificar automaticamente o “Tempo estimado” calculado<br />
+- OP. 3.6: Verificar automaticamente o “Subtotal” do atendimento</p>
+<p><strong>GOAL 4:</strong> Finalizar o agendamento</p>
+<p><strong>METHOD 4.A:</strong> Salvar o agendamento<br />
+(SEL. RULE: Todos os campos estão preenchidos corretamente)<br />
+- OP. 4.A.1: Tocar ou clicar no botão “Agendar”<br />
+- OP. 4.A.2: Aguardar a criação do agendamento e atualização da lista</p>
+<p><strong>METHOD 4.B:</strong> Cancelar o agendamento<br />
+(SEL. RULE: O usuário decide não agendar o serviço)<br />
+- OP. 4.B.1: Tocar ou clicar no botão “Cancelar”<br />
+- OP. 4.B.2: Fechar o modal sem salvar</p>
+</div>
+</div>
+</div>
+<p>Para facilitar a consulta, o documento completo das análises GOMS está disponível para download no formato PDF:
+<a href="../assets/An%C3%A1lise%20de%20Tarefas%20-%20GOMS%20Detalhado%20%28Gest%C3%A3o%20VSM%29.pdf">Baixar Análise de Tarefas - GOMS Detalhado (Gestão VSM)</a></p>
+<h3 id="observacaoimersao-etnografia">Observação/Imersão (Etnografia)</h3>
+<p>Durante as visitas presenciais à barbearia VSM, em Rio Branco – AC, um integrante da equipe realizou a imersão no ambiente de trabalho por aproximadamente 4 horas, observando rotinas operacionais e interações informais entre os colaboradores. Essa aproximação permitiu identificar necessidades não verbalizadas e validar práticas reais do cotidiano.</p>
+<p>A seguir, os principais achados observacionais e sua fundamentação empírica:</p>
+<ul>
+<li>
+<p><strong>Organização dos atendimentos pelos barbeiros:</strong> 
+    Os barbeiros se organizam verbalmente e por anotações pessoais, sem registro padronizado. Em ao menos três ocasiões observadas, dois profissionais marcaram clientes em horários coincidentes, demonstrando risco de conflitos operacionais por ausência de controle centralizado.</p>
+</li>
+<li>
+<p><strong>Centralização de decisões operacionais e financeiras:</strong><br />
+    O proprietário da barbearia foi o único a realizar o fechamento de caixa em todos os dias observados, bem como o único a realizar compras de produtos e controle de estoque, indicando concentração de responsabilidade crítica em um único ponto de falha.</p>
+</li>
+<li>
+<p><strong>Falta de registro estruturado de atendimentos e vendas:</strong><br />
+    Durante a observação, constatou-se que os atendimentos e as vendas de produtos são registrados de forma manual, majoritariamente em um caderno físico mantido no balcão. No entanto, parte dos barbeiros adota um controle informal baseado apenas na própria memória — prática observada em um dos profissionais. Essa abordagem mista e não padronizada compromete a rastreabilidade e aumenta a probabilidade de esquecimentos ou divergências entre o que foi vendido e o que é registrado, dificultando qualquer processo de auditoria ou análise de desempenho.</p>
+</li>
+<li>
+<p><strong>Impacto da ausência de automação na produtividade:</strong><br />
+    O fechamento de caixa observado levou, em média, entre 20 a 25 minutos por dia, exigindo o uso de máquina de cartão, celular com WhatsApp e cálculos manuais. Esse tempo representa aproximadamente 5% da jornada diária de trabalho (considerando um turno de 8 horas), o que, ao longo da semana, resulta em um tempo operacional relevante que poderia ser otimizado por meio de automação. Além disso, a execução manual aumenta a chance de erros e dificulta a análise histórica de movimentações financeiras.</p>
+</li>
+<li>
+<p><strong>Informalidade nos registros financeiros e de estoque:</strong><br />
+    A ausência de conferência cruzada entre vendas e controle de estoque foi evidente: produtos retirados para uso ou venda não eram registrados de nenhuma forma. Isso inviabiliza qualquer tipo de auditoria ou controle de perdas.</p>
+</li>
+</ul>
+<p>Essa análise etnográfica forneceu dados comportamentais e contextuais que reforçam a urgência na digitalização dos processos operacionais e financeiros da barbearia, especialmente no que diz respeito à mitigação de falhas humanas, à descentralização da gestão e à confiabilidade das informações.</p>
+<h2 id="analise-e-consenso">Análise e Consenso</h2>
+<h3 id="invest">INVEST</h3>
+<p>Ao aplicar os critérios do método INVEST no projeto Gestão VSM, garantimos que os requisitos definidos atendam a características essenciais para um desenvolvimento eficiente e alinhado às necessidades do cliente. Dessa forma, cada User Story foi estruturada para ser Independente, possibilitando o trabalho isolado; Negociável, permitindo ajustes conforme o contexto; Valiosa, assegurando entrega de valor ao negócio; Estimável, facilitando o planejamento; Pequena, garantindo fácil compreensão e execução; e Testável, possibilitando a validação objetiva das funcionalidades implementadas. Para consultar a estrutura detalhada das User Stories, acesse a página dedicada ao <a href="../../visao_prod_proj/backlog_produto/#histórias-de-usuário-us">backlog</a>.</p>
+<h3 id="discussoes-com-o-cliente">Discussões com o cliente</h3>
+<p>Após a coleta inicial de informações por meio de entrevistas, análise de tarefas e observação direta da rotina da barbearia, foram realizadas reuniões com o proprietário da VSM com o objetivo de validar o entendimento mútuo sobre os processos observados e as principais necessidades do negócio. Essas discussões permitiram esclarecer fluxos operacionais, confirmar prioridades e identificar eventuais lacunas na modelagem inicial. Além disso, foi possível definir, de forma colaborativa, os limites do escopo viável dentro do tempo disponível para o projeto, estabelecendo as funcionalidades essenciais para o <a href="../../visao_prod_proj/backlog_produto/#93-mvp">Produto Mínimo Viável (MVP)</a>. </p>
+<p>Durante as discussões, o cliente compartilhou sugestões importantes para a evolução do sistema. A integração com o WhatsApp para automação dos agendamentos foi formalmente incorporada à <a href="../../visao_prod_proj/requisitos_software/">lista de requisitos</a>, embora tenha sido excluída do escopo do MVP devido à complexidade e ao prazo disponível. Por outro lado, a proposta de um programa de fidelidade para clientes recorrentes ainda se encontra como uma ideia a ser avaliada futuramente, sem estar formalmente definida como requisito. Essas contribuições reforçam o compromisso com a melhoria contínua do sistema e sua adaptação às necessidades estratégicas da barbearia.</p>
+<h2 id="declaracao">Declaração</h2>
+<h3 id="backlog-inicial-temas-epicos-e-us">Backlog inicial (Temas, Épicos e US)</h3>
+<p>A organização inicial dos requisitos para o projeto Gestão VSM está estruturada em um backlog hierarquizado, composto por Temas, Épicos e User Stories (US). Essa estruturação permite um planejamento incremental e ordenado, facilitando a priorização e o acompanhamento das entregas ao longo do desenvolvimento. Para consulta detalhada, a página dedicada ao backlog pode ser acessada <a href="../../visao_prod_proj/backlog_produto/">clicando aqui</a>, onde são apresentados os itens estruturados e suas respectivas descrições, alinhadas às práticas de engenharia de requisitos adotadas no projeto.</p>
+<h2 id="verificacao-e-validacao">Verificação e Validação</h2>
+<h3 id="revisao-com-o-cliente">Revisão com o cliente</h3>
+<p>Aqui estão presentes todas as atas de reuniões entre nossa equipe e o cliente que aconteceram durante o período do desenvolvimento do projeto:</p>
+<p><strong>ATA DE REUNIÃO</strong><br />
+<strong>Data:</strong> 09/04/2024  </p>
+<p><strong>Informações coletadas:</strong><br />
+- 7 anos no mercado<br />
+- Equipe: Valder + 5 barbeiros<br />
+- Serviços: cortes e produtos  </p>
+<p><strong>Problemas atuais:</strong><br />
+- Organização interna<br />
+- Comunicação com equipe<br />
+- Fechamento de caixa complicado  </p>
+<p><strong>ATA DE REUNIÃO</strong><br />
+<strong>Data:</strong> 09/05/2024  </p>
+<p><strong>Processo atual:</strong><br />
+- Agendamentos por WhatsApp/celular<br />
+- Planilha manual com: nome do cliente, serviços feitos, forma de pagamento  </p>
+<center><p>Figura 1 - Planilha de Serviços </p></center>
+
+<p><a href="../assets/tabela_de_registros.jpeg"><img alt="Figura 1 - Planilha de Serviços" src="../assets/tabela_de_registros.jpeg" /></a></p>
+<p><strong>Requisitos:</strong><br />
+- Android e iOS<br />
+- Uso do domínio VSM  </p>
+<p><strong>Dores principais:</strong><br />
+- Atrasos quando lotado<br />
+- Folgas não organizadas<br />
+- Anotações manuais demoradas  </p>
+<p><strong>Comissões:</strong><br />
+- Produtos: R$5 ou R$10<br />
+- Bebidas: sem comissão  </p>
+<center><p>Figura 2 - Tabela de Valores </p></center>
+
+<p><a href="../assets/tabela_de_valores.jpeg"><img alt="Figura 2 - Tabela de Valores" src="../assets/tabela_de_valores.jpeg" /></a></p>
+<p><strong>ATA DE REUNIÃO</strong><br />
+<strong>Data:</strong> 20/05/2024  </p>
+<p><strong>Atualizações:</strong><br />
+- Protótipo aprovado<br />
+- Em expansão - novo funcionário para caixa  </p>
+<p><strong>Produtos:</strong><br />
+- Com R$5 comissão: Pomada (R$40), Balm (R$45), Óleo (R$35)<br />
+- Com R$10 comissão: Máquina (R$180)<br />
+- Sem comissão: Bebidas (cerveja R$10, refri R$5, energético R$8-R$12)  </p>
+<center><p>Figura 3 - Comissão e Porcentagens </p></center>
+
+<p><a href="../assets/comissao_e_porcentagem.jpeg"><img alt="Figura 3 - Comissão e Porcentagens" src="../assets/comissao_e_porcentagem.jpeg" /></a></p>
+<p><strong>ATA DE REUNIÃO</strong><br />
+<strong>Data:</strong> 24/05/2024  </p>
+<p><strong>Fechamento de caixa:</strong><br />
+- Dinheiro/PIX: valor cheio<br />
+- Cartão: desconta taxa (débito 1%, crédito 4%)<br />
+- Comissões: 60% barbearia / 40% barbeiro<br />
+- Descontos: consumo dos barbeiros<br />
+- Pagamento semanal<br />
+- Contas fixas: aluguel, luz, internet, impostos  </p>
+<p><strong>ATA DE REUNIÃO</strong><br />
+<strong>Data:</strong> 19/06/2024  </p>
+<p><strong>Equipe:</strong> Valder, Elson, Ian, Moisés, Gabriel, Eliene, Marcos  </p>
+<p><strong>Preços dos serviços:</strong><br />
+- Corte: R$40<br />
+- Barba: R$35<br />
+- Sobrancelha: R$15-R$20<br />
+- Selagem: R$70+<br />
+- Luzes: R$90+<br />
+- Platinado: R$150+  </p>
+<h2 id="organizacao-e-atualizacao">Organização e Atualização</h2>
+<h3 id="aplicacao-do-deep">Aplicação do DEEP</h3>
+<p>A gestão contínua do <a href="../../visao_prod_proj/backlog_produto/">backlog no projeto Gestão VSM</a> é orientada pelos princípios do método DEEP, que assegura a qualidade e a adaptabilidade dos requisitos ao longo do desenvolvimento. Os itens do backlog são mantidos detalhados na medida adequada para permitir entendimento claro e evitar ambiguidades, além de serem estimados com base em esforço e complexidade para facilitar o planejamento das entregas. O backlog é tratado como um artefato emergente, sendo constantemente revisado e atualizado conforme novas informações e feedback do cliente são incorporados. Por fim, a priorização rigorosa dos itens assegura que as funcionalidades mais valiosas e urgentes sejam abordadas primeiro, promovendo um desenvolvimento focado e alinhado aos objetivos do negócio. Na próxima fase, será aplicada a Análise Custo-Benefício (B x 2 + U - E - R - D) para refinar ainda mais a priorização dos requisitos.</p>
+<h2 id="historico-de-versao">Histórico de Versão</h2>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Versão</th>
+<th>Descrição</th>
+<th>Autor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11/05/2025</td>
+<td>1.0</td>
+<td>Criação do documento</td>
+<td><a href="https://github.com/vevetin">Weverton Rodrigues</a></td>
+</tr>
+<tr>
+<td>15/07/2025</td>
+<td>1.1</td>
+<td>Atualização do documento</td>
+<td><a href="https://github.com/RufinoVfR">Vinícius Rufino</a></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.instant.preview", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+    
+  </body>
+</html>
