@@ -24,14 +24,13 @@ public class AgendamentoController {
 
     private final AgendamentoService agendamentoService;
 
-    @PostMapping
+   @PostMapping
     public ResponseEntity<AgendamentoResponseDTO> criarAgendamento(
             @RequestBody AgendamentoDTO agendamentoDTO,
             @AuthenticationPrincipal Usuario solicitante) {
-
-        Agendamento agendamentoCriado = agendamentoService.criarAgendamento(agendamentoDTO, solicitante);
-        // Converta a entidade para DTO antes de retornar
-        return new ResponseEntity<>(AgendamentoResponseDTO.fromEntity(agendamentoCriado), HttpStatus.CREATED);
+        // O serviço agora retorna o DTO diretamente
+        AgendamentoResponseDTO responseDto = agendamentoService.criarAgendamento(agendamentoDTO, solicitante);
+        return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
     }
 
     @GetMapping
@@ -40,14 +39,12 @@ public class AgendamentoController {
             @RequestParam(name = "barbeiroId", required = false) Long barbeiroId,
             @AuthenticationPrincipal Usuario solicitante) {
 
-        List<Agendamento> agendamentos = agendamentoService.listarAgendamentos(dia, Optional.ofNullable(barbeiroId), solicitante);
-        // Converta a lista de entidades para uma lista de DTOs
-        List<AgendamentoResponseDTO> response = agendamentos.stream()
-                .map(AgendamentoResponseDTO::fromEntity)
-                .collect(Collectors.toList());
+        // A lógica de conversão foi para o Service. O Controller fica mais limpo.
+        List<AgendamentoResponseDTO> response = agendamentoService.listarAgendamentos(dia, Optional.ofNullable(barbeiroId), solicitante);
+
         return ResponseEntity.ok(response);
     }
-
+    
     @GetMapping("/{id}")
     public ResponseEntity<AgendamentoResponseDTO> buscarPorId(@PathVariable Long id, @AuthenticationPrincipal Usuario solicitante) {
         return agendamentoService.buscarPorId(id, solicitante)
@@ -72,4 +69,5 @@ public class AgendamentoController {
         agendamentoService.apagarAgendamento(id, solicitante);
         return ResponseEntity.noContent().build();
     }
+
 }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://two025-1-t02-gestaovsm.onrender.com/api';
+const BASE_URL = 'http://localhost:8080/api';
 
 const createConfig = () => {
   const token = localStorage.getItem('token');

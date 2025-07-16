@@ -1,6 +1,7 @@
 package com.vsm.gestao.service;
 
 import com.vsm.gestao.dto.AgendamentoDTO;
+import com.vsm.gestao.dto.AgendamentoResponseDTO;
 import com.vsm.gestao.entity.Agendamento;
 import com.vsm.gestao.entity.Servico;
 import com.vsm.gestao.entity.TipoUsuario;
@@ -8,7 +9,7 @@ import com.vsm.gestao.entity.Usuario;
 import com.vsm.gestao.repository.AgendamentoRepository;
 import com.vsm.gestao.repository.ServicoRepository;
 import com.vsm.gestao.repository.UsuarioRepository;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ import java.time.LocalTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -27,30 +29,39 @@ public class AgendamentoService {
     private final UsuarioRepository usuarioRepository;
     private final ServicoRepository servicoRepository;
 
-    @Transactional
-    public Agendamento criarAgendamento(AgendamentoDTO dto, Usuario solicitante) {
-        Usuario barbeiroAgendado = getBarbeiroFromDto(dto.barbeiroId());
-        validarPermissao(solicitante, barbeiroAgendado);
-        List<Servico> servicos = getServicosFromDto(dto.servicoIds());
-
-        Agendamento novoAgendamento = new Agendamento();
-        mapearDtoParaEntidade(dto, novoAgendamento, barbeiroAgendado, servicos);
-        validarDisponibilidade(novoAgendamento, null);
-
-        return agendamentoRepository.save(novoAgendamento);
+   @Transactional
+    public AgendamentoResponseDTO criarAgendamento(AgendamentoDTO dto, Usuario solicitante) {
+        // ... (lógica de criação que você já tem)
+        // ...
+        Agendamento novoAgendamento = new Agendamento(); // Exemplo
+        // ... Mapeie o DTO para a entidade ...
+        
+        // No final, converta a entidade salva para DTO antes de retornar
+        Agendamento agendamentoSalvo = agendamentoRepository.save(novoAgendamento);
+        return AgendamentoResponseDTO.fromEntity(agendamentoSalvo);
     }
-
-    public List<Agendamento> listarAgendamentos(LocalDate dia, Optional<Long> barbeiroId, Usuario solicitante) {
+    
+    // --- MÉTODO PRINCIPAL DA MUDANÇA ---
+    @Transactional(readOnly = true) // Garante que a transação fique aberta durante a conversão
+    public List<AgendamentoResponseDTO> listarAgendamentos(LocalDate dia, Optional<Long> barbeiroId, Usuario solicitante) {
         LocalDateTime inicioDoDia = dia.atStartOfDay();
         LocalDateTime fimDoDia = dia.atTime(LocalTime.MAX);
+        
+        List<Agendamento> agendamentos;
 
         if (solicitante.getTipoUsuario() == TipoUsuario.ADMIN) {
-            return barbeiroId.map(id -> agendamentoRepository.findAllByUsuarioIdAndDataAgendamentoBetween(id, inicioDoDia, fimDoDia))
+            agendamentos = barbeiroId.map(id -> agendamentoRepository.findAllByUsuarioIdAndDataAgendamentoBetween(id, inicioDoDia, fimDoDia))
                     .orElseGet(() -> agendamentoRepository.findAllByDataAgendamentoBetween(inicioDoDia, fimDoDia));
         } else if (solicitante.getTipoUsuario() == TipoUsuario.BARBEIRO) {
-            return agendamentoRepository.findAllByUsuarioIdAndDataAgendamentoBetween(solicitante.getId(), inicioDoDia, fimDoDia);
+            agendamentos = agendamentoRepository.findAllByUsuarioIdAndDataAgendamentoBetween(solicitante.getId(), inicioDoDia, fimDoDia);
+        } else {
+             agendamentos = Collections.emptyList();
         }
-        return Collections.emptyList();
+
+        // Converte a lista de entidades para uma lista de DTOs AQUI DENTRO DO SERVIÇO
+        return agendamentos.stream()
+                .map(AgendamentoResponseDTO::fromEntity)
+                .collect(Collectors.toList());
     }
 
     public Optional<Agendamento> buscarPorId(Long id, Usuario solicitante) {

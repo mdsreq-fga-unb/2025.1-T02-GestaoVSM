@@ -22,12 +22,13 @@ public class Agendamento {
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
+    // Esta é a configuração correta para múltiplos serviços
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
         name = "agendamento_servicos", 
         joinColumns = @JoinColumn(name = "agendamento_id"),
         inverseJoinColumns = @JoinColumn(name = "servico_id")
-)
+    )
     private List<Servico> servicos;
     
     @Column(name = "nome_cliente", nullable = false)
