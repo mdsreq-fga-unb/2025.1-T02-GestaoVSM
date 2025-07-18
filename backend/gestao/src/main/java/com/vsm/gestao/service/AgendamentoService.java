@@ -29,20 +29,46 @@ public class AgendamentoService {
     private final UsuarioRepository usuarioRepository;
     private final ServicoRepository servicoRepository;
 
-   @Transactional
+    @Transactional
     public AgendamentoResponseDTO criarAgendamento(AgendamentoDTO dto, Usuario solicitante) {
-        // ... (lógica de criação que você já tem)
-        // ...
-        Agendamento novoAgendamento = new Agendamento(); // Exemplo
-        // ... Mapeie o DTO para a entidade ...
-        
-        // No final, converta a entidade salva para DTO antes de retornar
+        // 1. Valida se um barbeiro está a tentar agendar para outro barbeiro
+        if (solicitante != null && solicitante.getTipoUsuario() == TipoUsuario.BARBEIRO && !solicitante.getId().equals(dto.barbeiroId())) {
+            throw new SecurityException("Barbeiros só podem criar agendamentos para si mesmos.");
+        }
+
+        // 2. Busca as entidades referenciadas (Barbeiro e Serviços)
+        Usuario barbeiro = usuarioRepository.findById(dto.barbeiroId())
+                .orElseThrow(() -> new IllegalArgumentException("Barbeiro com ID " + dto.barbeiroId() + " não encontrado."));
+
+        List<Servico> servicos = servicoRepository.findAllById(dto.servicoIds());
+        if (servicos.size() != dto.servicoIds().size()) {
+            throw new IllegalArgumentException("Um ou mais IDs de serviço são inválidos.");
+        }
+
+        // 3. Cria e preenche a nova entidade Agendamento com os dados do DTO
+        Agendamento novoAgendamento = new Agendamento();
+        novoAgendamento.setUsuario(barbeiro);
+        novoAgendamento.setNomeCliente(dto.nomeCliente());
+        novoAgendamento.setServicos(servicos);
+        novoAgendamento.setDataAgendamento(dto.dataAgendamento());
+
+        // 4. Calcula a duração total dos serviços
+        int duracaoTotalMinutos = servicos.stream()
+                .mapToInt(Servico::getDuracaoEstimadaMinutos)
+                .sum();
+        novoAgendamento.setDuracaoMinutos(duracaoTotalMinutos);
+
+        // 5. Valida a disponibilidade do horário para evitar conflitos
+        validarDisponibilidade(novoAgendamento, null); // Passa null para idExcluido, pois é uma criação
+
+        // 6. Salva a nova entidade no banco de dados
         Agendamento agendamentoSalvo = agendamentoRepository.save(novoAgendamento);
+
+        // 7. Retorna o DTO de resposta com os dados do agendamento criado
         return AgendamentoResponseDTO.fromEntity(agendamentoSalvo);
     }
     
-    // --- MÉTODO PRINCIPAL DA MUDANÇA ---
-    @Transactional(readOnly = true) // Garante que a transação fique aberta durante a conversão
+    @Transactional(readOnly = true)
     public List<AgendamentoResponseDTO> listarAgendamentos(LocalDate dia, Optional<Long> barbeiroId, Usuario solicitante) {
         LocalDateTime inicioDoDia = dia.atStartOfDay();
         LocalDateTime fimDoDia = dia.atTime(LocalTime.MAX);
@@ -58,7 +84,6 @@ public class AgendamentoService {
              agendamentos = Collections.emptyList();
         }
 
-        // Converte a lista de entidades para uma lista de DTOs AQUI DENTRO DO SERVIÇO
         return agendamentos.stream()
                 .map(AgendamentoResponseDTO::fromEntity)
                 .collect(Collectors.toList());

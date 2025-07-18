@@ -8,20 +8,25 @@ import {
   Collapse,
   Stack,
   IconButton,
+  Button, // Importado
+  Box,      // Importado
+  Divider // Importado
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { TrashIcon } from '@heroicons/react/24/outline'; // Ícone para o botão
 
 /**
- * Componente que exibe um card com informações de um agendamento (appointment),
- * incluindo horário, nome do cliente, status, método de pagamento (se finalizado)
- * e lista de serviços com checkbox para marcar como concluídos.
- *
  * Props:
  * - appointment: objeto com dados do agendamento
- * - onToggleServiceDone: função chamada ao marcar/desmarcar serviço como feito
+ * - onToggleServiceDone: função para marcar/desmarcar serviço
+ * - onCancelAppointment: nova função para cancelar o agendamento
  */
-function AppointmentCard({ appointment, onToggleServiceDone }) {
+function AppointmentCard({ appointment, onToggleServiceDone, onCancelAppointment }) {
   const [expanded, setExpanded] = useState(false);
+
+  if (!appointment) {
+    return null;
+  }
 
   const handleToggle = () => {
     setExpanded(!expanded);
@@ -40,15 +45,12 @@ function AppointmentCard({ appointment, onToggleServiceDone }) {
     >
       <CardContent
         onClick={handleToggle}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') handleToggle();
-        }}
         role="button"
         tabIndex={0}
-        className="pt-2 px-4 pb-1 cursor-pointer transition hover:bg-accent-hover focus:outline-none"
+        className="pt-2 px-4 pb-1 cursor-pointer transition hover:bg-gray-50 focus:outline-none"
         sx={{ padding: 2, paddingBottom: 1 }}
       >
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-start">
           <Stack spacing={0.25}>
             <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.2 }}>
               {appointment.dataAgendamento
@@ -63,16 +65,16 @@ function AppointmentCard({ appointment, onToggleServiceDone }) {
             </Typography>
           </Stack>
 
+          {/* ATUALIZAÇÃO: Nome do barbeiro no meio */}
+          <Typography variant="body2" color="text.secondary" sx={{ pt: 1 }}>
+            {appointment.nomeBarbeiro}
+          </Typography>
+
           <Stack spacing={0.5} alignItems="flex-end">
             <Chip
-              label={appointment.status}
-              aria-label={`status-agendamento-${appointment.id}`}
+              label={appointment.status || 'Indefinido'}
               size="small"
-              sx={{
-                height: '24px',
-                fontSize: '0.75rem',
-                ...statusColor,
-              }}
+              sx={{ height: '24px', fontSize: '0.75rem', ...statusColor }}
             />
             {appointment.status === 'finalizado' && appointment.paymentMethod && (
               <Chip
@@ -94,38 +96,60 @@ function AppointmentCard({ appointment, onToggleServiceDone }) {
       </CardContent>
 
       <Collapse in={expanded} unmountOnExit>
-        <div className="p-4 pb-1 bg-accent-hover">
-          {(appointment.services || []).map((service) => (
+        <div className="p-4 pt-2 pb-1 bg-gray-50">
+          {(appointment.servicos || []).map((service) => (
             <div
               key={service.id}
               className="flex justify-between items-center mb-2"
               onClick={(e) => e.stopPropagation()}
             >
-              <Checkbox
-                checked={service.done}
-                onChange={() => onToggleServiceDone(appointment.id, service.id)}
-                slotProps={{
-                  input: {
-                    'aria-label': `Serviço ${service.nome} do cliente ${appointment.nomeCliente}`,
-                  },
-                }}
-              />
-
-              <Stack spacing={0.15} sx={{ ml: 1, alignItems: 'flex-end' }}>
+              <div className="flex items-center">
+                <Checkbox
+                  checked={!!service.done}
+                  onChange={() => onToggleServiceDone(appointment.id, service.id)}
+                  slotProps={{
+                    input: { 'aria-label': `Serviço ${service.nome}` },
+                  }}
+                />
                 <Typography>{service.nome}</Typography>
+              </div>
+
+              <Stack spacing={0.15} sx={{ alignItems: 'flex-end' }}>
                 <Typography variant="body2" color="text.secondary">
-                  R$ {service.preco.toFixed(2)}
+                  R$ {typeof service.preco === 'number' ? service.preco.toFixed(2) : '0.00'}
                 </Typography>
               </Stack>
             </div>
           ))}
+
+          {/* ATUALIZAÇÃO: Botão para cancelar agendamento */}
+          <Box sx={{ mt: 2, mb: 1 }}>
+            <Divider />
+            <Button
+              fullWidth
+              variant="text"
+              color="error"
+              startIcon={<TrashIcon style={{width: '16px', height: '16px'}} />}
+              onClick={(e) => {
+                e.stopPropagation(); // Impede que o clique feche o card
+                onCancelAppointment(appointment.id);
+              }}
+              sx={{
+                textTransform: 'none',
+                justifyContent: 'center',
+                py: 1,
+                color: '#d32f2f', // Cor vermelha para indicar perigo
+              }}
+            >
+              Cancelar Agendamento
+            </Button>
+          </Box>
         </div>
       </Collapse>
 
-      <div className="flex justify-center">
+      <div className="flex justify-center bg-gray-50 rounded-b-lg">
         <IconButton
           aria-label="expandir serviços"
-          data-testid="appointment-toggle-button"
           onClick={handleToggle}
           sx={{
             transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)',
@@ -133,15 +157,6 @@ function AppointmentCard({ appointment, onToggleServiceDone }) {
             padding: 0,
             minWidth: 40,
             borderRadius: 2,
-            '&:hover': {
-              backgroundColor: 'transparent',
-            },
-            '&:active': {
-              backgroundColor: 'transparent',
-            },
-            '&:focus': {
-              outline: 'none',
-            },
           }}
         >
           <ExpandMoreIcon sx={{ padding: '2px' }} />
