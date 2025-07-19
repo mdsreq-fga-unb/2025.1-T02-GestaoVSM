@@ -55,11 +55,7 @@ function Sidebar() {
   const menuItems = [
     { label: 'Agenda', icon: CalendarOutline, hoverIcon: CalendarSolid, path: '/agenda' },
     { label: 'Painel', icon: RectangleGroupOutline, hoverIcon: RectangleGroupSolid, path: '/painel' },
-    { label: 'Registrar Gasto', icon: CurrencyOutline, hoverIcon: CurrencySolid },
-    { label: 'Fechar Caixa', icon: CreditCardOutline, hoverIcon: CreditCardSolid, path: '/fechar-caixa' },
-    { label: 'Produtos', icon: ShoppingBagOutline, hoverIcon: ShoppingBagSolid },
-    { label: 'Serviços', icon: ScissorsOutline, hoverIcon: ScissorsSolid },
-    { label: 'Funcionários', icon: UsersOutline, hoverIcon: UsersSolid },
+    { label: 'Fechar Caixa', icon: CreditCardOutline, hoverIcon: CreditCardSolid, path: '/fechar-caixa' }
   ];
 
   return (
