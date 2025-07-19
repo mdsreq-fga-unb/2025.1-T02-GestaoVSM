@@ -16,13 +16,11 @@ import PrimaryActionButton from '../components/PrimaryActionButton.jsx';
 
 /**
  * Modal para finalizar um atendimento/agendamento.
- * 
- * Este componente exibe uma lista dos serviços concluídos (done),
+ * * Este componente exibe uma lista dos serviços concluídos (done),
  * calcula e mostra o subtotal dos serviços,
  * permite que o usuário selecione a forma de pagamento,
  * e confirma a finalização do atendimento.
- * 
- * Props:
+ * * Props:
  * - open (bool): controla a visibilidade do modal.
  * - appointment (object|null): objeto do agendamento atual, pode ser null.
  * - onCancel (func): callback para cancelar/fechar o modal.
@@ -36,13 +34,22 @@ function FinalizeAppointmentModal({
   onConfirm,
   onPaymentChange,
 }) {
-  // Se não houver agendamento (null), não renderiza nada
+  // Se não houver agendamento (null), não renderiza nada para evitar erros.
   if (!appointment) return null;
 
-  // Filtra apenas os serviços marcados como concluídos
-  const doneServices = appointment.services.filter((service) => service.done);
-  // Calcula o subtotal somando os preços dos serviços concluídos
-  const subtotal = doneServices.reduce((acc, s) => acc + s.price, 0);
+  // ==================================================================
+  // CORREÇÃO PRINCIPAL
+  // ==================================================================
+  // 1. Garante que 'servicos' seja um array, mesmo que venha como undefined da prop.
+  const servicos = Array.isArray(appointment.servicos) ? appointment.servicos : [];
+
+  // 2. Filtra os serviços concluídos a partir da variável segura 'servicos'.
+  const doneServices = servicos.filter((service) => service.done);
+  
+  // 3. Calcula o subtotal usando a propriedade correta 'preco' e garantindo que é um número.
+  const subtotal = doneServices.reduce((acc, s) => acc + (s.preco || 0), 0);
+  // ==================================================================
+
 
   return (
     <Dialog open={open} onClose={onCancel} maxWidth="sm" fullWidth>
@@ -89,8 +96,10 @@ function FinalizeAppointmentModal({
               mb: 0.75,
             }}
           >
-            <Typography>{service.name}</Typography>
-            <Typography>R$ {service.price.toFixed(2)}</Typography>
+            {/* CORREÇÃO: Usando a propriedade 'nome' */}
+            <Typography>{service.nome}</Typography>
+            {/* CORREÇÃO: Usando a propriedade 'preco' e garantindo que seja um número */}
+            <Typography>R$ {Number(service.preco || 0).toFixed(2)}</Typography>
           </Box>
         ))}
 
@@ -115,8 +124,8 @@ function FinalizeAppointmentModal({
           label="Forma de Pagamento"
           options={[
             { value: 'Dinheiro', label: 'Dinheiro' },
-            { value: 'Débito', label: 'Débito' },
-            { value: 'Crédito', label: 'Crédito' },
+            { value: 'DEBITO', label: 'Débito' },
+            { value: 'CREDITO', label: 'Crédito' },
             { value: 'PIX', label: 'PIX' },
           ]}
           value={appointment.paymentMethod || ''}

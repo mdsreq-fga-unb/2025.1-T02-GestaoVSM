@@ -148,19 +148,7 @@ function PanelPage() {
                             <QuickActionCard label="Fechar Caixa" to="/fechar-caixa" />
                         </Grid>
                         <Grid item xs={6} sm={4} md={3}>
-                            <QuickActionCard label="Registrar Gasto" to="/gastos" />
-                        </Grid>
-                        <Grid item xs={6} sm={4} md={3}>
-                            <QuickActionCard label="Produtos" to="/produtos" />
-                        </Grid>
-                        <Grid item xs={6} sm={4} md={3}>
-                            <QuickActionCard label="Serviços" to="/servicos" />
-                        </Grid>
-                        <Grid item xs={6} sm={4} md={3}>
-                            <QuickActionCard label="Funcionários" to="/funcionarios" />
-                        </Grid>
-                        <Grid item xs={6} sm={4} md={3}>
-                            <QuickActionCard label="Agenda" to="/" />
+                            <QuickActionCard label="Agenda" to="/agenda" />
                         </Grid>
                     </Grid>
                 </>

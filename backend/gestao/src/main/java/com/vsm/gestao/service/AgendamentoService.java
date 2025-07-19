@@ -1,6 +1,7 @@
 package com.vsm.gestao.service;
 
 import com.vsm.gestao.dto.AgendamentoDTO;
+import com.vsm.gestao.dto.AgendamentoResponseDTO;
 import com.vsm.gestao.entity.Agendamento;
 import com.vsm.gestao.entity.Servico;
 import com.vsm.gestao.entity.TipoUsuario;
@@ -8,7 +9,7 @@ import com.vsm.gestao.entity.Usuario;
 import com.vsm.gestao.repository.AgendamentoRepository;
 import com.vsm.gestao.repository.ServicoRepository;
 import com.vsm.gestao.repository.UsuarioRepository;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ import java.time.LocalTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -28,29 +30,63 @@ public class AgendamentoService {
     private final ServicoRepository servicoRepository;
 
     @Transactional
-    public Agendamento criarAgendamento(AgendamentoDTO dto, Usuario solicitante) {
-        Usuario barbeiroAgendado = getBarbeiroFromDto(dto.barbeiroId());
-        validarPermissao(solicitante, barbeiroAgendado);
-        List<Servico> servicos = getServicosFromDto(dto.servicoIds());
+    public AgendamentoResponseDTO criarAgendamento(AgendamentoDTO dto, Usuario solicitante) {
+        // 1. Valida se um barbeiro está a tentar agendar para outro barbeiro
+        if (solicitante != null && solicitante.getTipoUsuario() == TipoUsuario.BARBEIRO && !solicitante.getId().equals(dto.barbeiroId())) {
+            throw new SecurityException("Barbeiros só podem criar agendamentos para si mesmos.");
+        }
 
+        // 2. Busca as entidades referenciadas (Barbeiro e Serviços)
+        Usuario barbeiro = usuarioRepository.findById(dto.barbeiroId())
+                .orElseThrow(() -> new IllegalArgumentException("Barbeiro com ID " + dto.barbeiroId() + " não encontrado."));
+
+        List<Servico> servicos = servicoRepository.findAllById(dto.servicoIds());
+        if (servicos.size() != dto.servicoIds().size()) {
+            throw new IllegalArgumentException("Um ou mais IDs de serviço são inválidos.");
+        }
+
+        // 3. Cria e preenche a nova entidade Agendamento com os dados do DTO
         Agendamento novoAgendamento = new Agendamento();
-        mapearDtoParaEntidade(dto, novoAgendamento, barbeiroAgendado, servicos);
-        validarDisponibilidade(novoAgendamento, null);
+        novoAgendamento.setUsuario(barbeiro);
+        novoAgendamento.setNomeCliente(dto.nomeCliente());
+        novoAgendamento.setServicos(servicos);
+        novoAgendamento.setDataAgendamento(dto.dataAgendamento());
 
-        return agendamentoRepository.save(novoAgendamento);
+        // 4. Calcula a duração total dos serviços
+        int duracaoTotalMinutos = servicos.stream()
+                .mapToInt(Servico::getDuracaoEstimadaMinutos)
+                .sum();
+        novoAgendamento.setDuracaoMinutos(duracaoTotalMinutos);
+
+        // 5. Valida a disponibilidade do horário para evitar conflitos
+        validarDisponibilidade(novoAgendamento, null); // Passa null para idExcluido, pois é uma criação
+
+        // 6. Salva a nova entidade no banco de dados
+        Agendamento agendamentoSalvo = agendamentoRepository.save(novoAgendamento);
+
+        // 7. Retorna o DTO de resposta com os dados do agendamento criado
+        return AgendamentoResponseDTO.fromEntity(agendamentoSalvo);
     }
-
-    public List<Agendamento> listarAgendamentos(LocalDate dia, Optional<Long> barbeiroId, Usuario solicitante) {
+    
+    @Transactional(readOnly = true)
+    public List<AgendamentoResponseDTO> listarAgendamentos(LocalDate dia, Optional<Long> barbeiroId, Usuario solicitante) {
         LocalDateTime inicioDoDia = dia.atStartOfDay();
         LocalDateTime fimDoDia = dia.atTime(LocalTime.MAX);
+        
+        List<Agendamento> agendamentos;
 
         if (solicitante.getTipoUsuario() == TipoUsuario.ADMIN) {
-            return barbeiroId.map(id -> agendamentoRepository.findAllByUsuarioIdAndDataAgendamentoBetween(id, inicioDoDia, fimDoDia))
+            agendamentos = barbeiroId.map(id -> agendamentoRepository.findAllByUsuarioIdAndDataAgendamentoBetween(id, inicioDoDia, fimDoDia))
                     .orElseGet(() -> agendamentoRepository.findAllByDataAgendamentoBetween(inicioDoDia, fimDoDia));
         } else if (solicitante.getTipoUsuario() == TipoUsuario.BARBEIRO) {
-            return agendamentoRepository.findAllByUsuarioIdAndDataAgendamentoBetween(solicitante.getId(), inicioDoDia, fimDoDia);
+            agendamentos = agendamentoRepository.findAllByUsuarioIdAndDataAgendamentoBetween(solicitante.getId(), inicioDoDia, fimDoDia);
+        } else {
+             agendamentos = Collections.emptyList();
         }
-        return Collections.emptyList();
+
+        return agendamentos.stream()
+                .map(AgendamentoResponseDTO::fromEntity)
+                .collect(Collectors.toList());
     }
 
     public Optional<Agendamento> buscarPorId(Long id, Usuario solicitante) {

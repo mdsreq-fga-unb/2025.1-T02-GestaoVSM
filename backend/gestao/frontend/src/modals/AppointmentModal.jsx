@@ -40,16 +40,19 @@ function AppointmentModal({
     selectedServices.includes(s.id)
   );
 
+  // CORREÇÃO: Usando 'duracaoEstimadaMinutos' que vem do backend/mock
   const totalDuration = selectedServiceObjects.reduce(
-    (acc, s) => acc + (s.duration || 0),
+    (acc, s) => acc + (s.duracaoEstimadaMinutos || 0),
     0
   );
-
+  
+  // CORREÇÃO: Usando 'preco' que vem do backend/mock
   const subtotal = selectedServiceObjects.reduce(
-    (acc, s) => acc + (s.price || 0),
+    (acc, s) => acc + (s.preco || 0),
     0
   );
 
+  // Funções de handler permanecem as mesmas
   const handleBarberChange = (e) => onBarberChange(Number(e.target.value));
   const handleTimeChange = (e) => onTimeChange(e.target.value);
   const handleServicesChange = (e) => {
@@ -98,15 +101,7 @@ function AppointmentModal({
       </Box>
 
       {/* Título */}
-      <DialogTitle
-        sx={{
-          textAlign: 'center',
-          fontWeight: 'bold',
-          fontSize: '1.2rem',
-          pt: 3,
-          pb: 2,
-        }}
-      >
+      <DialogTitle sx={{ textAlign: 'center', fontWeight: 'bold', fontSize: '1.2rem', pt: 3, pb: 2 }}>
         Novo Agendamento
       </DialogTitle>
 
@@ -120,10 +115,7 @@ function AppointmentModal({
           size="medium"
           variant="outlined"
           inputProps={{ maxLength: 20 }}
-          sx={{
-            backgroundColor: 'white',
-            borderRadius: 2,
-          }}
+          sx={{ backgroundColor: 'white', borderRadius: 2 }}
         />
 
         <DropdownSelect
@@ -139,7 +131,8 @@ function AppointmentModal({
         <Box mt={1}>
           <DropdownSelect
             label="Barbeiro"
-            options={barbers.map((b) => ({ value: b.id, label: b.name }))}
+            // CORREÇÃO: O array 'barbers' já vem no formato { value, label }, então não precisa de .map()
+            options={barbers}
             value={barberId}
             onChange={handleBarberChange}
             placeholder="Selecione o barbeiro"
@@ -158,23 +151,22 @@ function AppointmentModal({
               if (selected.length === 0) {
                 return <em style={{ color: '#9e9e9e' }}>Selecione os serviços</em>;
               }
+              // CORREÇÃO: Usando 'nome' para exibir os serviços selecionados
               return services
                 .filter((s) => selected.includes(s.id))
-                .map((s) => s.name)
+                .map((s) => s.nome)
                 .join(', ');
             }}
             fullWidth
             size="small"
             displayEmpty
-            sx={{
-              backgroundColor: 'white',
-              borderRadius: 2,
-            }}
+            sx={{ backgroundColor: 'white', borderRadius: 2 }}
           >
             {services.map((service) => (
               <MenuItem key={service.id} value={service.id}>
                 <Checkbox checked={selectedServices.includes(service.id)} />
-                <ListItemText primary={service.name} />
+                {/* CORREÇÃO: Usando 'nome' para o texto do item */}
+                <ListItemText primary={service.nome} />
               </MenuItem>
             ))}
           </Select>
@@ -187,19 +179,16 @@ function AppointmentModal({
 
         <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
           <Typography sx={{ fontWeight: 'bold' }}>Subtotal:</Typography>
+          {/* CORREÇÃO: Usando a variável corrigida 'subtotal' */}
           <Typography sx={{ fontWeight: 'bold' }}>R$ {subtotal.toFixed(2)}</Typography>
         </Box>
       </DialogContent>
 
       {/* Ações */}
       <DialogActions sx={{ display: 'flex', justifyContent: 'space-between', px: 3, pb: 2, pt: 0 }}>
-        <Button
-          onClick={onClose}
-          sx={{ textTransform: 'none', color: 'var(--color-secondary)' }}
-        >
+        <Button onClick={onClose} sx={{ textTransform: 'none', color: 'var(--color-secondary)' }}>
           Cancelar
         </Button>
-
         <PrimaryActionButton
           onClick={onSave}
           disabled={!clientName || !time || !barberId || selectedServices.length === 0}
