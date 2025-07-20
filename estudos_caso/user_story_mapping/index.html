@@ -1,0 +1,1840 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://mydomain.org/mysite/estudos_caso/user_story_mapping/">
+      
+      
+        <link rel="prev" href="../product_backlog_building/">
+      
+      
+        <link rel="next" href="../caso_de_uso/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>USM - ComunEventos - Gestão VSM</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#exercicio-de-construcao-de-backlog-de-produto-usando-usm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Gestão VSM" class="md-header__button md-logo" aria-label="Gestão VSM" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gestão VSM
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              USM - ComunEventos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="black"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../visao_prod_proj/cenario_atual/" class="md-tabs__link">
+          
+  
+  
+  Visão do Produto e Projeto
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../product_backlog_building/" class="md-tabs__link">
+          
+  
+  
+  Estudos de Caso
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../evidencias/concepcao_OpenUP/" class="md-tabs__link">
+          
+  
+  
+  Evidências
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../apresentacoes_entregas/apresentacao_1/" class="md-tabs__link">
+          
+  
+  
+  Apresentações e Entregas
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../acesso/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Acesso - Gestão VSM
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Gestão VSM" class="md-nav__button md-logo" aria-label="Gestão VSM" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Gestão VSM
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Início
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Visão do Produto e Projeto
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Visão do Produto e Projeto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao_prod_proj/cenario_atual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. Cenário Atual do Cliente e do Negócio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao_prod_proj/solucao_proposta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. Solução Proposta
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao_prod_proj/estrategias_engenharia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Estratégias de Engenharia de Software
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao_prod_proj/engenharia_requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Engenharia de Requisitos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao_prod_proj/cronograma_entregas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5. Cronograma e Entregas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao_prod_proj/interacao_equipe_cliente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6. Interação entre Equipe e Cliente
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao_prod_proj/requisitos_software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    7. Requisitos de Software
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao_prod_proj/dor_dod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    8. DoR e DoD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao_prod_proj/backlog_produto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    9. Backlog do Produto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao_prod_proj/licoes_aprendidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10. Lições Aprendidas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao_prod_proj/referencias_bibliograficas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11. Bibliografia e Referências Bibliográficas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Estudos de Caso
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Estudos de Caso
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../product_backlog_building/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PBB - TechFix
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    USM - ComunEventos
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    USM - ComunEventos
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercicio-de-construcao-de-backlog-de-produto-usando-usm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercício de Construção de Backlog de Produto usando USM
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usuarios-personas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usuários (Personas)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Atividades
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backbone" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backbone
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      MVP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      RELEASE 1
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../caso_de_uso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Caso de Uso - ConnectCare
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Evidências
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Evidências
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../evidencias/concepcao_OpenUP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Concepção - OpenUP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../evidencias/elaboracao_OpenUP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Elaboração - OpenUP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../evidencias/userdesign_RAD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Design - RAD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../evidencias/construcao_OpenUP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Construção - OpenUP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../evidencias/transicao_OpenUP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transição - OpenUP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Apresentações e Entregas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Apresentações e Entregas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apresentacoes_entregas/apresentacao_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apresentação Unidade 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apresentacoes_entregas/apresentacao_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apresentação Unidade 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apresentacoes_entregas/apresentacao_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apresentação Unidade 3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apresentacoes_entregas/apresentacao_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apresentação Unidade 4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../acesso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Acesso - Gestão VSM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercicio-de-construcao-de-backlog-de-produto-usando-usm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercício de Construção de Backlog de Produto usando USM
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usuarios-personas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usuários (Personas)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Atividades
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backbone" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backbone
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      MVP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      RELEASE 1
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>USM - ComunEventos</h1>
+
+<h2 id="exercicio-de-construcao-de-backlog-de-produto-usando-usm">Exercício de Construção de Backlog de Produto usando USM</h2>
+<p><img width="1975" height="506" alt="image" src="https://github.com/user-attachments/assets/b057ce11-b964-40b5-8a8a-51a3a9168f95" /></p>
+<hr />
+<h2 id="usuarios-personas">Usuários (Personas)</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Us01</td>
+<td>Organizador do Evento</td>
+</tr>
+<tr>
+<td>Us02</td>
+<td>Participante do Evento</td>
+</tr>
+<tr>
+<td>Us03</td>
+<td>Parte Interessada (Participante, Voluntário, Fornecedor, Patrocinador)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="atividades">Atividades</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Descrição</th>
+<th>Usuário</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>At01</td>
+<td>Organizar Evento</td>
+<td>Us01</td>
+</tr>
+<tr>
+<td>At02</td>
+<td>Divulgar Evento</td>
+<td>Us01</td>
+</tr>
+<tr>
+<td>At03</td>
+<td>Gerenciar Inscrições</td>
+<td>Us01</td>
+</tr>
+<tr>
+<td>At04</td>
+<td>Gerenciar Colaborações</td>
+<td>Us01</td>
+</tr>
+<tr>
+<td>At05</td>
+<td>Executar e Avaliar Evento</td>
+<td>Us01</td>
+</tr>
+<tr>
+<td>At06</td>
+<td>Acompanhamento e Comunicação com Participante</td>
+<td>Us02</td>
+</tr>
+<tr>
+<td>At07</td>
+<td>Experiência e Engajamento</td>
+<td>Us03</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="backbone">Backbone</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Descrição</th>
+<th>Atividade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bb01</td>
+<td>Criar Evento</td>
+<td>At01</td>
+</tr>
+<tr>
+<td>Bb02</td>
+<td>Editar Evento</td>
+<td>At01</td>
+</tr>
+<tr>
+<td>Bb03</td>
+<td>Página do Evento</td>
+<td>At02</td>
+</tr>
+<tr>
+<td>Bb04</td>
+<td>Compartilhar Evento</td>
+<td>At02</td>
+</tr>
+<tr>
+<td>Bb05</td>
+<td>Inscrição de Participantes</td>
+<td>At03</td>
+</tr>
+<tr>
+<td>Bb06</td>
+<td>Pagamentos</td>
+<td>At03</td>
+</tr>
+<tr>
+<td>Bb07</td>
+<td>Voluntários</td>
+<td>At04</td>
+</tr>
+<tr>
+<td>Bb08</td>
+<td>Fornecedores</td>
+<td>At04</td>
+</tr>
+<tr>
+<td>Bb09</td>
+<td>Patrocinadores</td>
+<td>At04</td>
+</tr>
+<tr>
+<td>Bb10</td>
+<td>No Dia do Evento</td>
+<td>At05</td>
+</tr>
+<tr>
+<td>Bb11</td>
+<td>Pós-Evento</td>
+<td>At05</td>
+</tr>
+<tr>
+<td>Bb12</td>
+<td>Acompanhamento e Notificações do Evento</td>
+<td>At06</td>
+</tr>
+<tr>
+<td>Bb13</td>
+<td>Comunicação Direta</td>
+<td>At06</td>
+</tr>
+<tr>
+<td>Bb14</td>
+<td>Comunicações e Presença</td>
+<td>At07</td>
+</tr>
+<tr>
+<td>Bb15</td>
+<td>Acesso à Informação</td>
+<td>At07</td>
+</tr>
+<tr>
+<td>Bb16</td>
+<td>Reconhecimento e Feedback</td>
+<td>At07</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="mvp">MVP</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Descrição</th>
+<th>Backbone</th>
+<th>Usuário</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MVP01</td>
+<td>Eu, como organizador, quero criar um evento com nome, data e descrição para iniciar o planejamento.</td>
+<td>Criar Evento (Bb01)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>MVP02</td>
+<td>Eu, como organizador, quero categorizar o evento (público-alvo, gratuito/pago, visibilidade) para deixá-lo público no site.</td>
+<td>Criar Evento (Bb01)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>MVP03</td>
+<td>Eu, como organizador, quero cancelar evento e notificar inscritos para evitar problemas.</td>
+<td>Criar Evento (Bb01)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>MVP04</td>
+<td>Eu, como organizador, quero gerar página com detalhes do evento para facilitar a divulgação.</td>
+<td>Página do Evento (Bb03)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>MVP05</td>
+<td>Eu, como organizador, quero compartilhar em redes sociais com um clique.</td>
+<td>Compartilhar Evento (Bb04)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>MVP06</td>
+<td>Eu, como organizador, quero ver lista de inscritos em tempo real para monitorar a adesão ao evento.</td>
+<td>Inscrição de Participantes (Bb05)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>MVP07</td>
+<td>Eu, como organizador, quero cadastrar voluntários e suas funções para contar com apoio no evento.</td>
+<td>Voluntários (Bb07)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>MVP08</td>
+<td>Eu, como organizador, quero cadastrar fornecedor com nome, serviço e contato para formalizar parceria.</td>
+<td>Fornecedores (Bb08)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>MVP09</td>
+<td>Eu, como organizador, quero cadastrar patrocinadores e cotas de apoio para viabilizar o evento.</td>
+<td>Patrocinadores (Bb09)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>MVP10</td>
+<td>Eu, como organizador, quero marcar check-in dos participantes para controlar entradas no evento.</td>
+<td>No Dia do Evento (Bb10)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>MVP11</td>
+<td>Eu, como organizador, quero gerar lista de presença com QR Code para facilitar a validação.</td>
+<td>No Dia do Evento (Bb10)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>MVP12</td>
+<td>Eu, como organizador, quero enviar pesquisa de satisfação para coletar feedback dos participantes.</td>
+<td>Pós-Evento (Bb11)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>MVP13</td>
+<td>Eu, como participante, quero receber confirmação de inscrição para garantir que estou registrado.</td>
+<td>Acompanhamento e Notificações (Bb12)</td>
+<td>Us02 – Participante</td>
+</tr>
+<tr>
+<td>MVP14</td>
+<td>Eu, como participante, quero acessar informações detalhadas do evento (local, horário, tipo) para facilitar meu planejamento.</td>
+<td>Acesso à Informação (Bb15)</td>
+<td>Us02 – Participante</td>
+</tr>
+<tr>
+<td>MVP15</td>
+<td>Eu, como parte interessada, quero receber pesquisa de satisfação após o evento para opinar sobre minha experiência.</td>
+<td>Reconhecimento e Feedback (Bb16)</td>
+<td>Us03 – Parte Interessada</td>
+</tr>
+<tr>
+<td>MVP16</td>
+<td>Eu, como parte interessada, quero receber um e-mail lembrando de confirmar minha presença, para garantir que estarei no evento no dia.</td>
+<td>Comunicações e Presença (Bb14)</td>
+<td>Us03 – Parte Interessada</td>
+</tr>
+<tr>
+<td>MVP17</td>
+<td>Eu, como parte interessada, quero confirmar minha presença com um clique no e-mail, para sinalizar minha participação de forma prática.</td>
+<td>Comunicações e Presença (Bb14)</td>
+<td>Us03 – Parte Interessada</td>
+</tr>
+</tbody>
+</table>
+<h2 id="release-1">RELEASE 1</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Descrição</th>
+<th>Backbone / Épico</th>
+<th>Usuário</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R01</td>
+<td>Eu, como organizador, quero adicionar botão de inscrição para que os participantes possam se registrar diretamente na página do evento.</td>
+<td>Página do Evento (Bb03)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>R02</td>
+<td>Eu, como organizador, quero programar publicações promocionais para manter a visibilidade constante.</td>
+<td>Compartilhar Evento (Bb04)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>R03</td>
+<td>Eu, como organizador, quero integrar meio de pagamento online para aceitar inscrições pagas.</td>
+<td>Pagamentos (Bb06)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>R04</td>
+<td>Eu, como organizador, quero exportar lista de participantes para uma planilha para melhor controle.</td>
+<td>Inscrição de Participantes (Bb05)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>R05</td>
+<td>Eu, como organizador, quero acompanhar dados dos participantes para gerar relatórios depois.</td>
+<td>Inscrição de Participantes (Bb05)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>R06</td>
+<td>Eu, como organizador, quero limitar vagas por categoria para balancear os públicos participantes.</td>
+<td>Inscrição de Participantes (Bb05)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>R07</td>
+<td>Eu, como organizador, quero permitir envio de mensagens para inscritos para que dúvidas possam ser resolvidas.</td>
+<td>Comunicação Direta (Bb13)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>R08</td>
+<td>Eu, como organizador, quero criar mensagens automáticas para facilitar a comunicação com os participantes.</td>
+<td>Comunicação Direta (Bb13)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>R09</td>
+<td>Eu, como organizador, quero notificar alterações no evento para manter os inscritos informados.</td>
+<td>Acompanhamento e Notificações (Bb12)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>R10</td>
+<td>Eu, como organizador, quero definir horários e tarefas para cada voluntário para organizar a equipe no dia.</td>
+<td>Voluntários (Bb07)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>R11</td>
+<td>Eu, como organizador, quero confirmar presença dos voluntários para assegurar apoio no dia.</td>
+<td>Voluntários (Bb07)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>R12</td>
+<td>Eu, como organizador, quero anexar contrato ou acordo com fornecedores para garantir segurança jurídica.</td>
+<td>Fornecedores (Bb08)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>R13</td>
+<td>Eu, como organizador, quero avaliar fornecedor após o evento para decisões futuras.</td>
+<td>Fornecedores (Bb08)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>R14</td>
+<td>Eu, como organizador, quero gerar relatório de visibilidade para prestar contas aos patrocinadores.</td>
+<td>Patrocinadores (Bb09)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>R15</td>
+<td>Eu, como organizador, quero enviar certificado de parceria para reconhecer os patrocinadores.</td>
+<td>Patrocinadores (Bb09)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>R16</td>
+<td>Eu, como organizador, quero visualizar status das tarefas em tempo real para manter tudo sob controle.</td>
+<td>No Dia do Evento (Bb10)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>R17</td>
+<td>Eu, como organizador, quero gerar relatório com métricas do evento para avaliar os resultados.</td>
+<td>Pós-Evento (Bb11)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>R18</td>
+<td>Eu, como organizador, quero compartilhar resultado com patrocinadores e comunidade para mostrar o impacto do evento.</td>
+<td>Pós-Evento (Bb11)</td>
+<td>Us01 – Organizador</td>
+</tr>
+<tr>
+<td>R19</td>
+<td>Eu, como participante, quero responder dúvidas por chat ou formulário para esclarecer informações.</td>
+<td>Comunicação Direta (Bb13)</td>
+<td>Us02 – Participante</td>
+</tr>
+<tr>
+<td>R20</td>
+<td>Eu, como participante, quero receber notificações sobre alterações no evento para me planejar.</td>
+<td>Acompanhamento e Notificações (Bb12)</td>
+<td>Us02 – Participante</td>
+</tr>
+<tr>
+<td>R21</td>
+<td>Eu, como participante, quero receber lembrete automático pré-evento para não esquecer a data.</td>
+<td>Acompanhamento e Notificações (Bb12)</td>
+<td>Us02 – Participante</td>
+</tr>
+<tr>
+<td>R22</td>
+<td>Eu, como participante, quero enviar mensagens para os organizadores caso tenha dúvidas.</td>
+<td>Comunicação Direta (Bb13)</td>
+<td>Us02 – Participante</td>
+</tr>
+<tr>
+<td>R23</td>
+<td>Eu, como parte interessada, quero responder uma pesquisa de satisfação específica sobre meu papel no evento.</td>
+<td>Reconhecimento e Feedback (Bb16)</td>
+<td>Us03 – Parte Interessada</td>
+</tr>
+<tr>
+<td>R24</td>
+<td>Eu, como parte interessada, quero ter acesso a um comprovante de participação em PDF.</td>
+<td>Reconhecimento e Feedback (Bb16)</td>
+<td>Us03 – Parte Interessada</td>
+</tr>
+<tr>
+<td>R25</td>
+<td>Eu, como parte interessada, quero receber lembrete automático próximo ao evento para não esquecer de comparecer.</td>
+<td>Comunicações e Presença (Bb14)</td>
+<td>Us03 – Parte Interessada</td>
+</tr>
+<tr>
+<td>R26</td>
+<td>Eu, como parte interessada, quero ver meus dados registrados (nome, função, papel no evento) para validar se está tudo correto.</td>
+<td>Acesso à Informação (Bb15)</td>
+<td>Us03 – Parte Interessada</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.instant.preview", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+    
+  </body>
+</html>
