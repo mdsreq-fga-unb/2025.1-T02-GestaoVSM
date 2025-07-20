@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // A URL base da sua API. Ajuste se for diferente.
-const BASE_URL = 'http://localhost:8080/api';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
 
 /**
  * Cria a configuração para as requisições, adicionando o token de autorização
